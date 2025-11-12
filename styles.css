@@ -1,20 +1,87 @@
+/* Grunddesign */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #1A1A1A;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 20px;
 }
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 h1 {
-    color: #4CAF50;
+  color: #FF8C00;
+  font-weight: 700;
 }
-h2 {
-    color: #2196F3;
+
+/* Fortschrittsbalken */
+.fortschritt {
+  margin: 20px 0;
+  text-align: center;
 }
-input[type="checkbox"] {
-    margin-right: 10px;
+
+.progress-bar {
+  height: 20px;
+  background-color: #555555;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px auto;
+  width: 80%;
 }
-a {
-    color: #FF5722;
+
+#progress-fill {
+  height: 100%;
+  background-color: #FF8C00;
+  transition: width 0.3s;
+}
+
+/* Menü-Buttons */
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.menu-button {
+  display: block;
+  background-color: #FF8C00;
+  color: #000000;
+  padding: 15px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  text-align: center;
+  min-width: 150px;
+  transition: transform 0.2s;
+}
+
+.menu-button:hover {
+  transform: scale(1.05);
+  background-color: #FF6B00;
+}
+
+.menu-button span {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+/* Geheimtipp */
+.geheimtipp {
+  text-align: center;
+  margin-top: 40px;
+  font-style: italic;
+  color: #FF8C00;
+}
+
+kbd {
+  background-color: #333;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
 }
