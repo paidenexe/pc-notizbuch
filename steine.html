@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stein-Labor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>⛰️ STEIN-LABOR</h1>
+    <p>Fortschritt: <span id="stein-fortschritt">0/10</span> Steine bestimmt!</p>
+    <a href="index.html" class="zurueck-button">← Zurück zur Startseite</a>
+  </header>
+
+  <main>
+    <h2>🔍 Steine bestimmen</h2>
+    <div class="checkliste">
+      <label>
+        <input type="checkbox" onchange="updateFortschritt('steine')"> Achat gefunden
+      </label>
+      <label>
+        <input type="checkbox" onchange="updateFortschritt('steine')"> Feuerstein getestet
+      </label>
+      <!-- Weitere Checkboxen -->
+    </div>
+
+    <h2>🧪 Experimente</h2>
+    <p><strong>Härte-Test:</strong> Kratze mit einem Nagel über den Stein...</p>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // Fortschritt für Steine laden
+    function updateFortschritt(thema) {
+      let anzahl = document.querySelectorAll(`#${thema} input[type="checkbox"]:checked`).length;
+      document.getElementById(`${thema}-fortschritt`).textContent = `${anzahl}/10`;
+
+      // Gesamtfortschritt aktualisieren (vereinfacht)
+      let gesamt = (anzahl / 10) * 30; // 30% für Steine
+      localStorage.setItem('progress', gesamt);
+      document.getElementById('progress-percent').textContent = `${gesamt}%`;
+      document.getElementById('progress-fill').style.width = `${gesamt}%`;
+    }
+  </script>
+</body>
+</html>
