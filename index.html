@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-    <title>Philipps PC-Abenteuer</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>[NAME]’s PC-Abenteuer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>🎮 Willkommen zu deinem PC-Abenteuer, Philipp!</h1>
-    <p>Hier findest du alles, was du für deinen neuen PC wissen musst.</p>
+  <header>
+    <h1>🔥 [NAME]’S PC-ABENTEUER 🔥</h1>
+    <div class="fortschritt">
+      <p>Fortschritt: <span id="progress-percent">0%</span></p>
+      <div class="progress-bar">
+        <div id="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+  </header>
 
-    <h2>✅ Checkliste</h2>
-    <ul>
-        <li><input type="checkbox"> Minecraft starten</li>
-        <li><input type="checkbox"> Ersten Stein bestimmen</li>
-        <li><input type="checkbox"> Rocket League spielen</li>
-    </ul>
+  <main>
+    <div class="menu">
+      <a href="steine.html" class="menu-button">
+        <span>⛰️</span> STEIN-LABOR
+      </a>
+      <a href="minecraft.html" class="menu-button">
+        <span>🎮</span> MINECRAFT-WELT
+      </a>
+      <a href="rocketleague.html" class="menu-button">
+        <span>🚗</span> ROCKET LEAGUE
+      </a>
+      <a href="tagebuch.html" class="menu-button" id="tagebuch-link">
+        <span>📝</span> TAGEBUCH (🔒)
+      </a>
+    </div>
 
-    <h2>📖 Abschnitte</h2>
-    <ul>
-        <li><a href="#minecraft">Minecraft</a></li>
-        <li><a href="#steine">Steine & Geologie</a></li>
-        <li><a href="#rocketleague">Rocket League</a></li>
-    </ul>
+    <div class="geheimtipp">
+      <p>💡 GEHEIMTIPP: Drücke <kbd>STRG</kbd> + <kbd>SHIFT</kbd> + <kbd>S</kbd>!</p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
