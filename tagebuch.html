@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Geheimes Tagebuch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="passwort-abfrage">
+    <h1>📝 TAGEBUCH</h1>
+    <p>Gib das Passwort ein:</p>
+    <input type="password" id="passwort-input" placeholder="TT.MM. (Geburtsdatum)">
+    <button onclick="checkPasswort()">Öffnen</button>
+  </div>
+
+  <div id="tagebuch-inhalt" style="display: none;">
+    <h2>Mein PC-Tagebuch</h2>
+    <textarea placeholder="Schreibe hier, was du heute gelernt oder gespielt hast..."></textarea>
+    <button onclick="speichern()">Speichern</button>
+    <a href="index.html">← Zurück</a>
+  </div>
+
+  <script>
+    function checkPasswort() {
+      const passwort = document.getElementById('passwort-input').value;
+      if (passwort === "1112") { // Sein Geburtsdatum
+        document.getElementById('passwort-abfrage').style.display = 'none';
+        document.getElementById('tagebuch-inhalt').style.display = 'block';
+      } else {
+        alert("Falsches Passwort! Frag [Dein Name] um Hilfe.");
+      }
+    }
+
+    function speichern() {
+      const text = document.querySelector('textarea').value;
+      localStorage.setItem('tagebuch', text);
+      alert("Gespeichert! 💾");
+    }
+
+    // Gespeicherten Text laden
+    window.onload = () => {
+      const gespeichert = localStorage.getItem('tagebuch');
+      if (gespeichert) {
+        document.querySelector('textarea').value = gespeichert;
+      }
+    };
+  </script>
+</body>
+</html>
