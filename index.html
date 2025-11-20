@@ -5,6 +5,39 @@
   <title>Philipp’s PC-Abenteuer</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Zusätzliche Styles für die neuen Abschnitte */
+    .willkommen {
+      background-color: #2A2A2A;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border-left: 5px solid #FF8C00;
+    }
+    .anleitung {
+      background-color: #1E1E1E;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .anleitung h2 {
+      color: #FF8C00;
+      margin-top: 0;
+    }
+    .anleitung ul {
+      padding-left: 20px;
+    }
+    .spoiler {
+      background-color: #2A2A2A;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-style: italic;
+    }
+    .spoiler h2 {
+      color: #FF8C00;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -18,26 +51,82 @@
   </header>
 
   <main>
+    <!-- 1. Willkommensnachricht -->
+    <div class="willkommen">
+      <h2>Willkommen auf deiner persönlichen Startseite!</h2>
+      <p>
+        Hey Philipp! 👋<br>
+        Das hier ist dein **eigenes digitales Notizbuch** – dein Begleiter für alles rund um deinen neuen PC!
+        Hier findest du **Anleitungen, Challenges, Geheimtipps und ein Tagebuch**, um deine Abenteuer festzuhalten.
+        <br><br>
+        **Dein Ziel:** Fülle den Fortschrittsbalken oben, indem du Aufgaben erledigst, Steine sammelst, in Minecraft baust
+        oder in Rocket League Tore schießt. **Viel Spaß!**
+      </p>
+    </div>
+
+    <!-- 2. Kurzanleitung für die Website -->
+    <div class="anleitung">
+      <h2>❓ Wie funktioniert diese Seite?</h2>
+      <ul>
+        <li><strong>Menü:</strong> Klicke auf die Buttons oben, um zu den Themen zu gelangen (Steine, Minecraft, etc.).</li>
+        <li><strong>Fortschritt:</strong> Der Balken oben füllt sich, wenn du Aufgaben abhakst (z. B. Steine bestimmst).</li>
+        <li><strong>Tagebuch:</strong> Schreibe auf, was du gelernt oder gespielt hast (Passwort: dein Geburtsdatum).</li>
+        <li><strong>Geheimtipps:</strong> Manche Seiten haben versteckte Überraschungen – halte die Augen offen!</li>
+        <li><strong>Cheat-Codes:</strong> Probier mal <kbd>STRG</kbd> + <kbd>SHIFT</kbd> + <kbd>S</kbd> aus…</li>
+      </ul>
+    </div>
+
+    <!-- 3. Menü (wie in deinem Original) -->
     <div class="menu">
       <a href="steine.html" class="menu-button">
-        <span>⛰️</span> STEIN-LABOR
+        <span>⛰️</span> STEIN-LABOR<br><small>2/10 Aufgaben</small>
       </a>
       <a href="minecraft.html" class="menu-button">
-        <span>🎮</span> MINECRAFT-WELT
+        <span>🎮</span> MINECRAFT-WELT<br><small>0/15 Challenges</small>
       </a>
       <a href="rocketleague.html" class="menu-button">
-        <span>🚗</span> ROCKET LEAGUE
+        <span>🚗</span> ROCKET LEAGUE<br><small>1/10 Tore</small>
       </a>
       <a href="tagebuch.html" class="menu-button" id="tagebuch-link">
         <span>📝</span> TAGEBUCH (🔒)
       </a>
     </div>
 
+    <!-- 4. Spoiler: Was ihn erwartet -->
+    <div class="spoiler">
+      <h2>🔮 Spoiler: Was dich hier erwartet…</h2>
+      <p>
+        In diesem Notizbuch verstecken sich:<br>
+        🔹 **Geheime Minecraft-Seeds** (für versteckte Schätze!)<br>
+        🔹 **Ein Stein-Quiz** (kannst du Achate von Quarzen unterscheiden?)<br>
+        🔹 **Rocket-League-Tipps** (wie du besser wirst)<br>
+        🔹 **Ein Zertifikat**, wenn du alles gemeistert hast!<br>
+        🔹 **Ein Tagebuch**, in dem du deine Erfolge festhalten kannst<br>
+        <br>
+        <strong>Also: Fang an zu erkunden!</strong>
+      </p>
+    </div>
+
+    <!-- 5. Geheimtipp (wie in deinem Original) -->
     <div class="geheimtipp">
-      <p>💡 GEHEIMTIPP: Drücke <kbd>STRG</kbd> + <kbd>SHIFT</kbd> + <kbd>S</kbd>!</p>
+      <p>💡 GEHEIMTIPP: Drücke <kbd>STRG</kbd> + <kbd>SHIFT</kbd> + <kbd>S</kbd> für eine Überraschung!</p>
     </div>
   </main>
 
   <script src="script.js"></script>
+  <script>
+    // Kleine Animation für die Menü-Buttons (Zahlen werden später dynamisch)
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.menu-button');
+      buttons.forEach(button => {
+        button.addEventListener('mouseover', () => {
+          button.style.transform = 'scale(1.05)';
+        });
+        button.addEventListener('mouseout', () => {
+          button.style.transform = 'scale(1)';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
