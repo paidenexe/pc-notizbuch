@@ -5,6 +5,88 @@
   <title>PC-Tipps | Philipp’s Abenteuer</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+    <style>
+    :root {
+      --bg-color: #1A1A1A;
+      --text-color: #FFFFFF;
+      --accent-color: #FF8C00;
+      --button-bg: #2A2A2A;
+    }
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #EEEEEE;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: var(--accent-color);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .tipp {
+      background-color: var(--button-bg);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    .tipp-header {
+      padding: 15px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #444;
+    }
+    .tipp-header h3 {
+      margin: 0;
+      color: var(--accent-color);
+    }
+    .tipp-content {
+      padding: 0 15px 15px;
+      display: none;
+    }
+    .tipp-content.active {
+      display: block;
+    }
+    .dark-mode-toggle {
+      background-color: var(--button-bg);
+      color: var(--text-color);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      float: right;
+    }
+    .code-block {
+      background-color: #1E1E1E;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: monospace;
+      overflow-x: auto;
+    }
+    .back-button {
+      display: inline-block;
+      background-color: var(--button-bg);
+      color: var(--text-color);
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 20px;
+      border: 1px solid var(--accent-color);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
