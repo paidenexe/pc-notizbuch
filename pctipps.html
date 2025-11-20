@@ -1,1 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>PC-Tipps | Philipp’s Abenteuer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">⚡ Dark Mode</button>
+    <h1>💻 PC-TIPPS & TRICKS</h1>
 
+    <div class="tipp">
+      <div class="tipp-header" onclick="toggleTipp(0)">
+        <h3>🌓 Windows Dark Mode aktivieren</h3>
+        <span>⌄</span>
+      </div>
+      <div class="tipp-content">
+        <p>So schaltest du den dunklen Modus ein:</p>
+        <ol>
+          <li>Drücke <kbd>Windows-Taste + I</kbd>, um die Einstellungen zu öffnen.</li>
+          <li>Gehe zu <strong>Personalisierung → Farben</strong>.</li>
+          <li>Wähle bei "Farben auswählen" die Option <strong>Dunkel</strong>.</li>
+        </ol>
+        <p><strong>Bonus:</strong> Dark Mode schont deine Augen bei längerem Spielen!</p>
+      </div>
+    </div>
+
+    <div class="tipp">
+      <div class="tipp-header" onclick="toggleTipp(1)">
+        <h3>🎮 Controller/Headset verbinden (Bluetooth)</h3>
+        <span>⌄</span>
+      </div>
+      <div class="tipp-content">
+        <p>So verbindest du z.B. einen Xbox-Controller oder Bluetooth-Kopfhörer:</p>
+        <ol>
+          <li>Halte die <strong>Pairing-Taste</strong> auf deinem Controller/Headset gedrückt.</li>
+          <li>Drücke <kbd>Windows-Taste + A</kbd> und klicke auf <strong>Bluetooth</strong>.</li>
+          <li>Wähle dein Gerät aus der Liste aus.</li>
+        </ol>
+        <p><strong>Tipp:</strong> Für Rocket League: Nutze <strong>USB-Kabel</strong> für weniger Input-Lag!</p>
+      </div>
+    </div>
+
+    <div class="tipp">
+      <div class="tipp-header" onclick="toggleTipp(2)">
+        <h3>🚀 Windows-Startpin überspringen</h3>
+        <span>⌄</span>
+      </div>
+      <div class="tipp-content">
+        <p>Achtung: Nur für deinen <strong>privaten</strong> PC!</p>
+        <ol>
+          <li>Drücke <kbd>Windows-Taste + R</kbd>, gib <code>netplwiz</code> ein und drücke Enter.</li>
+          <li>Wähle dein Benutzerkonto aus und entferne das Häkchen bei <strong>"Benutzer müssen Benutzernamen und Kennwort eingeben"</strong>.</li>
+          <li>Gib dein Passwort ein (frag Papa, wenn du es nicht weißt!).</li>
+        </ol>
+        <div class="spoiler">
+          <p><strong>⚠️ Wichtig:</strong> Nur machen, wenn der PC sicher zu Hause steht!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tipp">
+      <div class="tipp-header" onclick="toggleTipp(3)">
+        <h3>🔊 Lautstärke mit Mausrad ändern</h3>
+        <span>⌄</span>
+      </div>
+      <div class="tipp-content">
+        <p>Halte <kbd>Strg</kbd> gedrückt und scroll mit dem Mausrad über das Lautstärke-Symbol in der Taskleiste!</p>
+        <p><strong>Geheimtipp:</strong> Funktioniere auch bei YouTube-Videos!</p>
+      </div>
+    </div>
+
+    <div class="tipp">
+      <div class="tipp-header" onclick="toggleTipp(4)">
+        <h3>🖥️ Schnell Fenster organisieren</h3>
+        <span>⌄</span>
+      </div>
+      <div class="tipp-content">
+        <p>Ziehe ein Fenster an den <strong>linken oder rechten Bildschirmrand</strong> – es schnappt auf eine Hälfte ein!</p>
+        <p><strong>Shortcuts:</strong></p>
+        <ul>
+          <li><kbd>Windows-Taste + ←</kbd>: Fenster auf linke Hälfte.</li>
+          <li><kbd>Windows-Taste + →</kbd>: Fenster auf rechte Hälfte.</li>
+          <li><kbd>Windows-Taste + ↑</kbd>: Fenster maximieren.</li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="index.html" class="back-button">🔙 Zurück zur Startseite</a>
+  </div>
+
+  <script>
+    // Dark Mode umschalten
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      const button = document.querySelector(".dark-mode-toggle");
+      button.textContent = document.body.classList.contains("dark-mode")
+        ? "☀️ Light Mode"
+        : "⚡ Dark Mode";
+    }
+
+    // Akkordeon-Funktion für Tipps
+    function toggleTipp(index) {
+      const content = document.querySelectorAll(".tipp-content")[index];
+      const header = document.querySelectorAll(".tipp-header")[index];
+      const arrow = header.querySelector("span");
+
+      content.classList.toggle("active");
+      arrow.textContent = content.classList.contains("active") ? "⌄" : "⌃";
+    }
+
+    // Fortschritt aktualisieren (für den Balken auf der Startseite)
+    function updateProgress() {
+      const completed = document.querySelectorAll(".tipp-content.active").length;
+      const total = document.querySelectorAll(".tipp-content").length;
+      const progress = Math.round((completed / total) * 100);
+
+      // Speichere im localStorage für die Startseite
+      localStorage.setItem("pctippsProgress", progress);
+    }
+
+    // Event-Listener für Fortschritt
+    document.querySelectorAll(".tipp-header").forEach((header, index) => {
+      header.addEventListener("click", () => {
+        toggleTipp(index);
+        updateProgress();
+      });
+    });
+
+    // Lade Fortschritt beim Start
+    window.addEventListener("load", () => {
+      const savedProgress = localStorage.getItem("pctippsProgress");
+      if (savedProgress) {
+        document.getElementById("progress-percent").textContent = `${savedProgress}%`;
+        document.getElementById("progress-fill").style.width = `${savedProgress}%`;
+      }
+    });
+  </script>
+</body>
+</html>
