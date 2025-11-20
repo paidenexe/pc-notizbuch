@@ -7,87 +7,73 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Optimierte Styles für Abstände & Menü */
-    body {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-      font-family: 'Roboto', sans-serif;
-      background-color: #1A1A1A;
-      color: #FFFFFF;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .fortschritt {
-      background-color: #2A2A2A;
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 20px;
+    /* Container für Header & Menü (bündige Box) */
+    header, .menu-container {
       width: 100%;
+      max-width: 900px; /* Gleiche Breite wie der Fortschrittsbalken */
+      margin: 0 auto 20px; /* Zentriert mit 20px Abstand nach unten */
+      padding: 0 10px;
     }
-    .progress-bar {
-      height: 20px;
-      background-color: #3A3A3A;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-top: 5px;
+
+    /* Fortschrittsbalken-Container */
+    .fortschritt {
+      width: 100%;
+      margin: 0 auto 20px;
+      padding: 0;
     }
-    #progress-fill {
-      height: 100%;
-      background-color: #FF8C00;
-      transition: width 0.3s;
-    }
+
+    /* Menü-Container (für bündige Buttons) */
     .menu {
-      display: flex;
-      justify-content: space-between;
-      margin: 20px 0;
-      flex-wrap: wrap;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 Buttons pro Zeile (responsive) */
+      gap: 15px; /* Gleichmäßiger Abstand zwischen Buttons */
+      width: 100%;
+      margin: 0 auto 30px;
     }
+
+    /* Buttons (breiter und bündig) */
     .menu-button {
       background-color: #2A2A2A;
       color: white;
       border: none;
-      padding: 15px 25px;
+      padding: 20px 10px; /* Mehr Höhe für bessere Klickfläche */
       border-radius: 8px;
       font-size: 16px;
       font-weight: 700;
       cursor: pointer;
-      width: calc(25% - 10px); /* 4 Buttons pro Zeile */
       text-align: center;
-      transition: all 0.2s;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 120px;
+      justify-content: center;
+      height: 100px; /* Feste Höhe für alle Buttons */
+      transition: all 0.2s;
+      box-sizing: border-box; /* Prevent Overflow */
     }
+
+    /* Hover-Effekt */
     .menu-button:hover {
       background-color: #FF8C00;
       transform: translateY(-3px);
     }
+
+    /* Symbol-Stil */
     .menu-button span {
-      font-size: 24px;
-      margin-bottom: 5px;
+      font-size: 28px; /* Größere Symbole */
+      margin-bottom: 8px;
     }
-    .willkommen, .anleitung, .spoiler {
-      background-color: #2A2A2A;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      line-height: 1.6;
+
+    /* Responsive Anpassung für 6 Buttons */
+    @media (min-width: 600px) {
+      .menu {
+        grid-template-columns: repeat(3, 1fr); /* 3 Buttons pro Zeile */
+      }
     }
-    .geheimtipp {
-      text-align: center;
-      margin-top: 30px;
-      font-style: italic;
-      color: #FF8C00;
-    }
-    kbd {
-      background-color: #3A3A3A;
-      padding: 3px 6px;
-      border-radius: 4px;
-      font-family: monospace;
+
+    @media (min-width: 900px) {
+      .menu {
+        grid-template-columns: repeat(3, 1fr); /* Bleibt bei 3 pro Zeile für bessere Lesbarkeit */
+      }
     }
   </style>
 </head>
@@ -103,27 +89,29 @@
   </header>
 
   <!-- Menü DIREKT unter dem Header -->
-<div class="menu">
-  <a href="steine.html" class="menu-button">
-    <span>⛰️</span> STEIN-LABOR
-  </a>
-  <a href="minecraft.html" class="menu-button">
-    <span>🎮</span> MINECRAFT-WELT
-  </a>
-  <a href="rocketleague.html" class="menu-button">
-    <span>🚗</span> ROCKET LEAGUE
-  </a>
-  <!-- NEUE BUTTONS -->
-  <a href="pctipps.html" class="menu-button">
-    <span>💻</span> PC-TIPPS
-  </a>
-  <a href="programmieren.html" class="menu-button"> <!-- Dateiname geändert (kein "python") -->
-    <span>{}</span> PROGRAMMIER-LABOR
-  </a>
-  <a href="tagebuch.html" class="menu-button" id="tagebuch-link">
-    <span>📝</span> TAGEBUCH (🔒)
-  </a>
-</div>
+  <!-- ERSETZE DAS ALTE MENÜ DURCH DIESE STRUKTUR -->
+  <div class="menu-container">
+    <div class="menu">
+      <a href="steine.html" class="menu-button">
+        <span>⛰️</span> STEIN-LABOR
+      </a>
+      <a href="minecraft.html" class="menu-button">
+        <span>🎮</span> MINECRAFT-WELT
+      </a>
+      <a href="pctipps.html" class="menu-button">
+        <span>💻</span> PC-TIPPS
+      </a>
+      <a href="programmieren.html" class="menu-button">
+        <span>{}</span> PROGRAMMIER-LABOR
+      </a>
+      <a href="rocketleague.html" class="menu-button">
+        <span>🚗</span> ROCKET LEAGUE
+      </a>
+      <a href="tagebuch.html" class="menu-button" id="tagebuch-link">
+        <span>📝</span> TAGEBUCH (🔒)
+      </a>
+    </div>
+  </div>
 
   <!-- Willkommensnachricht -->
   <div class="willkommen">
@@ -139,17 +127,17 @@
   </div>
 
   <!-- Kurzanleitung -->
-<div class="anleitung">
-  <h2>❓ Wie funktioniert diese Seite?</h2>
-  <ul>
-    <li><strong>Menü:</strong> Klicke auf die Buttons oben, um zu den Themen zu gelangen.</li>
-    <li><strong>Fortschritt:</strong> Der Balken füllt sich, wenn du Aufgaben abhakst.</li>
-    <li><strong>Tagebuch:</strong> Schreibe auf, was du gelernt oder gespielt hast (Passwort: <kbd>111213</kbd>).</li>
-    <li><strong>Programmieren:</strong> Hier lernst du **HTML/CSS** und siehst Änderungen **live** im Browser!</li> <!-- Geändert -->
-    <li><strong>PC-Tipps:</strong> Hier findest du Tricks für Windows, Controller, Dark Mode und mehr.</li>
-    <li><strong>Geheimtipps:</strong> Manche Seiten haben versteckte Überraschungen!</li>
-  </ul>
-</div>
+  <div class="anleitung">
+    <h2>❓ Wie funktioniert diese Seite?</h2>
+    <ul>
+      <li><strong>Menü:</strong> Klicke auf die Buttons oben, um zu den Themen zu gelangen.</li>
+      <li><strong>Fortschritt:</strong> Der Balken füllt sich, wenn du Aufgaben abhakst.</li>
+      <li><strong>Tagebuch:</strong> Schreibe auf, was du gelernt oder gespielt hast (Passwort: <kbd>111213</kbd>).</li>
+      <li><strong>Programmieren:</strong> Hier lernst du **HTML/CSS** und siehst Änderungen **live** im Browser!</li>
+      <li><strong>PC-Tipps:</strong> Hier findest du Tricks für Windows, Controller, Dark Mode und mehr.</li>
+      <li><strong>Geheimtipps:</strong> Manche Seiten haben versteckte Überraschungen!</li>
+    </ul>
+  </div>
 
   <!-- Spoiler-Bereich -->
   <div class="spoiler">
@@ -163,3 +151,5 @@
       🔹 **Ein Tagebuch**, in dem du deine Erfolge festhalten kannst
     </p>
   </div>
+</body>
+</html>
