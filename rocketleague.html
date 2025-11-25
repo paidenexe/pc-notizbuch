@@ -881,7 +881,7 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>
+<script>
     // Scroll zu Section
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ 
@@ -897,8 +897,8 @@
       const total = checkboxes.length;
       const percentage = Math.round((checked / total) * 100);
       
-      // Speichere lokalen Fortschritt (für diese Seite)
-      const pageKey = document.body.getAttribute('data-page') || 'rocketleague'; // oder 'pctipps'
+      // Speichere lokalen Fortschritt
+      const pageKey = 'rocketleague'; // ← ÄNDERE zu 'pctipps' für pctipps.html!
       localStorage.setItem(`${pageKey}-progress`, percentage);
       
       // Füge "completed" Klasse hinzu
@@ -911,12 +911,12 @@
         }
       });
 
-      // Speichere jeden Checkbox-Status einzeln
+      // ⭐ KORRIGIERT: Speichere als String 'true'/'false'
       checkboxes.forEach(cb => {
-        localStorage.setItem(cb.id, cb.checked);
+        localStorage.setItem(cb.id, cb.checked ? 'true' : 'false');
       });
 
-      // ⭐ NEU: Trigger globale Funktion (falls vorhanden)
+      // Trigger globale Funktion
       if (typeof updateGlobalProgress === 'function') {
         updateGlobalProgress();
       }
@@ -940,6 +940,7 @@
       updateProgress();
     });
 </script>
+
 
 
 </body>
