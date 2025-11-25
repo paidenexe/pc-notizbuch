@@ -667,8 +667,9 @@
       const total = checkboxes.length;
       const percentage = Math.round((checked / total) * 100);
       
-      // Speichere Fortschritt in localStorage
-      localStorage.setItem('pc-tipps-progress', percentage);
+      // Speichere lokalen Fortschritt (für diese Seite)
+      const pageKey = document.body.getAttribute('data-page') || 'pctipps'; // oder 'rocketleague'
+      localStorage.setItem(`${pageKey}-progress`, percentage);
       
       // Füge "completed" Klasse hinzu
       checkboxes.forEach(cb => {
@@ -684,6 +685,11 @@
       checkboxes.forEach(cb => {
         localStorage.setItem(cb.id, cb.checked);
       });
+
+      // ⭐ NEU: Trigger globale Funktion (falls vorhanden)
+      if (typeof updateGlobalProgress === 'function') {
+        updateGlobalProgress();
+      }
     }
 
     // Lade gespeicherte Checkboxen
@@ -703,7 +709,8 @@
       // Initial progress update
       updateProgress();
     });
-  </script>
+</script>
+
 
 </body>
 </html>
