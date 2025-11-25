@@ -32,3 +32,65 @@ https://codepen.io/pen/?template=GRYjQjJ
       text-shadow: 2px 2px 0 #003f00;
     ">Achievement Unlocked: Erster eigener PC • @Mosch • 2025</p>
   </footer>
+
+
+<!-- Fortschrittsbalken auf der index.html -->
+<script>
+    // Scroll zu Section
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    // Fortschritt speichern und aktualisieren
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('.checkpoint-checkbox');
+      const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+      const total = checkboxes.length;
+      const percentage = Math.round((checked / total) * 100);
+      
+      // Speichere lokalen Fortschritt (für diese Seite)
+      const pageKey = document.body.getAttribute('data-page') || 'rocketleague'; // oder 'pctipps'
+      localStorage.setItem(`${pageKey}-progress`, percentage);
+      
+      // Füge "completed" Klasse hinzu
+      checkboxes.forEach(cb => {
+        const item = cb.closest('.checkpoint-item');
+        if (cb.checked) {
+          item.classList.add('completed');
+        } else {
+          item.classList.remove('completed');
+        }
+      });
+
+      // Speichere jeden Checkbox-Status einzeln
+      checkboxes.forEach(cb => {
+        localStorage.setItem(cb.id, cb.checked);
+      });
+
+      // ⭐ NEU: Trigger globale Funktion (falls vorhanden)
+      if (typeof updateGlobalProgress === 'function') {
+        updateGlobalProgress();
+      }
+    }
+
+    // Lade gespeicherte Checkboxen
+    document.addEventListener('DOMContentLoaded', () => {
+      const checkboxes = document.querySelectorAll('.checkpoint-checkbox');
+      checkboxes.forEach(cb => {
+        const saved = localStorage.getItem(cb.id);
+        if (saved === 'true') {
+          cb.checked = true;
+          cb.closest('.checkpoint-item').classList.add('completed');
+        }
+        
+        // Update Progress on change
+        cb.addEventListener('change', updateProgress);
+      });
+      
+      // Initial progress update
+      updateProgress();
+    });
+</script>
