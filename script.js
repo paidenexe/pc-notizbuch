@@ -80,7 +80,7 @@ document.addEventListener('keydown', (e) => {
 // ============================================
 function checkPasswort() {
   const passwort = prompt("🔒 Gib das Passwort ein (TTMM, z. B. 1512 für den 15. Dezember):");
-  if (passwort !== "1112") { // ÄNDERE HIER ZU SEINEM GEBURTSDATUM (z.B. "1503" für 15. März)
+  if (passwort !== "1112") {
     alert("❌ Falsches Passwort! Frag Papa/Mama um Hilfe.");
     return false;
   }
