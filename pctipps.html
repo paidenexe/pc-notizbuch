@@ -36,7 +36,6 @@
       background-color: #1A1A1A;
       padding: 15px;
       border-radius: 8px;
-      cursor: pointer;
       transition: all 0.3s;
       border: 2px solid transparent;
       display: flex;
@@ -46,7 +45,6 @@
 
     .checkpoint-item:hover {
       border-color: var(--accent-color);
-      transform: translateX(5px);
     }
 
     .checkpoint-item.completed {
@@ -59,6 +57,7 @@
       height: 24px;
       cursor: pointer;
       accent-color: var(--accent-color);
+      flex-shrink: 0;
     }
 
     .checkpoint-label {
@@ -66,6 +65,12 @@
       font-weight: 500;
       cursor: pointer;
       flex: 1;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    .checkpoint-label:hover {
+      color: var(--accent-color);
     }
 
     .tipp-section {
@@ -85,113 +90,172 @@
       padding-bottom: 10px;
     }
 
+    .tipp-section h4 {
+      color: var(--accent-color);
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+
+    .info-box {
+      background-color: #1A1A1A;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 4px solid #4CAF50;
+    }
+
+    .info-box h4 {
+      color: #4CAF50;
+      margin-top: 0;
+    }
+
+    .info-box ul {
+      line-height: 1.8;
+    }
+
+    .warning-box {
+      background-color: #1A1A1A;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .warning-box h4 {
+      color: var(--accent-color);
+      margin-top: 0;
+    }
+
+    .tip-box {
+      background-color: #2a2a1a;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border-left: 4px solid #FFD700;
+    }
+
+    .tip-box h4 {
+      color: #FFD700;
+      margin-top: 0;
+    }
+
     .screenshot-placeholder {
       background: linear-gradient(135deg, #3A3A3A 25%, #2A2A2A 25%, #2A2A2A 50%, #3A3A3A 50%, #3A3A3A 75%, #2A2A2A 75%, #2A2A2A);
       background-size: 40px 40px;
       border: 3px dashed var(--accent-color);
       border-radius: 8px;
-      height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 60px 20px;
+      text-align: center;
+      font-size: 48px;
       margin: 20px 0;
-      color: #888;
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .tastenkombination {
-      background-color: #1A1A1A;
-      padding: 15px;
-      border-radius: 8px;
-      margin: 15px 0;
-      border-left: 4px solid var(--accent-color);
+      color: #666;
     }
 
     .taste {
       background-color: #333;
       color: #fff;
-      padding: 8px 15px;
-      border-radius: 6px;
-      font-family: 'Roboto', monospace;
-      font-weight: 700;
-      display: inline-block;
-      margin: 3px;
-      box-shadow: 0 4px 0 #111;
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-family: monospace;
+      font-weight: bold;
       border: 2px solid #555;
+      display: inline-block;
+      margin: 0 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     .warnung {
       background-color: #3a1a1a;
-      border-left: 5px solid #ff4444;
+      border-left: 4px solid #ff4444;
       padding: 15px;
       border-radius: 8px;
-      margin: 15px 0;
+      margin: 20px 0;
+    }
+
+    .warnung strong {
+      color: #ff6666;
+    }
+
+    ol, ul {
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     .back-button {
       background-color: var(--button-bg);
       color: var(--text-color);
-      border: none;
-      padding: 15px 30px;
+      border: 2px solid var(--accent-color);
+      padding: 12px 30px;
       border-radius: 8px;
       font-size: 16px;
       font-weight: 700;
       cursor: pointer;
+      display: inline-block;
       margin: 30px auto;
-      display: block;
+      text-align: center;
       transition: all 0.3s;
+      text-decoration: none;
     }
 
     .back-button:hover {
       background-color: var(--accent-color);
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>💻 PC-TIPPS & TRICKS 💻</h1>
-    <p style="color: #888;">Mach deinen Windows 11 PC noch besser!</p>
+    <h1>🖥️ PC-Tipps & Tricks</h1>
+    <p>Werde zum Windows-Profi! 🚀</p>
   </header>
 
-  <!-- Checkpoint-System -->
+  <!-- CHECKPOINT SYSTEM -->
   <div class="checkpoint-container">
-    <h2 class="checkpoint-title">🎯 Deine Missionen</h2>
-    <p style="text-align: center; color: #aaa; margin-bottom: 20px;">
-      Klicke auf ein Thema, um dorthin zu springen. Hake ab, wenn du es geschafft hast!
+    <h2 class="checkpoint-title">📋 Deine Missionen</h2>
+    <p style="text-align: center; margin-bottom: 20px;">
+      Klicke auf die Mission um dorthin zu springen. Hake ab, wenn du fertig bist! ✅
     </p>
     
     <div class="checkpoint-grid">
-      <div class="checkpoint-item" onclick="scrollToSection('autostart')">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-autostart" onchange="updateProgress()">
-        <label for="check-autostart" class="checkpoint-label">Autostart ausmisten</label>
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" id="check-autostart" onchange="updateProgress()" onclick="event.stopPropagation()">
+        <label class="checkpoint-label" onclick="scrollToSection('autostart')">Autostart ausmisten</label>
       </div>
 
-      <div class="checkpoint-item" onclick="scrollToSection('darkmode')">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-darkmode" onchange="updateProgress()">
-        <label for="check-darkmode" class="checkpoint-label">Dark Mode aktivieren</label>
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" id="check-darkmode" onchange="updateProgress()" onclick="event.stopPropagation()">
+        <label class="checkpoint-label" onclick="scrollToSection('darkmode')">Dark Mode aktivieren</label>
       </div>
 
-      <div class="checkpoint-item" onclick="scrollToSection('screenshots')">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-screenshots" onchange="updateProgress()">
-        <label for="check-screenshots" class="checkpoint-label">Screenshots erstellen</label>
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" id="check-screenshots" onchange="updateProgress()" onclick="event.stopPropagation()">
+        <label class="checkpoint-label" onclick="scrollToSection('screenshots')">Screenshots erstellen</label>
       </div>
 
-      <div class="checkpoint-item" onclick="scrollToSection('shortcuts')">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-shortcuts" onchange="updateProgress()">
-        <label for="check-shortcuts" class="checkpoint-label">Tastenkombinationen lernen</label>
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" id="check-shortcuts" onchange="updateProgress()" onclick="event.stopPropagation()">
+        <label class="checkpoint-label" onclick="scrollToSection('shortcuts')">Tastenkombinationen lernen</label>
       </div>
 
-      <div class="checkpoint-item" onclick="scrollToSection('updates')">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-updates" onchange="updateProgress()">
-        <label for="check-updates" class="checkpoint-label">Updates installieren</label>
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" id="check-updates" onchange="updateProgress()" onclick="event.stopPropagation()">
+        <label class="checkpoint-label" onclick="scrollToSection('updates')">Updates installieren</label>
       </div>
 
-      <div class="checkpoint-item" onclick="scrollToSection('bluetooth')">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-bluetooth" onchange="updateProgress()">
-        <label for="check-bluetooth" class="checkpoint-label">Bluetooth verbinden</label>
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" id="check-bluetooth" onchange="updateProgress()" onclick="event.stopPropagation()">
+        <label class="checkpoint-label" onclick="scrollToSection('bluetooth')">Bluetooth verbinden</label>
       </div>
     </div>
   </div>
@@ -199,170 +263,373 @@
   <!-- TIPP 1: Autostart -->
   <div class="tipp-section" id="autostart">
     <h3>🚀 Autostart ausmisten</h3>
-    <p>
-      Beim Hochfahren starten viele Programme automatisch – das macht deinen PC langsam! 
-      So schaltest du unnötige Programme aus:
-    </p>
     
+    <div class="info-box">
+      <h4>💡 Warum ist das wichtig?</h4>
+      <ul>
+        <li><strong>Schnellerer Start:</strong> Dein PC bootet viel schneller</li>
+        <li><strong>Mehr Power:</strong> Programme im Hintergrund fressen Leistung</li>
+        <li><strong>Weniger Chaos:</strong> Nicht jedes Programm muss sofort starten</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <h4>🔍 Woran erkenne ich zu viele Autostart-Programme?</h4>
+      <p>Wenn dein PC:</p>
+      <ul>
+        <li>⏰ Sehr lange zum Hochfahren braucht (über 1-2 Minuten)</li>
+        <li>🐌 Nach dem Start langsam reagiert</li>
+        <li>📊 Die Taskleiste mit vielen Icons vollgestopft ist</li>
+      </ul>
+    </div>
+
+    <p><strong>So räumst du auf:</strong></p>
+
     <ol>
-      <li>Drücke <span class="taste">Strg</span> + <span class="taste">Shift</span> + <span class="taste">Esc</span> (öffnet den Task-Manager)</li>
-      <li>Klicke oben auf den Tab <strong>"Autostart"</strong></li>
+      <li>Rechtsklick auf die <strong>Taskleiste</strong></li>
+      <li>Klicke auf <strong>"Task-Manager"</strong></li>
+      <li>Gehe zum Tab <strong>"Autostart"</strong></li>
       <li>Rechtsklick auf Programme, die du nicht brauchst → <strong>"Deaktivieren"</strong></li>
     </ol>
 
     <div class="screenshot-placeholder">📸 [SCREENSHOT HIER EINFÜGEN]</div>
 
+    <div class="tip-box">
+      <h4>💡 Profi-Tipp</h4>
+      <p><strong>Diese Programme kannst du meistens deaktivieren:</strong></p>
+      <ul>
+        <li>Spotify, Discord (nur starten wenn du sie brauchst)</li>
+        <li>Cloud-Dienste (OneDrive, Google Drive)</li>
+        <li>Updater von Programmen</li>
+      </ul>
+      <p><strong>Diese NICHT deaktivieren:</strong> Antivirus, Grafiktreiber (NVIDIA/AMD)</p>
+    </div>
+
     <div class="warnung">
-      <strong>⚠️ Vorsicht!</strong> Deaktiviere nur Programme, die du kennst. Lasse z.B. Virenschutz und Treiber aktiv!
+      <strong>⚠️ Wichtig:</strong> Wenn du unsicher bist, frag Papa/Mama bevor du etwas deaktivierst!
     </div>
   </div>
 
   <!-- TIPP 2: Dark Mode -->
   <div class="tipp-section" id="darkmode">
     <h3>🌙 Dark Mode aktivieren</h3>
-    <p>
-      Der Dark Mode schont deine Augen und sieht cool aus! So aktivierst du ihn:
-    </p>
     
+    <div class="info-box">
+      <h4>💡 Warum Dark Mode?</h4>
+      <ul>
+        <li><strong>Augen schonen:</strong> Weniger Belastung bei langen Gaming-Sessions</li>
+        <li><strong>Cooles Design:</strong> Sieht einfach besser aus! 😎</li>
+        <li><strong>Akku sparen:</strong> Bei Laptops hält der Akku länger</li>
+        <li><strong>Nachts angenehmer:</strong> Weniger helles Licht im dunklen Zimmer</li>
+      </ul>
+    </div>
+
+    <p><strong>So aktivierst du den Dark Mode:</strong></p>
+
     <ol>
-      <li>Drücke <span class="taste">Win</span> + <span class="taste">I</span> (öffnet Einstellungen)</li>
-      <li>Gehe zu <strong>"Personalisierung"</strong> → <strong>"Farben"</strong></li>
+      <li>Drücke <span class="taste">Win</span> + <span class="taste">I</span></li>
+      <li>Gehe zu <strong>"Personalisierung"</strong></li>
+      <li>Klicke auf <strong>"Farben"</strong></li>
       <li>Wähle bei "Modus auswählen" → <strong>"Dunkel"</strong></li>
     </ol>
 
     <div class="screenshot-placeholder">📸 [SCREENSHOT HIER EINFÜGEN]</div>
 
-    <p><strong>💡 Extra-Tipp:</strong> Du kannst auch einzelne Apps in den Dark Mode setzen!</p>
+    <div class="tip-box">
+      <h4>🎨 Extra-Tipp: Akzentfarbe ändern</h4>
+      <p>Du kannst auch die Farbe von Buttons und Menüs ändern:</p>
+      <ul>
+        <li>In den gleichen Einstellungen weiter runterscrollen</li>
+        <li>Bei "Akzentfarbe" deine Lieblingsfarbe auswählen</li>
+        <li>Probier mal <strong>Orange</strong> oder <strong>Gaming-Grün</strong>! 🎮</li>
+      </ul>
+    </div>
   </div>
 
   <!-- TIPP 3: Screenshots -->
   <div class="tipp-section" id="screenshots">
-    <h3>📸 Screenshots auf Knopfdruck</h3>
-    <p>
-      Du willst einen coolen Moment im Spiel festhalten? Hier sind die besten Methoden:
-    </p>
-
-    <div class="tastenkombination">
-      <strong>Methode 1 (Schnell):</strong><br>
-      <span class="taste">Win</span> + <span class="taste">Shift</span> + <span class="taste">S</span><br>
-      <small>→ Wähle einen Bereich aus und der Screenshot landet in der Zwischenablage</small>
+    <h3>📸 Screenshots erstellen</h3>
+    
+    <div class="info-box">
+      <h4>💡 Wofür brauche ich Screenshots?</h4>
+      <ul>
+        <li><strong>Gaming-Momente:</strong> Epische Siege festhalten! 🏆</li>
+        <li><strong>Fehler zeigen:</strong> Wenn etwas nicht funktioniert, kannst du es zeigen</li>
+        <li><strong>Anleitungen merken:</strong> Wichtige Einstellungen abspeichern</li>
+        <li><strong>Mit Freunden teilen:</strong> Coole Sachen schnell verschicken</li>
+      </ul>
     </div>
 
-    <div class="tastenkombination">
-      <strong>Methode 2 (Vollbild):</strong><br>
-      <span class="taste">Win</span> + <span class="taste">Druck</span><br>
-      <small>→ Macht ein Foto vom ganzen Bildschirm</small>
+    <h4>🎮 Die wichtigsten Screenshot-Methoden:</h4>
+
+    <div style="background-color: #1A1A1A; padding: 20px; border-radius: 8px; margin: 15px 0;">
+      <h4 style="color: var(--accent-color);">Methode 1: Snipping Tool (Am besten!)</h4>
+      <p><strong>Tastenkombination:</strong> <span class="taste">Win</span> + <span class="taste">Shift</span> + <span class="taste">S</span></p>
+      <ul>
+        <li>✂️ Schneide genau den Bereich aus, den du willst</li>
+        <li>📋 Wird automatisch in die Zwischenablage kopiert</li>
+        <li>📝 Du kannst drauf malen und Text hinzufügen</li>
+      </ul>
     </div>
 
-    <div class="tastenkombination">
-      <strong>Methode 3 (nur ein Fenster):</strong><br>
-      <span class="taste">Alt</span> + <span class="taste">Druck</span><br>
-      <small>→ Fotografiert nur das aktive Fenster</small>
+    <div style="background-color: #1A1A1A; padding: 20px; border-radius: 8px; margin: 15px 0;">
+      <h4 style="color: var(--accent-color);">Methode 2: Ganzer Bildschirm</h4>
+      <p><strong>Tastenkombination:</strong> <span class="taste">Win</span> + <span class="taste">Druck</span></p>
+      <ul>
+        <li>📷 Macht Screenshot vom kompletten Bildschirm</li>
+        <li>💾 Speichert automatisch im Ordner "Bilder > Bildschirmfotos"</li>
+      </ul>
+    </div>
+
+    <div style="background-color: #1A1A1A; padding: 20px; border-radius: 8px; margin: 15px 0;">
+      <h4 style="color: var(--accent-color);">Methode 3: Nur aktives Fenster</h4>
+      <p><strong>Tastenkombination:</strong> <span class="taste">Alt</span> + <span class="taste">Druck</span></p>
+      <ul>
+        <li>🪟 Nur das Fenster, das gerade aktiv ist</li>
+        <li>📋 In Zwischenablage → Mit <span class="taste">Strg</span> + <span class="taste">V</span> einfügen</li>
+      </ul>
     </div>
 
     <div class="screenshot-placeholder">📸 [SCREENSHOT HIER EINFÜGEN]</div>
 
-    <p><strong>📂 Wo finde ich meine Screenshots?</strong></p>
-    <p>
-      Gespeicherte Screenshots findest du hier:<br>
-      <kbd>C:\Users\[DeinName]\Pictures\Screenshots</kbd>
-    </p>
+    <div class="tip-box">
+      <h4>📂 Wo finde ich meine Screenshots?</h4>
+      <p><strong>Automatisch gespeicherte Screenshots:</strong></p>
+      <p>📁 Dieser PC → Bilder → Bildschirmfotos</p>
+      <p><strong>Screenshots in der Zwischenablage:</strong></p>
+      <p>Öffne Paint (<span class="taste">Win</span> + <span class="taste">R</span> → <code>mspaint</code>) und drücke <span class="taste">Strg</span> + <span class="taste">V</span></p>
+    </div>
+
+    <div class="warnung">
+      <strong>🎮 Gaming-Tipp:</strong> Viele Spiele haben eigene Screenshot-Tasten (z.B. <span class="taste">F12</span> in Steam)!
+    </div>
   </div>
 
   <!-- TIPP 4: Tastenkombinationen -->
   <div class="tipp-section" id="shortcuts">
-    <h3>⌨️ Schneller ans Ziel mit Shortcuts</h3>
-    <p>
-      Diese Tastenkombinationen machen dich zum Power-User:
-    </p>
-
-    <div class="tastenkombination">
-      <span class="taste">Win</span> + <span class="taste">D</span> – Zeige Desktop
+    <h3>⌨️ Schneller mit Tastenkombinationen</h3>
+    
+    <div class="info-box">
+      <h4>💡 Warum Shortcuts lernen?</h4>
+      <ul>
+        <li><strong>Mega schnell:</strong> Du bist 10x schneller als mit der Maus!</li>
+        <li><strong>Sieht cool aus:</strong> Du wirkst wie ein Profi 😎</li>
+        <li><strong>Weniger Klicks:</strong> Schont deine Maus</li>
+        <li><strong>Beim Gaming hilfreich:</strong> Schnell zwischen Programmen wechseln</li>
+      </ul>
     </div>
 
-    <div class="tastenkombination">
-      <span class="taste">Win</span> + <span class="taste">E</span> – Datei-Explorer öffnen
+    <h4>🔥 Die wichtigsten Shortcuts:</h4>
+
+    <div style="background-color: #1A1A1A; padding: 20px; border-radius: 8px; margin: 15px 0;">
+      <h4 style="color: #4CAF50;">📋 Kopieren & Einfügen (DIE wichtigsten!)</h4>
+      <ul>
+        <li><span class="taste">Strg</span> + <span class="taste">C</span> = Kopieren</li>
+        <li><span class="taste">Strg</span> + <span class="taste">V</span> = Einfügen</li>
+        <li><span class="taste">Strg</span> + <span class="taste">X</span> = Ausschneiden</li>
+        <li><span class="taste">Strg</span> + <span class="taste">Z</span> = Rückgängig</li>
+      </ul>
     </div>
 
-    <div class="tastenkombination">
-      <span class="taste">Win</span> + <span class="taste">L</span> – PC sperren
+    <div style="background-color: #1A1A1A; padding: 20px; border-radius: 8px; margin: 15px 0;">
+      <h4 style="color: #4CAF50;">🪟 Fenster-Management</h4>
+      <ul>
+        <li><span class="taste">Alt</span> + <span class="taste">Tab</span> = Zwischen Programmen wechseln</li>
+        <li><span class="taste">Win</span> + <span class="taste">D</span> = Desktop anzeigen</li>
+        <li><span class="taste">Win</span> + <span class="taste">L</span> = PC sperren</li>
+        <li><span class="taste">Alt</span> + <span class="taste">F4</span> = Programm schließen</li>
+      </ul>
     </div>
 
-    <div class="tastenkombination">
-      <span class="taste">Win</span> + <span class="taste">V</span> – Zwischenablage-Verlauf
+    <div style="background-color: #1A1A1A; padding: 20px; border-radius: 8px; margin: 15px 0;">
+      <h4 style="color: #4CAF50;">🎮 Gaming & Browser</h4>
+      <ul>
+        <li><span class="taste">Strg</span> + <span class="taste">T</span> = Neuer Browser-Tab</li>
+        <li><span class="taste">Strg</span> + <span class="taste">W</span> = Tab schließen</li>
+        <li><span class="taste">Strg</span> + <span class="taste">Shift</span> + <span class="taste">T</span> = Letzten Tab wiederherstellen</li>
+        <li><span class="taste">Alt</span> + <span class="taste">Enter</span> = Vollbild (in vielen Spielen)</li>
+      </ul>
     </div>
 
-    <div class="tastenkombination">
-      <span class="taste">Alt</span> + <span class="taste">Tab</span> – Zwischen Fenstern wechseln
-    </div>
-
-    <div class="tastenkombination">
-      <span class="taste">Strg</span> + <span class="taste">Shift</span> + <span class="taste">Esc</span> – Task-Manager
+    <div style="background-color: #1A1A1A; padding: 20px; border-radius: 8px; margin: 15px 0;">
+      <h4 style="color: #FFD700;">⚡ Profi-Shortcuts</h4>
+      <ul>
+        <li><span class="taste">Win</span> + <span class="taste">V</span> = Zwischenablage-Verlauf (mehrere kopierte Sachen!)</li>
+        <li><span class="taste">Win</span> + <span class="taste">.</span> = Emoji-Tastatur 😊🎮🔥</li>
+        <li><span class="taste">Win</span> + <span class="taste">E</span> = Explorer öffnen</li>
+        <li><span class="taste">Strg</span> + <span class="taste">Shift</span> + <span class="taste">Esc</span> = Task-Manager</li>
+      </ul>
     </div>
 
     <div class="screenshot-placeholder">📸 [SCREENSHOT HIER EINFÜGEN]</div>
 
-    <p><strong>💡 Challenge:</strong> Versuche eine Woche lang, keine Maus zu benutzen – nur Tastatur! 🎮</p>
+    <div class="tip-box">
+      <h4>🎯 Challenge: Lerne jeden Tag 2 neue Shortcuts!</h4>
+      <p>In einer Woche kannst du dann schon 14 Shortcuts! 🚀</p>
+      <p>Tipp: Schreibe dir deine Top 5 auf einen Zettel und klebe ihn an deinen Monitor!</p>
+    </div>
   </div>
 
   <!-- TIPP 5: Updates -->
   <div class="tipp-section" id="updates">
     <h3>🔄 Updates installieren</h3>
-    <p>
-      Updates machen deinen PC schneller und sicherer. So checkst du sie:
-    </p>
+    
+    <div class="info-box">
+      <h4>💡 Warum sind Updates wichtig?</h4>
+      <ul>
+        <li><strong>Sicherheit:</strong> Updates schließen Sicherheitslücken, damit Hacker keine Chance haben 🛡️</li>
+        <li><strong>Performance:</strong> Dein PC wird schneller und läuft stabiler 🚀</li>
+        <li><strong>Neue Features:</strong> Du bekommst coole neue Funktionen 🎁</li>
+        <li><strong>Fehler beheben:</strong> Bugs und Abstürze werden gefixt 🔧</li>
+        <li><strong>Gaming:</strong> Spiele laufen besser mit aktuellen Treibern 🎮</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <h4>🔍 Woran erkenne ich, dass Updates verfügbar sind?</h4>
+      <p>Windows zeigt dir das auf verschiedene Arten:</p>
+      <ul>
+        <li>📢 Eine Benachrichtigung unten rechts in der Taskleiste</li>
+        <li>⚙️ In den Einstellungen erscheint ein Hinweis bei "Windows Update"</li>
+        <li>🔄 Beim Herunterfahren steht "Aktualisieren und herunterfahren"</li>
+        <li>🔴 Manchmal ein rotes Symbol bei den Einstellungen</li>
+      </ul>
+    </div>
+
+    <p><strong>So checkst du, ob Updates verfügbar sind:</strong></p>
 
     <ol>
       <li>Drücke <span class="taste">Win</span> + <span class="taste">I</span></li>
-      <li>Gehe zu <strong>"Windows Update"</strong></li>
+      <li>Gehe zu <strong>"Windows Update"</strong> (ganz unten in der linken Leiste)</li>
       <li>Klicke auf <strong>"Nach Updates suchen"</strong></li>
+      <li>Wenn Updates da sind, klicke auf <strong>"Herunterladen und installieren"</strong></li>
     </ol>
 
     <div class="screenshot-placeholder">📸 [SCREENSHOT HIER EINFÜGEN]</div>
 
+    <div class="tip-box">
+      <h4>⏰ Wann sollte ich Updates machen?</h4>
+      <p>Am besten <strong>vor dem Zocken</strong> oder wenn du den PC gerade nicht brauchst.</p>
+      <p><strong>Perfekte Zeiten:</strong></p>
+      <ul>
+        <li>🌙 Abends vor dem Schlafengehen</li>
+        <li>🍕 Wenn du zum Essen gehst</li>
+        <li>📚 Wenn du Hausaufgaben machst</li>
+      </ul>
+      <p><strong>Tipp:</strong> Manche Updates brauchen einen Neustart – plane das ein! 🔄</p>
+    </div>
+
     <h4>🚀 Profi-Tipp: UniGetUI</h4>
     <p>
       Mit <strong>UniGetUI</strong> kannst du <em>alle</em> deine Programme auf einmal updaten! 
-      Das ist wie ein App Store für Windows.
+      Das ist wie ein App Store für Windows – super praktisch!
     </p>
     
+    <p><strong>Was macht UniGetUI?</strong></p>
+    <ul>
+      <li>✅ Zeigt dir alle verfügbaren Updates für ALLE Programme</li>
+      <li>✅ Ein Klick und alles wird aktualisiert</li>
+      <li>✅ Du musst nicht jedes Programm einzeln updaten</li>
+      <li>✅ Spart mega viel Zeit!</li>
+    </ul>
+
     <p>
-      <strong>Download:</strong> <a href="https://www.marticliment.com/unigetui/" target="_blank" style="color: var(--accent-color);">
+      <strong>Download:</strong> <a href="https://www.marticliment.com/unigetui/" target="_blank">
         marticliment.com/unigetui
       </a>
     </p>
 
     <div class="warnung">
-      <strong>⚠️ Wichtig:</strong> Installiere Updates immer mit Papa/Mama zusammen!
+      <strong>⚠️ Wichtig:</strong> Installiere Updates immer mit Papa/Mama zusammen, besonders beim ersten Mal! Manche Updates brauchen einen Neustart, deshalb speichere vorher alles ab! 💾
     </div>
   </div>
 
   <!-- TIPP 6: Bluetooth -->
   <div class="tipp-section" id="bluetooth">
-    <h3>🔵 Bluetooth-Geräte verbinden</h3>
-    <p>
-      Verbinde Controller, Kopfhörer oder Maus kabellos mit deinem PC:
-    </p>
+    <h3>📶 Bluetooth-Geräte verbinden</h3>
+    
+    <div class="info-box">
+      <h4>💡 Was ist Bluetooth?</h4>
+      <p>Bluetooth ist eine <strong>kabellose Verbindung</strong> zwischen deinem PC und anderen Geräten!</p>
+      <ul>
+        <li><strong>Kopfhörer:</strong> Zocken ohne Kabelgewirr 🎧</li>
+        <li><strong>Controller:</strong> Xbox/PS Controller kabellos nutzen 🎮</li>
+        <li><strong>Maus & Tastatur:</strong> Weniger Kabel auf dem Schreibtisch 🖱️</li>
+        <li><strong>Handy:</strong> Dateien schnell übertragen 📱</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <h4>🔍 Hat mein PC Bluetooth?</h4>
+      <p>So findest du es heraus:</p>
+      <ol>
+        <li>Drücke <span class="taste">Win</span> + <span class="taste">I</span></li>
+        <li>Gehe zu <strong>"Bluetooth & Geräte"</strong></li>
+        <li>Wenn du einen Bluetooth-Schalter siehst → ✅ Du hast Bluetooth!</li>
+        <li>Wenn nicht → Du brauchst einen USB-Bluetooth-Adapter (~10€)</li>
+      </ol>
+    </div>
+
+    <p><strong>So verbindest du ein Bluetooth-Gerät:</strong></p>
 
     <ol>
+      <li><strong>Gerät in den Pairing-Modus versetzen</strong>
+        <ul>
+          <li>Bei Kopfhörern: Meist die Power-Taste lange gedrückt halten</li>
+          <li>Bei Controllern: Die Connect/Pair-Taste drücken</li>
+          <li>Das Gerät blinkt dann meist blau 💙</li>
+        </ul>
+      </li>
       <li>Drücke <span class="taste">Win</span> + <span class="taste">I</span></li>
       <li>Gehe zu <strong>"Bluetooth & Geräte"</strong></li>
-      <li>Aktiviere oben <strong>"Bluetooth"</strong> (wenn noch nicht an)</li>
-      <li>Klicke auf <strong>"Gerät hinzufügen"</strong> → <strong>"Bluetooth"</strong></li>
-      <li>Schalte dein Gerät in den Pairing-Modus (meist durch langes Drücken einer Taste)</li>
-      <li>Wähle das Gerät in der Liste aus</li>
+      <li>Stelle sicher, dass Bluetooth <strong>AN</strong> ist (blauer Schalter)</li>
+      <li>Klicke auf <strong>"Gerät hinzufügen"</strong></li>
+      <li>Wähle <strong>"Bluetooth"</strong></li>
+      <li>Dein Gerät sollte in der Liste erscheinen → <strong>Draufklicken</strong></li>
+      <li>Warte bis "Verbunden" erscheint ✅</li>
     </ol>
 
     <div class="screenshot-placeholder">📸 [SCREENSHOT HIER EINFÜGEN]</div>
 
-    <p><strong>💡 Tipp:</strong> Bei Controllern meist die <strong>Pairing-Taste</strong> 3 Sekunden gedrückt halten!</p>
+    <div class="tip-box">
+      <h4>🎮 Gaming-Controller verbinden</h4>
+      <p><strong>Xbox Controller:</strong></p>
+      <ul>
+        <li>Halte die Pair-Taste (oben am Controller) 3 Sekunden</li>
+        <li>Das Xbox-Logo blinkt schnell</li>
+        <li>In Windows auf "Xbox Wireless Controller" klicken</li>
+      </ul>
+      <p><strong>PlayStation Controller (DualShock/DualSense):</strong></p>
+      <ul>
+        <li>Halte <strong>PS-Taste + Share-Taste</strong> zusammen</li>
+        <li>Das Licht blinkt schnell</li>
+        <li>In Windows verbinden</li>
+      </ul>
+    </div>
+
+    <div style="background-color: #1A1A1A; padding: 20px; border-radius: 8px; margin: 20px 0;">
+      <h4 style="color: var(--accent-color);">❓ Probleme beim Verbinden?</h4>
+      <p><strong>Das kannst du versuchen:</strong></p>
+      <ul>
+        <li>🔄 Bluetooth aus- und wieder einschalten</li>
+        <li>🔋 Prüfe ob das Gerät geladen ist</li>
+        <li>📏 Gehe näher zum PC (max. 10 Meter Entfernung)</li>
+        <li>🗑️ Entferne das Gerät und verbinde es neu</li>
+        <li>♻️ Starte den PC neu</li>
+      </ul>
+    </div>
+
+    <div class="warnung">
+      <strong>⚠️ Wichtig:</strong> Manche Bluetooth-Kopfhörer haben beim Gaming eine kleine Verzögerung (Latenz). Für Shooter besser ein Kabel-Headset nutzen! 🎯
+    </div>
   </div>
 
-  <!-- Navigation -->
-  <button class="back-button" onclick="window.location.href='index.html'">
-    ← Zurück zur Startseite
-  </button>
+  <!-- Zurück-Button -->
+  <div style="text-align: center; margin: 40px 0;">
+    <a href="index.html" class="back-button">⬅️ Zurück zur Startseite</a>
+  </div>
 
+  <!-- Footer -->
   <footer style="
     background-color: #3c3c3c;
     border-top: 4px solid #5a5a5a;
@@ -386,7 +653,7 @@
       line-height: 1.5;
       margin: 0;
       text-shadow: 2px 2px 0 #003f00;
-    ">Achievement Unlocked: Erster eigener PC • @Mosch • 11.12.2025</p>
+    ">Achievement Unlocked: Erster eigener PC • @Mosch • 2025</p>
   </footer>
 
   <script src="script.js"></script>
@@ -409,9 +676,6 @@
       // Speichere Fortschritt in localStorage
       localStorage.setItem('pc-tipps-progress', percentage);
       
-      // Optional: Update Haupt-Progressbar (wenn gewünscht)
-      // localStorage.setItem('progress', percentage);
-      
       // Füge "completed" Klasse hinzu
       checkboxes.forEach(cb => {
         const item = cb.closest('.checkpoint-item');
@@ -420,6 +684,11 @@
         } else {
           item.classList.remove('completed');
         }
+      });
+
+      // Speichere jeden Checkbox-Status einzeln
+      checkboxes.forEach(cb => {
+        localStorage.setItem(cb.id, cb.checked);
       });
     }
 
@@ -433,11 +702,12 @@
           cb.closest('.checkpoint-item').classList.add('completed');
         }
         
-        // Speichere Status bei Änderung
-        cb.addEventListener('change', () => {
-          localStorage.setItem(cb.id, cb.checked);
-        });
+        // Update Progress on change
+        cb.addEventListener('change', updateProgress);
       });
+      
+      // Initial progress update
+      updateProgress();
     });
   </script>
 
