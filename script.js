@@ -17,7 +17,7 @@ const ALL_CHECKPOINTS = [
   'check-customize',
   'check-firstgoal',
   'check-aerials',
-  'check-match',
+  'check-win',
   'check-training'
 ];
 
