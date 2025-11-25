@@ -7,7 +7,7 @@ const ALL_CHECKPOINTS = [
   // PC-Tipps (6 Checkboxen)
   'check-autostart',
   'check-darkmode',
-  'check-screenshot',
+  'check-screenshots',
   'check-shortcuts',
   'check-updates',
   'check-bluetooth',
