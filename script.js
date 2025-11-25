@@ -2,23 +2,23 @@
 // GLOBALE FORTSCHRITTSBERECHNUNG
 // ============================================
 
-// Alle Checkbox-IDs aus allen Seiten
+// Alle Checkbox-IDs aus allen Seiten (KORRIGIERT!)
 const ALL_CHECKPOINTS = [
   // PC-Tipps (6 Checkboxen)
-  'checkpoint-autostart',
-  'checkpoint-darkmode',
-  'checkpoint-screenshot',
-  'checkpoint-shortcuts',
-  'checkpoint-updates',
-  'checkpoint-bluetooth',
+  'check-autostart',
+  'check-darkmode',
+  'check-screenshot',
+  'check-shortcuts',
+  'check-updates',
+  'check-bluetooth',
   
   // Rocket League (6 Checkboxen)
-  'checkpoint-tutorial',
-  'checkpoint-customize',
-  'checkpoint-erstes-tor',
-  'checkpoint-aerials',
-  'checkpoint-match-win',
-  'checkpoint-training'
+  'check-tutorial',
+  'check-customize',
+  'check-firstgoal',
+  'check-aerials',
+  'check-match',
+  'check-training'
 ];
 
 // Funktion zum Berechnen des Gesamtfortschritts
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateGlobalProgress();
   
   // Falls wir auf einer Unterseite sind: Event-Listener für Checkboxen
-  document.querySelectorAll('.checkpoint-box').forEach(checkbox => {
+  document.querySelectorAll('.checkpoint-checkbox').forEach(checkbox => {
     checkbox.addEventListener('change', () => {
       updateGlobalProgress();
     });
@@ -79,8 +79,8 @@ document.addEventListener('keydown', (e) => {
 // PASSWORT FÜRS TAGEBUCH
 // ============================================
 function checkPasswort() {
-  const passwort = prompt("🔒 Gib das Passwort ein (TTMM, z. B. 1512 für den 15. Dezember):");
-  if (passwort !== "1112") {
+  const passwort = prompt("🔒 Gib das Passwort ein (TTMMJJ, z. B. 111213 für den 11. Dezember 2013):");
+  if (passwort !== "111213") {
     alert("❌ Falsches Passwort! Frag Papa/Mama um Hilfe.");
     return false;
   }
