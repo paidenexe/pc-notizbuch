@@ -653,7 +653,26 @@
 
 
 <script>
-    // Scroll zu Section
+    // ========== GLOBALE FUNKTION (inline) ==========
+    function updateGlobalProgress() {
+      const checkpoints = [
+        'check-autostart', 'check-darkmode', 'check-screenshots', 
+        'check-shortcuts', 'check-updates', 'check-bluetooth',
+        'check-tutorial', 'check-customize', 'check-firstgoal', 
+        'check-aerials', 'check-win', 'check-training'
+      ];
+      
+      const completed = checkpoints.filter(id => 
+        localStorage.getItem(id) === 'true'
+      ).length;
+      
+      const globalProgress = Math.round((completed / 12) * 100);
+      localStorage.setItem('global-progress', globalProgress);
+      
+      console.log(`✅ Global Progress: ${completed}/12 (${globalProgress}%)`);
+    }
+
+    // ========== LOKALE FUNKTIONEN ==========
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ 
         behavior: 'smooth',
@@ -661,7 +680,6 @@
       });
     }
 
-    // Fortschritt speichern und aktualisieren
     function updateProgress() {
       const checkboxes = document.querySelectorAll('.checkpoint-checkbox');
       const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
@@ -669,7 +687,7 @@
       const percentage = Math.round((checked / total) * 100);
       
       // Speichere lokalen Fortschritt
-      const pageKey = 'pctipps'; // ← ÄNDERE zu 'pctipps' für pctipps.html!
+      const pageKey = 'pctipps';
       localStorage.setItem(`${pageKey}-progress`, percentage);
       
       // Füge "completed" Klasse hinzu
@@ -682,18 +700,16 @@
         }
       });
 
-      // ⭐ KORRIGIERT: Speichere als String 'true'/'false'
+      // Speichere Checkboxen als String
       checkboxes.forEach(cb => {
         localStorage.setItem(cb.id, cb.checked ? 'true' : 'false');
       });
 
       // Trigger globale Funktion
-      if (typeof updateGlobalProgress === 'function') {
-        updateGlobalProgress();
-      }
+      updateGlobalProgress();
     }
 
-    // Lade gespeicherte Checkboxen
+    // Lade gespeicherte Checkboxen beim Start
     document.addEventListener('DOMContentLoaded', () => {
       const checkboxes = document.querySelectorAll('.checkpoint-checkbox');
       checkboxes.forEach(cb => {
@@ -703,14 +719,13 @@
           cb.closest('.checkpoint-item').classList.add('completed');
         }
         
-        // Update Progress on change
         cb.addEventListener('change', updateProgress);
       });
       
-      // Initial progress update
       updateProgress();
     });
 </script>
+
 
 
 
