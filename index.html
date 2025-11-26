@@ -109,5 +109,24 @@
     ">Achievement Unlocked: Erster eigener PC • @Mosch | 2025</p>
   </footer>
 
+<script>
+    // Lade globalen Fortschritt beim Laden der Seite
+    document.addEventListener('DOMContentLoaded', () => {
+      const globalProgress = localStorage.getItem('global-progress') || 0;
+      
+      // Aktualisiere Balken
+      const percentElement = document.getElementById('progress-percent');
+      const fillElement = document.getElementById('progress-fill');
+      
+      if (percentElement && fillElement) {
+        percentElement.textContent = `${globalProgress}%`;
+        fillElement.style.width = `${globalProgress}%`;
+        console.log(`📊 Hauptseite lädt: ${globalProgress}%`);
+      } else {
+        console.error('❌ Progress-Elemente nicht gefunden!');
+      }
+    });
+  </script>
+  
 </body>
 </html>
