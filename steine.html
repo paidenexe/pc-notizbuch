@@ -1,46 +1,943 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <title>Stein-Labor</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <h1>⛰️ STEIN-LABOR</h1>
-    <p>Fortschritt: <span id="stein-fortschritt">0/10</span> Steine bestimmt!</p>
-    <a href="index.html" class="zurueck-button">← Zurück zur Startseite</a>
-  </header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🪨 Steinlabor - Werde zum Stein-Detektiv!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --stone-brown: #8b7355;
+            --stone-dark: #6b5d4f;
+            --stone-light: #d4a574;
+            --gold: #ffd700;
+            --survival-green: #76b947;
+            --survival-dark: #2d5016;
+        }
 
-  <main>
-    <h2>🔍 Steine bestimmen</h2>
-    <div class="checkliste">
-      <label>
-        <input type="checkbox" onchange="updateFortschritt('steine')"> Achat gefunden
-      </label>
-      <label>
-        <input type="checkbox" onchange="updateFortschritt('steine')"> Feuerstein getestet
-      </label>
-      <!-- Weitere Checkboxen -->
+        body {
+            background: linear-gradient(135deg, #5a4a3a 0%, #3d3228 100%);
+            color: #f5f5dc;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--stone-brown);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: var(--stone-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, var(--stone-brown) 0%, var(--stone-dark) 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: rgba(139, 115, 85, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid var(--stone-light);
+        }
+
+        .section h2 {
+            color: var(--gold);
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .stone-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--stone-light);
+            transition: transform 0.3s;
+        }
+
+        .stone-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .stone-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .stone-card h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .stone-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .stone-card li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .stone-card li:before {
+            content: "💎";
+            position: absolute;
+            left: 0;
+        }
+
+        .equipment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .equipment-table th {
+            background: var(--stone-brown);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .equipment-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .equipment-table tr:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .weight-badge {
+            background: var(--survival-green);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .resources-section {
+            background: linear-gradient(135deg, var(--stone-brown) 0%, var(--stone-dark) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .resource-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid var(--stone-light);
+            border-radius: 10px;
+        }
+
+        .resource-card h4 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .resource-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-card li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .resource-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--survival-green);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .survival-box {
+            background: linear-gradient(135deg, var(--survival-dark) 0%, #1a3a0f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 3px dashed var(--survival-green);
+            margin: 30px 0;
+        }
+
+        .survival-box h3 {
+            color: var(--survival-green);
+            margin-bottom: 15px;
+        }
+
+        .survival-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .survival-box li {
+            margin: 10px 0;
+            font-size: 1.1em;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .info-box {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 5px solid var(--gold);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .info-box strong {
+            color: var(--gold);
+        }
+
+        .craft-ideas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .craft-card {
+            background: rgba(255,255,255,0.08);
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid var(--stone-light);
+        }
+
+        .craft-card h4 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .craft-card ol {
+            padding-left: 20px;
+        }
+
+        .craft-card li {
+            margin: 8px 0;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #4a3f35 0%, #362d25 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .quiz-question {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            border-left: 5px solid var(--gold);
+        }
+
+        .quiz-question h4 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: var(--stone-light);
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .checkpoints {
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .checkpoints h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .checkpoint-item {
+            padding: 12px;
+            margin: 10px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .checkpoint-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkpoint-item label {
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .stone-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .equipment-table {
+                font-size: 0.9em;
+            }
+
+            .equipment-table th,
+            .equipment-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body data-page="steinlabor">
+
+    <a href="index.html" class="back-button">⬅️ Zurück zur Übersicht</a>
+
+    <div class="container">
+        <!-- HERO SECTION -->
+        <div class="hero">
+            <h1>🪨 STEINLABOR 🔬</h1>
+            <p>Willkommen, Stein-Detektiv! Werde zum Experten für norddeutsche Gesteine!</p>
+        </div>
+
+        <!-- EINFÜHRUNG -->
+        <div class="section">
+            <h2>🔍 Warum sind Steine so cool?</h2>
+            <p>Steine sind nicht nur "gratis am Wegesrand" – sie erzählen <strong>Geschichten aus Millionen Jahren!</strong></p>
+            <ul style="font-size: 1.1em; line-height: 1.8;">
+                <li>🌍 Manche Steine sind älter als die Dinosaurier!</li>
+                <li>🧊 Viele Steine in Norddeutschland kamen mit der <strong>Eiszeit</strong> aus Skandinavien</li>
+                <li>💎 Jeder Stein ist einzigartig – wie ein Fingerabdruck!</li>
+                <li>🔬 Mit Steinen kann man <strong>Feuer machen</strong>, <strong>Werkzeuge bauen</strong> oder einfach nur <strong>sammeln</strong></li>
+            </ul>
+            <div class="info-box">
+                <strong>🎯 Deine Mission:</strong> Werde zum Stein-Experten und baue deine eigene Sammlung auf!
+            </div>
+        </div>
+
+        <!-- DIE HÄUFIGSTEN STEINE IN NORDDEUTSCHLAND -->
+        <div class="section">
+            <h2>🗺️ Die häufigsten Steine in Norddeutschland</h2>
+            <p>Diese Steine findest du garantiert in Bremen und Umgebung!</p>
+            
+            <div class="stone-grid">
+                <!-- FEUERSTEIN -->
+                <div class="stone-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Flint_stone.jpg/800px-Flint_stone.jpg" alt="Feuerstein">
+                    <h3>🟤 Feuerstein (Flint)</h3>
+                    <ul>
+                        <li><strong>Farbe:</strong> Grau, schwarz, braun</li>
+                        <li><strong>Wo finden?</strong> Strände, Felder</li>
+                        <li><strong>Besonderheit:</strong> Macht Funken beim Schlagen!</li>
+                        <li><strong>Fun Fact:</strong> Steinzeitmenschen machten damit Werkzeuge</li>
+                    </ul>
+                </div>
+
+                <!-- SANDSTEIN -->
+                <div class="stone-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Sandstein_fcm.jpg/800px-Sandstein_fcm.jpg" alt="Sandstein">
+                    <h3>🔴 Sandstein</h3>
+                    <ul>
+                        <li><strong>Farbe:</strong> Rot, gelb, braun</li>
+                        <li><strong>Wo finden?</strong> Alte Gebäude, Steinbrüche</li>
+                        <li><strong>Besonderheit:</strong> Fühlt sich rau an, aus alten Dünen!</li>
+                        <li><strong>Fun Fact:</strong> Viele Kirchen sind aus Sandstein gebaut</li>
+                    </ul>
+                </div>
+
+                <!-- GRANIT -->
+                <div class="stone-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Granite_close-up.jpg/800px-Granite_close-up.jpg" alt="Granit">
+                    <h3>⚪ Granit</h3>
+                    <ul>
+                        <li><strong>Farbe:</strong> Rosa, grau, schwarz mit bunten Körnern</li>
+                        <li><strong>Wo finden?</strong> Überall! Kam mit Gletschern</li>
+                        <li><strong>Besonderheit:</strong> Sehr hart, glitzert in der Sonne</li>
+                        <li><strong>Fun Fact:</strong> Aus Skandinavien per Eiszeit-Express!</li>
+                    </ul>
+                </div>
+
+                <!-- BERNSTEIN -->
+                <div class="stone-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Amber_pendants.jpg/800px-Amber_pendants.jpg" alt="Bernstein">
+                    <h3>🟡 Bernstein</h3>
+                    <ul>
+                        <li><strong>Farbe:</strong> Golden, orange, manchmal durchsichtig</li>
+                        <li><strong>Wo finden?</strong> Nordsee-Strände (besonders nach Sturm!)</li>
+                        <li><strong>Besonderheit:</strong> Eigentlich fossiles Baumharz!</li>
+                        <li><strong>Fun Fact:</strong> Schwimmt in Salzwasser, riecht beim Reiben!</li>
+                    </ul>
+                </div>
+
+                <!-- KIESELSTEIN (QUARZ) -->
+                <div class="stone-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Quartz%2C_Tibet.jpg/800px-Quartz%2C_Tibet.jpg" alt="Quarz">
+                    <h3>⚫ Kieselstein (Quarz)</h3>
+                    <ul>
+                        <li><strong>Farbe:</strong> Alle Farben möglich!</li>
+                        <li><strong>Wo finden?</strong> Flussufer, Strände</li>
+                        <li><strong>Besonderheit:</strong> Glatt und rund vom Wasser geschliffen</li>
+                        <li><strong>Fun Fact:</strong> Der häufigste Stein überhaupt!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 30px;">
+                <strong>🔬 Härte-Test: Die Mohs-Skala</strong><br><br>
+                Wissenschaftler messen, wie hart ein Stein ist, mit der <strong>Mohs-Skala</strong> (1-10):<br><br>
+                • <strong>1 = Talk</strong> (weich wie Kreide, mit Fingernagel ritzbar)<br>
+                • <strong>3 = Kalkstein</strong> (mit Münze ritzbar)<br>
+                • <strong>5 = Glas</strong> (mit Messer schwer ritzbar)<br>
+                • <strong>7 = Quarz</strong> (ritzt Glas!)<br>
+                • <strong>10 = Diamant</strong> (härter geht nicht!)<br><br>
+                💡 <strong>Test:</strong> Kann dein Stein eine Fensterscheibe ritzen? Dann ist er härter als 5!<br><br>
+                📖 <a href="https://de.wikipedia.org/wiki/Mohsh%C3%A4rte" target="_blank" style="color: var(--gold);">→ Mehr zur Mohs-Skala auf Wikipedia</a>
+            </div>
+        </div>
+
+        <!-- WO FINDE ICH WELCHE STEINE? -->
+        <div class="section">
+            <h2>📍 Wo finde ich welche Steine?</h2>
+            <p><strong>Bremen-spezifische Fundorte:</strong></p>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <h4 style="color: var(--gold); margin-bottom: 15px;">🏖️ Nordsee-Strände</h4>
+                <p><strong>Orte:</strong> Cuxhaven, Bremerhaven, Wilhelmshaven</p>
+                <p><strong>Findest du:</strong> Feuerstein, Bernstein (nach Stürmen!), Muscheln, Kieselsteine</p>
+                <p><strong>Tipp:</strong> Bei Ebbe suchen, wenn das Wasser weg ist!</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <h4 style="color: var(--gold); margin-bottom: 15px;">🌾 Felder nach dem Pflügen</h4>
+                <p><strong>Orte:</strong> Umland von Bremen, Niedersachsen</p>
+                <p><strong>Findest du:</strong> Feuerstein, Quarz, Feldspat</p>
+                <p><strong>Wichtig:</strong> Nur auf abgeernteten Feldern suchen! Frag den Bauern!</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <h4 style="color: var(--gold); margin-bottom: 15px;">🌊 Flussufer (Weser)</h4>
+                <p><strong>Orte:</strong> Weser-Ufer, Bäche, kleine Flüsse</p>
+                <p><strong>Findest du:</strong> Kieselsteine, Quarz, bunte Steine</p>
+                <p><strong>Tipp:</strong> Nach starkem Regen sind neue Steine freigelegt!</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <h4 style="color: var(--gold); margin-bottom: 15px;">🏗️ Baustellen</h4>
+                <p><strong>Orte:</strong> Neue Straßen, Hausbau</p>
+                <p><strong>Findest du:</strong> Alles Mögliche – oft aus tiefen Schichten!</p>
+                <p><strong>WICHTIG:</strong> Nur mit Erlaubnis & nie alleine! Sehr gefährlich!</p>
+            </div>
+        </div>
+
+        <!-- FORSCHER-AUSRÜSTUNG -->
+        <div class="section">
+            <h2>🎒 Forscher-Ausrüstung: Das Stein-Detektiv Starter-Kit</h2>
+            <p>Perfekt für Pfadfinder-Touren! Alles zusammen wiegt nur ~420g – leichter als eine Wasserflasche! 💪</p>
+
+            <h3 style="color: var(--gold); margin-top: 30px;">✅ LEICHT & PRAKTISCH</h3>
+            <table class="equipment-table">
+                <thead>
+                    <tr>
+                        <th>Ausrüstung</th>
+                        <th>Warum brauchst du das?</th>
+                        <th>Wo besorgen?</th>
+                        <th>Gewicht</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🔍 <strong>Lupe (10x)</strong></td>
+                        <td>Kristalle & Strukturen erkennen</td>
+                        <td>Drogerie</td>
+                        <td><span class="weight-badge">50g</span></td>
+                    </tr>
+                    <tr>
+                        <td>🖌️ <strong>Weicher Pinsel</strong></td>
+                        <td>Staub vorsichtig entfernen</td>
+                        <td>Bastelgeschäft</td>
+                        <td><span class="weight-badge">10g</span></td>
+                    </tr>
+                    <tr>
+                        <td>📦 <strong>Stoffbeutel</strong></td>
+                        <td>Steine sortieren & transportieren</td>
+                        <td>Online/Nähset</td>
+                        <td><span class="weight-badge">100g</span></td>
+                    </tr>
+                    <tr>
+                        <td>📝 <strong>Wasserfester Notizblock</strong></td>
+                        <td>Fundort + Datum notieren</td>
+                        <td>Outdoor-Shop</td>
+                        <td><span class="weight-badge">80g</span></td>
+                    </tr>
+                    <tr>
+                        <td>📏 <strong>Kleines Maßband</strong></td>
+                        <td>Größe bestimmen</td>
+                        <td>1€-Shop</td>
+                        <td><span class="weight-badge">30g</span></td>
+                    </tr>
+                    <tr>
+                        <td>🧤 <strong>Dünne Handschuhe</strong></td>
+                        <td>Schutz beim Graben</td>
+                        <td>Baumarkt</td>
+                        <td><span class="weight-badge">50g</span></td>
+                    </tr>
+                    <tr>
+                        <td>💧 <strong>Mini-Sprühflasche</strong></td>
+                        <td>Steine befeuchten (Farbe besser sehen!)</td>
+                        <td>Drogerie</td>
+                        <td><span class="weight-badge">40g</span></td>
+                    </tr>
+                    <tr>
+                        <td>🔦 <strong>LED-Taschenlampe</strong></td>
+                        <td>Glanz & Struktur prüfen</td>
+                        <td>Überall</td>
+                        <td><span class="weight-badge">60g</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: var(--gold); margin-top: 40px;">🏆 PROFI-AUSRÜSTUNG (für zuhause/später)</h3>
+            <table class="equipment-table">
+                <thead>
+                    <tr>
+                        <th>Ausrüstung</th>
+                        <th>Wozu?</th>
+                        <th>Preis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>⚒️ <strong>Geologenhammer</strong></td>
+                        <td>Steine spalten (NUR mit Erwachsenen!)</td>
+                        <td>~20€</td>
+                    </tr>
+                    <tr>
+                        <td>🧪 <strong>Härte-Test-Set</strong></td>
+                        <td>Mohs-Skala testen</td>
+                        <td>~15€</td>
+                    </tr>
+                    <tr>
+                        <td>📱 <strong>Stein-Bestimmungs-App</strong></td>
+                        <td>"Rock Identifier" / "Geologie Toolkit"</td>
+                        <td>Gratis</td>
+                    </tr>
+                    <tr>
+                        <td>🗃️ <strong>Sammelbox mit Fächern</strong></td>
+                        <td>Sammlung zuhause aufbewahren</td>
+                        <td>~10€</td>
+                    </tr>
+                    <tr>
+                        <td>🏷️ <strong>Etiketten-Set</strong></td>
+                        <td>Fundort & Name beschriften</td>
+                        <td>~5€</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- PFADFINDER-SPEZIAL -->
+        <div class="survival-box">
+            <h3>⛺ PFADFINDER-SPEZIAL: Was Steine im Gelände verraten</h3>
+            <ul>
+                <li>🔥 <strong>Feuerstein</strong> → Funken schlagen (mit Stahl!) für Lagerfeuer</li>
+                <li>💧 <strong>Glatte, runde Steine</strong> → Wasser in der Nähe (Fluss/Bach)</li>
+                <li>🧭 <strong>Magnetit</strong> → Kann Kompass beeinflussen! (Schwarzer, magnetischer Stein)</li>
+                <li>🏔️ <strong>Spitze, kantige Steine</strong> → Berge/Gebirge in der Nähe</li>
+                <li>🌊 <strong>Sehr runde Steine</strong> → Vom Wasser über Jahre geschliffen</li>
+            </ul>
+            <p style="margin-top: 20px;"><em>💡 Tipp: Nimm auf Pfadfinder-Touren immer einen Beutel mit! Du weißt nie, was du findest.</em></p>
+        </div>
+
+        <!-- WISSENSDATENBANKEN -->
+        <div class="resources-section">
+            <h2 style="color: white; margin-bottom: 25px;">📚 Wissensdatenbanken & Ressourcen</h2>
+
+            <div class="resource-card">
+                <h4>📱 Apps (kostenlos!)</h4>
+                <ul>
+                    <li><strong>Rock Identifier</strong> – Foto machen → Stein automatisch erkennen!</li>
+                    <li><strong>Geologie Toolkit</strong> – Härte-Tests & Mini-Lexikon mit Bildern</li>
+                    <li><strong>iNaturalist</strong> – Community für Naturfunde, tausch dich mit anderen aus!</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h4>📺 YouTube-Kanäle</h4>
+                <ul>
+                    <li><strong>"Steine und Minerale"</strong> – Kurze Erklärvideos auf Deutsch</li>
+                    <li><strong>"Terra X Lesch & Co"</strong> – Geologie kindgerecht erklärt</li>
+                    <li><strong>"Geology Hub"</strong> – Englisch, aber mit vielen Bildern</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h4>📚 Bücher (Bibliothek Bremen)</h4>
+                <ul>
+                    <li><strong>"Was ist Was: Mineralien und Gesteine"</strong> – Klassiker!</li>
+                    <li><strong>"Steine am Strand"</strong> – Speziell für Nordsee-Steine!</li>
+                    <li><strong>"Der große Kosmos Steinführer"</strong> – Nachschlagewerk mit Bildern</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h4>🏛️ Museen in der Nähe</h4>
+                <ul>
+                    <li><strong>Übersee-Museum Bremen</strong> – Mineralienkunde-Abteilung</li>
+                    <li><strong>Geologisches Museum Bremerhaven</strong> – Norddeutsche Steine</li>
+                    <li><strong>Natureum Balje</strong> – Steine der Elbregion mit Ausstellung</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- BASTEL-IDEEN -->
+        <div class="section">
+            <h2>🎨 Bastel-Ideen mit deinen Steinen</h2>
+            <p>So machst du aus deinen Funden echte Kunstwerke!</p>
+
+            <div class="craft-ideas">
+                <div class="craft-card">
+                    <h4>🪨 Stein-Turm (Assassin's Creed Style!)</h4>
+                    <ol>
+                        <li>Suche flache Steine in verschiedenen Größen</li>
+                        <li>Stapel sie aufeinander – größte unten!</li>
+                        <li>Balance ist alles! Ruhig atmen 😊</li>
+                        <li>Schaff mind. 7 Steine hoch!</li>
+                        <li>Foto machen, bevor es umfällt! 📸</li>
+                    </ol>
+                    <p style="margin-top: 10px; font-style: italic;">🎮 Genau wie in Assassin's Creed Shadows – nur in echt!</p>
+                </div>
+
+                <div class="craft-card">
+                    <h4>🎨 Glücksstein bemalen</h4>
+                    <ol>
+                        <li>Such dir einen glatten, runden Stein</li>
+                        <li>Wasch ihn gründlich & lass ihn trocknen</li>
+                        <li>Male mit Acrylstiften ein Motiv drauf (Herz, Smiley, Name...)</li>
+                        <li>Verschenke ihn an einen Freund! 🎁</li>
+                    </ol>
+                    <p style="margin-top: 10px; font-style: italic;">💡 Tipp: Mit Klarlack besprühen, dann hält's länger!</p>
+                </div>
+
+                <div class="craft-card">
+                    <h4>🔬 Forscherlabor zuhause</h4>
+                    <ol>
+                        <li>Nimm einen <strong>Eierkarton</strong> als Sammelbox</li>
+                        <li>Jeden Stein nummerieren (1, 2, 3...)</li>
+                        <li>Liste führen mit:
+                            <ul style="margin-top: 10px;">
+                                <li>• Nummer</li>
+                                <li>• Fundort</li>
+                                <li>• Datum</li>
+                                <li>• Steinart (wenn bekannt)</li>
+                            </ul>
+                        </li>
+                        <li>Wie ein echter Geologe arbeiten! 🔬</li>
+                    </ol>
+                </div>
+
+                <div class="craft-card">
+                    <h4>🗺️ Fundort-Karte</h4>
+                    <ol>
+                        <li>Stadtplan von Bremen ausdrucken</li>
+                        <li>Mit Stecknadeln Fundorte markieren</li>
+                        <li>Legende erstellen:<br>
+                            🔴 Feuerstein<br>
+                            🔵 Quarz<br>
+                            🟡 Bernstein<br>
+                            ⚪ Granit
+                        </li>
+                        <li>So siehst du, wo welche Steine liegen!</li>
+                    </ol>
+                </div>
+
+                <div class="craft-card">
+                    <h4>📸 Foto-Dokumentation</h4>
+                    <ol>
+                        <li>Stein fotografieren (mit Lineal als Maßstab!)</li>
+                        <li>Ordner "Meine Funde" auf dem PC/Tablet anlegen</li>
+                        <li>Beschreibung dazu schreiben</li>
+                        <li>Wie ein echter Wissenschaftler! 🧑‍🔬</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHECKPOINTS -->
+        <div class="checkpoints">
+            <h3>✅ Stein-Detektiv Missionen</h3>
+            <p>Hake ab, was du schon geschafft hast!</p>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="equipment" id="cp-equipment">
+                <label for="cp-equipment">Forscher-Ausrüstung zusammenstellen (mind. 4 Teile)</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="magnify" id="cp-magnify">
+                <label for="cp-magnify">Stein mit Lupe untersuchen & skizzieren</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="map" id="cp-map">
+                <label for="cp-map">Fundort-Karte erstellen</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="app" id="cp-app">
+                <label for="cp-app">3 Steine in Apps bestimmen lassen</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="lucky" id="cp-lucky">
+                <label for="cp-lucky">Glücksstein bemalen & verschenken</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="tower" id="cp-tower">
+                <label for="cp-tower">Stein-Turm (mind. 7 Steine hoch!)</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="museum" id="cp-museum">
+                <label for="cp-museum">Museum besuchen & Lieblingsstein finden</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="lexicon" id="cp-lexicon">
+                <label for="cp-lexicon">Eigenes Mini-Lexikon anlegen (5 Steine beschreiben)</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="quiz" id="cp-quiz">
+                <label for="cp-quiz">Quiz bestanden (mind. 3 von 5 richtig)</label>
+            </div>
+        </div>
+
+        <!-- QUIZ -->
+        <div class="quiz-section">
+            <h2 style="color: var(--gold); margin-bottom: 30px;">🎯 Stein-Detektiv Quiz</h2>
+            <p style="margin-bottom: 30px;">Teste dein Wissen! Mind. 3 richtige Antworten = Bestanden! ✅</p>
+
+            <div class="quiz-question">
+                <h4>1️⃣ Welcher Stein macht Funken, wenn man ihn mit Stahl schlägt?</h4>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="a"> a) Sandstein
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="b"> b) Feuerstein ✅
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="c"> c) Granit
+                    </label>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h4>2️⃣ Wie nennt man die Skala, die misst, wie hart ein Stein ist?</h4>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="a"> a) Richter-Skala
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="b"> b) Mohs-Skala ✅
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="c"> c) pH-Skala
+                    </label>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h4>3️⃣ Was ist Bernstein eigentlich?</h4>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="a"> a) Ein Edelstein
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="b"> b) Fossiles Baumharz ✅
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="c"> c) Buntes Glas
+                    </label>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h4>4️⃣ Wo findest du in Norddeutschland am ehesten Steine?</h4>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="a"> a) Im Wald unter Bäumen
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="b"> b) An Stränden und Flussufern ✅
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="c"> c) In Höhlen
+                    </label>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h4>5️⃣ Wie kamen viele Steine nach Norddeutschland?</h4>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="a"> a) Mit Vulkanausbrüchen
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="b"> b) Mit der Eiszeit aus Skandinavien ✅
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="c"> c) Vom Meer angespült
+                    </label>
+                </div>
+            </div>
+
+            <button onclick="checkQuiz()" style="background: var(--gold); color: black; padding: 15px 40px; border: none; border-radius: 10px; font-size: 1.2em; font-weight: bold; cursor: pointer; margin-top: 20px;">
+                🎯 Quiz auswerten
+            </button>
+            <div id="quiz-result" style="margin-top: 20px; font-size: 1.2em; font-weight: bold;"></div>
+        </div>
+
     </div>
 
-    <h2>🧪 Experimente</h2>
-    <p><strong>Härte-Test:</strong> Kratze mit einem Nagel über den Stein...</p>
-  </main>
+    <script>
+        // Quiz-Funktion
+        function checkQuiz() {
+            const answers = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'b',
+                q4: 'b',
+                q5: 'b'
+            };
 
-  <script src="script.js"></script>
-  <script>
-    // Fortschritt für Steine laden
-    function updateFortschritt(thema) {
-      let anzahl = document.querySelectorAll(`#${thema} input[type="checkbox"]:checked`).length;
-      document.getElementById(`${thema}-fortschritt`).textContent = `${anzahl}/10`;
+            let score = 0;
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value === answers[`q${i}`]) {
+                    score++;
+                }
+            }
 
-      // Gesamtfortschritt aktualisieren (vereinfacht)
-      let gesamt = (anzahl / 10) * 30; // 30% für Steine
-      localStorage.setItem('progress', gesamt);
-      document.getElementById('progress-percent').textContent = `${gesamt}%`;
-      document.getElementById('progress-fill').style.width = `${gesamt}%`;
-    }
-  </script>
+            const resultDiv = document.getElementById('quiz-result');
+            if (score >= 3) {
+                resultDiv.innerHTML = `🎉 BESTANDEN! ${score}/5 richtig! Du bist ein echter Stein-Experte! 💎`;
+                resultDiv.style.color = 'var(--survival-green)';
+                document.getElementById('cp-quiz').checked = true;
+                updateProgress();
+            } else {
+                resultDiv.innerHTML = `😅 ${score}/5 richtig. Lies nochmal die Infos oben und versuch's nochmal!`;
+                resultDiv.style.color = '#ff6b6b';
+            }
+        }
+
+        // Checkpoint-System
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checkpoint-checkbox');
+            const checked = document.querySelectorAll('.checkpoint-checkbox:checked').length;
+            const total = checkboxes.length;
+            const percentage = Math.round((checked / total) * 100);
+
+            // Hier könnte die globale Progress-Bar aktualisiert werden
+            console.log(`Steinlabor: ${checked}/${total} = ${percentage}%`);
+        }
+
+        // Event Listeners für Checkboxen
+        document.querySelectorAll('.checkpoint-checkbox').forEach(cb => {
+            cb.addEventListener('change', updateProgress);
+        });
+
+        // Initial Progress berechnen
+        updateProgress();
+    </script>
+
+    <script src="global-progress.js"></script>
+    <script src="page-tracker.js"></script>
 </body>
 </html>
+
