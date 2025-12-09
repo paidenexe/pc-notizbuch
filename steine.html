@@ -16,7 +16,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #5a4a3a 0%, #3d3228 100%);
+            background: #1a1a1a;
             color: #f5f5dc;
         }
 
@@ -68,7 +68,7 @@
         }
 
         .section {
-            background: rgba(139, 115, 85, 0.2);
+            background: rgba(139, 115, 85, 0.15);
             padding: 30px;
             border-radius: 15px;
             margin: 30px 0;
@@ -84,6 +84,59 @@
             gap: 10px;
         }
 
+        /* CHECKPOINTS GANZ OBEN */
+        .checkpoints {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 3px solid var(--gold);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        .checkpoints h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .checkpoints p {
+            text-align: center;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .checkpoint-item {
+            padding: 15px;
+            margin: 12px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .checkpoint-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-left-color: var(--gold);
+        }
+
+        .checkpoint-item input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            accent-color: var(--gold);
+        }
+
+        .checkpoint-item label {
+            cursor: pointer;
+            font-size: 1.1em;
+            flex: 1;
+        }
+
         .stone-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -92,7 +145,7 @@
         }
 
         .stone-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            background: linear-gradient(135deg, rgba(60,50,40,0.6) 0%, rgba(40,35,30,0.6) 100%);
             padding: 20px;
             border-radius: 12px;
             border: 2px solid var(--stone-light);
@@ -101,7 +154,7 @@
 
         .stone-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
         }
 
         .stone-card img {
@@ -110,11 +163,12 @@
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 15px;
+            background: #2a2a2a;
         }
 
         .stone-card h3 {
             color: var(--gold);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 1.5em;
         }
 
@@ -124,9 +178,10 @@
         }
 
         .stone-card li {
-            padding: 5px 0;
+            padding: 8px 0;
             padding-left: 25px;
             position: relative;
+            line-height: 1.6;
         }
 
         .stone-card li:before {
@@ -135,11 +190,15 @@
             left: 0;
         }
 
+        .stone-card strong {
+            color: var(--stone-light);
+        }
+
         .equipment-table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            background: rgba(255,255,255,0.05);
+            background: rgba(40,40,40,0.6);
             border-radius: 10px;
             overflow: hidden;
         }
@@ -167,6 +226,7 @@
             border-radius: 15px;
             font-size: 0.9em;
             font-weight: bold;
+            color: white;
         }
 
         .resources-section {
@@ -177,7 +237,7 @@
         }
 
         .resource-card {
-            background: rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.3);
             padding: 20px;
             margin: 15px 0;
             border-left: 5px solid var(--stone-light);
@@ -247,6 +307,11 @@
             color: var(--gold);
         }
 
+        .info-box a {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
         .craft-ideas {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -255,7 +320,7 @@
         }
 
         .craft-card {
-            background: rgba(255,255,255,0.08);
+            background: rgba(60,50,40,0.4);
             padding: 25px;
             border-radius: 12px;
             border: 2px solid var(--stone-light);
@@ -276,14 +341,15 @@
         }
 
         .quiz-section {
-            background: linear-gradient(135deg, #4a3f35 0%, #362d25 100%);
+            background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
             padding: 40px;
             border-radius: 15px;
             margin: 30px 0;
+            border: 2px solid var(--stone-light);
         }
 
         .quiz-question {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
             padding: 25px;
             margin: 20px 0;
             border-radius: 12px;
@@ -318,39 +384,25 @@
 
         .quiz-option input[type="radio"] {
             margin-right: 10px;
+            accent-color: var(--gold);
         }
 
-        .checkpoints {
-            background: rgba(255,255,255,0.05);
-            padding: 25px;
-            border-radius: 12px;
-            margin: 30px 0;
-        }
-
-        .checkpoints h3 {
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .checkpoint-item {
-            padding: 12px;
-            margin: 10px 0;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .checkpoint-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
+        .quiz-button {
+            background: var(--gold);
+            color: black;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
             cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
         }
 
-        .checkpoint-item label {
-            cursor: pointer;
-            font-size: 1.1em;
+        .quiz-button:hover {
+            background: #ffed4e;
+            transform: scale(1.05);
         }
 
         @media (max-width: 768px) {
@@ -370,6 +422,12 @@
             .equipment-table td {
                 padding: 10px;
             }
+
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 10px 20px;
+            }
         }
     </style>
 </head>
@@ -382,6 +440,57 @@
         <div class="hero">
             <h1>🪨 STEINLABOR 🔬</h1>
             <p>Willkommen, Stein-Detektiv! Werde zum Experten für norddeutsche Gesteine!</p>
+        </div>
+
+        <!-- CHECKPOINTS GANZ OBEN! -->
+        <div class="checkpoints">
+            <h3>✅ Deine Stein-Detektiv Missionen</h3>
+            <p>Hake ab, was du schon geschafft hast – jede Mission bringt dich näher zum Experten!</p>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="first-stone" id="cp-first-stone" data-scroll="steinlabor">
+                <label for="cp-first-stone">🪨 Ersten eigenen Stein gefunden</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="five-stones" id="cp-five-stones" data-scroll="steinlabor">
+                <label for="cp-five-stones">💎 5 verschiedene Steine gesammelt</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="identify-flint" id="cp-identify-flint" data-scroll="steinlabor">
+                <label for="cp-identify-flint">🔍 Einen Feuerstein identifiziert</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="equipment" id="cp-equipment" data-scroll="steinlabor">
+                <label for="cp-equipment">🎒 Forscher-Ausrüstung besorgt (mind. 3 Teile)</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="magnify" id="cp-magnify" data-scroll="steinlabor">
+                <label for="cp-magnify">🔬 Stein mit Lupe untersucht</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="clean" id="cp-clean" data-scroll="steinlabor">
+                <label for="cp-clean">🧼 Steine gereinigt & sortiert</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="label" id="cp-label" data-scroll="steinlabor">
+                <label for="cp-label">🏷️ Steine beschriftet (Fundort & Datum)</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="tower" id="cp-tower" data-scroll="steinlabor">
+                <label for="cp-tower">🏰 Stein-Turm gebaut (mind. 7 hoch!)</label>
+            </div>
+
+            <div class="checkpoint-item">
+                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="quiz" id="cp-quiz" data-scroll="steinlabor">
+                <label for="cp-quiz">🎯 Quiz bestanden (mind. 3/5 richtig)</label>
+            </div>
         </div>
 
         <!-- EINFÜHRUNG -->
@@ -407,7 +516,7 @@
             <div class="stone-grid">
                 <!-- FEUERSTEIN -->
                 <div class="stone-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Flint_stone.jpg/800px-Flint_stone.jpg" alt="Feuerstein">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%233a3a3a' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%238b7355'%3E🪨 Feuerstein%3C/text%3E%3C/svg%3E" alt="Feuerstein">
                     <h3>🟤 Feuerstein (Flint)</h3>
                     <ul>
                         <li><strong>Farbe:</strong> Grau, schwarz, braun</li>
@@ -419,7 +528,7 @@
 
                 <!-- SANDSTEIN -->
                 <div class="stone-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Sandstein_fcm.jpg/800px-Sandstein_fcm.jpg" alt="Sandstein">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23654321' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23d4a574'%3E🏜️ Sandstein%3C/text%3E%3C/svg%3E" alt="Sandstein">
                     <h3>🔴 Sandstein</h3>
                     <ul>
                         <li><strong>Farbe:</strong> Rot, gelb, braun</li>
@@ -431,7 +540,7 @@
 
                 <!-- GRANIT -->
                 <div class="stone-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Granite_close-up.jpg/800px-Granite_close-up.jpg" alt="Granit">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23808080' width='400' height='300'/%3E%3Ccircle cx='100' cy='80' r='15' fill='%23ff69b4'/%3E%3Ccircle cx='200' cy='120' r='12' fill='%23fff'/%3E%3Ccircle cx='300' cy='180' r='18' fill='%23333'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='42' fill='%23fff'%3E✨ Granit%3C/text%3E%3C/svg%3E" alt="Granit">
                     <h3>⚪ Granit</h3>
                     <ul>
                         <li><strong>Farbe:</strong> Rosa, grau, schwarz mit bunten Körnern</li>
@@ -443,7 +552,7 @@
 
                 <!-- BERNSTEIN -->
                 <div class="stone-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Amber_pendants.jpg/800px-Amber_pendants.jpg" alt="Bernstein">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3CradialGradient id='amber'%3E%3Cstop offset='0%25' stop-color='%23ffcc00'/%3E%3Cstop offset='100%25' stop-color='%23ff8800'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect fill='url(%23amber)' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23fff'%3E🟡 Bernstein%3C/text%3E%3C/svg%3E" alt="Bernstein">
                     <h3>🟡 Bernstein</h3>
                     <ul>
                         <li><strong>Farbe:</strong> Golden, orange, manchmal durchsichtig</li>
@@ -455,13 +564,25 @@
 
                 <!-- KIESELSTEIN (QUARZ) -->
                 <div class="stone-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Quartz%2C_Tibet.jpg/800px-Quartz%2C_Tibet.jpg" alt="Quarz">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23b0c4de' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23778899' opacity='0.7'/%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='40' fill='%23fff'%3E⚫ Quarz%3C/text%3E%3C/svg%3E" alt="Quarz">
                     <h3>⚫ Kieselstein (Quarz)</h3>
                     <ul>
                         <li><strong>Farbe:</strong> Alle Farben möglich!</li>
                         <li><strong>Wo finden?</strong> Flussufer, Strände</li>
                         <li><strong>Besonderheit:</strong> Glatt und rund vom Wasser geschliffen</li>
                         <li><strong>Fun Fact:</strong> Der häufigste Stein überhaupt!</li>
+                    </ul>
+                </div>
+
+                <!-- KALKSTEIN (NEU!) -->
+                <div class="stone-card">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f5f5dc' width='400' height='300'/%3E%3Cpath d='M50,100 Q150,50 250,100 T450,100' stroke='%23ddd' fill='none' stroke-width='3'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='42' fill='%23666'%3E🤍 Kalkstein%3C/text%3E%3C/svg%3E" alt="Kalkstein">
+                    <h3>🤍 Kalkstein</h3>
+                    <ul>
+                        <li><strong>Farbe:</strong> Weiß, grau, beige</li>
+                        <li><strong>Wo finden?</strong> Felder, alte Mauern</li>
+                        <li><strong>Besonderheit:</strong> Braust mit Essig! (CO₂-Test)</li>
+                        <li><strong>Fun Fact:</strong> Aus alten Meeresböden – voll mit Fossilien!</li>
                     </ul>
                 </div>
             </div>
@@ -475,7 +596,7 @@
                 • <strong>7 = Quarz</strong> (ritzt Glas!)<br>
                 • <strong>10 = Diamant</strong> (härter geht nicht!)<br><br>
                 💡 <strong>Test:</strong> Kann dein Stein eine Fensterscheibe ritzen? Dann ist er härter als 5!<br><br>
-                📖 <a href="https://de.wikipedia.org/wiki/Mohsh%C3%A4rte" target="_blank" style="color: var(--gold);">→ Mehr zur Mohs-Skala auf Wikipedia</a>
+                📖 <a href="https://de.wikipedia.org/wiki/Mohsh%C3%A4rte" target="_blank">→ Mehr zur Mohs-Skala auf Wikipedia</a>
             </div>
         </div>
 
@@ -494,7 +615,7 @@
             <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-top: 20px;">
                 <h4 style="color: var(--gold); margin-bottom: 15px;">🌾 Felder nach dem Pflügen</h4>
                 <p><strong>Orte:</strong> Umland von Bremen, Niedersachsen</p>
-                <p><strong>Findest du:</strong> Feuerstein, Quarz, Feldspat</p>
+                <p><strong>Findest du:</strong> Feuerstein, Quarz, Feldspat, Kalkstein</p>
                 <p><strong>Wichtig:</strong> Nur auf abgeernteten Feldern suchen! Frag den Bauern!</p>
             </div>
 
@@ -746,57 +867,6 @@
             </div>
         </div>
 
-        <!-- CHECKPOINTS -->
-        <div class="checkpoints">
-            <h3>✅ Stein-Detektiv Missionen</h3>
-            <p>Hake ab, was du schon geschafft hast!</p>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="equipment" id="cp-equipment">
-                <label for="cp-equipment">Forscher-Ausrüstung zusammenstellen (mind. 4 Teile)</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="magnify" id="cp-magnify">
-                <label for="cp-magnify">Stein mit Lupe untersuchen & skizzieren</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="map" id="cp-map">
-                <label for="cp-map">Fundort-Karte erstellen</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="app" id="cp-app">
-                <label for="cp-app">3 Steine in Apps bestimmen lassen</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="lucky" id="cp-lucky">
-                <label for="cp-lucky">Glücksstein bemalen & verschenken</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="tower" id="cp-tower">
-                <label for="cp-tower">Stein-Turm (mind. 7 Steine hoch!)</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="museum" id="cp-museum">
-                <label for="cp-museum">Museum besuchen & Lieblingsstein finden</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="lexicon" id="cp-lexicon">
-                <label for="cp-lexicon">Eigenes Mini-Lexikon anlegen (5 Steine beschreiben)</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="quiz" id="cp-quiz">
-                <label for="cp-quiz">Quiz bestanden (mind. 3 von 5 richtig)</label>
-            </div>
-        </div>
-
         <!-- QUIZ -->
         <div class="quiz-section">
             <h2 style="color: var(--gold); margin-bottom: 30px;">🎯 Stein-Detektiv Quiz</h2>
@@ -877,10 +947,8 @@
                 </div>
             </div>
 
-            <button onclick="checkQuiz()" style="background: var(--gold); color: black; padding: 15px 40px; border: none; border-radius: 10px; font-size: 1.2em; font-weight: bold; cursor: pointer; margin-top: 20px;">
-                🎯 Quiz auswerten
-            </button>
-            <div id="quiz-result" style="margin-top: 20px; font-size: 1.2em; font-weight: bold;"></div>
+            <button class="quiz-button" onclick="checkQuiz()">🎯 Quiz auswerten</button>
+            <div id="quiz-result" style="margin-top: 20px; font-size: 1.2em; font-weight: bold; text-align: center;"></div>
         </div>
 
     </div>
@@ -909,35 +977,17 @@
                 resultDiv.innerHTML = `🎉 BESTANDEN! ${score}/5 richtig! Du bist ein echter Stein-Experte! 💎`;
                 resultDiv.style.color = 'var(--survival-green)';
                 document.getElementById('cp-quiz').checked = true;
-                updateProgress();
+                // Trigger speichern
+                const event = new Event('change');
+                document.getElementById('cp-quiz').dispatchEvent(event);
             } else {
                 resultDiv.innerHTML = `😅 ${score}/5 richtig. Lies nochmal die Infos oben und versuch's nochmal!`;
                 resultDiv.style.color = '#ff6b6b';
             }
         }
-
-        // Checkpoint-System
-        function updateProgress() {
-            const checkboxes = document.querySelectorAll('.checkpoint-checkbox');
-            const checked = document.querySelectorAll('.checkpoint-checkbox:checked').length;
-            const total = checkboxes.length;
-            const percentage = Math.round((checked / total) * 100);
-
-            // Hier könnte die globale Progress-Bar aktualisiert werden
-            console.log(`Steinlabor: ${checked}/${total} = ${percentage}%`);
-        }
-
-        // Event Listeners für Checkboxen
-        document.querySelectorAll('.checkpoint-checkbox').forEach(cb => {
-            cb.addEventListener('change', updateProgress);
-        });
-
-        // Initial Progress berechnen
-        updateProgress();
     </script>
 
     <script src="global-progress.js"></script>
     <script src="page-tracker.js"></script>
 </body>
 </html>
-
