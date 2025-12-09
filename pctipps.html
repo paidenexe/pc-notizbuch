@@ -6,7 +6,7 @@
   <title>PC-Tipps | Philipp's PC-Abenteuer</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <script src="script.js"></script>
+  /* <script src="script.js"></script> */
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Zusätzliche Styles für PC-Tipps */
@@ -214,7 +214,7 @@
     }
   </style>
 </head>
-<body>
+<body data-page="pctipps"> <!-- Wichtig: data-page Attribut -->
 
   <header>
     <h1>🖥️ PC-Tipps & Tricks</h1>
@@ -222,44 +222,45 @@
   </header>
 
   <!-- CHECKPOINT SYSTEM -->
-  <div class="checkpoint-container">
-    <h2 class="checkpoint-title">📋 Deine Missionen</h2>
-    <p style="text-align: center; margin-bottom: 20px;">
-      Klicke auf die Mission um dorthin zu springen. Hake ab, wenn du fertig bist! ✅
-    </p>
-    
-    <div class="checkpoint-grid">
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-autostart" onchange="updateProgress()" onclick="event.stopPropagation()">
-        <label class="checkpoint-label" onclick="scrollToSection('autostart')">Autostart ausmisten</label>
-      </div>
+<div class="checkpoint-container">
+  <h2 class="checkpoint-title">📋 Deine Missionen</h2>
+  <p style="text-align: center; margin-bottom: 20px;">
+    Klicke auf die Mission um dorthin zu springen. Hake ab, wenn du fertig bist! ✅
+  </p>
+  
+  <div class="checkpoint-grid">
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="autostart">
+      <label class="checkpoint-label" data-scroll="autostart">Autostart ausmisten</label>
+    </div>
 
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-darkmode" onchange="updateProgress()" onclick="event.stopPropagation()">
-        <label class="checkpoint-label" onclick="scrollToSection('darkmode')">Dark Mode aktivieren</label>
-      </div>
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="darkmode">
+      <label class="checkpoint-label" data-scroll="darkmode">Dark Mode aktivieren</label>
+    </div>
 
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-screenshots" onchange="updateProgress()" onclick="event.stopPropagation()">
-        <label class="checkpoint-label" onclick="scrollToSection('screenshots')">Screenshots erstellen</label>
-      </div>
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="screenshots">
+      <label class="checkpoint-label" data-scroll="screenshots">Screenshots erstellen</label>
+    </div>
 
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-shortcuts" onchange="updateProgress()" onclick="event.stopPropagation()">
-        <label class="checkpoint-label" onclick="scrollToSection('shortcuts')">Tastenkombinationen lernen</label>
-      </div>
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="shortcuts">
+      <label class="checkpoint-label" data-scroll="shortcuts">Tastenkombinationen lernen</label>
+    </div>
 
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-updates" onchange="updateProgress()" onclick="event.stopPropagation()">
-        <label class="checkpoint-label" onclick="scrollToSection('updates')">Updates installieren</label>
-      </div>
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="updates">
+      <label class="checkpoint-label" data-scroll="updates">Updates installieren</label>
+    </div>
 
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" id="check-bluetooth" onchange="updateProgress()" onclick="event.stopPropagation()">
-        <label class="checkpoint-label" onclick="scrollToSection('bluetooth')">Bluetooth verbinden</label>
-      </div>
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="bluetooth">
+      <label class="checkpoint-label" data-scroll="bluetooth">Bluetooth verbinden</label>
     </div>
   </div>
+</div>
+
 
   <!-- TIPP 1: Autostart -->
   <div class="tipp-section" id="autostart">
@@ -652,6 +653,9 @@
   </footer>
 
 
+
+<!-- Auskommentiert, da die Funktion ausgelagert wurde-->
+<!--
 <script>
     // ========== GLOBALE FUNKTION (inline) ==========
     function updateGlobalProgress() {
@@ -725,7 +729,10 @@
       updateProgress();
     });
 </script>
-
+     -->
+    
+  <script src="global-progress.js"></script>
+  <script src="page-tracker.js"></script>
 
 
 
