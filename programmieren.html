@@ -1,1 +1,738 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmierlabor | Philipp's PC-Abenteuer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Zusätzliche Styles für Programmierlabor */
+    .checkpoint-container {
+      background-color: #2A2A2A;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 30px auto;
+      max-width: 900px;
+      border-left: 5px solid #00D9FF;
+    }
 
+    .checkpoint-title {
+      color: #00D9FF;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .checkpoint-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .checkpoint-item {
+      background-color: #1A1A1A;
+      padding: 15px;
+      border-radius: 8px;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .checkpoint-item:hover {
+      border-color: #00D9FF;
+    }
+
+    .checkpoint-item.completed {
+      background-color: #1a3a3a;
+      border-color: #4CAF50;
+    }
+
+    .checkpoint-checkbox {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      accent-color: #00D9FF;
+      flex-shrink: 0;
+    }
+
+    .checkpoint-label {
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      flex: 1;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    .checkpoint-label:hover {
+      color: #00D9FF;
+    }
+
+    .guide-section {
+      background-color: #2A2A2A;
+      padding: 30px;
+      border-radius: 10px;
+      margin: 40px auto;
+      max-width: 900px;
+      scroll-margin-top: 80px;
+    }
+
+    .guide-section h3 {
+      color: #00D9FF;
+      font-size: 26px;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #00D9FF;
+      padding-bottom: 10px;
+    }
+
+    .guide-section h4 {
+      color: #00D9FF;
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+
+    .info-box {
+      background-color: #1A1A1A;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border-left: 4px solid #00D9FF;
+    }
+
+    .warning-box {
+      background-color: #2a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border-left: 4px solid #ff6b35;
+    }
+
+    .code-box {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+      border: 2px solid #00D9FF;
+    }
+
+    .code-box pre {
+      margin: 0;
+      color: #00ff00;
+      line-height: 1.6;
+    }
+
+    .code-comment {
+      color: #888;
+    }
+
+    .step-number {
+      display: inline-block;
+      background: #00D9FF;
+      color: #000;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .result-preview {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      color: #000;
+      border: 3px solid #00D9FF;
+    }
+
+    .video-link {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .video-link a {
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .video-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body data-page="programmierlabor">
+
+  <!-- Zurück-Button -->
+  <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+
+  <!-- Header -->
+  <header>
+    <h1>💻 PROGRAMMIERLABOR</h1>
+    <p>Erstelle deine erste eigene Webseite mit HTML & CSS!</p>
+  </header>
+
+  <!-- Intro -->
+  <div class="guide-section">
+    <h3>🚀 Willkommen im Programmierlabor!</h3>
+    
+    <p>
+      Hier lernst du die <strong>Grundlagen des Programmierens</strong> – genauer gesagt: 
+      Wie man <strong>Webseiten baut</strong>! 🌐
+    </p>
+
+    <div class="info-box">
+      <h4>💡 Was ist HTML & CSS?</h4>
+      <ul>
+        <li><strong>HTML</strong> = Die <strong>Struktur</strong> einer Webseite (Text, Bilder, Links)</li>
+        <li><strong>CSS</strong> = Das <strong>Design</strong> (Farben, Schriften, Layout)</li>
+      </ul>
+      <p>
+        <strong>Stell dir vor:</strong><br>
+        HTML ist das <strong>Skelett eines Hauses</strong> (Wände, Türen, Fenster).<br>
+        CSS ist die <strong>Inneneinrichtung</strong> (Farbe, Möbel, Dekoration). 🏠
+      </p>
+    </div>
+
+    <div class="warning-box">
+      <h4>⚡ Was du brauchst:</h4>
+      <ul>
+        <li>✅ <strong>Editor (Notepad)</strong> – schon auf deinem PC installiert!</li>
+        <li>✅ <strong>Einen Browser</strong> (Chrome, Edge, Firefox) – hast du auch!</li>
+        <li>✅ <strong>Geduld & Neugier</strong> – das Wichtigste! 😊</li>
+      </ul>
+      <p>Du brauchst <strong>keine Programme zu installieren</strong> – es geht sofort los!</p>
+    </div>
+  </div>
+
+  <!-- Checkpoint System -->
+  <div class="checkpoint-container">
+    <h2 class="checkpoint-title">🎯 Deine Programmier-Missionen</h2>
+    <p style="text-align: center; margin-bottom: 20px;">
+      Hake die Aufgaben ab, wenn du sie geschafft hast! 💻
+    </p>
+
+    <div class="checkpoint-grid">
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="firsthtml">
+        <label class="checkpoint-label" data-scroll="firsthtml">Erste HTML-Datei erstellen</label>
+      </div>
+
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="structure">
+        <label class="checkpoint-label" data-scroll="structure">HTML-Struktur verstehen</label>
+      </div>
+
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="content">
+        <label class="checkpoint-label" data-scroll="content">Text & Überschriften</label>
+      </div>
+
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="css">
+        <label class="checkpoint-label" data-scroll="css">CSS hinzufügen</label>
+      </div>
+
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="styling">
+        <label class="checkpoint-label" data-scroll="styling">Farben & Layout</label>
+      </div>
+
+      <div class="checkpoint-item">
+        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="project">
+        <label class="checkpoint-label" data-scroll="project">Eigene Seite erstellen</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mission 1: Erste HTML-Datei -->
+  <div id="firsthtml" class="guide-section">
+    <h3>📄 Mission 1: Deine erste HTML-Datei erstellen</h3>
+    
+    <p>Los geht's! Erstelle deine allererste Webseite – in nur 3 Schritten! 🚀</p>
+
+    <div class="info-box">
+      <h4><span class="step-number">1</span> Editor öffnen</h4>
+      <ul>
+        <li>Drücke <strong>Windows-Taste</strong></li>
+        <li>Tippe <strong>"Editor"</strong> oder <strong>"Notepad"</strong></li>
+        <li>Öffne das Programm</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h4><span class="step-number">2</span> Diesen Code eingeben</h4>
+      <div class="code-box">
+        <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Meine erste Webseite&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hallo Welt!&lt;/h1&gt;
+  &lt;p&gt;Das ist meine erste Webseite! 🎉&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+      </div>
+      <p><strong>Tipp:</strong> Tippe den Code selbst ab – so lernst du am besten! ✍️</p>
+    </div>
+
+    <div class="info-box">
+      <h4><span class="step-number">3</span> Als HTML-Datei speichern</h4>
+      <ul>
+        <li>Klicke auf <strong>"Datei" → "Speichern unter"</strong></li>
+        <li>Wähle einen Ordner (z.B. <strong>Desktop</strong>)</li>
+        <li>Dateiname: <code><strong>index.html</strong></code></li>
+        <li>Bei <strong>"Dateityp"</strong>: Wähle <strong>"Alle Dateien"</strong></li>
+        <li>Klicke <strong>"Speichern"</strong></li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <h4>⚡ Wichtig:</h4>
+      <p>
+        Die Datei <strong>MUSS</strong> auf <code>.html</code> enden!<br>
+        Nicht <code>.txt</code> – sonst funktioniert es nicht! 🚫
+      </p>
+    </div>
+
+    <div class="info-box">
+      <h4><span class="step-number">4</span> Im Browser öffnen</h4>
+      <ul>
+        <li>Gehe zu der gespeicherten Datei</li>
+        <li><strong>Doppelklick</strong> auf <code>index.html</code></li>
+        <li>Die Seite öffnet sich im Browser! 🎉</li>
+      </ul>
+      
+      <div class="result-preview">
+        <h1 style="color: #000; margin: 0 0 10px 0;">Hallo Welt!</h1>
+        <p style="margin: 0; color: #333;">Das ist meine erste Webseite! 🎉</p>
+      </div>
+      
+      <p><strong>Glückwunsch!</strong> Du hast deine erste Webseite erstellt! 🏆</p>
+    </div>
+  </div>
+
+  <!-- Mission 2: HTML-Struktur -->
+  <div id="structure" class="guide-section">
+    <h3>🏗️ Mission 2: HTML-Struktur verstehen</h3>
+    
+    <p>Lass uns verstehen, was dieser Code bedeutet! 🤓</p>
+
+    <div class="code-box">
+      <pre>&lt;!DOCTYPE html&gt;          <span class="code-comment">← Sagt dem Browser: "Das ist HTML!"</span>
+&lt;html&gt;                     <span class="code-comment">← Start der Webseite</span>
+&lt;head&gt;                     <span class="code-comment">← Kopfbereich (unsichtbar)</span>
+  &lt;title&gt;...&lt;/title&gt;       <span class="code-comment">← Titel im Browser-Tab</span>
+&lt;/head&gt;                    <span class="code-comment">← Ende Kopfbereich</span>
+&lt;body&gt;                     <span class="code-comment">← Sichtbarer Inhalt beginnt</span>
+  &lt;h1&gt;...&lt;/h1&gt;             <span class="code-comment">← Große Überschrift</span>
+  &lt;p&gt;...&lt;/p&gt;               <span class="code-comment">← Normaler Text (Paragraph)</span>
+&lt;/body&gt;                    <span class="code-comment">← Ende Inhalt</span>
+&lt;/html&gt;                    <span class="code-comment">← Ende der Webseite</span></pre>
+    </div>
+
+    <div class="info-box">
+      <h4>🔑 Wichtige HTML-Regeln:</h4>
+      <ul>
+        <li>Jeder <strong>Tag</strong> hat einen <strong>Anfang</strong> (<code>&lt;h1&gt;</code>) und ein <strong>Ende</strong> (<code>&lt;/h1&gt;</code>)</li>
+        <li>Tags sind wie <strong>Klammern</strong> – immer in der richtigen Reihenfolge schließen!</li>
+        <li><strong>Einrückungen</strong> (Leerzeichen) sind nicht Pflicht, machen den Code aber lesbarer</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <h4>⚠️ Häufige Fehler:</h4>
+      <ul>
+        <li>❌ <code>&lt;p&gt;Text&lt;p&gt;</code> – <strong>Falsch!</strong> Ende-Tag fehlt <code>/</code></li>
+        <li>✅ <code>&lt;p&gt;Text&lt;/p&gt;</code> – <strong>Richtig!</strong></li>
+        <li>❌ <code>&lt;H1&gt;...&lt;/h1&gt;</code> – Groß-/Kleinschreibung muss gleich sein</li>
+        <li>✅ <code>&lt;h1&gt;...&lt;/h1&gt;</code> – Besser alles klein schreiben</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Mission 3: Text & Überschriften -->
+  <div id="content" class="guide-section">
+    <h3>✍️ Mission 3: Text & Überschriften hinzufügen</h3>
+    
+    <p>Erweitere deine Webseite mit mehr Inhalt! 📝</p>
+
+    <div class="info-box">
+      <h4>📋 Wichtige HTML-Tags:</h4>
+      
+      <div class="code-box">
+        <pre>&lt;h1&gt;Große Überschrift&lt;/h1&gt;        <span class="code-comment">← Größte (nur 1x pro Seite!)</span>
+&lt;h2&gt;Mittlere Überschrift&lt;/h2&gt;     <span class="code-comment">← Zweitgrößte</span>
+&lt;h3&gt;Kleine Überschrift&lt;/h3&gt;       <span class="code-comment">← Noch kleiner</span>
+
+&lt;p&gt;Normaler Text (Absatz)&lt;/p&gt;     <span class="code-comment">← Für Fließtext</span>
+
+&lt;strong&gt;Fetter Text&lt;/strong&gt;       <span class="code-comment">← Hervorhebung</span>
+&lt;em&gt;Kursiver Text&lt;/em&gt;            <span class="code-comment">← Betonung</span>
+
+&lt;br&gt;                               <span class="code-comment">← Zeilenumbruch (kein End-Tag!)</span>
+
+&lt;ul&gt;                               <span class="code-comment">← Liste mit Punkten</span>
+  &lt;li&gt;Punkt 1&lt;/li&gt;
+  &lt;li&gt;Punkt 2&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4>🎯 Übung: Erstelle eine "Über mich" Seite</h4>
+      <p>Ändere deine <code>index.html</code> so ab:</p>
+      
+      <div class="code-box">
+        <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Über mich&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hallo, ich bin Philipp!&lt;/h1&gt;
+  
+  &lt;h2&gt;Meine Hobbys:&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;🎮 Rocket League spielen&lt;/li&gt;
+    &lt;li&gt;🏎️ Hot Wheels sammeln&lt;/li&gt;
+    &lt;li&gt;💻 Programmieren lernen&lt;/li&gt;
+  &lt;/ul&gt;
+  
+  &lt;h2&gt;Über mich:&lt;/h2&gt;
+  &lt;p&gt;
+    Ich habe gerade meinen &lt;strong&gt;ersten eigenen PC&lt;/strong&gt; bekommen 
+    und lerne jetzt, was man damit alles machen kann!
+  &lt;/p&gt;
+  
+  &lt;p&gt;Das macht am meisten Spaß: &lt;em&gt;Neue Dinge ausprobieren!&lt;/em&gt; 🚀&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+      </div>
+      
+      <p>
+        <strong>Speichern</strong> → <strong>Browser neu laden</strong> (F5) → Schau dir das Ergebnis an! 🎉
+      </p>
+    </div>
+  </div>
+
+  <!-- Mission 4: CSS hinzufügen -->
+  <div id="css" class="guide-section">
+    <h3>🎨 Mission 4: CSS hinzufügen (Design!)</h3>
+    
+    <p>Jetzt wird's bunt! Lass uns die Seite schöner machen! 🌈</p>
+
+    <div class="info-box">
+      <h4>🖌️ Was ist CSS?</h4>
+      <p>
+        <strong>CSS</strong> (Cascading Style Sheets) bestimmt das <strong>Aussehen</strong>:<br>
+        Farben, Schriftarten, Abstände, Layout, Animationen... alles!
+      </p>
+    </div>
+
+    <div class="info-box">
+      <h4><span class="step-number">1</span> CSS im HTML einfügen</h4>
+      <p>Füge das zwischen <code>&lt;head&gt;</code> und <code>&lt;/head&gt;</code> ein:</p>
+      
+      <div class="code-box">
+        <pre>&lt;head&gt;
+  &lt;title&gt;Über mich&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      background-color: #1a1a1a;  /* Dunkler Hintergrund */
+      color: white;                /* Weiße Schrift */
+      font-family: Arial;          /* Schriftart */
+      padding: 20px;               /* Abstand zum Rand */
+    }
+    
+    h1 {
+      color: #00D9FF;              /* Cyan-blaue Überschrift */
+      font-size: 36px;             /* Größe */
+    }
+    
+    h2 {
+      color: #FF6B35;              /* Orange */
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</pre>
+      </div>
+      
+      <p><strong>Speichern → F5 drücken</strong> → Wow! 🤩</p>
+    </div>
+
+    <div class="warning-box">
+      <h4>🔍 CSS-Syntax erklärt:</h4>
+      <div class="code-box">
+        <pre>h1 {                    <span class="code-comment">← "Selector" (was soll gestylt werden?)</span>
+  color: red;           <span class="code-comment">← Eigenschaft: Wert;</span>
+  font-size: 24px;      <span class="code-comment">← Jede Zeile endet mit ;</span>
+}                       <span class="code-comment">← Geschweifte Klammern schließen</span></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mission 5: Farben & Layout -->
+  <div id="styling" class="guide-section">
+    <h3>🌈 Mission 5: Farben & Layout gestalten</h3>
+    
+    <p>Lass uns die Seite richtig cool machen! 😎</p>
+
+    <div class="info-box">
+      <h4>🎨 Farben in CSS:</h4>
+      
+      <div class="code-box">
+        <pre>/* 3 Möglichkeiten, Farben zu schreiben: */
+
+color: red;                  <span class="code-comment">← Englische Namen</span>
+color: #FF0000;              <span class="code-comment">← Hex-Code (am häufigsten!)</span>
+color: rgb(255, 0, 0);       <span class="code-comment">← RGB-Werte</span></pre>
+      </div>
+      
+      <p><strong>Tipp:</strong> Google einfach "color picker" für einen Farbwähler! 🎨</p>
+    </div>
+
+    <div class="info-box">
+      <h4>📐 Wichtige CSS-Eigenschaften:</h4>
+      
+      <div class="code-box">
+        <pre>/* FARBEN */
+color: #00D9FF;              <span class="code-comment">← Textfarbe</span>
+background-color: #1a1a1a;   <span class="code-comment">← Hintergrundfarbe</span>
+
+/* SCHRIFT */
+font-size: 20px;             <span class="code-comment">← Schriftgröße</span>
+font-family: Arial;          <span class="code-comment">← Schriftart</span>
+font-weight: bold;           <span class="code-comment">← Fett</span>
+text-align: center;          <span class="code-comment">← Zentrieren</span>
+
+/* ABSTÄNDE */
+margin: 20px;                <span class="code-comment">← Außenabstand</span>
+padding: 10px;               <span class="code-comment">← Innenabstand</span>
+
+/* RAHMEN */
+border: 2px solid red;       <span class="code-comment">← Rahmen (Dicke, Stil, Farbe)</span>
+border-radius: 10px;         <span class="code-comment">← Abgerundete Ecken</span></pre>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4>🎯 Übung: Gestalte deine Seite!</h4>
+      <p>Probiere diese Styles aus:</p>
+      
+      <div class="code-box">
+        <pre>&lt;style&gt;
+  body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #FFD700;
+    font-size: 48px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+  
+  h2 {
+    color: #00D9FF;
+    border-bottom: 3px solid #00D9FF;
+    padding-bottom: 10px;
+  }
+  
+  ul {
+    background-color: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 15px;
+    list-style: none;
+  }
+  
+  li {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  
+  p {
+    background-color: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+&lt;/style&gt;</pre>
+      </div>
+      
+      <p><strong>Experimentiere!</strong> Ändere Farben, Größen, Abstände – mach es zu DEINER Seite! 🚀</p>
+    </div>
+  </div>
+
+  <!-- Mission 6: Eigene Seite -->
+  <div id="project" class="guide-section">
+    <h3>🏆 Mission 6: Erstelle deine eigene Projekt-Seite!</h3>
+    
+    <p>Zeit für dein <strong>erstes eigenes Projekt</strong>! 🎉</p>
+
+    <div class="info-box">
+      <h4>💡 Projekt-Ideen:</h4>
+      <ul>
+        <li>🎮 <strong>Gaming-Profil</strong> – Deine Lieblingsspiele & Stats</li>
+        <li>🏎️ <strong>Hot Wheels Galerie</strong> – Zeig deine Sammlung!</li>
+        <li>📝 <strong>Tagebuch/Blog</strong> – Schreib über deinen Tag</li>
+        <li>🎨 <strong>Kreativ-Portfolio</strong> – Deine Kunstwerke (später mit Bildern!)</li>
+        <li>🚀 <strong>Meine Ziele 2025</strong> – Was du erreichen willst</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h4><span class="step-number">1</span> Neue Datei erstellen</h4>
+      <ul>
+        <li>Öffne <strong>Editor</strong></li>
+        <li>Erstelle eine <strong>neue leere Datei</strong></li>
+        <li>Speichere sie als <code>projekt.html</code></li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h4><span class="step-number">2</span> Grund-Gerüst einfügen</h4>
+      
+      <div class="code-box">
+        <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Mein Projekt&lt;/title&gt;
+  &lt;style&gt;
+    /* Hier kommt dein CSS rein! */
+    body {
+      background-color: #1a1a1a;
+      color: white;
+      font-family: Arial;
+      padding: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Mein erstes Projekt!&lt;/h1&gt;
+  
+  &lt;!-- Hier kommt dein Inhalt rein! --&gt;
+  
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4><span class="step-number">3</span> Inhalt hinzufügen</h4>
+      <p>Füge zwischen <code>&lt;body&gt;</code> und <code>&lt;/body&gt;</code> hinzu:</p>
+      <ul>
+        <li>✅ Mindestens <strong>3 Überschriften</strong> (h1, h2, h3)</li>
+        <li>✅ Mindestens <strong>2 Absätze</strong> (p)</li>
+        <li>✅ Eine <strong>Liste</strong> (ul + li)</li>
+        <li>✅ <strong>Fetten</strong> und <strong>kursiven</strong> Text</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h4><span class="step-number">4</span> Design anpassen</h4>
+      <p>Füge im <code>&lt;style&gt;</code>-Bereich CSS hinzu für:</p>
+      <ul>
+        <li>🎨 <strong>Hintergrundfarbe</strong> oder Farbverlauf</li>
+        <li>✨ <strong>Überschriften-Farben</strong></li>
+        <li>📐 <strong>Abstände</strong> (margin, padding)</li>
+        <li>🖼️ <strong>Rahmen</strong> und <strong>abgerundete Ecken</strong></li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <h4>🎓 Herausforderungen (für Fortgeschrittene):</h4>
+      <ul>
+        <li>🔗 Füge <strong>Links</strong> hinzu: <code>&lt;a href="..."&gt;Text&lt;/a&gt;</code></li>
+        <li>🎭 Erstelle <strong>mehrere Seiten</strong> und verlinke sie!</li>
+        <li>🌐 Lerne <strong>CSS Grid</strong> oder <strong>Flexbox</strong> (YouTube!)</li>
+        <li>🎬 Füge ein <strong>YouTube-Video</strong> ein</li>
+      </ul>
+    </div>
+
+    <div class="video-link">
+      <h4>📺 Weiterführende Tutorials:</h4>
+      <p>
+        Schau dir diese an, wenn du mehr lernen willst:<br>
+        <a href="https://www.youtube.com/results?search_query=html+css+tutorial+deutsch+anfänger" target="_blank">
+          🔗 YouTube: HTML & CSS für Anfänger (Deutsch)
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Abschluss -->
+  <div class="guide-section">
+    <h3>🎉 Glückwunsch – Du bist jetzt Programmierer! 💻</h3>
+    
+    <p>
+      Wenn du alle <strong>6 Missionen</strong> abgeschlossen hast, kannst du bereits:<br>
+      ✅ HTML-Dateien erstellen<br>
+      ✅ Webseiten strukturieren<br>
+      ✅ Mit CSS gestalten<br>
+      ✅ Eigene Projekte bauen!
+    </p>
+
+    <div class="info-box">
+      <h4>🚀 Was kommt als Nächstes?</h4>
+      <ul>
+        <li>📚 <strong>JavaScript lernen</strong> – Mach deine Seiten interaktiv!</li>
+        <li>🎨 <strong>Mehr CSS-Tricks</strong> – Animationen, Hover-Effekte, etc.</li>
+        <li>🌐 <strong>Webseite online stellen</strong> (GitHub Pages – kostenlos!)</li>
+        <li>🎮 <strong>HTML-Spiele programmieren</strong> – ja, das geht! 🕹️</li>
+        <li>💼 <strong>Portfolio-Seite</strong> – Zeig der Welt, was du kannst!</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <h4>💡 Wichtigste Regel beim Programmieren:</h4>
+      <p style="font-size: 20px; text-align: center; margin: 20px 0;">
+        <strong>"Einfach ausprobieren!"</strong> 🚀
+      </p>
+      <p>
+        Kein Programmierer weiß alles auswendig. Alle <strong>googlen ständig</strong>!<br>
+        Fehler machen ist <strong>normal</strong> – so lernt man am besten! 💪
+      </p>
+    </div>
+
+    <div class="info-box">
+      <h4>📖 Nützliche Websites:</h4>
+      <ul>
+        <li><strong>W3Schools.com</strong> – HTML/CSS Referenz (Englisch)</li>
+        <li><strong>SelfHTML.org</strong> – Deutsche Dokumentation</li>
+        <li><strong>CodePen.io</strong> – Code-Beispiele & Inspiration</li>
+        <li><strong>YouTube</strong> – Unendlich viele Tutorials!</li>
+      </ul>
+    </div>
+
+    <div style="text-align: center; margin: 40px 0;">
+      <p style="font-size: 24px; color: #00D9FF;">
+        <strong>Viel Erfolg beim Programmieren! 🎓💻✨</strong>
+      </p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="global-progress.js"></script>
+  <script src="page-tracker.js"></script>
+
+</body>
+</html>
