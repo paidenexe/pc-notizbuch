@@ -6,6 +6,7 @@ class PageTracker {
     this.pageName = pageName;
     this.data = this.loadData();
     this.initCheckboxes();
+    this.initScrollLabels();
   }
 
   loadData() {
@@ -14,32 +15,53 @@ class PageTracker {
 
   saveData() {
     localStorage.setItem(this.pageName, JSON.stringify(this.data));
-    this.updateGlobalProgress();
-  }
-
-  initCheckboxes() {
-    document.querySelectorAll('.checkpoint-box').forEach(checkbox => {
-      const id = checkbox.dataset.checkpoint;
-      
-      // Lade gespeicherten Status
-      checkbox.checked = this.data[id] || false;
-      
-      // Event Listener
-      checkbox.addEventListener('change', () => {
-        this.data[id] = checkbox.checked;
-        this.saveData();
-        console.log(`✅ ${this.pageName} - ${id}: ${checkbox.checked}`);
-      });
-    });
     
-    console.log(`📄 ${this.pageName} geladen:`, this.data);
-  }
-
-  updateGlobalProgress() {
-    // Ruft die Funktion aus global-progress.js auf
+    // Trigger globale Progress-Aktualisierung
     if (typeof updateGlobalProgress === 'function') {
       updateGlobalProgress();
     }
+  }
+
+  initCheckboxes() {
+    document.querySelectorAll('.checkpoint-checkbox').forEach(checkbox => {
+      const key = checkbox.dataset.checkpoint;
+      
+      // Lade gespeicherten Status
+      if (this.data[key]) {
+        checkbox.checked = true;
+        checkbox.closest('.checkpoint-item')?.classList.add('completed');
+      }
+
+      // Event Listener
+      checkbox.addEventListener('change', () => {
+        this.data[key] = checkbox.checked;
+        this.saveData();
+        
+        // Styling aktualisieren
+        const item = checkbox.closest('.checkpoint-item');
+        if (checkbox.checked) {
+          item?.classList.add('completed');
+        } else {
+          item?.classList.remove('completed');
+        }
+      });
+    });
+  }
+
+  initScrollLabels() {
+    document.querySelectorAll('[data-scroll]').forEach(label => {
+      label.style.cursor = 'pointer';
+      label.addEventListener('click', () => {
+        const targetId = label.dataset.scroll;
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
   }
 }
 
@@ -48,5 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const pageName = document.body.dataset.page;
   if (pageName) {
     new PageTracker(pageName);
+    console.log(`📄 PageTracker initialisiert für: ${pageName}`);
   }
 });
