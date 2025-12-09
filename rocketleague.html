@@ -6,7 +6,6 @@
   <title>Rocket League Guide | Philipp's PC-Abenteuer</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <script src="script.js"></script>
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Zusätzliche Styles für Rocket League */
@@ -228,7 +227,7 @@
     }
   </style>
 </head>
-<body>
+<body data-page="rocketleague">
 
   <header>
     <h1>🚗⚽ Rocket League Guide</h1>
@@ -279,44 +278,45 @@
     </div>
 
     <!-- Checkpoint System -->
-    <div class="checkpoint-container">
-      <h2 class="checkpoint-title">🎯 Deine Rocket League Missionen</h2>
-      <p style="text-align: center; margin-bottom: 20px;">
-        Hake die Aufgaben ab, wenn du sie geschafft hast! 🏆
-      </p>
+<div class="checkpoint-container">
+  <h2 class="checkpoint-title">🎯 Deine Rocket League Missionen</h2>
+  <p style="text-align: center; margin-bottom: 20px;">
+    Hake die Aufgaben ab, wenn du sie geschafft hast! 🏆
+  </p>
 
-      <div class="checkpoint-grid">
-        <div class="checkpoint-item">
-          <input type="checkbox" class="checkpoint-checkbox" id="check-tutorial" onchange="updateProgress()" onclick="event.stopPropagation()">
-          <label class="checkpoint-label" onclick="scrollToSection('tutorial')">Erstes Spiel & Tutorial</label>
-        </div>
-
-        <div class="checkpoint-item">
-          <input type="checkbox" class="checkpoint-checkbox" id="check-customize" onchange="updateProgress()" onclick="event.stopPropagation()">
-          <label class="checkpoint-label" onclick="scrollToSection('customize')">Auto individualisieren</label>
-        </div>
-
-        <div class="checkpoint-item">
-          <input type="checkbox" class="checkpoint-checkbox" id="check-firstgoal" onchange="updateProgress()" onclick="event.stopPropagation()">
-          <label class="checkpoint-label" onclick="scrollToSection('firstgoal')">Erstes Tor schießen</label>
-        </div>
-
-        <div class="checkpoint-item">
-          <input type="checkbox" class="checkpoint-checkbox" id="check-aerials" onchange="updateProgress()" onclick="event.stopPropagation()">
-          <label class="checkpoint-label" onclick="scrollToSection('aerials')">10 Aerial Hits</label>
-        </div>
-
-        <div class="checkpoint-item">
-          <input type="checkbox" class="checkpoint-checkbox" id="check-win" onchange="updateProgress()" onclick="event.stopPropagation()">
-          <label class="checkpoint-label" onclick="scrollToSection('win')">Ein Match gewinnen</label>
-        </div>
-
-        <div class="checkpoint-item">
-          <input type="checkbox" class="checkpoint-checkbox" id="check-training" onchange="updateProgress()" onclick="event.stopPropagation()">
-          <label class="checkpoint-label" onclick="scrollToSection('training')">Basis-Trainings abschließen</label>
-        </div>
-      </div>
+  <div class="checkpoint-grid">
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="tutorial">
+      <label class="checkpoint-label" data-scroll="tutorial">Erstes Spiel & Tutorial</label>
     </div>
+
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="customize">
+      <label class="checkpoint-label" data-scroll="customize">Auto individualisieren</label>
+    </div>
+
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="firstgoal">
+      <label class="checkpoint-label" data-scroll="firstgoal">Erstes Tor schießen</label>
+    </div>
+
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="aerials">
+      <label class="checkpoint-label" data-scroll="aerials">10 Aerial Hits</label>
+    </div>
+
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="win">
+      <label class="checkpoint-label" data-scroll="win">Ein Match gewinnen</label>
+    </div>
+
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="training">
+      <label class="checkpoint-label" data-scroll="training">Basis-Trainings abschließen</label>
+    </div>
+  </div>
+</div>
+
 
     <!-- Mission 1: Tutorial -->
     <div id="tutorial" class="guide-section">
@@ -881,6 +881,9 @@
     ">Achievement Unlocked: Erster eigener PC • @Mosch • 2025</p>
   </footer>
 
+
+<!-- Auskommentiert da die Funktion verlagert wurde.-->
+<!-- 
 <script>
     // ========== GLOBALE FUNKTION (inline) ==========
     function updateGlobalProgress() {
@@ -954,9 +957,10 @@
       updateProgress();
     });
 </script>
+-->
 
-
-
+<script src="global-progress.js"></script>
+<script src="page-tracker.js"></script>
 
 </body>
 </html>
