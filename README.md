@@ -58,3 +58,29 @@ Das **PC-Notizbuch** ist eine Webseite, die Kindern hilft:
 ---
 
 ## 📁 Projektstruktur
+
+PC-Notizbuch/
+│
+├── index.html              # Startseite mit Übersicht
+├── pctipps.html           # PC-Grundlagen
+├── rocketleague.html      # Rocket League Tipps
+├── steinlabor.html        # Steine & Mineralien
+├── minecraft.html         # Minecraft Guide
+├── programmierlabor.html  # Programmier-Tutorial
+├── tagebuch.html          # Tagebuch-Funktion
+│
+├── styles.css             # Globales Styling
+├── global-progress.js     # Fortschrittsberechnung
+├── page-tracker.js        # Checkbox-Verwaltung
+│
+└── README.md              # Diese Datei
+
+
+
+---
+
+## 🚀 Installation
+
+### Voraussetzungen
+- Einen modernen Webbrowser (Chrome, Firefox, Edge, Safari)
+- Keine Server-Installation nötig!
