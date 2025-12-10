@@ -1,160 +1,380 @@
-/* ===== GLOBAL ===== */
+/*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                          PC-NOTIZBUCH STYLES                              ║
+║                    Zentrale CSS-Datei für alle Seiten                     ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+INHALT:
+1. CSS-Variablen (Farben, Schriften)
+2. Globale Styles (Body, Grundelemente)
+3. Navigation
+4. Fortschrittsbalken
+5. Karten-System
+6. Buttons
+7. Checkboxen
+8. Spezielle Komponenten
+9. Responsive Design
+
+*/
+
+/* ============================================================================
+   1. CSS-VARIABLEN - Zentrale Farbdefinitionen
+   ============================================================================ */
+
 :root {
-  --bg-color: #1A1A1A;
-  --text-color: #FFFFFF;
-  --accent-color: #FF8C00;
-  --button-bg: #2A2A2A;
+    /* Hauptfarben */
+    --orange: #ff8c00;
+    --orange-hover: #ff7700;
+    --orange-light: #ffa500;
+    
+    /* Hintergründe */
+    --dark-bg: #1a1a1a;
+    --card-bg: #2a2a2a;
+    --card-hover: #333333;
+    
+    /* Text */
+    --text-light: #f5f5dc;
+    --text-white: #ffffff;
+    
+    /* Borders & Schatten */
+    --border-orange: 2px solid var(--orange);
+    --shadow-orange: 0 0 20px rgba(255, 140, 0, 0.3);
+    --shadow-hover: 0 0 30px rgba(255, 140, 0, 0.5);
+    
+    /* Abstände */
+    --spacing-small: 10px;
+    --spacing-medium: 20px;
+    --spacing-large: 30px;
+    
+    /* Border-Radius */
+    --radius-small: 8px;
+    --radius-medium: 12px;
+    --radius-large: 15px;
+}
+
+/* ============================================================================
+   2. GLOBALE STYLES
+   ============================================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  margin: 0;
-  padding: 20px;
-  line-height: 1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+    padding: var(--spacing-medium);
+    min-height: 100vh;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 20px;
+/* ============================================================================
+   3. NAVIGATION
+   ============================================================================ */
+
+nav {
+    background: var(--card-bg);
+    padding: var(--spacing-medium);
+    border-radius: var(--radius-medium);
+    margin-bottom: var(--spacing-large);
+    border: var(--border-orange);
+    box-shadow: var(--shadow-orange);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-medium);
 }
 
-h1 {
-  color: var(--accent-color);
-  font-weight: 700;
+nav h1 {
+    color: var(--orange);
+    font-size: 1.8em;
+    text-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
 }
 
-/* ===== FORTschrittsbalken ===== */
-.fortschritt {
-  width: 100%;
-  margin: 0 auto 20px;
-  padding: 0;
-  text-align: center;
+.nav-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 10px 20px;
+    background: var(--card-bg);
+    border: 2px solid var(--orange);
+    border-radius: var(--radius-small);
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: var(--orange);
+    color: var(--dark-bg);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.nav-links a.active {
+    background: var(--orange);
+    color: var(--dark-bg);
+}
+
+/* ============================================================================
+   4. FORTSCHRITTSBALKEN
+   ============================================================================ */
+
+.progress-container {
+    background: var(--card-bg);
+    padding: var(--spacing-medium);
+    border-radius: var(--radius-medium);
+    margin-bottom: var(--spacing-large);
+    border: var(--border-orange);
+    box-shadow: var(--shadow-orange);
 }
 
 .progress-bar {
-  height: 20px;
-  background-color: #3A3A3A;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 10px auto 0;
-  width: 100%;
-  max-width: 500px;
+    background: #333;
+    height: 30px;
+    border-radius: var(--radius-large);
+    overflow: hidden;
+    position: relative;
+    margin-top: var(--spacing-small);
 }
 
-#progress-fill {
-  height: 100%;
-  background-color: var(--accent-color);
-  transition: width 0.3s;
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--orange), var(--orange-light));
+    transition: width 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-white);
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
 }
 
-/* ===== MENÜ (bündig & responsive) ===== */
-.menu-container {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto 30px;
-  padding: 0 10px;
+/* ============================================================================
+   5. KARTEN-SYSTEM
+   ============================================================================ */
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-medium);
+    margin-bottom: var(--spacing-large);
 }
 
-.menu {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  width: 100%;
+.card {
+    background: var(--card-bg);
+    padding: var(--spacing-medium);
+    border-radius: var(--radius-medium);
+    border: var(--border-orange);
+    box-shadow: var(--shadow-orange);
+    transition: all 0.3s ease;
 }
 
-.menu-button {
-  background-color: var(--button-bg);
-  color: var(--text-color);
-  border: none;
-  padding: 20px 10px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  transition: all 0.2s;
-  text-decoration: none;
+.card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-5px);
+    background: var(--card-hover);
 }
 
-.menu-button:hover {
-  background-color: var(--accent-color);
-  transform: translateY(-3px);
+.card h2 {
+    color: var(--orange);
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
 }
 
-.menu-button span {
-  font-size: 28px;
-  margin-bottom: 8px;
+.card h3 {
+    color: var(--orange-light);
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-/* ===== INHALTSBEREICHE ===== */
-.willkommen, .anleitung, .spoiler {
-  background-color: var(--button-bg);
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+.card p, .card li {
+    line-height: 1.8;
+    margin-bottom: var(--spacing-small);
 }
 
-.willkommen {
-  border-left: 4px solid var(--accent-color);
+.card ul {
+    list-style: none;
+    padding-left: 0;
 }
 
-h2 {
-  color: var(--accent-color);
-  margin-top: 0;
+.card li:before {
+    content: "▸ ";
+    color: var(--orange);
+    font-weight: bold;
 }
 
-ul {
-  padding-left: 20px;
+/* ============================================================================
+   6. BUTTONS
+   ============================================================================ */
+
+button, .btn {
+    background: var(--orange);
+    color: var(--dark-bg);
+    border: none;
+    padding: 12px 25px;
+    border-radius: var(--radius-small);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-orange);
 }
 
-kbd {
-  background-color: #333;
-  color: #fff;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: monospace;
+button:hover, .btn:hover {
+    background: var(--orange-hover);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
 }
 
-/* ===== RESPONSIVE ===== */
+button:active, .btn:active {
+    transform: translateY(0);
+}
+
+/* ============================================================================
+   7. CHECKBOXEN-SYSTEM
+   ============================================================================ */
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-small);
+    padding: var(--spacing-small);
+    margin-bottom: var(--spacing-small);
+    background: rgba(255, 140, 0, 0.1);
+    border-radius: var(--radius-small);
+    transition: all 0.3s ease;
+}
+
+.task-item:hover {
+    background: rgba(255, 140, 0, 0.2);
+}
+
+.task-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--orange);
+}
+
+.task-item.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+/* ============================================================================
+   8. SPEZIELLE KOMPONENTEN
+   ============================================================================ */
+
+/* Code-Blöcke */
+code {
+    background: rgba(255, 140, 0, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--orange-light);
+    font-family: 'Courier New', monospace;
+}
+
+pre code {
+    display: block;
+    padding: 15px;
+    overflow-x: auto;
+}
+
+/* Tabellen */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 140, 0, 0.2);
+}
+
+table th {
+    background: rgba(255, 140, 0, 0.1);
+    color: var(--orange);
+    font-weight: bold;
+}
+
+table tr:hover {
+    background: rgba(255, 140, 0, 0.05);
+}
+
+/* Input-Felder */
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    background: var(--card-bg);
+    border: 2px solid var(--orange);
+    border-radius: var(--radius-small);
+    color: var(--text-light);
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: var(--shadow-orange);
+    border-color: var(--orange-light);
+}
+
+/* ============================================================================
+   9. RESPONSIVE DESIGN
+   ============================================================================ */
+
 @media (max-width: 768px) {
-  .menu {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    body {
+        padding: var(--spacing-small);
+    }
+    
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-links {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+    
+    nav h1 {
+        font-size: 1.5em;
+    }
 }
 
 @media (max-width: 480px) {
-  .menu {
-    grid-template-columns: 1fr;
-  }
-}
-
-.back-button {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 16px;
-  z-index: 1000;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-.back-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    .nav-links a {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    
+    button, .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
 }
