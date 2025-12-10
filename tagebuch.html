@@ -5,346 +5,352 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📔 Tagebuch - Passwortgeschützt!</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        :root {
-            --orange: #ff8c00;
-            --dark-bg: #1a1a1a;
-            --card-bg: #2a2a2a;
-            --border-orange: #ffa500;
-        }
+<style>
+    :root {
+        --orange: #ff8c00;
+        --dark-bg: #1a1a1a;
+        --card-bg: #2a2a2a;
+        --border-orange: #ffa500;
+    }
 
-        body {
-            background: var(--dark-bg);
-            color: #f5f5dc;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    body {
+        background: var(--dark-bg);
+        color: #f5f5dc;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+    }
 
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--orange);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
-            transition: all 0.3s;
-            z-index: 1000;
-        }
+    .back-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: var(--orange);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+        transition: all 0.3s;
+        z-index: 1000;
+    }
 
-        .back-button:hover {
-            background: #ff7700;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
-        }
+    .back-button:hover {
+        background: #ff7700;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
+    }
 
-        /* PASSWORT-OVERLAY */
-        #password-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
+    /* PASSWORT-OVERLAY */
+    #password-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .password-box {
+        background: var(--card-bg);
+        padding: 40px;
+        border-radius: 20px;
+        border: 3px solid var(--orange);
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(255, 140, 0, 0.5);
+        animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .password-box h2 {
+        color: var(--orange);
+        margin-bottom: 20px;
+        font-size: 2em;
+    }
+
+    .password-box input {
+        width: 250px;
+        padding: 15px;
+        font-size: 1.2em;
+        border: 2px solid var(--orange);
+        border-radius: 10px;
+        background: #1a1a1a;
+        color: white;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .password-box button {
+        background: var(--orange);
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .password-box button:hover {
+        background: #ff7700;
+        transform: scale(1.05);
+    }
+
+    .error-message {
+        color: #ff4444;
+        margin-top: 15px;
+        font-weight: bold;
+        display: none;
+    }
+
+    /* HAUPTINHALT (versteckt bis Passwort korrekt) */
+    #diary-content {
+        display: none;
+    }
+
+    /* HERO - OHNE HINTERGRUND */
+    .hero {
+        text-align: center;
+        padding: 80px 20px 40px;
+        margin-bottom: 40px;
+    }
+
+    .hero h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+        color: var(--orange);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+        font-size: 1.2em;
+        color: #ccc;
+    }
+
+    /* NEUER EINTRAG */
+    .new-entry-section {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 15px;
+        border-left: 5px solid var(--orange);
+        margin-bottom: 40px;
+    }
+
+    .new-entry-section h2 {
+        color: var(--orange);
+        margin-bottom: 20px;
+    }
+
+    .entry-form textarea {
+        width: calc(100% - 30px); /* ANGEPASST: Padding berücksichtigt */
+        min-height: 150px;
+        padding: 15px;
+        border: 2px solid var(--orange);
+        border-radius: 10px;
+        background: #1a1a1a;
+        color: white;
+        font-size: 1.1em;
+        font-family: inherit;
+        resize: vertical;
+        box-sizing: border-box; /* WICHTIG: Padding wird nicht zur Breite addiert */
+    }
+
+    .entry-form button {
+        background: var(--orange);
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: all 0.3s;
+    }
+
+    .entry-form button:hover {
+        background: #ff7700;
+        transform: translateY(-2px);
+    }
+
+    /* EINTRÄGE */
+    .entries-section h2 {
+        color: var(--orange);
+        margin-bottom: 25px;
+        font-size: 2em;
+    }
+
+    .entry-card {
+        background: var(--card-bg);
+        padding: 25px;
+        margin: 20px 0;
+        border-radius: 15px;
+        border-left: 5px solid var(--orange);
+        position: relative;
+        animation: slideIn 0.3s;
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .entry-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 140, 0, 0.3);
+    }
+
+    .entry-date {
+        color: var(--orange);
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    .entry-time {
+        color: #999;
+        font-size: 0.9em;
+    }
+
+    .entry-text {
+        line-height: 1.8;
+        font-size: 1.1em;
+        margin: 15px 0;
+        white-space: pre-wrap;
+    }
+
+    .delete-btn {
+        background: #ff4444;
+        color: white;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s;
+    }
+
+    .delete-btn:hover {
+        background: #cc0000;
+        transform: scale(1.05);
+    }
+
+    .no-entries {
+        text-align: center;
+        padding: 60px 20px;
+        color: #999;
+        font-size: 1.2em;
+    }
+
+    .no-entries span {
+        font-size: 3em;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    /* LÖSCH-MODAL */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background: var(--card-bg);
+        padding: 40px;
+        border-radius: 20px;
+        border: 3px solid #ff4444;
+        text-align: center;
+        max-width: 400px;
+    }
+
+    .modal-content h3 {
+        color: #ff4444;
+        margin-bottom: 20px;
+        font-size: 1.5em;
+    }
+
+    .modal-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 25px;
+    }
+
+    .modal-buttons button {
+        padding: 12px 30px;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 1em;
+        transition: all 0.3s;
+    }
+
+    .confirm-delete {
+        background: #ff4444;
+        color: white;
+    }
+
+    .confirm-delete:hover {
+        background: #cc0000;
+    }
+
+    .cancel-delete {
+        background: #666;
+        color: white;
+    }
+
+    .cancel-delete:hover {
+        background: #888;
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2em;
         }
 
         .password-box {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            border: 3px solid var(--orange);
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(255, 140, 0, 0.5);
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .password-box h2 {
-            color: var(--orange);
-            margin-bottom: 20px;
-            font-size: 2em;
+            padding: 30px 20px;
+            margin: 20px;
         }
 
         .password-box input {
-            width: 250px;
-            padding: 15px;
-            font-size: 1.2em;
-            border: 2px solid var(--orange);
-            border-radius: 10px;
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            margin: 20px 0;
+            width: 200px;
         }
 
-        .password-box button {
-            background: var(--orange);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
+        .back-button {
+            top: 10px;
+            left: 10px;
+            padding: 10px 20px;
         }
+    }
+</style>
 
-        .password-box button:hover {
-            background: #ff7700;
-            transform: scale(1.05);
-        }
-
-        .error-message {
-            color: #ff4444;
-            margin-top: 15px;
-            font-weight: bold;
-            display: none;
-        }
-
-        /* HAUPTINHALT (versteckt bis Passwort korrekt) */
-        #diary-content {
-            display: none;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 60px 20px 40px;
-            background: linear-gradient(135deg, var(--orange) 0%, #ff7700 100%);
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.5);
-        }
-
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        /* NEUER EINTRAG */
-        .new-entry-section {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 5px solid var(--orange);
-            margin-bottom: 40px;
-        }
-
-        .new-entry-section h2 {
-            color: var(--orange);
-            margin-bottom: 20px;
-        }
-
-        .entry-form textarea {
-            width: 100%;
-            min-height: 150px;
-            padding: 15px;
-            border: 2px solid var(--orange);
-            border-radius: 10px;
-            background: #1a1a1a;
-            color: white;
-            font-size: 1.1em;
-            font-family: inherit;
-            resize: vertical;
-        }
-
-        .entry-form button {
-            background: var(--orange);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: all 0.3s;
-        }
-
-        .entry-form button:hover {
-            background: #ff7700;
-            transform: translateY(-2px);
-        }
-
-        /* EINTRÄGE */
-        .entries-section h2 {
-            color: var(--orange);
-            margin-bottom: 25px;
-            font-size: 2em;
-        }
-
-        .entry-card {
-            background: var(--card-bg);
-            padding: 25px;
-            margin: 20px 0;
-            border-radius: 15px;
-            border-left: 5px solid var(--orange);
-            position: relative;
-            animation: slideIn 0.3s;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 140, 0, 0.3);
-        }
-
-        .entry-date {
-            color: var(--orange);
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-
-        .entry-time {
-            color: #999;
-            font-size: 0.9em;
-        }
-
-        .entry-text {
-            line-height: 1.8;
-            font-size: 1.1em;
-            margin: 15px 0;
-            white-space: pre-wrap;
-        }
-
-        .delete-btn {
-            background: #ff4444;
-            color: white;
-            padding: 8px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .delete-btn:hover {
-            background: #cc0000;
-            transform: scale(1.05);
-        }
-
-        .no-entries {
-            text-align: center;
-            padding: 60px 20px;
-            color: #999;
-            font-size: 1.2em;
-        }
-
-        .no-entries span {
-            font-size: 3em;
-            display: block;
-            margin-bottom: 20px;
-        }
-
-        /* LÖSCH-MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            border: 3px solid #ff4444;
-            text-align: center;
-            max-width: 400px;
-        }
-
-        .modal-content h3 {
-            color: #ff4444;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 25px;
-        }
-
-        .modal-buttons button {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1em;
-            transition: all 0.3s;
-        }
-
-        .confirm-delete {
-            background: #ff4444;
-            color: white;
-        }
-
-        .confirm-delete:hover {
-            background: #cc0000;
-        }
-
-        .cancel-delete {
-            background: #666;
-            color: white;
-        }
-
-        .cancel-delete:hover {
-            background: #888;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2em;
-            }
-
-            .password-box {
-                padding: 30px 20px;
-                margin: 20px;
-            }
-
-            .password-box input {
-                width: 200px;
-            }
-
-            .back-button {
-                top: 10px;
-                left: 10px;
-                padding: 10px 20px;
-            }
-        }
-    </style>
 </head>
 <body>
 
