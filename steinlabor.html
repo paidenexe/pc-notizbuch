@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steinlabor - PC-Notizbuch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="steinlabor">
+    <!-- ===== NAVIGATION ===== -->
+    <nav>
+        <h1>💎 Steinlabor</h1>
+        <div class="nav-links">
+            <a href="index.html">Start</a>
+            <a href="pctipps.html">PC-Tipps</a>
+            <a href="rocketleague.html">Rocket League</a>
+            <a href="steinlabor.html" class="active">Steinlabor</a>
+            <a href="minecraft.html">Minecraft</a>
+            <a href="programmierlabor.html">Programmierlabor</a>
+            <a href="tagebuch.html">Tagebuch</a>
+        </div>
+    </nav>
+
+    <!-- ===== HAUPTINHALT ===== -->
+    <div class="container">
+        <!-- Checkboxen -->
+        <div class="card">
+            <h2>📋 Deine Steinsammlung</h2>
+            <div class="checkpoint-list">
+                <label class="checkpoint-item">
+                    <input type="checkbox" class="checkpoint" id="stein-1">
+                    <span>Lerne die 3 Hauptgesteinsarten kennen (Magmatisch, Sedimentär, Metamorph)</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox" class="checkpoint" id="stein-2">
+                    <span>Finde deinen ersten Quarz</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox" class="checkpoint" id="stein-3">
+                    <span>Bestimme einen Stein mit der Mohshärte</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox" class="checkpoint" id="stein-4">
+                    <span>Lege eine eigene Steinsammlung an</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox" class="checkpoint" id="stein-5">
+                    <span>Besuche ein Mineralienmuseum</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Inhaltsbereich -->
+        <div class="card">
+            <h2>🪨 Alles über Steine und Mineralien</h2>
+            
+            <h3>🌋 Die 3 Hauptgesteinsarten</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Art</th>
+                        <th>Entstehung</th>
+                        <th>Beispiele</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Magmatisch</strong></td>
+                        <td>Aus erstarrter Lava/Magma</td>
+                        <td>Granit, Basalt, Obsidian</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sedimentär</strong></td>
+                        <td>Aus abgelagertem Material</td>
+                        <td>Sandstein, Kalkstein, Schiefer</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metamorph</strong></td>
+                        <td>Durch Druck/Hitze umgewandelt</td>
+                        <td>Marmor, Gneis, Quarzit</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>💎 Beliebte Mineralien</h3>
+            <div class="stone-gallery">
+                <div class="stone-card">
+                    <div class="stone-image">🔵</div>
+                    <h4>Quarz</h4>
+                    <p>Härte: 7 | Farbe: meist durchsichtig/weiß</p>
+                </div>
+                <div class="stone-card">
+                    <div class="stone-image">🟣</div>
+                    <h4>Amethyst</h4>
+                    <p>Härte: 7 | Farbe: violett</p>
+                </div>
+                <div class="stone-card">
+                    <div class="stone-image">🟡</div>
+                    <h4>Pyrit</h4>
+                    <p>Härte: 6-6.5 | Farbe: goldgelb (Katzengold)</p>
+                </div>
+                <div class="stone-card">
+                    <div class="stone-image">⚫</div>
+                    <h4>Obsidian</h4>
+                    <p>Härte: 5-5.5 | Farbe: schwarz, glasartig</p>
+                </div>
+                <div class="stone-card">
+                    <div class="stone-image">🟢</div>
+                    <h4>Malachit</h4>
+                    <p>Härte: 3.5-4 | Farbe: grün mit Bändern</p>
+                </div>
+                <div class="stone-card">
+                    <div class="stone-image">🔴</div>
+                    <h4>Hämatit</h4>
+                    <p>Härte: 5.5-6.5 | Farbe: silber-schwarz, metallisch</p>
+                </div>
+            </div>
+
+            <h3>🔍 Mohshärte-Skala</h3>
+            <p>Die Mohshärte misst wie hart ein Mineral ist (1 = weich, 10 = sehr hart):</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Härte</th>
+                        <th>Mineral</th>
+                        <th>Test</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Talk</td>
+                        <td>Mit Fingernagel ritzbar</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Gips</td>
+                        <td>Mit Fingernagel ritzbar</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Calcit</td>
+                        <td>Mit Kupfermünze ritzbar</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Apatit</td>
+                        <td>Mit Messer ritzbar</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Quarz</td>
+                        <td>Ritzt Glas</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Diamant</td>
+                        <td>Härtest bekanntes Mineral</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>📦 Sammler-Tipps</h3>
+            <p><strong>Aufbewahrung:</strong> Steine in beschrifteten Boxen lagern (Name, Fundort, Datum)</p>
+            <p><strong>Reinigung:</strong> Vorsichtig mit Wasser und Zahnbürste säubern</p>
+            <p><strong>Bestimmung:</strong> Apps wie "Rock Identifier" oder Bücher nutzen</p>
+        </div>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="global-progress.js"></script>
+    <script src="page-tracker.js"></script>
+</body>
+</html>
