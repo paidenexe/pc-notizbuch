@@ -1,135 +1,104 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Philipp’s PC-Abenteuer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC-Notizbuch</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>🔥 PHILIPP’S PC-ABENTEUER 🔥</h1>
-    <div class="fortschritt">
-      <p>Fortschritt: <span id="progress-percent">0%</span></p>
-      <div class="progress-bar">
-        <div id="progress-fill" style="width: 0%;"></div>
-      </div>
+    <!-- ===== NAVIGATION ===== -->
+    <nav>
+        <h1>🖥️ PC-Notizbuch</h1>
+        <div class="nav-links">
+            <a href="index.html" class="active">Start</a>
+            <a href="pctipps.html">PC-Tipps</a>
+            <a href="rocketleague.html">Rocket League</a>
+            <a href="steinlabor.html">Steinlabor</a>
+            <a href="minecraft.html">Minecraft</a>
+            <a href="programmierlabor.html">Programmierlabor</a>
+            <a href="tagebuch.html">Tagebuch</a>
+        </div>
+    </nav>
+
+    <!-- ===== HAUPTINHALT ===== -->
+    <div class="container">
+        <!-- Willkommensbereich -->
+        <div class="card">
+            <h2>Willkommen! 👋</h2>
+            <p>Das ist dein persönliches PC-Notizbuch. Hier kannst du deinen Fortschritt in verschiedenen Bereichen verfolgen.</p>
+        </div>
+
+        <!-- Globaler Fortschrittsbalken -->
+        <div class="card">
+            <h2>📊 Gesamtfortschritt</h2>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                    <span class="progress-text" id="progress-text">0%</span>
+                </div>
+                <p id="progress-details" style="text-align: center; margin-top: 10px; color: var(--text-dim);">
+                    0 von 0 Checkpoints erledigt
+                </p>
+            </div>
+        </div>
+
+        <!-- Karten-Container für Kategorien -->
+        <div class="card-container">
+            <!-- PC-Tipps Karte -->
+            <a href="pctipps.html" class="category-card">
+                <div class="card-icon">💻</div>
+                <h3>PC-Tipps</h3>
+                <p>Grundlagen und wichtige Tipps für den PC</p>
+            </a>
+
+            <!-- Rocket League Karte -->
+            <a href="rocketleague.html" class="category-card">
+                <div class="card-icon">🚗</div>
+                <h3>Rocket League</h3>
+                <p>Tricks und Techniken für Rocket League</p>
+            </a>
+
+            <!-- Steinlabor Karte -->
+            <a href="steinlabor.html" class="category-card">
+                <div class="card-icon">💎</div>
+                <h3>Steinlabor</h3>
+                <p>Alles über Steine und Mineralien</p>
+            </a>
+
+            <!-- Minecraft Karte -->
+            <a href="minecraft.html" class="category-card">
+                <div class="card-icon">⛏️</div>
+                <h3>Minecraft</h3>
+                <p>Tipps und Tricks für Minecraft</p>
+            </a>
+
+            <!-- Programmierlabor Karte -->
+            <a href="programmierlabor.html" class="category-card">
+                <div class="card-icon">👨‍💻</div>
+                <h3>Programmierlabor</h3>
+                <p>Programmieren lernen Schritt für Schritt</p>
+            </a>
+
+            <!-- Tagebuch Karte -->
+            <a href="tagebuch.html" class="category-card">
+                <div class="card-icon">📔</div>
+                <h3>Tagebuch</h3>
+                <p>Deine persönlichen Notizen</p>
+            </a>
+        </div>
+
+        <!-- Debug-Bereich (optional) -->
+        <div class="card" style="margin-top: 20px;">
+            <h3>🔧 Debug-Tools</h3>
+            <button onclick="showProgressDebug()" class="btn">Fortschritt in Konsole anzeigen</button>
+            <button onclick="resetAllProgress()" class="btn" style="background: var(--error); margin-left: 10px;">
+                Alle Fortschritte löschen
+            </button>
+        </div>
     </div>
-  </header>
 
-  <!-- Menü DIREKT unter dem Header -->
-  <!-- ERSETZE DAS ALTE MENÜ DURCH DIESE STRUKTUR -->
-  <div class="menu-container">
-    <div class="menu">
-      <a href="steine.html" class="menu-button">
-        <span>⛰️</span> STEIN-LABOR
-      </a>
-      <a href="minecraft.html" class="menu-button">
-        <span>🎮</span> MINECRAFT-WELT
-      </a>
-      <a href="pctipps.html" class="menu-button">
-        <span>💻</span> PC-TIPPS
-      </a>
-      <a href="programmieren.html" class="menu-button">
-        <span>{}</span> PROGRAMMIER-LABOR
-      </a>
-      <a href="rocketleague.html" class="menu-button">
-        <span>🚗</span> ROCKET LEAGUE
-      </a>
-      <a href="tagebuch.html" class="menu-button" id="tagebuch-link">
-        <span>📝</span> TAGEBUCH (🔒)
-      </a>
-    </div>
-  </div>
-
-  <!-- Willkommensnachricht -->
-  <div class="willkommen">
-    <h2>Willkommen auf deiner persönlichen Startseite!</h2>
-    <p>
-      Hey Philipp! 👋<br>
-      Das hier ist dein **eigenes digitales Notizbuch** – dein Begleiter für alles rund um deinen neuen PC!
-      Hier findest du **Anleitungen, Challenges, Geheimtipps und ein Tagebuch**, um deine Abenteuer festzuhalten.
-      <br><br>
-      **Dein Ziel:** Fülle den Fortschrittsbalken oben, indem du Aufgaben erledigst, Steine sammelst, in Minecraft baust
-      oder in Rocket League Tore schießt. **Viel Spaß!**
-    </p>
-  </div>
-
-  <!-- Kurzanleitung -->
-  <div class="anleitung">
-    <h2>❓ Wie funktioniert diese Seite?</h2>
-    <ul>
-      <li><strong>Menü:</strong> Klicke auf die Buttons oben, um zu den Themen zu gelangen.</li>
-      <li><strong>Fortschritt:</strong> Der Balken füllt sich, wenn du Aufgaben abhakst.</li>
-      <li><strong>Tagebuch:</strong> Schreibe auf, was du gelernt oder gespielt hast.</li>
-      <li><strong>Programmieren:</strong> Hier lernst du **HTML/CSS** und siehst Änderungen **live** im Browser!</li>
-      <li><strong>PC-Tipps:</strong> Hier findest du Tricks für Windows, Controller, Dark Mode und mehr.</li>
-      <li><strong>Geheimtipps:</strong> Manche Seiten haben versteckte Überraschungen!</li>
-    </ul>
-  </div>
-
-  <!-- Spoiler-Bereich -->
-  <div class="spoiler">
-    <h2>🔮 Spoiler: Was dich hier erwartet…</h2>
-    <p>
-      In diesem Notizbuch verstecken sich:<br>
-      🔹 **Geheime Minecraft-Seeds** (für versteckte Schätze!)<br>
-      🔹 **Ein Stein-Quiz** (kannst du Achate von Quarzen unterscheiden?)<br>
-      🔹 **Rocket-League-Tipps** (wie du besser wirst)<br>
-      🔹 **Ein Tagebuch**, in dem du deine Erfolge festhalten kannst
-    </p>
-  </div>
-  
-  <!-- FOOTER HIER EINFÜGEN -->
-  <footer style="
-    background-color: #3c3c3c;
-    border-top: 4px solid #5a5a5a;
-    border-bottom: 4px solid #2a2a2a;
-    padding: 28px 20px;
-    box-shadow: 0 -4px 0 rgba(0, 0, 0, 0.3);
-    text-align: center;
-    margin-top: 60px;
-    font-family: 'Press Start 2P', cursive;
-  ">
-    <p style="
-      color: #ffff55;
-      font-size: 11px;
-      text-shadow: 3px 3px 0 #3f3f00;
-      line-height: 2;
-      margin: 0 0 8px 0;
-    ">🎮 LEVEL UP! Happy Birthday Philipp! 🎮</p>
-    <p style="
-      color: #55ff55;
-      font-size: 8px;
-      line-height: 1.5;
-      margin: 0;
-      text-shadow: 2px 2px 0 #003f00;
-    ">Achievement Unlocked: Erster eigener PC • @Mosch | 2025</p>
-  </footer>
-
-  <!-- Auskommentiert, da die Funktion ausgelagert wurde. -->
-  <!-- 
-  <script>
-    // Lade globalen Fortschritt beim Laden der Seite
-    document.addEventListener('DOMContentLoaded', () => {
-      const globalProgress = localStorage.getItem('global-progress') || 0;
-      
-      // Aktualisiere Balken
-      const percentElement = document.getElementById('progress-percent');
-      const fillElement = document.getElementById('progress-fill');
-      
-      if (percentElement && fillElement) {
-        percentElement.textContent = `${globalProgress}%`;
-        fillElement.style.width = `${globalProgress}%`;
-        console.log(`📊 Hauptseite lädt: ${globalProgress}%`);
-      } else {
-        console.error('❌ Progress-Elemente nicht gefunden!');
-      }
-    });
-  </script>
-  -->
-  
-  <script src="global-progress.js"></script>
+    <!-- ===== SCRIPTS ===== -->
+    <script src="global-progress.js"></script>
 </body>
 </html>
