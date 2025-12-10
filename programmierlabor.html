@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmierlabor - PC-Notizbuch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="programmierlabor">
+    <!-- ===== NAVIGATION ===== -->
+    <nav>
+        <h1>👨‍💻 Programmierlabor</h1>
+        <div class="nav-links">
+            <a href="index.html">Start</a>
+            <a href="pctipps.html">PC-Tipps</a>
+            <a href="rocketleague.html">Rocket League</a>
+            <a href="steinlabor.html">Steinlabor</a>
+            <a href="minecraft.html">Minecraft</a>
+            <a href="programmierlabor.html" class="active">Programmierlabor</a>
+            <a href="tagebuch.html">Tagebuch</a>
+        </div>
+    </nav>
+
+    <!-- ===== HAUPTINHALT ===== -->
+    <div class="container">
+        <!-- Checkboxen -->
+        <div class="card">
+            <h2>📋 Deine Lernziele</h2>
+            <div class="checkpoint-list">
+                <label class="checkpoint-item">
+                    <input type="checkbox" class="checkpoint" id="prog-1">
+                    <span>Schreibe dein erstes "Hello World" Programm</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox" class="checkpoint" id="prog-2">
+                    <span>Verstehe Variablen und Datentypen</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox" class="checkpoint" id="prog-3">
+                    <span>Lerne if/else Bedingungen</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox" class="checkpoint" id="prog-4">
+                    <span>Erstelle deine erste Schleife (for/while)</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox" class="checkpoint" id="prog-5">
+                    <span>Baue ein einfaches Projekt (z.B. Taschenrechner)</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Inhaltsbereich -->
+        <div class="card">
+            <h2>💻 Programmieren lernen</h2>
+            
+            <h3>🚀 Warum Programmieren lernen?</h3>
+            <p>✅ Erstelle eigene Programme und Spiele</p>
+            <p>✅ Verstehe wie Computer und Apps funktionieren</p>
+            <p>✅ Löse Probleme kreativ</p>
+            <p>✅ Tolle Berufschancen in der Zukunft</p>
+
+            <h3>🎯 Welche Sprache soll ich lernen?</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sprache</th>
+                        <th>Gut für</th>
+                        <th>Schwierigkeit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Python</strong></td>
+                        <td>Anfänger, Datenanalyse, KI</td>
+                        <td>⭐ Leicht</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JavaScript</strong></td>
+                        <td>Webseiten, Browser-Spiele</td>
+                        <td>⭐⭐ Mittel</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scratch</strong></td>
+                        <td>Kinder, visuelles Lernen</td>
+                        <td>⭐ Sehr leicht</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C#</strong></td>
+                        <td>Spiele (Unity), Apps</td>
+                        <td>⭐⭐⭐ Schwer</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>📚 Grundkonzepte</h3>
+            
+            <h4>1. Variablen</h4>
+            <pre><code>// Eine Variable ist wie eine Box mit einem Namen
+let alter = 12;
+let name = "Max";
+let istGamer = true;</code></pre>
+
+            <h4>2. Bedingungen (if/else)</h4>
+            <pre><code>if (alter >= 18) {
+    console.log("Du bist volljährig");
+} else {
+    console.log("Du bist noch minderjährig");
+}</code></pre>
+
+            <h4>3. Schleifen (for)</h4>
+            <pre><code>// Zähle von 1 bis 10
+for (let i = 1; i <= 10; i++) {
+    console.log("Zahl: " + i);
+}</code></pre>
+
+            <h4>4. Funktionen</h4>
+            <pre><code>// Wiederverwendbarer Code
+function begruessung(name) {
+    return "Hallo " + name + "!";
+}
+
+console.log(begruessung("Max")); // "Hallo Max!"</code></pre>
+
+            <h3>🎮 Projekt-Ideen für Anfänger</h3>
+            <p>1. <strong>Zahlenraten:</strong> Computer denkt sich Zahl aus, du musst raten</p>
+            <p>2. <strong>Taschenrechner:</strong> Einfacher Rechner für +, -, *, /</p>
+            <p>3. <strong>To-Do Liste:</strong> Aufgaben hinzufügen und abhaken</p>
+            <p>4. <strong>Quiz-Spiel:</strong> Fragen mit Multiple Choice</p>
+
+            <h3>📖 Lern-Ressourcen</h3>
+            <p>🌐 <strong>codecademy.com</strong> - Interaktive Kurse</p>
+            <p>🎥 <strong>YouTube:</strong> "Programmieren lernen" Tutorials</p>
+            <p>📱 <strong>SoloLearn App</strong> - Lernen am Handy</p>
+            <p>🎮 <strong>CodeCombat</strong> - Programmieren durch Spielen</p>
+        </div>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="global-progress.js"></script>
+    <script src="page-tracker.js"></script>
+</body>
+</html>
