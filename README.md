@@ -1,96 +1,60 @@
-# pc-notizbuch
+# 🖥️ PC-Notizbuch
 
-resources:
+Ein interaktives Lernportal für Kinder, um ihren ersten Windows 11 PC kennenzulernen und verschiedene Themen spielerisch zu entdecken.
 
-https://codepen.io/pen/?template=GRYjQjJ
+---
 
+## 📋 Inhaltsverzeichnis
 
+- [Über das Projekt](#über-das-projekt)
+- [Features](#features)
+- [Projektstruktur](#projektstruktur)
+- [Installation](#installation)
+- [Verwendung](#verwendung)
+- [Technologien](#technologien)
+- [Anpassungen](#anpassungen)
+- [Browser-Kompatibilität](#browser-kompatibilität)
+- [Lizenz](#lizenz)
 
-    <!-- Footer -->
-  <footer style="
-    background-color: #3c3c3c;
-    border-top: 4px solid #5a5a5a;
-    border-bottom: 4px solid #2a2a2a;
-    padding: 28px 20px;
-    box-shadow: 0 -4px 0 rgba(0, 0, 0, 0.3);
-    text-align: center;
-    margin-top: 60px;
-    font-family: 'Press Start 2P', cursive;
-  ">
-    <p style="
-      color: #ffff55;
-      font-size: 11px;
-      text-shadow: 3px 3px 0 #3f3f00;
-      line-height: 2;
-      margin: 0 0 8px 0;
-    ">🎮 LEVEL UP! Happy Birthday Philipp! 🎮</p>
-    <p style="
-      color: #55ff55;
-      font-size: 8px;
-      line-height: 1.5;
-      margin: 0;
-      text-shadow: 2px 2px 0 #003f00;
-    ">Achievement Unlocked: Erster eigener PC • @Mosch • 2025</p>
-  </footer>
+---
 
+## 🎯 Über das Projekt
 
-<!-- Fortschrittsbalken auf der index.html -->
-<script>
-    // Scroll zu Section
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+Das **PC-Notizbuch** ist eine Webseite, die Kindern hilft:
+- ✅ Ihren ersten Windows 11 Computer zu verstehen
+- ✅ PC-Grundlagen spielerisch zu lernen
+- ✅ Verschiedene Hobbys (Gaming, Steine, Programmieren) zu entdecken
+- ✅ Ihren Lernfortschritt zu verfolgen
 
-    // Fortschritt speichern und aktualisieren
-    function updateProgress() {
-      const checkboxes = document.querySelectorAll('.checkpoint-checkbox');
-      const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
-      const total = checkboxes.length;
-      const percentage = Math.round((checked / total) * 100);
-      
-      // Speichere lokalen Fortschritt (für diese Seite)
-      const pageKey = document.body.getAttribute('data-page') || 'rocketleague'; // oder 'pctipps'
-      localStorage.setItem(`${pageKey}-progress`, percentage);
-      
-      // Füge "completed" Klasse hinzu
-      checkboxes.forEach(cb => {
-        const item = cb.closest('.checkpoint-item');
-        if (cb.checked) {
-          item.classList.add('completed');
-        } else {
-          item.classList.remove('completed');
-        }
-      });
+### Zielgruppe
+- Kinder ab 8 Jahren
+- Eltern die ihren Kindern den PC näherbringen möchten
+- Lehrer für Computer-Grundlagen
 
-      // Speichere jeden Checkbox-Status einzeln
-      checkboxes.forEach(cb => {
-        localStorage.setItem(cb.id, cb.checked);
-      });
+---
 
-      // ⭐ NEU: Trigger globale Funktion (falls vorhanden)
-      if (typeof updateGlobalProgress === 'function') {
-        updateGlobalProgress();
-      }
-    }
+## ✨ Features
 
-    // Lade gespeicherte Checkboxen
-    document.addEventListener('DOMContentLoaded', () => {
-      const checkboxes = document.querySelectorAll('.checkpoint-checkbox');
-      checkboxes.forEach(cb => {
-        const saved = localStorage.getItem(cb.id);
-        if (saved === 'true') {
-          cb.checked = true;
-          cb.closest('.checkpoint-item').classList.add('completed');
-        }
-        
-        // Update Progress on change
-        cb.addEventListener('change', updateProgress);
-      });
-      
-      // Initial progress update
-      updateProgress();
-    });
-</script>
+### 🎨 Design
+- Dunkles Theme für angenehmes Lesen
+- Orange Akzentfarbe für wichtige Elemente
+- Responsive Design (funktioniert auf allen Geräten)
+- Kinderfreundliche Emojis und Icons
+
+### 📊 Fortschrittssystem
+- **Globaler Fortschrittsbalken** auf der Startseite
+- **Checkboxen** zum Abhaken erledigter Aufgaben
+- **LocalStorage** speichert Fortschritt automatisch
+- **Seitenübergreifende Synchronisation**
+
+### 📚 Kategorien
+1. **💻 PC-Tipps** - Grundlagen & Tastenkombinationen
+2. **🚗 Rocket League** - Gaming-Tricks & Mechaniken
+3. **💎 Steinlabor** - Mineralien & Gesteinsarten
+4. **⛏️ Minecraft** - Tipps, Tricks & Redstone
+5. **👨‍💻 Programmierlabor** - Programmieren lernen
+6. **📔 Tagebuch** - Persönliche Notizen
+
+---
+
+## 📁 Projektstruktur
