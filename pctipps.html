@@ -26,48 +26,79 @@
             <p>Klicke auf die Mission um dorthin zu springen. Hake ab, wenn du fertig bist! ✅</p>
             
 <div class="mission-grid">
-    <label class="mission-card">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="autostart">
+    <!-- Mission 1 -->
+    <div class="mission-card">
+        <input type="checkbox" 
+               class="checkpoint-checkbox" 
+               data-checkpoint="autostart" 
+               id="check-autostart"
+               onclick="event.stopPropagation()">
         <span class="mission-link" onclick="scrollToSection('autostart')">
             📌 Autostart ausmisten
         </span>
-    </label>
+    </div>
 
-    <label class="mission-card">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="darkmode">
+    <!-- Mission 2 -->
+    <div class="mission-card">
+        <input type="checkbox" 
+               class="checkpoint-checkbox" 
+               data-checkpoint="darkmode" 
+               id="check-darkmode"
+               onclick="event.stopPropagation()">
         <span class="mission-link" onclick="scrollToSection('darkmode')">
             🌙 Dark Mode aktivieren
         </span>
-    </label>
+    </div>
 
-    <label class="mission-card">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="screenshots">
+    <!-- Mission 3 -->
+    <div class="mission-card">
+        <input type="checkbox" 
+               class="checkpoint-checkbox" 
+               data-checkpoint="screenshots" 
+               id="check-screenshots"
+               onclick="event.stopPropagation()">
         <span class="mission-link" onclick="scrollToSection('screenshots')">
             📸 Screenshots erstellen
         </span>
-    </label>
+    </div>
 
-    <label class="mission-card">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="shortcuts">
+    <!-- Mission 4 -->
+    <div class="mission-card">
+        <input type="checkbox" 
+               class="checkpoint-checkbox" 
+               data-checkpoint="shortcuts" 
+               id="check-shortcuts"
+               onclick="event.stopPropagation()">
         <span class="mission-link" onclick="scrollToSection('shortcuts')">
             ⌨️ Tastenkombinationen lernen
         </span>
-    </label>
+    </div>
 
-    <label class="mission-card">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="updates">
+    <!-- Mission 5 -->
+    <div class="mission-card">
+        <input type="checkbox" 
+               class="checkpoint-checkbox" 
+               data-checkpoint="updates" 
+               id="check-updates"
+               onclick="event.stopPropagation()">
         <span class="mission-link" onclick="scrollToSection('updates')">
             🔄 Updates installieren
         </span>
-    </label>
+    </div>
 
-    <label class="mission-card">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="bluetooth">
+    <!-- Mission 6 -->
+    <div class="mission-card">
+        <input type="checkbox" 
+               class="checkpoint-checkbox" 
+               data-checkpoint="bluetooth" 
+               id="check-bluetooth"
+               onclick="event.stopPropagation()">
         <span class="mission-link" onclick="scrollToSection('bluetooth')">
             📡 Bluetooth verbinden
         </span>
-    </label>
+    </div>
 </div>
+
 
         </section>
 
