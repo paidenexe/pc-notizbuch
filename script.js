@@ -1,100 +1,53 @@
-// ============================================
-// GLOBALE FORTSCHRITTSBERECHNUNG
-// ============================================
-
-// Alle Checkbox-IDs aus allen Seiten (KORRIGIERT!)
-const ALL_CHECKPOINTS = [
-  // PC-Tipps (6 Checkboxen)
-  'check-autostart',
-  'check-darkmode',
-  'check-screenshots',
-  'check-shortcuts',
-  'check-updates',
-  'check-bluetooth',
-  
-  // Rocket League (6 Checkboxen)
-  'check-tutorial',
-  'check-customize',
-  'check-firstgoal',
-  'check-aerials',
-  'check-win',
-  'check-training'
-];
-
-// Funktion zum Berechnen des Gesamtfortschritts
-function updateGlobalProgress() {
-  let completed = 0;
-  
-  // Zähle alle abgehakten Checkboxen
-  ALL_CHECKPOINTS.forEach(id => {
-    if (localStorage.getItem(id) === 'true') {
-      completed++;
+// Smooth Scroll zu Sektionen
+function scrollToSection(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+        element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
     }
-  });
-  
-  // Berechne Prozentsatz
-  const total = ALL_CHECKPOINTS.length;
-  const percentage = Math.round((completed / total) * 100);
-  
-  // Aktualisiere UI
-  const percentElement = document.getElementById('progress-percent');
-  const fillElement = document.getElementById('progress-fill');
-  
-  if (percentElement) {
-    percentElement.textContent = `${percentage}%`;
-  }
-  
-  if (fillElement) {
-    fillElement.style.width = `${percentage}%`;
-  }
-  
-  // Speichere für Legacy-Support
-  localStorage.setItem('progress', percentage);
-  
-  return percentage;
 }
 
-// Beim Laden der Seite Fortschritt aktualisieren
-document.addEventListener('DOMContentLoaded', () => {
-  updateGlobalProgress();
-  
-  // Falls wir auf einer Unterseite sind: Event-Listener für Checkboxen
-  document.querySelectorAll('.checkpoint-checkbox').forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-      updateGlobalProgress();
+// Checkbox-System für PC-Tipps
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.checkpoint-box[data-checkpoint^="pctips-"]');
+    
+    // Lade gespeicherte Zustände
+    checkboxes.forEach(checkbox => {
+        const checkpoint = checkbox.dataset.checkpoint;
+        const saved = localStorage.getItem(checkpoint);
+        if (saved === 'true') {
+            checkbox.checked = true;
+        }
+        
+        // Speichere bei Änderung
+        checkbox.addEventListener('change', function() {
+            localStorage.setItem(checkpoint, this.checked);
+            updateMainProgress(); // Aktualisiert Hauptfortschritt
+        });
     });
-  });
 });
 
-// ============================================
-// CHEAT-CODE FÜR GEHEIME ÜBERRASCHUNG
-// ============================================
-document.addEventListener('keydown', (e) => {
-  if (e.ctrlKey && e.shiftKey && e.key === 'S') {
-    alert("🎉 GEHEIMNIS GEFUNDEN! \n\nHier ist ein besonderer Minecraft-Seed für dich: **'Philipp2023'** \n\nProbier ihn aus – dort versteckt sich etwas Cooles!");
-  }
-});
-
-// ============================================
-// PASSWORT FÜRS TAGEBUCH
-// ============================================
-function checkPasswort() {
-  const passwort = prompt("🔒 Gib das Passwort ein (TTMMJJ, z. B. 111213 für den 11. Dezember 2013):");
-  if (passwort !== "111213") {
-    alert("❌ Falsches Passwort! Frag Papa/Mama um Hilfe.");
-    return false;
-  }
-  return true;
+// Aktualisiert den Fortschritt auf der Hauptseite
+function updateMainProgress() {
+    const allCheckpoints = [
+        // Hauptseite Checkboxen
+        'check-autostart', 'check-darkmode', 'check-screenshots', 
+        'check-shortcuts', 'check-updates', 'check-bluetooth', 
+        'check-tutorial', 'check-customize', 'check-firstgoal', 
+        'check-aerials', 'check-win', 'check-training',
+        // PC-Tipps Checkboxen
+        'pctips-autostart', 'pctips-darkmode', 'pctips-screenshots',
+        'pctips-shortcuts', 'pctips-updates', 'pctips-bluetooth'
+    ];
+    
+    const completed = allCheckpoints.filter(id => 
+        localStorage.getItem(id) === 'true'
+    ).length;
+    
+    const percentage = Math.round((completed / allCheckpoints.length) * 100);
+    
+    // Speichere Prozentsatz
+    localStorage.setItem('totalProgress', percentage);
 }
-
-// Tagebuch-Link sperren
-document.addEventListener('DOMContentLoaded', () => {
-  const tagebuchLink = document.getElementById('tagebuch-link');
-  if (tagebuchLink) {
-    tagebuchLink.addEventListener('click', (e) => {
-      if (!checkPasswort()) {
-        e.preventDefault();
-      }
-    });
-  }
-});
