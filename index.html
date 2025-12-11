@@ -1,135 +1,105 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Philipp’s PC-Abenteuer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Philipp's PC-Abenteuer</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>🔥 PHILIPP’S PC-ABENTEUER 🔥</h1>
-    <div class="fortschritt">
-      <p>Fortschritt: <span id="progress-percent">0%</span></p>
-      <div class="progress-bar">
-        <div id="progress-fill" style="width: 0%;"></div>
-      </div>
-    </div>
-  </header>
+    <!-- Header mit Fortschrittsbalken -->
+    <header class="main-header">
+        <h1>🔥 PHILIPP'S PC-ABENTEUER 🔥</h1>
+        <div class="progress-container">
+            <div class="progress-label">Fortschritt: <span id="progress-percent">0</span>%</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+    </header>
 
-  <!-- Menü DIREKT unter dem Header -->
-  <!-- ERSETZE DAS ALTE MENÜ DURCH DIESE STRUKTUR -->
-  <div class="menu-container">
-    <div class="menu">
-      <a href="steine.html" class="menu-button">
-        <span>⛰️</span> STEIN-LABOR
-      </a>
-      <a href="minecraft.html" class="menu-button">
-        <span>🎮</span> MINECRAFT-WELT
-      </a>
-      <a href="pctipps.html" class="menu-button">
-        <span>💻</span> PC-TIPPS
-      </a>
-      <a href="programmieren.html" class="menu-button">
-        <span>{}</span> PROGRAMMIER-LABOR
-      </a>
-      <a href="rocketleague.html" class="menu-button">
-        <span>🚗</span> ROCKET LEAGUE
-      </a>
-      <a href="tagebuch.html" class="menu-button" id="tagebuch-link">
-        <span>📝</span> TAGEBUCH (🔒)
-      </a>
-    </div>
-  </div>
+    <!-- Navigation Cards -->
+    <main class="container">
+        <div class="nav-grid">
+            <!-- Stein-Labor -->
+            <a href="steinlabor.html" class="nav-card">
+                <div class="card-icon">🪨</div>
+                <h3>STEIN-LABOR</h3>
+            </a>
 
-  <!-- Willkommensnachricht -->
-  <div class="willkommen">
-    <h2>Willkommen auf deiner persönlichen Startseite!</h2>
-    <p>
-      Hey Philipp! 👋<br>
-      Das hier ist dein **eigenes digitales Notizbuch** – dein Begleiter für alles rund um deinen neuen PC!
-      Hier findest du **Anleitungen, Challenges, Geheimtipps und ein Tagebuch**, um deine Abenteuer festzuhalten.
-      <br><br>
-      **Dein Ziel:** Fülle den Fortschrittsbalken oben, indem du Aufgaben erledigst, Steine sammelst, in Minecraft baust
-      oder in Rocket League Tore schießt. **Viel Spaß!**
-    </p>
-  </div>
+            <!-- Minecraft -->
+            <a href="minecraft.html" class="nav-card">
+                <div class="card-icon">🎮</div>
+                <h3>MINECRAFT-WELT</h3>
+            </a>
 
-  <!-- Kurzanleitung -->
-  <div class="anleitung">
-    <h2>❓ Wie funktioniert diese Seite?</h2>
-    <ul>
-      <li><strong>Menü:</strong> Klicke auf die Buttons oben, um zu den Themen zu gelangen.</li>
-      <li><strong>Fortschritt:</strong> Der Balken füllt sich, wenn du Aufgaben abhakst.</li>
-      <li><strong>Tagebuch:</strong> Schreibe auf, was du gelernt oder gespielt hast.</li>
-      <li><strong>Programmieren:</strong> Hier lernst du **HTML/CSS** und siehst Änderungen **live** im Browser!</li>
-      <li><strong>PC-Tipps:</strong> Hier findest du Tricks für Windows, Controller, Dark Mode und mehr.</li>
-      <li><strong>Geheimtipps:</strong> Manche Seiten haben versteckte Überraschungen!</li>
-    </ul>
-  </div>
+            <!-- PC-Tipps -->
+            <a href="pctipps.html" class="nav-card">
+                <div class="card-icon">💻</div>
+                <h3>PC-TIPPS</h3>
+            </a>
 
-  <!-- Spoiler-Bereich -->
-  <div class="spoiler">
-    <h2>🔮 Spoiler: Was dich hier erwartet…</h2>
-    <p>
-      In diesem Notizbuch verstecken sich:<br>
-      🔹 **Geheime Minecraft-Seeds** (für versteckte Schätze!)<br>
-      🔹 **Ein Stein-Quiz** (kannst du Achate von Quarzen unterscheiden?)<br>
-      🔹 **Rocket-League-Tipps** (wie du besser wirst)<br>
-      🔹 **Ein Tagebuch**, in dem du deine Erfolge festhalten kannst
-    </p>
-  </div>
-  
-  <!-- FOOTER HIER EINFÜGEN -->
-  <footer style="
-    background-color: #3c3c3c;
-    border-top: 4px solid #5a5a5a;
-    border-bottom: 4px solid #2a2a2a;
-    padding: 28px 20px;
-    box-shadow: 0 -4px 0 rgba(0, 0, 0, 0.3);
-    text-align: center;
-    margin-top: 60px;
-    font-family: 'Press Start 2P', cursive;
-  ">
-    <p style="
-      color: #ffff55;
-      font-size: 11px;
-      text-shadow: 3px 3px 0 #3f3f00;
-      line-height: 2;
-      margin: 0 0 8px 0;
-    ">🎮 LEVEL UP! Happy Birthday Philipp! 🎮</p>
-    <p style="
-      color: #55ff55;
-      font-size: 8px;
-      line-height: 1.5;
-      margin: 0;
-      text-shadow: 2px 2px 0 #003f00;
-    ">Achievement Unlocked: Erster eigener PC • @Mosch | 2025</p>
-  </footer>
+            <!-- Programmier-Labor -->
+            <a href="programmierlabor.html" class="nav-card">
+                <div class="card-icon">⌨️</div>
+                <h3>PROGRAMMIER-LABOR</h3>
+            </a>
 
-  <!-- Auskommentiert, da die Funktion ausgelagert wurde. -->
-  <!-- 
-  <script>
-    // Lade globalen Fortschritt beim Laden der Seite
-    document.addEventListener('DOMContentLoaded', () => {
-      const globalProgress = localStorage.getItem('global-progress') || 0;
-      
-      // Aktualisiere Balken
-      const percentElement = document.getElementById('progress-percent');
-      const fillElement = document.getElementById('progress-fill');
-      
-      if (percentElement && fillElement) {
-        percentElement.textContent = `${globalProgress}%`;
-        fillElement.style.width = `${globalProgress}%`;
-        console.log(`📊 Hauptseite lädt: ${globalProgress}%`);
-      } else {
-        console.error('❌ Progress-Elemente nicht gefunden!');
-      }
-    });
-  </script>
-  -->
-  
-  <script src="global-progress.js"></script>
+            <!-- Rocket League -->
+            <a href="rocketleague.html" class="nav-card">
+                <div class="card-icon">🚗</div>
+                <h3>ROCKET LEAGUE</h3>
+            </a>
+
+            <!-- Tagebuch -->
+            <a href="tagebuch.html" class="nav-card tagebuch-card">
+                <div class="card-icon">📔</div>
+                <h3>TAGEBUCH (🔒)</h3>
+            </a>
+        </div>
+
+        <!-- Willkommenstext -->
+        <section class="welcome-section">
+            <h2>Willkommen auf deiner persönlichen Startseite!</h2>
+            <p>Hey Philipp! 👋</p>
+            <p>Das hier ist dein <strong>**eigenes digitales Notizbuch**</strong> – dein Begleiter für alles rund um deinen neuen PC! Hier findest du <strong>**Anleitungen, Challenges, Geheimtipps und ein Tagebuch**</strong>, um deine Abenteuer festzuhalten.</p>
+            <p><strong>**Dein Ziel:**</strong> Fülle den Fortschrittsbalken oben, indem du Aufgaben erledigst, Steine sammelst, in Minecraft baust oder in Rocket League Tore schießt. <strong>**Viel Spaß!**</strong></p>
+        </section>
+
+        <!-- Wie funktioniert diese Seite? -->
+        <section class="info-section">
+            <h2>❓ Wie funktioniert diese Seite?</h2>
+            <ul>
+                <li><strong>Menü:</strong> Klicke auf die Buttons oben, um zu den Themen zu gelangen.</li>
+                <li><strong>Fortschritt:</strong> Der Balken füllt sich, wenn du Aufgaben abhakst.</li>
+                <li><strong>Tagebuch:</strong> Schreibe auf, was du gelernt oder gespielt hast (Passwort: <code>111223</code>).</li>
+                <li><strong>Programmieren:</strong> Hier lernst du <strong>**HTML/CSS**</strong> und siehst Änderungen <strong>**live**</strong> im Browser!</li>
+                <li><strong>PC-Tipps:</strong> Hier findest du Tricks für Windows, Controller, Dark Mode und mehr.</li>
+                <li><strong>Geheimtipps:</strong> Manche Seiten haben versteckte Überraschungen!</li>
+            </ul>
+        </section>
+
+        <!-- Spoiler -->
+        <section class="spoiler-section">
+            <h2>🎁 Spoiler: Was dich hier erwartet...</h2>
+            <p>In diesem Notizbuch verstecken sich:</p>
+            <ul>
+                <li><strong>**Geheime Minecraft-Seeds**</strong> (für versteckte Schätze!)</li>
+                <li><strong>**Ein Stein-Quiz**</strong> (kannst du Achate von Quarzen unterscheiden?)</li>
+                <li><strong>**Rocket League Mechanics**</strong> (Half-Flip, Wave Dash & mehr!)</li>
+                <li><strong>**HTML/CSS-Experimente**</strong> (baue deine eigene Webseite!)</li>
+                <li><strong>**Windows-Shortcuts**</strong> (werde zum PC-Profi!)</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>🎮 Viel Erfolg bei deinen Abenteuern! 🎮</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/global.js"></script>
+    <script src="scripts/page-tracker.js"></script>
 </body>
 </html>
