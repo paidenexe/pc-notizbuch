@@ -682,74 +682,138 @@ footer {
 
 
 /* ========================================
-   ROCKET LEAGUE SPEZIFISCHES STYLING
+   ROCKET LEAGUE SPEZIFISCHE KLASSEN
    ======================================== */
 
-/* Settings Table */
-.settings-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
+/* Info-Box Varianten */
+.info-box-hotwheels {
+    border-left-color: #FF6B35;
+    background: rgba(255, 107, 53, 0.05);
+}
+
+.info-box-hotwheels .info-box-title {
+    color: #FF6B35;
+}
+
+.info-box-blue {
+    border-left-color: #4A90E2;
+    background: rgba(74, 144, 226, 0.05);
+}
+
+.info-box-blue .info-box-title {
+    color: #4A90E2;
+}
+
+.info-box-green {
+    border-left-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.05);
+}
+
+.info-box-green .info-box-title {
+    color: #4CAF50;
+}
+
+.info-box-warning {
+    border-left-color: #FFA500;
+    background: rgba(255, 165, 0, 0.05);
+}
+
+/* Steps Box */
+.steps-box {
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.settings-table th {
-    background: rgba(255, 153, 0, 0.2);
-    color: var(--primary-color);
-    padding: 15px;
-    text-align: left;
-    font-weight: 600;
-}
-
-.settings-table td {
-    padding: 12px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.settings-table tr:last-child td {
-    border-bottom: none;
-}
-
-.settings-table tr:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-/* Warning Box */
-.warning-box {
-    background: rgba(255, 193, 7, 0.1);
-    border-left: 4px solid #ffc107;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-}
-
-.warning-box h4 {
-    color: #ffc107;
-    margin-top: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.warning-box ul {
-    margin: 10px 0 0 0;
-}
-
-/* Screenshot Placeholder */
-.screenshot-placeholder {
-    background: linear-gradient(135deg, rgba(255, 153, 0, 0.1), rgba(255, 153, 0, 0.05));
-    border: 2px dashed rgba(255, 153, 0, 0.3);
     border-radius: 12px;
-    padding: 60px 20px;
-    text-align: center;
-    margin: 30px 0;
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.6);
+    padding: 25px;
+    margin: 25px 0;
+    border-left: 4px solid var(--primary-color);
 }
 
-.screenshot-placeholder:hover {
-    border-color: var(--primary-color);
-    background: rgba(255, 153, 0, 0.15);
+.steps-title {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.steps-box ol {
+    margin: 15px 0;
+    padding-left: 25px;
+}
+
+.steps-box li {
+    margin: 12px 0;
+    line-height: 1.8;
+}
+
+.steps-box ul {
+    margin: 10px 0;
+    padding-left: 25px;
+}
+
+/* Video Box */
+.video-box {
+    background: rgba(255, 0, 0, 0.05);
+    border-left: 4px solid #FF0000;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 25px 0;
+}
+
+.video-box-title {
+    color: #FF0000;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.video-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.video-link:hover {
+    color: #FFA500;
+    text-decoration: underline;
+}
+
+/* Taste-Styling (Keyboard Keys) */
+.taste {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: inline-block;
+    margin: 0 4px;
+    font-size: 0.9em;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Final Message */
+.final-message {
+    text-align: center;
+    padding: 40px 20px;
+    margin: 40px 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 153, 0, 0.1), 
+        rgba(255, 153, 0, 0.05));
+    border-radius: 16px;
+    border: 2px solid rgba(255, 153, 0, 0.3);
+}
+
+.final-message h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.quote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 10px;
 }
