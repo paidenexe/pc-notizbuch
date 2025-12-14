@@ -1579,3 +1579,254 @@ footer {
         font-size: 7px;
     }
 }
+
+
+/* ========================================
+   STEINLABOR SPEZIFISCH
+   ======================================== */
+
+/* Page Hero - Erdtöne */
+.page-hero-steinlabor {
+    background: linear-gradient(135deg, #5a4a3a 0%, #2a2520 100%);
+}
+
+/* Checkpoint Container - Stein Style */
+.checkpoint-steinlabor {
+    background: rgba(90, 74, 58, 0.1);
+    border: 2px solid #8B7355;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 30px 0;
+}
+
+.checkpoint-steinlabor .checkpoint-title {
+    color: #8B7355;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Info Box Variants - Steinlabor */
+.info-box-brown {
+    border-left-color: #8B7355;
+    background: rgba(139, 115, 85, 0.05);
+}
+
+.info-box-brown .info-box-title {
+    color: #8B7355;
+}
+
+/* Pfadfinder Box */
+.pfadfinder-box {
+    background: rgba(76, 175, 80, 0.08);
+    border: 3px dashed #4CAF50;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 25px 0;
+}
+
+.pfadfinder-box h3 {
+    color: #4CAF50;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.pfadfinder-box p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* Stone Card - Gesteins-Karten */
+.stone-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(139, 115, 85, 0.3);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 25px 0;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.stone-image {
+    width: 100%;
+}
+
+.stone-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #8B7355;
+    display: block;
+}
+
+.stone-info h3 {
+    color: #8B7355;
+    font-size: 1.2rem;
+    margin: 20px 0 12px 0;
+}
+
+.stone-info ul {
+    margin: 12px 0;
+    padding-left: 25px;
+}
+
+.stone-info li {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+/* Stone Table */
+.stone-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0 25px 0;
+}
+
+.stone-table tr {
+    border-bottom: 1px solid rgba(139, 115, 85, 0.3);
+}
+
+.stone-table td {
+    padding: 10px 15px;
+    line-height: 1.6;
+}
+
+.stone-table td:first-child {
+    width: 35%;
+    color: #8B7355;
+}
+
+/* Fun Fact Box */
+.fun-fact {
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid #FFC107;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+.fun-fact strong {
+    color: #FFC107;
+}
+
+/* Experiment Box */
+.experiment-box {
+    background: rgba(76, 175, 80, 0.1);
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.experiment-box h3 {
+    color: #4CAF50;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.experiment-box p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* Quiz Box */
+.quiz-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(139, 115, 85, 0.4);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 25px 0;
+}
+
+.quiz-question {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.quiz-question h3 {
+    color: #8B7355;
+    font-size: 1.1rem;
+    margin: 0 0 15px 0;
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.quiz-btn {
+    background: rgba(139, 115, 85, 0.2);
+    border: 2px solid #8B7355;
+    border-radius: 8px;
+    padding: 12px 20px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.quiz-btn:hover:not(:disabled) {
+    background: rgba(139, 115, 85, 0.4);
+    transform: translateY(-2px);
+}
+
+.quiz-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.quiz-result {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-height: 30px;
+}
+
+/* Responsive - Steinlabor */
+@media (max-width: 768px) {
+    .stone-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .stone-image {
+        max-width: 100%;
+    }
+    
+    .quiz-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .stone-table td {
+        padding: 8px 10px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stone-card {
+        padding: 15px;
+    }
+    
+    .quiz-box {
+        padding: 15px;
+    }
+    
+    .quiz-question {
+        padding: 15px;
+    }
+    
+    .quiz-btn {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+}
