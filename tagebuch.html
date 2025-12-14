@@ -78,7 +78,7 @@
           ></textarea>
           
           <div class="entry-actions">
-            <button id="save-entry-btn" class="btn-primary btn-save">
+            <button id="save-entry-btn" class="btn-save-diary">
               💾 Eintrag speichern
             </button>
           </div>
@@ -87,24 +87,27 @@
 
       <!-- Entries List -->
       <section class="entries-section">
-        <div class="entries-header">
-          <h2 class="section-title">📖 Meine Einträge</h2>
-          <div class="entries-actions">
-            <button id="export-btn" class="btn-secondary btn-export">
-              📤 Exportieren
-            </button>
-            <button id="import-btn" class="btn-secondary btn-import">
-              📥 Importieren
-            </button>
-            <input type="file" id="import-file" accept=".json" style="display: none;">
-          </div>
-        </div>
+        <h2 class="section-title">📖 Meine Einträge</h2>
 
         <div id="entries-container" class="entries-container">
           <div class="no-entries">
             <p>📭 Noch keine Einträge vorhanden.</p>
             <p class="hint">Schreibe deinen ersten Eintrag oben! ✍️</p>
           </div>
+        </div>
+      </section>
+
+      <!-- Export/Import Section (ganz unten) -->
+      <section class="backup-section">
+        <h3 class="backup-title">💾 Backup & Wiederherstellung</h3>
+        <div class="backup-actions">
+          <button id="export-btn" class="btn-backup">
+            📤 Exportieren
+          </button>
+          <button id="import-btn" class="btn-backup">
+            📥 Importieren
+          </button>
+          <input type="file" id="import-file" accept=".json" style="display: none;">
         </div>
       </section>
 
@@ -118,8 +121,8 @@
       <p class="modal-text">Dieser Eintrag wird unwiderruflich gelöscht!</p>
       
       <div class="modal-actions">
-        <button id="confirm-delete-btn" class="btn-danger">Ja, löschen</button>
-        <button id="cancel-delete-btn" class="btn-secondary">Abbrechen</button>
+        <button id="confirm-delete-btn" class="btn-modal-danger">Ja, löschen</button>
+        <button id="cancel-delete-btn" class="btn-modal-cancel">Abbrechen</button>
       </div>
     </div>
   </div>
@@ -220,8 +223,8 @@
               <div class="entry-date">
                 📅 ${entry.date}
               </div>
-              <button class="btn-delete" onclick="openDeleteModal(${index})">
-                🗑️ Löschen
+              <button class="btn-delete-entry" onclick="openDeleteModal(${index})">
+                🗑️
               </button>
             </div>
             <div class="entry-content">
