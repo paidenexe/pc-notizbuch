@@ -1,480 +1,647 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚗 Rocket League Tipps - PC-Notizbuch</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚗 Rocket League Guide | Philipp's PC-Abenteuer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="rocketleague">
-    <!-- Header mit Navigation -->
-    <header class="main-header">
-        <div class="header-content">
-            <div class="logo">
-                <a href="index.html" class="logo-link">
-                    <span class="logo-icon">🖥️</span>
-                    <span class="logo-text">PC-Notizbuch</span>
-                </a>
-            </div>
-            <nav class="main-nav">
-                <a href="index.html" class="nav-link">🏠 Startseite</a>
-                <a href="pctipps.html" class="nav-link">💻 PC-Tipps</a>
-                <a href="rocketleague.html" class="nav-link active">🚗 Rocket League</a>
-                <a href="steinlabor.html" class="nav-link">🪨 Steinlabor</a>
-                <a href="minecraft.html" class="nav-link">⛏️ Minecraft</a>
-                <a href="programmierlabor.html" class="nav-link">👨‍💻 Programmieren</a>
-                <a href="tagebuch.html" class="nav-link">📔 Tagebuch</a>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">🚗 Rocket League Tipps & Tricks</h1>
-            <p class="hero-subtitle">
-                Lerne die besten Mechaniken, Taktiken und Einstellungen für Rocket League!
-            </p>
-        </div>
+  <!-- Header (wie index.html) -->
+  <header class="main-header">
+    <div class="header-content">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <span class="logo-icon">🖥️</span>
+          <span class="logo-text">PC-Notizbuch</span>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">🏠 Startseite</a>
+        <a href="pctipps.html" class="nav-link">💻 PC-Tipps</a>
+        <a href="rocketleague.html" class="nav-link active">🚗 Rocket League</a>
+        <a href="steinlabor.html" class="nav-link">🪨 Steinlabor</a>
+        <a href="minecraft.html" class="nav-link">⛏️ Minecraft</a>
+        <a href="programmierlabor.html" class="nav-link">👨‍💻 Programmieren</a>
+        <a href="tagebuch.html" class="nav-link">📔 Tagebuch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Title Section -->
+  <div class="page-hero">
+    <h1 class="page-title">🚗⚽ Rocket League Guide</h1>
+    <p class="page-subtitle">Dein Weg zum Rocket League Champion!</p>
+  </div>
+
+  <!-- Main Content -->
+  <main class="content-wrapper">
+
+    <!-- Intro Section -->
+    <section class="content-section">
+      <h2 class="section-title">🎮 Willkommen bei Rocket League!</h2>
+      
+      <p>
+        <strong>Rocket League</strong> ist wie Fußball – aber mit <em>Raketen-Autos</em>! 🚀
+        Und das Beste: Es ist <strong>komplett kostenlos</strong>!
+      </p>
+
+      <div class="info-box info-box-hotwheels">
+        <h3 class="info-box-title">🏎️ Warum ist das perfekt für dich?</h3>
+        <p>
+          Du liebst <strong>Hot Wheels</strong>, oder? In Rocket League kannst du:
+        </p>
+        <ul>
+          <li>🎨 Dein Auto in <strong>allen Farben</strong> lackieren</li>
+          <li>✨ Coole <strong>Boost-Effekte</strong> hinzufügen</li>
+          <li>🔥 Verrückte <strong>Räder und Designs</strong> freischalten</li>
+          <li>⚡ Mit <strong>200+ km/h</strong> über den Platz rasen!</li>
+        </ul>
+        <p><strong>Es ist wie Hot Wheels, aber du steuerst es selbst!</strong> 🎮</p>
+      </div>
+
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">📥 Wie bekomme ich das Spiel?</h3>
+        <ol>
+          <li>Öffne den <strong>Epic Games Launcher</strong> (schon auf deinem PC installiert)</li>
+          <li>Suche nach <strong>"Rocket League"</strong></li>
+          <li>Klicke auf <strong>"Kostenlos holen"</strong></li>
+          <li>Warte bis der Download fertig ist</li>
+          <li>Starte das Spiel und hab Spaß! 🚀</li>
+        </ol>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <p><strong>⚠️ Wichtig:</strong> Beim ersten Start musst du ein paar Grundeinstellungen machen. 
+        Frag Mama oder mich, wenn du Hilfe brauchst!</p>
+      </div>
     </section>
 
-    <!-- Mission Cards -->
-    <section class="welcome-section">
-        <div class="welcome-content">
-            <h2 class="section-title">🎯 Deine Rocket League Missionen</h2>
-            <p class="section-description">
-                Arbeite dich durch diese Tipps und werde besser im Spiel!
-            </p>
+    <!-- Checkpoint System -->
+    <section class="mission-container">
+      <h2 class="mission-title">🎯 Deine Rocket League Missionen</h2>
+      <p class="mission-subtitle">
+        Hake die Aufgaben ab, wenn du sie geschafft hast! 🏆
+      </p>
 
-            <!-- Fortschrittsanzeige für diese Seite -->
-            <div class="page-progress">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="page-progress-bar"></div>
-                </div>
-                <p class="progress-text" id="page-progress-text">0% abgeschlossen</p>
-            </div>
-
-            <div class="mission-grid">
-                <!-- Mission 1: Grundlagen -->
-                <div class="mission-card">
-                    <input type="checkbox" 
-                           class="checkpoint-checkbox" 
-                           data-checkpoint="grundlagen"
-                           id="check-grundlagen"
-                           onclick="event.stopPropagation()">
-                    <span class="mission-link" onclick="scrollToSection('grundlagen')">
-                        🎮 Grundlagen & Steuerung
-                    </span>
-                </div>
-
-                <!-- Mission 2: Einstellungen -->
-                <div class="mission-card">
-                    <input type="checkbox" 
-                           class="checkpoint-checkbox" 
-                           data-checkpoint="einstellungen"
-                           id="check-einstellungen"
-                           onclick="event.stopPropagation()">
-                    <span class="mission-link" onclick="scrollToSection('einstellungen')">
-                        ⚙️ Kamera-Einstellungen
-                    </span>
-                </div>
-
-                <!-- Mission 3: Mechaniken -->
-                <div class="mission-card">
-                    <input type="checkbox" 
-                           class="checkpoint-checkbox" 
-                           data-checkpoint="mechaniken"
-                           id="check-mechaniken"
-                           onclick="event.stopPropagation()">
-                    <span class="mission-link" onclick="scrollToSection('mechaniken')">
-                        🚀 Wichtige Mechaniken
-                    </span>
-                </div>
-
-                <!-- Mission 4: Training -->
-                <div class="mission-card">
-                    <input type="checkbox" 
-                           class="checkpoint-checkbox" 
-                           data-checkpoint="training"
-                           id="check-training"
-                           onclick="event.stopPropagation()">
-                    <span class="mission-link" onclick="scrollToSection('training')">
-                        🎯 Trainingsmethoden
-                    </span>
-                </div>
-
-                <!-- Mission 5: Taktiken -->
-                <div class="mission-card">
-                    <input type="checkbox" 
-                           class="checkpoint-checkbox" 
-                           data-checkpoint="taktiken"
-                           id="check-taktiken"
-                           onclick="event.stopPropagation()">
-                    <span class="mission-link" onclick="scrollToSection('taktiken')">
-                        🧠 Spieltaktiken & Rotation
-                    </span>
-                </div>
-
-                <!-- Mission 6: Rangliste -->
-                <div class="mission-card">
-                    <input type="checkbox" 
-                           class="checkpoint-checkbox" 
-                           data-checkpoint="ranked"
-                           id="check-ranked"
-                           onclick="event.stopPropagation()">
-                    <span class="mission-link" onclick="scrollToSection('ranked')">
-                        🏆 Ranked-Tipps
-                    </span>
-                </div>
-            </div>
+      <div class="mission-grid">
+        <div class="mission-card">
+          <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="tutorial">
+          <span class="mission-link" onclick="scrollToSection('tutorial')">
+            🎮 Erstes Spiel & Tutorial
+          </span>
         </div>
+
+        <div class="mission-card">
+          <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="customize">
+          <span class="mission-link" onclick="scrollToSection('customize')">
+            🎨 Auto individualisieren
+          </span>
+        </div>
+
+        <div class="mission-card">
+          <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="firstgoal">
+          <span class="mission-link" onclick="scrollToSection('firstgoal')">
+            ⚽ Erstes Tor schießen
+          </span>
+        </div>
+
+        <div class="mission-card">
+          <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="aerials">
+          <span class="mission-link" onclick="scrollToSection('aerials')">
+            🚀 10 Aerial Hits
+          </span>
+        </div>
+
+        <div class="mission-card">
+          <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="win">
+          <span class="mission-link" onclick="scrollToSection('win')">
+            🏆 Ein Match gewinnen
+          </span>
+        </div>
+
+        <div class="mission-card">
+          <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="training">
+          <span class="mission-link" onclick="scrollToSection('training')">
+            🎓 Basis-Trainings abschließen
+          </span>
+        </div>
+      </div>
     </section>
 
-    <!-- Content Sections -->
-    <main class="main-content">
-        
-        <!-- Section 1: Grundlagen -->
-        <section id="grundlagen" class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">🎮 Grundlagen & Steuerung</h2>
-            </div>
-            <div class="content-body">
-                <div class="info-box">
-                    <h3>📖 Was ist Rocket League?</h3>
-                    <p>
-                        Rocket League ist Fußball mit Autos! Du steuerst ein Auto und versuchst, 
-                        den Ball ins gegnerische Tor zu schießen.
-                    </p>
-                </div>
+    <!-- Mission 1: Tutorial -->
+    <section id="tutorial" class="content-section">
+      <h2 class="section-title">🎮 Mission 1: Erstes Spiel & Tutorial absolvieren</h2>
+      
+      <p>
+        Bevor es richtig losgeht, musst du die <strong>Grundlagen</strong> lernen. 
+        Das Tutorial zeigt dir alles Wichtige!
+      </p>
 
-                <div class="info-box">
-                    <h3>🎮 Wichtigste Steuerung</h3>
-                    <ul class="feature-list">
-                        <li><strong>Gas:</strong> R2 / RT (Trigger rechts)</li>
-                        <li><strong>Rückwärts:</strong> L2 / LT (Trigger links)</li>
-                        <li><strong>Springen:</strong> X / A (unten)</li>
-                        <li><strong>Boost:</strong> O / B (rechts)</li>
-                        <li><strong>Drift:</strong> □ / X (links)</li>
-                        <li><strong>Ball-Kamera:</strong> Dreieck / Y (oben)</li>
-                    </ul>
-                </div>
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">📚 Was lernst du im Tutorial?</h3>
+        <ul>
+          <li>🚗 <strong>Fahren & Lenken</strong> – Wie du dein Auto steuerst</li>
+          <li>🦘 <strong>Springen</strong> – Einmal und doppelt springen</li>
+          <li>🚀 <strong>Boost benutzen</strong> – Für extra Geschwindigkeit</li>
+          <li>⚽ <strong>Den Ball treffen</strong> – Die Basics vom Schießen</li>
+        </ul>
+      </div>
 
-                <div class="tip-box">
-                    <h4>💡 Anfänger-Tipp</h4>
-                    <p>
-                        Benutze <strong>Ball-Kamera</strong> (Dreieck/Y) fast immer! 
-                        So siehst du, wo der Ball ist.
-                    </p>
-                </div>
+      <div class="steps-box">
+        <h3 class="steps-title">🎯 So startest du:</h3>
+        <ol>
+          <li>Öffne <strong>Rocket League</strong></li>
+          <li>Wähle <strong>"Training"</strong> im Hauptmenü</li>
+          <li>Klicke auf <strong>"Tutorial"</strong></li>
+          <li>Folge den Anweisungen auf dem Bildschirm</li>
+          <li>Keine Sorge wenn's nicht sofort klappt – einfach nochmal probieren! 💪</li>
+        </ol>
+      </div>
 
-                <!-- Screenshot Platzhalter -->
-                <div class="screenshot-placeholder">
-                    <p>📸 Screenshot: Steuerungslayout</p>
-                </div>
-            </div>
-        </section>
+      <div class="screenshot-placeholder">
+        📸 [SCREENSHOT: Tutorial-Menü HIER EINFÜGEN]
+      </div>
 
-        <!-- Section 2: Einstellungen -->
-        <section id="einstellungen" class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">⚙️ Kamera-Einstellungen</h2>
-            </div>
-            <div class="content-body">
-                <div class="info-box">
-                    <h3>🎥 Empfohlene Kamera-Einstellungen</h3>
-                    <table class="settings-table">
-                        <tr>
-                            <th>Einstellung</th>
-                            <th>Empfohlener Wert</th>
-                            <th>Was macht das?</th>
-                        </tr>
-                        <tr>
-                            <td>FOV (Sichtfeld)</td>
-                            <td>110</td>
-                            <td>Siehst mehr vom Spielfeld</td>
-                        </tr>
-                        <tr>
-                            <td>Distanz</td>
-                            <td>270</td>
-                            <td>Abstand zwischen Auto und Kamera</td>
-                        </tr>
-                        <tr>
-                            <td>Höhe</td>
-                            <td>100</td>
-                            <td>Wie hoch die Kamera ist</td>
-                        </tr>
-                        <tr>
-                            <td>Winkel</td>
-                            <td>-4.0</td>
-                            <td>Nach unten geneigt</td>
-                        </tr>
-                        <tr>
-                            <td>Steifigkeit</td>
-                            <td>0.45</td>
-                            <td>Wie schnell Kamera folgt</td>
-                        </tr>
-                    </table>
-                </div>
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">💡 Profi-Tipp: Die Steuerung</h3>
+        <p><strong>Standard-Tastenbelegung:</strong></p>
+        <ul>
+          <li><span class="taste">W</span> <span class="taste">A</span> <span class="taste">S</span> <span class="taste">D</span> – Fahren & Lenken</li>
+          <li><span class="taste">Leertaste</span> – Springen (2x drücken = Doppelsprung)</li>
+          <li><span class="taste">Shift</span> – Boost</li>
+          <li><span class="taste">Strg</span> – Powerslide (Driften)</li>
+        </ul>
+        <p><strong>Tipp:</strong> Viele Spieler nutzen lieber einen <em>Controller</em> – aber Tastatur geht auch! 🎮</p>
+      </div>
 
-                <div class="tip-box">
-                    <h4>⚡ Pro-Tipp</h4>
-                    <p>
-                        Diese Werte sind ein <strong>guter Start</strong>. 
-                        Probiere kleine Änderungen aus, bis es sich gut anfühlt!
-                    </p>
-                </div>
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Video-Tutorial (falls du lieber zusiehst):</h3>
+        <p>
+          Schau dir dieses Video an, wenn du die Grundlagen nochmal sehen willst:<br>
+          <a href="https://www.youtube.com/results?search_query=rocket+league+tutorial+deutsch+anfänger" target="_blank" class="video-link">
+            🔗 YouTube: Rocket League Anfänger Tutorial (Deutsch)
+          </a>
+        </p>
+      </div>
 
-                <!-- Screenshot Platzhalter -->
-                <div class="screenshot-placeholder">
-                    <p>📸 Screenshot: Kamera-Menü</p>
-                </div>
-            </div>
-        </section>
+      <div class="info-box info-box-warning">
+        <p><strong>⏱️ Wie lange dauert das?</strong> Das Tutorial dauert ca. <strong>10-15 Minuten</strong>. 
+        Nimm dir Zeit und hetz dich nicht!</p>
+      </div>
+    </section>
 
-        <!-- Section 3: Mechaniken -->
-        <section id="mechaniken" class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">🚀 Wichtige Mechaniken</h2>
-            </div>
-            <div class="content-body">
-                <div class="info-box">
-                    <h3>📚 Mechaniken von leicht bis schwer</h3>
-                    
-                    <h4>1. ⭐ LEICHT: Boost sammeln</h4>
-                    <ul class="feature-list">
-                        <li>Fahre über die <strong>großen orangenen Boost-Pads</strong> (100%)</li>
-                        <li>Kleine gelbe Pads geben 12% Boost</li>
-                        <li><strong>Ohne Boost bist du langsam!</strong></li>
-                    </ul>
+    <!-- Mission 2: Auto individualisieren -->
+    <section id="customize" class="content-section">
+      <h2 class="section-title">🎨 Mission 2: Dein Auto individualisieren</h2>
+      
+      <p>
+        Jetzt wird's spaßig! Mach dein Auto <strong>einzigartig</strong> – genau wie bei deinen Hot Wheels! 🏎️
+      </p>
 
-                    <h4>2. ⭐⭐ MITTEL: Half-Flip</h4>
-                    <ul class="feature-list">
-                        <li>1. Fahre rückwärts</li>
-                        <li>2. Ziehe Stick nach hinten + Sprung</li>
-                        <li>3. Drücke sofort Gas vorwärts</li>
-                        <li>4. Drehe dich in der Luft (Stick links/rechts)</li>
-                        <li><strong>Nutzen:</strong> Schnell umdrehen ohne Drift</li>
-                    </ul>
+      <div class="info-box info-box-hotwheels">
+        <h3 class="info-box-title">🏆 Warum ist das cool?</h3>
+        <p>
+          In Rocket League gibt es <strong>tausende</strong> verschiedene Designs:
+        </p>
+        <ul>
+          <li>🎨 <strong>Farben</strong> – Primär- und Sekundärfarbe frei wählbar</li>
+          <li>🔥 <strong>Decals</strong> – Muster und Designs aufs Auto</li>
+          <li>🛞 <strong>Räder</strong> – Von schlicht bis mega verrückt</li>
+          <li>✨ <strong>Boost</strong> – Verschiedene Effekte (Flammen, Sterne, etc.)</li>
+          <li>🚀 <strong>Trail</strong> – Was dein Auto hinter sich herzieht</li>
+          <li>💥 <strong>Explosion</strong> – Wenn du ein Tor schießt!</li>
+        </ul>
+      </div>
 
-                    <h4>3. ⭐⭐⭐ SCHWER: Aerial (Luftschuss)</h4>
-                    <ul class="feature-list">
-                        <li>1. Springe zweimal (Double-Jump)</li>
-                        <li>2. Halte Boost gedrückt</li>
-                        <li>3. Richte Auto mit Stick zum Ball</li>
-                        <li>4. Treffe Ball in der Luft</li>
-                        <li><strong>Braucht VIEL Übung!</strong></li>
-                    </ul>
+      <div class="steps-box">
+        <h3 class="steps-title">🎯 So gehst du vor:</h3>
+        <ol>
+          <li>Im Hauptmenü: Klicke auf <strong>"Garage"</strong></li>
+          <li>Wähle dein <strong>Lieblings-Auto</strong> (Octane ist am beliebtesten!)</li>
+          <li>Klicke auf die verschiedenen <strong>Kategorien</strong> links:</li>
+          <ul>
+            <li>🎨 <strong>Body</strong> – Automodell wählen</li>
+            <li>🌈 <strong>Paint Finish</strong> – Matt, glänzend, metallic?</li>
+            <li>🔥 <strong>Decal</strong> – Designs auswählen</li>
+            <li>🛞 <strong>Wheels</strong> – Räder ändern</li>
+            <li>🚀 <strong>Boost</strong> – Boost-Effekt wählen</li>
+          </ul>
+          <li>Experimentiere! Es gibt <strong>kein richtig oder falsch</strong> 🎉</li>
+          <li>Klicke auf <strong>"Save"</strong> wenn du fertig bist</li>
+        </ol>
+      </div>
 
-                    <h4>4. ⭐⭐⭐⭐ PROFI: Flip Reset</h4>
-                    <ul class="feature-list">
-                        <li>Nur für Fortgeschrittene!</li>
-                        <li>Berühre Ball mit allen 4 Rädern in der Luft</li>
-                        <li>Bekomme zweiten Flip zurück</li>
-                    </ul>
-                </div>
+      <div class="screenshot-placeholder">
+        📸 [SCREENSHOT: Garage-Menü HIER EINFÜGEN]
+      </div>
 
-                <div class="tip-box">
-                    <h4>🎯 Reihenfolge zum Lernen</h4>
-                    <p>
-                        1️⃣ Boost sammeln → 2️⃣ Power-Shots → 3️⃣ Half-Flip → 4️⃣ Aerials
-                    </p>
-                </div>
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">💡 Profi-Tipps fürs Customizing:</h3>
+        <ul>
+          <li>🎨 Du kannst <strong>verschiedene Designs</strong> für die blaue und orange Mannschaft speichern</li>
+          <li>🔓 Neue Items bekommst du durch <strong>Spielen und Leveln</strong></li>
+          <li>🎁 Manchmal gibt's <strong>kostenlose Items</strong> im Shop – schau regelmäßig rein!</li>
+          <li>⭐ Die <strong>coolsten Items</strong> sieht man erst später – aber die Standard-Sachen sind auch super!</li>
+        </ul>
+      </div>
 
-                <!-- Screenshot Platzhalter -->
-                <div class="screenshot-placeholder">
-                    <p>📸 Screenshot: Aerial in Aktion</p>
-                </div>
-            </div>
-        </section>
+      <div class="info-box info-box-hotwheels">
+        <h3 class="info-box-title">🏎️ Hot-Wheels-Fun-Fact:</h3>
+        <p>
+          Rocket League hat sogar <strong>echte Hot Wheels Autos</strong> im Spiel! 
+          Die kannst du später freischalten. Genau wie deine Sammlung zu Hause! 🔥
+        </p>
+      </div>
 
-        <!-- Section 4: Training -->
-        <section id="training" class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">🎯 Trainingsmethoden</h2>
-            </div>
-            <div class="content-body">
-                <div class="info-box">
-                    <h3>🏋️ Wie werde ich besser?</h3>
-                    
-                    <h4>1. Free Play (Freies Spiel)</h4>
-                    <ul class="feature-list">
-                        <li>Gehe zu: <strong>Play → Training → Free Play</strong></li>
-                        <li>Übe Ball zu treffen</li>
-                        <li>Übe Boost sammeln</li>
-                        <li><strong>10-15 Minuten VOR jedem Match!</strong></li>
-                    </ul>
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Video-Inspiration:</h3>
+        <p>
+          Schau dir coole Car Designs an:<br>
+          <a href="https://www.youtube.com/results?search_query=rocket+league+best+car+designs" target="_blank" class="video-link">
+            🔗 YouTube: Rocket League Car Designs
+          </a>
+        </p>
+      </div>
+    </section>
 
-                    <h4>2. Custom Training Packs</h4>
-                    <ul class="feature-list">
-                        <li>Gehe zu: <strong>Play → Training → Custom Training</strong></li>
-                        <li>Suche nach: "Beginner Shots"</li>
-                        <li>Wiederhole bis du <strong>8/10 Schüsse</strong> triffst</li>
-                    </ul>
+    <!-- Mission 3: Erstes Tor -->
+    <section id="firstgoal" class="content-section">
+      <h2 class="section-title">⚽ Mission 3: Dein erstes Tor schießen</h2>
+      
+      <p>
+        Jetzt wird's ernst! Zeit für dein <strong>erstes eigenes Tor</strong>! 🎯
+      </p>
 
-                    <h4>3. Workshop Maps (nur PC)</h4>
-                    <ul class="feature-list">
-                        <li>Öffne Steam Workshop</li>
-                        <li>Suche: "Rings Maps" oder "Dribbling Challenge"</li>
-                        <li>Verbessert deine Kontrolle massiv!</li>
-                    </ul>
-                </div>
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">🎮 Wo kannst du üben?</h3>
+        <p>
+          Es gibt verschiedene Modi, um dein erstes Tor zu schießen:
+        </p>
+        <ul>
+          <li>🎯 <strong>Free Play</strong> – Du alleine mit Ball (perfekt zum Üben!)</li>
+          <li>🤖 <strong>Exhibition vs Bots</strong> – Gegen Computer (einfacher Einstieg)</li>
+          <li>🏆 <strong>Training Modi</strong> – Spezielle Tor-Übungen</li>
+        </ul>
+        <p><strong>Empfehlung:</strong> Starte mit <em>Free Play</em> – da hast du alle Zeit der Welt! ⏰</p>
+      </div>
 
-                <div class="warning-box">
-                    <h4>⚠️ Wichtig!</h4>
-                    <p>
-                        Übe <strong>jeden Tag 20 Minuten</strong> = Besser als 2 Stunden einmal pro Woche!
-                    </p>
-                </div>
+      <div class="steps-box">
+        <h3 class="steps-title">🎯 So schießt du dein erstes Tor:</h3>
+        <ol>
+          <li>Wähle <strong>"Play" → "Free Play"</strong></li>
+          <li>Du bist jetzt <strong>alleine auf dem Feld</strong> mit einem Ball</li>
+          <li>Fahr zum Ball und <strong>triff ihn</strong> (einfach reinfahren!)</li>
+          <li>Versuch den Ball <strong>Richtung Tor</strong> zu lenken</li>
+          <li>Benutze <strong>Boost</strong> (<span class="taste">Shift</span>) für mehr Power! 🚀</li>
+          <li>Wenn der Ball ins Tor rollt: <strong>TOOOOR!</strong> 🎉</li>
+        </ol>
+      </div>
 
-                <!-- Screenshot Platzhalter -->
-                <div class="screenshot-placeholder">
-                    <p>📸 Screenshot: Training-Menü</p>
-                </div>
-            </div>
-        </section>
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">💡 Profi-Tipps fürs Tore schießen:</h3>
+        <ul>
+          <li>🎯 <strong>Triff den Ball mittig</strong> – dann fliegt er geradeaus</li>
+          <li>⚡ <strong>Mit Boost schießen</strong> – macht den Schuss härter</li>
+          <li>🦘 <strong>Springen vorm Treffen</strong> – der Ball fliegt höher</li>
+          <li>📐 <strong>Winkel beachten</strong> – von der Seite ist's schwerer</li>
+          <li>⏰ <strong>Timing</strong> – warte bis der Ball ruhig liegt</li>
+        </ul>
+      </div>
 
-        <!-- Section 5: Taktiken -->
-        <section id="taktiken" class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">🧠 Spieltaktiken & Rotation</h2>
-            </div>
-            <div class="content-body">
-                <div class="info-box">
-                    <h3>🔄 Was ist Rotation?</h3>
-                    <p>
-                        <strong>Rotation</strong> bedeutet, dass du dich mit deinen Teammitgliedern abwechselst.
-                    </p>
-                    <ul class="feature-list">
-                        <li><strong>Position 1 (Angriff):</strong> Versucht zu schießen</li>
-                        <li><strong>Position 2 (Unterstützung):</strong> Wartet auf Abpraller</li>
-                        <li><strong>Position 3 (Verteidigung):</strong> Bleibt hinten</li>
-                    </ul>
-                </div>
+      <div class="screenshot-placeholder">
+        📸 [SCREENSHOT: Goal Celebration HIER EINFÜGEN]
+      </div>
 
-                <div class="info-box">
-                    <h3>✅ GUTE Rotation</h3>
-                    <ul class="feature-list">
-                        <li>✅ Nur 1 Spieler greift an</li>
-                        <li>✅ Andere sammeln Boost</li>
-                        <li>✅ Immer jemand in Verteidigung</li>
-                        <li>✅ Fahre zurück wenn Teammitglied vorne ist</li>
-                    </ul>
-                </div>
+      <div class="info-box info-box-warning">
+        <p><strong>😅 Falls es nicht sofort klappt:</strong> Das ist völlig normal! 
+        Selbst Profis haben hunderte Versuche gebraucht. Probier's einfach immer wieder! 💪</p>
+      </div>
 
-                <div class="warning-box">
-                    <h4>❌ SCHLECHTE Rotation</h4>
-                    <ul class="feature-list">
-                        <li>❌ Alle 3 Spieler am Ball (Ball-Chasing)</li>
-                        <li>❌ Niemand in Verteidigung</li>
-                        <li>❌ Beide Spieler greifen gleichzeitig an</li>
-                    </ul>
-                </div>
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Lern-Video:</h3>
+        <p>
+          Schau dir an, wie man Tore schießt:<br>
+          <a href="https://www.youtube.com/results?search_query=rocket+league+shooting+tutorial+deutsch" target="_blank" class="video-link">
+            🔗 YouTube: Rocket League Schießen lernen
+          </a>
+        </p>
+      </div>
 
-                <div class="tip-box">
-                    <h4>💡 Goldene Regel</h4>
-                    <p>
-                        Wenn dein Teammitglied vor dir ist → <strong>Bleib zurück!</strong>
-                    </p>
-                </div>
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">🎉 Nach deinem ersten Tor:</h3>
+        <p>
+          <strong>Feier es!</strong> Das erste Tor ist etwas Besonderes. 
+          Rocket League zeigt dir sogar eine <em>Wiederholung</em> – mega cool! 🔥
+        </p>
+      </div>
+    </section>
 
-                <!-- Screenshot Platzhalter -->
-                <div class="screenshot-placeholder">
-                    <p>📸 Screenshot: Rotations-Diagramm</p>
-                </div>
-            </div>
-        </section>
+    <!-- Mission 4: Aerial Hits -->
+    <section id="aerials" class="content-section">
+      <h2 class="section-title">🚀 Mission 4: 10 Aerial Hits schaffen</h2>
+      
+      <p>
+        Jetzt wird's <strong>spektakulär</strong>! "Aerials" bedeutet: Du triffst den Ball <em>in der Luft</em>! ✈️
+      </p>
 
-        <!-- Section 6: Ranked -->
-        <section id="ranked" class="content-section">
-            <div class="section-header">
-                <h2 class="section-title">🏆 Ranked-Tipps</h2>
-            </div>
-            <div class="content-body">
-                <div class="info-box">
-                    <h3>🎮 Ranked spielen</h3>
-                    <p>
-                        <strong>Ranked</strong> ist der kompetitive Modus. Du bekommst einen Rang:
-                    </p>
-                    <ul class="feature-list">
-                        <li>🥉 Bronze</li>
-                        <li>🥈 Silber</li>
-                        <li>🥇 Gold</li>
-                        <li>💎 Platin</li>
-                        <li>💠 Diamant</li>
-                        <li>🏆 Champion</li>
-                        <li>⭐ Grand Champion</li>
-                        <li>🔥 Supersonic Legend</li>
-                    </ul>
-                </div>
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">❓ Was sind Aerial Hits?</h3>
+        <p>
+          Wenn der Ball hoch fliegt, kannst du mit deinem Auto <strong>abheben</strong> und ihn in der Luft treffen!
+        </p>
+        <p>
+          Das sieht nicht nur <em>mega cool</em> aus, sondern ist auch super wichtig im Spiel! 
+          Fast alle coolen Tore werden in der Luft gemacht. 🎯
+        </p>
+      </div>
 
-                <div class="info-box">
-                    <h3>✅ Tipps zum Aufsteigen</h3>
-                    
-                    <h4>Bronze → Silber:</h4>
-                    <ul class="feature-list">
-                        <li>✅ Lerne Ball zu treffen</li>
-                        <li>✅ Sammle immer Boost</li>
-                        <li>✅ Bleib im Tor wenn andere angreifen</li>
-                    </ul>
+      <div class="steps-box">
+        <h3 class="steps-title">🎯 So machst du Aerial Hits:</h3>
+        <ol>
+          <li>Gehe zu <strong>"Training" → "Aerial"</strong></li>
+          <li>Wähle <strong>"Rookie"</strong> Schwierigkeit</li>
+          <li>Warte bis der Ball <strong>hochfliegt</strong></li>
+          <li>Fahr auf den Ball zu und drücke <strong>2x <span class="taste">Leertaste</span></strong> (Doppelsprung)</li>
+          <li>Halte <strong><span class="taste">Shift</span></strong> (Boost) gedrückt</li>
+          <li>Lenk dein Auto <strong>zum Ball</strong></li>
+          <li>Triff den Ball in der Luft → <strong>AERIAL HIT!</strong> 🎊</li>
+        </ol>
+      </div>
 
-                    <h4>Silber → Gold:</h4>
-                    <ul class="feature-list">
-                        <li>✅ Lerne Power-Shots</li>
-                        <li>✅ Rotation verstehen</li>
-                        <li>✅ Übe Aerials im Training</li>
-                    </ul>
+      <div class="info-box info-box-warning">
+        <p><strong>⚠️ Das ist SCHWER!</strong> Aerials sind das <em>Schwerste</em> in Rocket League für Anfänger. 
+        Versuch's immer wieder – irgendwann klappt's! 🚀</p>
+      </div>
 
-                    <h4>Gold → Platin:</h4>
-                    <ul class="feature-list">
-                        <li>✅ Beherrsche Half-Flip</li>
-                        <li>✅ Treffe Aerials im Match</li>
-                        <li>✅ Spiele schneller</li>
-                        <li>✅ Bessere Positionierung</li>
-                    </ul>
-                </div>
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">💡 Profi-Tipps für Aerials:</h3>
+        <ul>
+          <li>🎯 <strong>Geduld!</strong> – Das braucht viel Übung</li>
+          <li>⚡ <strong>Boost managen</strong> – nicht alles auf einmal verbrauchen</li>
+          <li>🎮 <strong>Kamera-Einstellungen</strong> – Ball-Cam hilft (drück <span class="taste">Y</span>)</li>
+          <li>🦘 <strong>Timing</strong> – spring nicht zu früh ab</li>
+          <li>📐 <strong>Winkel</strong> – flieg schräg zum Ball, nicht gerade hoch</li>
+        </ul>
+      </div>
 
-                <div class="tip-box">
-                    <h4>🧠 Mental-Tipps</h4>
-                    <ul class="feature-list">
-                        <li>✅ Mache Pause nach 2 Niederlagen</li>
-                        <li>✅ Sei nett zu Teammitgliedern</li>
-                        <li>✅ Analysiere deine Fehler</li>
-                        <li>✅ Spaß haben ist wichtiger als Rang!</li>
-                    </ul>
-                </div>
+      <div class="screenshot-placeholder">
+        📸 [SCREENSHOT: Aerial Hit HIER EINFÜGEN]
+      </div>
 
-                <!-- Screenshot Platzhalter -->
-                <div class="screenshot-placeholder">
-                    <p>📸 Screenshot: Rang-Übersicht</p>
-                </div>
-            </div>
-        </section>
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Aerial Tutorial:</h3>
+        <p>
+          Schau dir Profis an, wie sie fliegen:<br>
+          <a href="https://www.youtube.com/results?search_query=rocket+league+aerial+tutorial+deutsch+anfänger" target="_blank" class="video-link">
+            🔗 YouTube: Rocket League Aerials lernen
+          </a>
+        </p>
+      </div>
 
-    </main>
+      <div class="info-box info-box-hotwheels">
+        <h3 class="info-box-title">🏎️ Hot-Wheels-Vergleich:</h3>
+        <p>
+          Stell dir vor, deine <strong>Hot-Wheels-Autos könnten fliegen</strong>! 
+          Genau so fühlt es sich an, wenn du einen perfekten Aerial machst. 🚁🔥
+        </p>
+      </div>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <p>🖥️ PC-Notizbuch - Dein interaktiver Lern-Begleiter</p>
-            <p class="footer-info">Letztes Update: Dezember 2024 | Erstellt mit ❤️ für junge PC-Entdecker</p>
-        </div>
-    </footer>
+      <div class="info-box info-box-warning">
+        <p><strong>🎯 Ziel:</strong> Versuch <strong>10 Aerial Hits</strong> zu machen (können auch über mehrere Tage verteilt sein!). 
+        Jeder Hit zählt, egal ob im Training oder im echten Spiel! 🏆</p>
+      </div>
+    </section>
 
-    <!-- JavaScript -->
-    <script src="global-progress.js"></script>
-    <script src="page-tracker.js"></script>
-    
-    <!-- Scroll-Funktion -->
-    <script>
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-    </script>
+    <!-- Mission 5: Match gewinnen -->
+    <section id="win" class="content-section">
+      <h2 class="section-title">🏆 Mission 5: Ein komplettes Match gewinnen</h2>
+      
+      <p>
+        Jetzt geht's um den <strong>Sieg</strong>! Gewinne dein erstes komplettes Match! 🥇
+      </p>
+
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">🎮 Was bedeutet "Match gewinnen"?</h3>
+        <p>
+          Ein Match in Rocket League dauert <strong>5 Minuten</strong>. 
+          Das Team mit den <em>meisten Toren</em> gewinnt!
+        </p>
+        <p>
+          Du kannst gewinnen:
+        </p>
+        <ul>
+          <li>🤖 Gegen <strong>Bots</strong> (am einfachsten)</li>
+          <li>👥 Gegen <strong>echte Spieler</strong> (schwerer, aber spannender!)</li>
+          <li>🎯 Im <strong>"Casual"</strong> Modus (entspannt, kein Druck)</li>
+        </ul>
+      </div>
+
+      <div class="steps-box">
+        <h3 class="steps-title">🎯 Empfohlener Weg zum ersten Sieg:</h3>
+        <ol>
+          <li>Wähle <strong>"Play" → "Exhibition"</strong></li>
+          <li>Stelle die Bot-Schwierigkeit auf <strong>"Rookie"</strong> oder <strong>"Pro"</strong></li>
+          <li><strong>Wichtig:</strong> Füge einen Bot zu <em>deinem Team</em> hinzu (2 vs 2 ist einfacher!)</li>
+          <li>Wähle <strong>1-2 gegnerische Bots</strong></li>
+          <li>Spiel das Match bis zum Ende (5 Minuten)</li>
+          <li>Schieß mehr Tore als der Gegner! ⚽</li>
+        </ol>
+      </div>
+
+      <div class="screenshot-placeholder">
+        📸 [SCREENSHOT: Victory Screen HIER EINFÜGEN]
+      </div>
+
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">💡 Gewinn-Strategien für Anfänger:</h3>
+        <ul>
+          <li>🛡️ <strong>Bleib manchmal hinten</strong> – nicht immer nach vorne stürmen!</li>
+          <li>🎯 <strong>Warte auf gute Chancen</strong> – nicht jeden Ball angreifen</li>
+          <li>🤝 <strong>Vertraue deinem Mitspieler</strong> (Bot oder Mensch)</li>
+          <li>⚡ <strong>Sammel Boost</strong> auf – die orangenen Pads geben dir Power!</li>
+          <li>🧠 <strong>Denk mit</strong> – wo wird der Ball hinfliegen?</li>
+        </ul>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <p><strong>😅 Falls du verlierst:</strong> Keine Sorge! Probier es einfach nochmal. 
+        Selbst Profis verlieren mal. Das Wichtigste ist: <strong>Hab Spaß!</strong> 🎮</p>
+      </div>
+
+      <div class="info-box info-box-hotwheels">
+        <h3 class="info-box-title">🏁 Wie ein Hot-Wheels-Rennen:</h3>
+        <p>
+          Stell dir vor, du fährst ein <strong>mega wichtiges Rennen</strong> gegen deine Freunde 
+          und gewinnst am Ende! So fühlt sich der erste Sieg an. 🏆✨
+        </p>
+      </div>
+
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Strategie-Video:</h3>
+        <p>
+          Lerne die Basics der Positionierung:<br>
+          <a href="https://www.youtube.com/results?search_query=rocket+league+positioning+tutorial+deutsch" target="_blank" class="video-link">
+            🔗 YouTube: Rocket League Gewinnstrategien
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission 6: Training -->
+    <section id="training" class="content-section">
+      <h2 class="section-title">🎓 Mission 6: Basis-Trainings abschließen</h2>
+      
+      <p>
+        Zeit deine <strong>Skills zu verbessern</strong>! Rocket League hat spezielle Trainingsmodi. 💪
+      </p>
+
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">📚 Was sind Trainings?</h3>
+        <p>
+          Rocket League hat <strong>eingebaute Übungen</strong>, die dir helfen besser zu werden:
+        </p>
+        <ul>
+          <li>⚽ <strong>Striker Training</strong> – Tore schießen üben</li>
+          <li>🛡️ <strong>Goalie Training</strong> – Bälle abwehren (Saves)</li>
+          <li>🚀 <strong>Aerial Training</strong> – Fliegen lernen</li>
+        </ul>
+        <p>Jedes Training hat mehrere <strong>Levels: Rookie, Pro, All-Star</strong></p>
+      </div>
+
+      <div class="steps-box">
+        <h3 class="steps-title">🎯 Diese Trainings solltest du machen:</h3>
+        <ol>
+          <li>Gehe zu <strong>"Training" → "Custom Training"</strong></li>
+          <li>Wähle <strong>"Browse"</strong> (durchsuchen)</li>
+          <li>Filtere nach <strong>"Rookie"</strong> Schwierigkeit</li>
+          <li><strong>Pflicht-Trainings für Anfänger:</strong></li>
+          <ul>
+            <li>✅ <strong>Striker Training (Rookie)</strong> – 10 Schüsse auf's Tor</li>
+            <li>✅ <strong>Goalie Training (Rookie)</strong> – 10 Bälle abwehren</li>
+            <li>✅ <strong>Aerial Training (Rookie)</strong> – 5 Aerial Hits</li>
+          </ul>
+          <li>Versuch jedes Training <strong>mindestens einmal komplett</strong> zu schaffen!</li>
+        </ol>
+      </div>
+
+      <div class="screenshot-placeholder">
+        📸 [SCREENSHOT: Training-Menü HIER EINFÜGEN]
+      </div>
+
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">💡 Profi-Tipp: Trainingsplan</h3>
+        <p>
+          <strong>Mach jeden Tag 10-15 Minuten Training</strong> – so wirst du richtig gut! 🚀
+        </p>
+        <ul>
+          <li>📅 <strong>Tag 1-3:</strong> Striker Training</li>
+          <li>📅 <strong>Tag 4-6:</strong> Goalie Training</li>
+          <li>📅 <strong>Tag 7+:</strong> Aerial Training</li>
+        </ul>
+        <p><em>Danach einfach das spielen, was dir am meisten Spaß macht!</em> 🎮</p>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <p><strong>⏰ Wie lange dauert das?</strong> Jedes Training dauert ca. <strong>5-10 Minuten</strong>. 
+        Du musst nicht alle an einem Tag machen – verteile es ruhig! 🗓️</p>
+      </div>
+
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Training-Guide:</h3>
+        <p>
+          Schau dir die besten Custom Trainings an:<br>
+          <a href="https://www.youtube.com/results?search_query=rocket+league+best+training+packs+deutsch" target="_blank" class="video-link">
+            🔗 YouTube: Die besten Rocket League Trainings
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Abschluss -->
+    <section class="content-section">
+      <h2 class="section-title">🎉 Geschafft – Du bist jetzt ein Rocket League Spieler!</h2>
+      
+      <p>
+        Wenn du alle <strong>6 Missionen</strong> abgehakt hast, hast du die wichtigsten Grundlagen drauf! 🏆
+      </p>
+
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">🚀 Was kommt als Nächstes?</h3>
+        <ul>
+          <li>🎮 Spiel <strong>Casual Matches</strong> online gegen echte Spieler</li>
+          <li>🏆 Wenn du dich bereit fühlst: Probier <strong>"Ranked"</strong> (Wettbewerb)</li>
+          <li>👥 Spiel mit <strong>Freunden</strong> zusammen – macht mehr Spaß!</li>
+          <li>🎨 Schalte neue <strong>Items und Autos</strong> frei</li>
+          <li>📺 Schau dir <strong>Profi-Matches</strong> auf YouTube an – mega inspirierend!</li>
+        </ul>
+      </div>
+
+      <div class="info-box info-box-hotwheels">
+        <h3 class="info-box-title">🏎️ Von Hot Wheels zu Rocket League:</h3>
+        <p>
+          Genau wie deine <strong>Hot-Wheels-Sammlung</strong> immer größer wird, 
+          wird auch deine Rocket-League-Karriere wachsen! 🔥
+        </p>
+        <p>
+          <strong>Jedes Spiel macht dich besser.</strong> Hab Geduld, hab Spaß und vor allem: 
+          <em>Genieß die Fahrt!</em> 🚀⚽
+        </p>
+      </div>
+
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">💬 Community & Hilfe:</h3>
+        <p>Wenn du Fragen hast oder Tipps brauchst:</p>
+        <ul>
+          <li>🎮 Frag Papa/Mama – die helfen dir gerne!</li>
+          <li>📺 YouTube hat <strong>tausende Tutorials</strong></li>
+          <li>👥 Reddit: <strong>r/RocketLeague</strong> (mit Erlaubnis!)</li>
+          <li>🎓 Rocket League hat eine <strong>große Community</strong> – alle helfen sich!</li>
+        </ul>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <p><strong>⚠️ Wichtig:</strong></p>
+        <ul>
+          <li>🕐 Mach <strong>Pausen</strong> – nicht stundenlang am Stück spielen!</li>
+          <li>💬 Sei <strong>nett zu anderen Spielern</strong> im Chat</li>
+          <li>🎮 Falls dich jemand ärgert: <strong>Mute/Block</strong> Funktion nutzen</li>
+          <li>❤️ <strong>Hab Spaß!</strong> Es ist nur ein Spiel – gewinnen ist nicht alles</li>
+        </ul>
+      </div>
+
+      <div class="final-message">
+        <h2>🏆 VIEL ERFOLG & HAB SPASS! 🚀</h2>
+        <p class="quote">"Was ein Save!" – Rocket League Chat 😄</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <p class="footer-title">🎮 LEVEL UP! Happy Birthday Philipp! 🎮</p>
+    <p class="footer-subtitle">Achievement Unlocked: Erster eigener PC • @Mosch • 2025</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="global-progress.js"></script>
+  <script src="page-tracker.js"></script>
+  <script>
+    // Scroll-Funktion für Mission-Links
+    function scrollToSection(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  </script>
+
 </body>
 </html>
