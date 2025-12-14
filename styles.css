@@ -1592,7 +1592,7 @@ footer {
 
 /* Checkpoint Container - Stein Style */
 .checkpoint-steinlabor {
-    background: rgba(90, 74, 58, 0.1);
+    background: rgba(90, 74, 58, 0.15);
     border: 2px solid #8B7355;
     border-radius: 12px;
     padding: 30px;
@@ -1606,10 +1606,17 @@ footer {
     text-align: center;
 }
 
+.checkpoint-steinlabor .checkpoint-intro {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
 /* Info Box Variants - Steinlabor */
 .info-box-brown {
     border-left-color: #8B7355;
-    background: rgba(139, 115, 85, 0.05);
+    background: rgba(139, 115, 85, 0.08);
 }
 
 .info-box-brown .info-box-title {
@@ -1629,53 +1636,56 @@ footer {
     color: #4CAF50;
     margin-top: 0;
     margin-bottom: 12px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .pfadfinder-box p {
     margin: 0;
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
-/* Stone Card - Gesteins-Karten */
-.stone-card {
+.pfadfinder-box ul {
+    margin: 15px 0 0 0;
+    padding-left: 25px;
+}
+
+.pfadfinder-box li {
+    margin: 8px 0;
+}
+
+/* Stone Card - Vereinfacht OHNE Bilder */
+.stone-card-simple {
     background: rgba(255, 255, 255, 0.03);
     border: 2px solid rgba(139, 115, 85, 0.3);
     border-radius: 12px;
-    padding: 25px;
+    padding: 30px;
     margin: 25px 0;
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 30px;
-    align-items: start;
 }
 
-.stone-image {
-    width: 100%;
-}
-
-.stone-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    border: 2px solid #8B7355;
-    display: block;
-}
-
-.stone-info h3 {
+.stone-card-simple h3 {
     color: #8B7355;
-    font-size: 1.2rem;
-    margin: 20px 0 12px 0;
+    font-size: 1.3rem;
+    margin: 25px 0 15px 0;
 }
 
-.stone-info ul {
+.stone-card-simple ul {
     margin: 12px 0;
     padding-left: 25px;
 }
 
-.stone-info li {
-    margin: 8px 0;
-    line-height: 1.6;
+.stone-card-simple li {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+/* Bonus Card */
+.stone-card-bonus {
+    border-color: #FFC107;
+    background: rgba(255, 193, 7, 0.05);
+}
+
+.stone-card-bonus h3 {
+    color: #FFC107;
 }
 
 /* Stone Table */
@@ -1683,20 +1693,28 @@ footer {
     width: 100%;
     border-collapse: collapse;
     margin: 15px 0 25px 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .stone-table tr {
     border-bottom: 1px solid rgba(139, 115, 85, 0.3);
 }
 
+.stone-table tr:last-child {
+    border-bottom: none;
+}
+
 .stone-table td {
-    padding: 10px 15px;
+    padding: 12px 15px;
     line-height: 1.6;
 }
 
 .stone-table td:first-child {
     width: 35%;
     color: #8B7355;
+    font-weight: 600;
 }
 
 /* Fun Fact Box */
@@ -1704,13 +1722,14 @@ footer {
     background: rgba(255, 193, 7, 0.1);
     border-left: 4px solid #FFC107;
     border-radius: 8px;
-    padding: 15px;
+    padding: 18px;
     margin: 20px 0;
     font-style: italic;
 }
 
 .fun-fact strong {
     color: #FFC107;
+    font-weight: 700;
 }
 
 /* Experiment Box */
@@ -1725,16 +1744,125 @@ footer {
 .experiment-box h3 {
     color: #4CAF50;
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
 }
 
-.experiment-box p {
-    margin: 0;
+.experiment-box p, 
+.experiment-box ul, 
+.experiment-box ol {
+    margin: 12px 0;
     line-height: 1.7;
 }
 
-/* Quiz Box */
-.quiz-box {
+.experiment-box ul,
+.experiment-box ol {
+    padding-left: 25px;
+}
+
+.experiment-box li {
+    margin: 8px 0;
+}
+
+.experiment-highlight {
+    background: rgba(76, 175, 80, 0.15);
+    border-width: 3px;
+}
+
+/* Task Box */
+.task-box {
+    background: rgba(33, 150, 243, 0.1);
+    border: 2px solid #2196F3;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 25px 0;
+}
+
+.task-box h3 {
+    color: #2196F3;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.task-box p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+.task-box a {
+    color: #64B5F6;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.task-box a:hover {
+    color: #2196F3;
+}
+
+/* Collector Guide */
+.collector-guide h3 {
+    color: #8B7355;
+    font-size: 1.4rem;
+    margin: 30px 0 20px 0;
+}
+
+/* Mohs Scale */
+.mohs-scale {
+    display: grid;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.mohs-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(139, 115, 85, 0.3);
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: grid;
+    grid-template-columns: 60px 150px 1fr;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s;
+}
+
+.mohs-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #8B7355;
+}
+
+.mohs-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #8B7355;
+    text-align: center;
+}
+
+.mohs-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.mohs-test {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.mohs-7 .mohs-number,
+.mohs-10 .mohs-number {
+    color: #FFC107;
+}
+
+.mohs-7,
+.mohs-10 {
+    border-color: #FFC107;
+    background: rgba(255, 193, 7, 0.08);
+}
+
+/* Quiz Container */
+.quiz-container {
     background: rgba(255, 255, 255, 0.03);
     border: 2px solid rgba(139, 115, 85, 0.4);
     border-radius: 12px;
@@ -1744,89 +1872,23 @@ footer {
 
 .quiz-question {
     margin: 30px 0;
-    padding: 20px;
+    padding: 25px;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    border-left: 4px solid #8B7355;
+}
+
+.quiz-question:first-child {
+    margin-top: 0;
 }
 
 .quiz-question h3 {
     color: #8B7355;
-    font-size: 1.1rem;
-    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+    margin: 0 0 20px 0;
 }
 
 .quiz-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-    margin: 15px 0;
-}
-
-.quiz-btn {
-    background: rgba(139, 115, 85, 0.2);
-    border: 2px solid #8B7355;
-    border-radius: 8px;
-    padding: 12px 20px;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: inherit;
-}
-
-.quiz-btn:hover:not(:disabled) {
-    background: rgba(139, 115, 85, 0.4);
-    transform: translateY(-2px);
-}
-
-.quiz-btn:disabled {
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-.quiz-result {
-    margin-top: 15px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    min-height: 30px;
-}
-
-/* Responsive - Steinlabor */
-@media (max-width: 768px) {
-    .stone-card {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .stone-image {
-        max-width: 100%;
-    }
-    
-    .quiz-options {
-        grid-template-columns: 1fr;
-    }
-    
-    .stone-table td {
-        padding: 8px 10px;
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .stone-card {
-        padding: 15px;
-    }
-    
-    .quiz-box {
-        padding: 15px;
-    }
-    
-    .quiz-question {
-        padding: 15px;
-    }
-    
-    .quiz-btn {
-        padding: 10px 15px;
-        font-size: 0.95rem;
-    }
+    grid-template-columns: repeat(
 }
