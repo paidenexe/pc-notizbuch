@@ -1,345 +1,374 @@
-<style>
-    :root {
-        --orange: #ff8c00;
-        --dark-bg: #1a1a1a;
-        --card-bg: #2a2a2a;
-        --border-orange: #ffa500;
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📔 Tagebuch | Philipp's PC-Abenteuer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-page="tagebuch">
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-content">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <span class="logo-icon">🖥️</span>
+          <span class="logo-text">PC-Notizbuch</span>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">🏠 Startseite</a>
+        <a href="pctipps.html" class="nav-link">💻 PC-Tipps</a>
+        <a href="rocketleague.html" class="nav-link">🚗 Rocket League</a>
+        <a href="steinlabor.html" class="nav-link">🪨 Steinlabor</a>
+        <a href="minecraft.html" class="nav-link">⛏️ Minecraft</a>
+        <a href="programmierlabor.html" class="nav-link">👨‍💻 Programmieren</a>
+        <a href="tagebuch.html" class="nav-link active">📔 Tagebuch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login Screen -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-box">
+      <div class="login-icon">🔒</div>
+      <h2 class="login-title">Tagebuch gesperrt</h2>
+      <p class="login-subtitle">Bitte Passwort eingeben</p>
+      
+      <input 
+        type="password" 
+        id="password-input" 
+        class="login-input" 
+        placeholder="Passwort..."
+        autocomplete="off"
+      >
+      
+      <button id="login-btn" class="login-btn">Entsperren</button>
+      
+      <div id="login-error" class="login-error"></div>
+    </div>
+  </div>
+
+  <!-- Main Content (hidden until unlocked) -->
+  <div id="diary-content" class="diary-content" style="display: none;">
+
+    <!-- Page Title Section -->
+    <div class="page-hero page-hero-tagebuch">
+      <h1 class="page-title">📔 MEIN TAGEBUCH</h1>
+      <p class="page-subtitle">Privater Bereich - Nur für mich!</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+
+      <!-- New Entry Section -->
+      <section class="new-entry-section">
+        <h2 class="section-title">✏️ Neuer Eintrag</h2>
+        
+        <div class="entry-form">
+          <textarea 
+            id="entry-text" 
+            class="entry-textarea" 
+            placeholder="Was ist heute passiert? Schreib deine Gedanken auf..."
+            rows="6"
+          ></textarea>
+          
+          <div class="entry-actions">
+            <button id="save-entry-btn" class="btn-primary btn-save">
+              💾 Eintrag speichern
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Entries List -->
+      <section class="entries-section">
+        <div class="entries-header">
+          <h2 class="section-title">📖 Meine Einträge</h2>
+          <div class="entries-actions">
+            <button id="export-btn" class="btn-secondary btn-export">
+              📤 Exportieren
+            </button>
+            <button id="import-btn" class="btn-secondary btn-import">
+              📥 Importieren
+            </button>
+            <input type="file" id="import-file" accept=".json" style="display: none;">
+          </div>
+        </div>
+
+        <div id="entries-container" class="entries-container">
+          <div class="no-entries">
+            <p>📭 Noch keine Einträge vorhanden.</p>
+            <p class="hint">Schreibe deinen ersten Eintrag oben! ✍️</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="delete-modal" class="modal">
+    <div class="modal-content modal-delete">
+      <h3 class="modal-title">🗑️ Eintrag löschen?</h3>
+      <p class="modal-text">Dieser Eintrag wird unwiderruflich gelöscht!</p>
+      
+      <div class="modal-actions">
+        <button id="confirm-delete-btn" class="btn-danger">Ja, löschen</button>
+        <button id="cancel-delete-btn" class="btn-secondary">Abbrechen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // ========================================
+    // PASSWORT-SCHUTZ
+    // ========================================
+    const correctPassword = '111213';
+    const loginScreen = document.getElementById('login-screen');
+    const diaryContent = document.getElementById('diary-content');
+    const passwordInput = document.getElementById('password-input');
+    const loginBtn = document.getElementById('login-btn');
+    const loginError = document.getElementById('login-error');
+
+    // Check if already logged in (session storage)
+    if (sessionStorage.getItem('diary-unlocked') === 'true') {
+      showDiary();
     }
 
-    body {
-        background: var(--dark-bg);
-        color: #f5f5dc;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    // Login Button Click
+    loginBtn.addEventListener('click', checkPassword);
+    
+    // Enter Key
+    passwordInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') checkPassword();
+    });
+
+    function checkPassword() {
+      const password = passwordInput.value;
+      
+      if (password === correctPassword) {
+        sessionStorage.setItem('diary-unlocked', 'true');
+        showDiary();
+      } else {
+        loginError.textContent = '❌ Falsches Passwort!';
+        passwordInput.value = '';
+        passwordInput.style.borderColor = '#dc3545';
+        
+        setTimeout(() => {
+          loginError.textContent = '';
+          passwordInput.style.borderColor = '';
+        }, 2000);
+      }
     }
 
-    .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 20px;
+    function showDiary() {
+      loginScreen.style.display = 'none';
+      diaryContent.style.display = 'block';
+      loadEntries();
     }
 
-    .back-button {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        background: var(--orange);
-        color: white;
-        padding: 12px 24px;
-        border-radius: 25px;
-        text-decoration: none;
-        font-weight: bold;
-        box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
-        transition: all 0.3s;
-        z-index: 1000;
+    // ========================================
+    // TAGEBUCH-FUNKTIONEN
+    // ========================================
+    const entryText = document.getElementById('entry-text');
+    const saveEntryBtn = document.getElementById('save-entry-btn');
+    const entriesContainer = document.getElementById('entries-container');
+    const deleteModal = document.getElementById('delete-modal');
+    const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+    const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+    const exportBtn = document.getElementById('export-btn');
+    const importBtn = document.getElementById('import-btn');
+    const importFile = document.getElementById('import-file');
+
+    let entries = [];
+    let deleteIndex = null;
+
+    // Load entries from localStorage
+    function loadEntries() {
+      const saved = localStorage.getItem('diary-entries');
+      entries = saved ? JSON.parse(saved) : [];
+      renderEntries();
     }
 
-    .back-button:hover {
-        background: #ff7700;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
+    // Save entries to localStorage
+    function saveEntries() {
+      localStorage.setItem('diary-entries', JSON.stringify(entries));
     }
 
-    /* PASSWORT-OVERLAY */
-    #password-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
+    // Render all entries
+    function renderEntries() {
+      if (entries.length === 0) {
+        entriesContainer.innerHTML = `
+          <div class="no-entries">
+            <p>📭 Noch keine Einträge vorhanden.</p>
+            <p class="hint">Schreibe deinen ersten Eintrag oben! ✍️</p>
+          </div>
+        `;
+        return;
+      }
+
+      entriesContainer.innerHTML = entries
+        .map((entry, index) => `
+          <div class="entry-card" data-index="${index}">
+            <div class="entry-header">
+              <div class="entry-date">
+                📅 ${entry.date}
+              </div>
+              <button class="btn-delete" onclick="openDeleteModal(${index})">
+                🗑️ Löschen
+              </button>
+            </div>
+            <div class="entry-content">
+              ${entry.text.replace(/\n/g, '<br>')}
+            </div>
+          </div>
+        `)
+        .reverse()
+        .join('');
     }
 
-    .password-box {
-        background: var(--card-bg);
-        padding: 40px;
-        border-radius: 20px;
-        border: 3px solid var(--orange);
-        text-align: center;
-        box-shadow: 0 10px 40px rgba(255, 140, 0, 0.5);
-        animation: fadeIn 0.5s;
+    // Save new entry
+    saveEntryBtn.addEventListener('click', () => {
+      const text = entryText.value.trim();
+      
+      if (!text) {
+        alert('⚠️ Bitte schreibe etwas!');
+        return;
+      }
+
+      const now = new Date();
+      const entry = {
+        text: text,
+        date: formatDate(now),
+        timestamp: now.getTime()
+      };
+
+      entries.push(entry);
+      saveEntries();
+      renderEntries();
+      
+      entryText.value = '';
+      
+      // Success animation
+      saveEntryBtn.textContent = '✅ Gespeichert!';
+      saveEntryBtn.style.background = '#28a745';
+      
+      setTimeout(() => {
+        saveEntryBtn.textContent = '💾 Eintrag speichern';
+        saveEntryBtn.style.background = '';
+      }, 2000);
+    });
+
+    // Format date
+    function formatDate(date) {
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      
+      return `${day}.${month}.${year} um ${hours}:${minutes} Uhr`;
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.9); }
-        to { opacity: 1; transform: scale(1); }
-    }
+    // Delete Modal
+    window.openDeleteModal = function(index) {
+      deleteIndex = index;
+      deleteModal.style.display = 'flex';
+    };
 
-    .password-box h2 {
-        color: var(--orange);
-        margin-bottom: 20px;
-        font-size: 2em;
-    }
+    cancelDeleteBtn.addEventListener('click', () => {
+      deleteModal.style.display = 'none';
+      deleteIndex = null;
+    });
 
-    .password-box input {
-        width: 250px;
-        padding: 15px;
-        font-size: 1.2em;
-        border: 2px solid var(--orange);
-        border-radius: 10px;
-        background: #1a1a1a;
-        color: white;
-        text-align: center;
-        margin: 20px 0;
-    }
+    confirmDeleteBtn.addEventListener('click', () => {
+      if (deleteIndex !== null) {
+        entries.splice(deleteIndex, 1);
+        saveEntries();
+        renderEntries();
+      }
+      
+      deleteModal.style.display = 'none';
+      deleteIndex = null;
+    });
 
-    .password-box button {
-        background: var(--orange);
-        color: white;
-        padding: 12px 30px;
-        border: none;
-        border-radius: 10px;
-        font-size: 1.1em;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
+    // Close modal on outside click
+    deleteModal.addEventListener('click', (e) => {
+      if (e.target === deleteModal) {
+        deleteModal.style.display = 'none';
+        deleteIndex = null;
+      }
+    });
 
-    .password-box button:hover {
-        background: #ff7700;
-        transform: scale(1.05);
-    }
+    // ========================================
+    // EXPORT / IMPORT
+    // ========================================
+    exportBtn.addEventListener('click', () => {
+      if (entries.length === 0) {
+        alert('⚠️ Keine Einträge zum Exportieren vorhanden!');
+        return;
+      }
 
-    .error-message {
-        color: #ff4444;
-        margin-top: 15px;
-        font-weight: bold;
-        display: none;
-    }
+      const dataStr = JSON.stringify(entries, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `tagebuch-backup-${Date.now()}.json`;
+      a.click();
+      
+      URL.revokeObjectURL(url);
+      
+      exportBtn.textContent = '✅ Exportiert!';
+      setTimeout(() => {
+        exportBtn.textContent = '📤 Exportieren';
+      }, 2000);
+    });
 
-    /* HAUPTINHALT (versteckt bis Passwort korrekt) */
-    #diary-content {
-        display: none;
-    }
+    importBtn.addEventListener('click', () => {
+      importFile.click();
+    });
 
-    /* HERO - OHNE HINTERGRUND */
-    .hero {
-        text-align: center;
-        padding: 80px 20px 40px;
-        margin-bottom: 40px;
-    }
+    importFile.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
 
-    .hero h1 {
-        font-size: 3em;
-        margin-bottom: 10px;
-        color: var(--orange);
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const imported = JSON.parse(event.target.result);
+          
+          if (!Array.isArray(imported)) {
+            alert('❌ Ungültige Datei!');
+            return;
+          }
 
-    .hero p {
-        font-size: 1.2em;
-        color: #ccc;
-    }
-
-    /* NEUER EINTRAG */
-    .new-entry-section {
-        background: var(--card-bg);
-        padding: 30px;
-        border-radius: 15px;
-        border-left: 5px solid var(--orange);
-        margin-bottom: 40px;
-    }
-
-    .new-entry-section h2 {
-        color: var(--orange);
-        margin-bottom: 20px;
-    }
-
-    .entry-form textarea {
-        width: calc(100% - 30px); /* ANGEPASST: Padding berücksichtigt */
-        min-height: 150px;
-        padding: 15px;
-        border: 2px solid var(--orange);
-        border-radius: 10px;
-        background: #1a1a1a;
-        color: white;
-        font-size: 1.1em;
-        font-family: inherit;
-        resize: vertical;
-        box-sizing: border-box; /* WICHTIG: Padding wird nicht zur Breite addiert */
-    }
-
-    .entry-form button {
-        background: var(--orange);
-        color: white;
-        padding: 12px 30px;
-        border: none;
-        border-radius: 10px;
-        font-size: 1.1em;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 15px;
-        transition: all 0.3s;
-    }
-
-    .entry-form button:hover {
-        background: #ff7700;
-        transform: translateY(-2px);
-    }
-
-    /* EINTRÄGE */
-    .entries-section h2 {
-        color: var(--orange);
-        margin-bottom: 25px;
-        font-size: 2em;
-    }
-
-    .entry-card {
-        background: var(--card-bg);
-        padding: 25px;
-        margin: 20px 0;
-        border-radius: 15px;
-        border-left: 5px solid var(--orange);
-        position: relative;
-        animation: slideIn 0.3s;
-    }
-
-    @keyframes slideIn {
-        from { opacity: 0; transform: translateX(-20px); }
-        to { opacity: 1; transform: translateX(0); }
-    }
-
-    .entry-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid rgba(255, 140, 0, 0.3);
-    }
-
-    .entry-date {
-        color: var(--orange);
-        font-weight: bold;
-        font-size: 1.1em;
-    }
-
-    .entry-time {
-        color: #999;
-        font-size: 0.9em;
-    }
-
-    .entry-text {
-        line-height: 1.8;
-        font-size: 1.1em;
-        margin: 15px 0;
-        white-space: pre-wrap;
-    }
-
-    .delete-btn {
-        background: #ff4444;
-        color: white;
-        padding: 8px 20px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: all 0.3s;
-    }
-
-    .delete-btn:hover {
-        background: #cc0000;
-        transform: scale(1.05);
-    }
-
-    .no-entries {
-        text-align: center;
-        padding: 60px 20px;
-        color: #999;
-        font-size: 1.2em;
-    }
-
-    .no-entries span {
-        font-size: 3em;
-        display: block;
-        margin-bottom: 20px;
-    }
-
-    /* LÖSCH-MODAL */
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        z-index: 10000;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .modal-content {
-        background: var(--card-bg);
-        padding: 40px;
-        border-radius: 20px;
-        border: 3px solid #ff4444;
-        text-align: center;
-        max-width: 400px;
-    }
-
-    .modal-content h3 {
-        color: #ff4444;
-        margin-bottom: 20px;
-        font-size: 1.5em;
-    }
-
-    .modal-buttons {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        margin-top: 25px;
-    }
-
-    .modal-buttons button {
-        padding: 12px 30px;
-        border: none;
-        border-radius: 10px;
-        font-weight: bold;
-        cursor: pointer;
-        font-size: 1em;
-        transition: all 0.3s;
-    }
-
-    .confirm-delete {
-        background: #ff4444;
-        color: white;
-    }
-
-    .confirm-delete:hover {
-        background: #cc0000;
-    }
-
-    .cancel-delete {
-        background: #666;
-        color: white;
-    }
-
-    .cancel-delete:hover {
-        background: #888;
-    }
-
-    @media (max-width: 768px) {
-        .hero h1 {
-            font-size: 2em;
+          entries = imported;
+          saveEntries();
+          renderEntries();
+          
+          alert('✅ Einträge erfolgreich importiert!');
+        } catch (error) {
+          alert('❌ Fehler beim Importieren!');
         }
+      };
+      
+      reader.readAsText(file);
+      importFile.value = '';
+    });
 
-        .password-box {
-            padding: 30px 20px;
-            margin: 20px;
-        }
-
-        .password-box input {
-            width: 200px;
-        }
-
-        .back-button {
-            top: 10px;
-            left: 10px;
-            padding: 10px 20px;
-        }
+    // Initial load (if already unlocked)
+    if (sessionStorage.getItem('diary-unlocked') === 'true') {
+      loadEntries();
     }
-</style>
+  </script>
+
+</body>
+</html>
