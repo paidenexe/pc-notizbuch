@@ -11,7 +11,7 @@
 
 <body data-page="steinlabor">
 
-  <!-- Header (wie andere Seiten) -->
+  <!-- Header -->
   <header class="main-header">
     <div class="header-content">
       <div class="logo">
@@ -22,6 +22,12 @@
       </div>
       <nav class="main-nav">
         <a href="index.html" class="nav-link">🏠 Startseite</a>
+        <a href="pctipps.html" class="nav-link">💻 PC-Tipps</a>
+        <a href="rocketleague.html" class="nav-link">🚗 Rocket League</a>
+        <a href="steinlabor.html" class="nav-link active">🪨 Steinlabor</a>
+        <a href="minecraft.html" class="nav-link">⛏️ Minecraft</a>
+        <a href="programmierlabor.html" class="nav-link">👨‍💻 Programmieren</a>
+        <a href="tagebuch.html" class="nav-link">📔 Tagebuch</a>
       </nav>
     </div>
   </header>
@@ -43,32 +49,42 @@
       <div class="checkpoint-grid">
         <div class="checkpoint-item">
           <input type="checkbox" class="checkpoint-checkbox" id="check-granite" data-checkpoint="granite">
-          <label class="checkpoint-label" for="check-granite">Granit gefunden</label>
+          <label class="checkpoint-label" for="check-granite">Granit gefunden & dokumentiert</label>
         </div>
 
         <div class="checkpoint-item">
           <input type="checkbox" class="checkpoint-checkbox" id="check-basalt" data-checkpoint="basalt">
-          <label class="checkpoint-label" for="check-basalt">Basalt entdeckt</label>
+          <label class="checkpoint-label" for="check-basalt">Basalt entdeckt & beschrieben</label>
         </div>
 
         <div class="checkpoint-item">
           <input type="checkbox" class="checkpoint-checkbox" id="check-quarz" data-checkpoint="quarz">
-          <label class="checkpoint-label" for="check-quarz">Quarz gesammelt</label>
+          <label class="checkpoint-label" for="check-quarz">Quarz gesammelt & katalogisiert</label>
         </div>
 
         <div class="checkpoint-item">
           <input type="checkbox" class="checkpoint-checkbox" id="check-kalkstein" data-checkpoint="kalkstein">
-          <label class="checkpoint-label" for="check-kalkstein">Kalkstein erkannt</label>
+          <label class="checkpoint-label" for="check-kalkstein">Kalkstein mit Essig getestet</label>
         </div>
 
         <div class="checkpoint-item">
           <input type="checkbox" class="checkpoint-checkbox" id="check-schiefer" data-checkpoint="schiefer">
-          <label class="checkpoint-label" for="check-schiefer">Schiefer identifiziert</label>
+          <label class="checkpoint-label" for="check-schiefer">Schiefer in Platten gespalten</label>
         </div>
 
         <div class="checkpoint-item">
           <input type="checkbox" class="checkpoint-checkbox" id="check-sandstein" data-checkpoint="sandstein">
-          <label class="checkpoint-label" for="check-sandstein">Sandstein untersucht</label>
+          <label class="checkpoint-label" for="check-sandstein">Sandstein identifiziert</label>
+        </div>
+
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-marmor" data-checkpoint="marmor">
+          <label class="checkpoint-label" for="check-marmor">Marmor untersucht</label>
+        </div>
+
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-sammlung" data-checkpoint="sammlung">
+          <label class="checkpoint-label" for="check-sammlung">Eigene Stein-Sammlung angelegt</label>
         </div>
       </div>
     </section>
@@ -79,17 +95,18 @@
       
       <p>
         Steine sind überall um uns herum – aber <strong>wie gut kennst du sie wirklich?</strong> 
-        In diesem Labor lernst du die <strong>wichtigsten Gesteinsarten</strong> kennen und wie du sie 
-        in der Natur erkennst!
+        In diesem Labor lernst du die <strong>wichtigsten Gesteinsarten</strong> kennen, wie du sie 
+        in der Natur erkennst und wie du deine eigene Sammlung aufbaust!
       </p>
 
       <div class="info-box info-box-brown">
-        <h3 class="info-box-title">🎒 Was du brauchst:</h3>
+        <h3 class="info-box-title">🎒 Deine Ausrüstung:</h3>
         <ul>
-          <li>👀 <strong>Gute Augen</strong> – zum Beobachten</li>
-          <li>🔍 <strong>Lupe</strong> (optional) – für Details</li>
-          <li>📓 <strong>Notizbuch</strong> – zum Dokumentieren</li>
+          <li>👀 <strong>Gute Augen</strong> – zum Beobachten von Details</li>
+          <li>🔍 <strong>Lupe</strong> (optional) – um Kristalle zu sehen</li>
+          <li>📓 <strong>Notizbuch</strong> – für Fundort & Datum</li>
           <li>📱 <strong>Handy/Kamera</strong> – zum Fotografieren</li>
+          <li>🧴 <strong>Essig/Zitronensaft</strong> – für den Kalkstein-Test</li>
           <li>🎒 <strong>Rucksack</strong> – für deine Funde</li>
         </ul>
       </div>
@@ -98,359 +115,669 @@
         <h3 class="info-box-title">🌍 Wo du Steine findest:</h3>
         <ul>
           <li>🏔️ <strong>Berge & Gebirge</strong> – viele verschiedene Arten</li>
-          <li>🏞️ <strong>Flussufer</strong> – runde, glatte Steine</li>
-          <li>🏖️ <strong>Strände</strong> – von Wellen geformt</li>
-          <li>🏗️ <strong>Baustellen</strong> – oft Schotter & Geröll</li>
+          <li>🏞️ <strong>Flussufer</strong> – runde, glatte Steine vom Wasser geformt</li>
+          <li>🏖️ <strong>Strände</strong> – von Wellen geschliffen</li>
+          <li>🏗️ <strong>Baustellen</strong> – oft Schotter & Geröll (frag vorher!)</li>
           <li>🚶 <strong>Wanderwege</strong> – am Wegrand</li>
+          <li>🏛️ <strong>Alte Gebäude</strong> – Granit, Sandstein, Marmor</li>
         </ul>
       </div>
 
       <div class="pfadfinder-box">
-        <h3>🏕️ Pfadfinder-Regel:</h3>
+        <h3>🏕️ Pfadfinder-Regel: "Leave No Trace"</h3>
         <p>
-          <strong>"Leave No Trace"</strong> – Nimm nur mit, was nicht zur Natur gehört 
-          (z.B. kleine Kiesel am Wegrand). Beschädigte keine Felsen oder geschützte Gebiete! 
-          In Nationalparks darfst du <strong>nichts</strong> mitnehmen.
+          Nimm nur mit, was <strong>nicht zur Natur gehört</strong> (z.B. kleine Kiesel am Wegrand). 
+          Beschädige <strong>keine Felsen</strong> oder geschützte Gebiete! 
+          In <strong>Nationalparks</strong> darfst du <strong>gar nichts</strong> mitnehmen.
         </p>
       </div>
     </section>
 
-    <!-- Die 6 Gesteinsarten -->
+    <!-- Mission 1: Granit -->
     <section class="content-section" id="granite">
-      <h2 class="section-title">1️⃣ GRANIT – Der Härteste</h2>
+      <h2 class="section-title">🪨 MISSION 1: GRANIT – Der Härteste</h2>
       
-      <div class="stone-card">
-        <div class="stone-image">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Granite_Yosemite_P1160483.jpg/400px-Granite_Yosemite_P1160483.jpg" alt="Granit">
+      <div class="stone-card-simple">
+        <h3>📋 Steckbrief:</h3>
+        <table class="stone-table">
+          <tr>
+            <td><strong>Typ:</strong></td>
+            <td>Magmatisches Gestein (Tiefengestein)</td>
+          </tr>
+          <tr>
+            <td><strong>Farbe:</strong></td>
+            <td>Grau, Rosa, Rot mit schwarzen Punkten</td>
+          </tr>
+          <tr>
+            <td><strong>Härte:</strong></td>
+            <td>⭐⭐⭐⭐⭐ (sehr hart – Härtegrad 6-7)</td>
+          </tr>
+          <tr>
+            <td><strong>Besonderheit:</strong></td>
+            <td>Glitzert durch Quarz & Glimmer</td>
+          </tr>
+        </table>
+
+        <h3>🔍 So erkennst du Granit:</h3>
+        <ul>
+          <li>✅ <strong>Körnige Oberfläche</strong> – wie grober Sand</li>
+          <li>✅ <strong>Drei Farben gemischt:</strong> Hell (Feldspat), durchsichtig (Quarz), schwarz (Glimmer)</li>
+          <li>✅ <strong>Sehr schwer</strong> zu zerkratzen (härter als Messer!)</li>
+          <li>✅ <strong>Glitzert</strong> im Sonnenlicht (Glimmer-Plättchen)</li>
+        </ul>
+
+        <h3>🌍 Wo du ihn findest:</h3>
+        <ul>
+          <li>🏔️ <strong>Hochgebirge</strong> – Alpen, Schwarzwald, Fichtelgebirge</li>
+          <li>🏛️ <strong>Denkmäler & Gebäude</strong> – wird oft verbaut!</li>
+          <li>🪦 <strong>Friedhöfe</strong> – viele Grabsteine sind aus Granit</li>
+          <li>🏗️ <strong>Straßen</strong> – als Bordstein oder Pflasterstein</li>
+        </ul>
+
+        <div class="experiment-box">
+          <h3>🧪 Experiment: Härtetest</h3>
+          <p>
+            Versuch mal, Granit mit einem <strong>Messer zu kratzen</strong>! 
+            Du wirst merken: <strong>Granit kratzt das Messer</strong>, nicht andersherum! 
+            Das liegt daran, dass Granit <strong>Quarz</strong> enthält – eines der härtesten Mineralien der Welt.
+          </p>
         </div>
-        
-        <div class="stone-info">
-          <h3>📋 Steckbrief:</h3>
-          <table class="stone-table">
-            <tr>
-              <td><strong>Typ:</strong></td>
-              <td>Magmatisches Gestein (Tiefengestein)</td>
-            </tr>
-            <tr>
-              <td><strong>Farbe:</strong></td>
-              <td>Grau, Rosa, Rot mit schwarzen Punkten</td>
-            </tr>
-            <tr>
-              <td><strong>Härte:</strong></td>
-              <td>⭐⭐⭐⭐⭐ (sehr hart!)</td>
-            </tr>
-            <tr>
-              <td><strong>Besonderheit:</strong></td>
-              <td>Glitzert durch Quarz & Glimmer</td>
-            </tr>
-          </table>
 
-          <h3>🔍 So erkennst du Granit:</h3>
-          <ul>
-            <li>✅ <strong>Körnige Oberfläche</strong> (wie grober Sand)</li>
-            <li>✅ <strong>Drei Farben gemischt:</strong> Hell (Feldspat), durchsichtig (Quarz), schwarz (Glimmer)</li>
-            <li>✅ <strong>Sehr schwer</strong> zu zerkratzen</li>
-            <li>✅ <strong>Glitzert</strong> im Sonnenlicht</li>
-          </ul>
+        <div class="fun-fact">
+          <strong>💡 Fun Fact:</strong> Granit entsteht tief unter der Erde aus geschmolzenem Gestein (Magma). 
+          Es dauert <strong>Millionen von Jahren</strong>, bis das Magma langsam abkühlt und zu Granit wird!
+        </div>
 
-          <h3>🌍 Wo du ihn findest:</h3>
-          <ul>
-            <li>🏔️ <strong>Hochgebirge</strong> (Alpen, Schwarzwald)</li>
-            <li>🏛️ <strong>Denkmäler & Gebäude</strong> (wird oft verbaut!)</li>
-            <li>🪦 <strong>Friedhöfe</strong> (Grabsteine aus Granit)</li>
-          </ul>
-
-          <div class="fun-fact">
-            <strong>💡 Fun Fact:</strong> Granit ist so hart, dass Messer daran stumpf werden! 
-            Er entsteht tief unter der Erde aus geschmolzenem Gestein (Magma).
-          </div>
+        <div class="task-box">
+          <h3>📝 Deine Aufgabe:</h3>
+          <p>🔍 Finde einen Granit-Stein in deiner Nähe</p>
+          <p>📸 Fotografiere ihn (achte auf die drei Farben!)</p>
+          <p>📓 Notiere: Wo? Wann? Wie sieht er aus?</p>
+          <p>
+            <strong>Wikipedia-Link zum Nachlesen:</strong> 
+            <a href="https://de.wikipedia.org/wiki/Granit" target="_blank" rel="noopener">
+              Granit auf Wikipedia →
+            </a>
+          </p>
         </div>
       </div>
     </section>
 
+    <!-- Mission 2: Basalt -->
     <section class="content-section" id="basalt">
-      <h2 class="section-title">2️⃣ BASALT – Der Vulkanstein</h2>
+      <h2 class="section-title">🌋 MISSION 2: BASALT – Der Vulkanstein</h2>
       
-      <div class="stone-card">
-        <div class="stone-image">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Basalt_-_Antrim.jpg/400px-Basalt_-_Antrim.jpg" alt="Basalt">
+      <div class="stone-card-simple">
+        <h3>📋 Steckbrief:</h3>
+        <table class="stone-table">
+          <tr>
+            <td><strong>Typ:</strong></td>
+            <td>Magmatisches Gestein (Ergussgestein)</td>
+          </tr>
+          <tr>
+            <td><strong>Farbe:</strong></td>
+            <td>Dunkelgrau bis Schwarz</td>
+          </tr>
+          <tr>
+            <td><strong>Härte:</strong></td>
+            <td>⭐⭐⭐⭐ (hart – Härtegrad 5-6)</td>
+          </tr>
+          <tr>
+            <td><strong>Besonderheit:</strong></td>
+            <td>Kommt aus Vulkanen!</td>
+          </tr>
+        </table>
+
+        <h3>🔍 So erkennst du Basalt:</h3>
+        <ul>
+          <li>✅ <strong>Sehr dunkel</strong> – fast schwarz</li>
+          <li>✅ <strong>Feinkörnig</strong> oder glatt (schnell abgekühlt!)</li>
+          <li>✅ <strong>Manchmal mit Luftblasen</strong> – Gasblasen vom Vulkan!</li>
+          <li>✅ <strong>Oft in Säulen</strong> – sechseckige Formen (Basaltsäulen)</li>
+        </ul>
+
+        <h3>🌍 Wo du ihn findest:</h3>
+        <ul>
+          <li>🌋 <strong>Vulkangebiete</strong> – Eifel, Vogelsberg, Island</li>
+          <li>🛣️ <strong>Straßenbau</strong> – Schotter & Pflastersteine</li>
+          <li>🏞️ <strong>Steinbrüche</strong> – wird oft abgebaut</li>
+        </ul>
+
+        <div class="fun-fact">
+          <strong>💡 Fun Fact:</strong> Basalt ist <strong>erkaltete Lava</strong>! 
+          Wenn ein Vulkan ausbricht und die Lava <strong>schnell</strong> an der Luft abkühlt, 
+          wird sie zu Basalt. Deshalb ist er oft schwarz wie Kohle und hat kleine Luftblasen!
         </div>
-        
-        <div class="stone-info">
-          <h3>📋 Steckbrief:</h3>
-          <table class="stone-table">
-            <tr>
-              <td><strong>Typ:</strong></td>
-              <td>Magmatisches Gestein (Ergussgestein)</td>
-            </tr>
-            <tr>
-              <td><strong>Farbe:</strong></td>
-              <td>Dunkelgrau bis Schwarz</td>
-            </tr>
-            <tr>
-              <td><strong>Härte:</strong></td>
-              <td>⭐⭐⭐⭐ (hart)</td>
-            </tr>
-            <tr>
-              <td><strong>Besonderheit:</strong></td>
-              <td>Kommt aus Vulkanen!</td>
-            </tr>
-          </table>
 
-          <h3>🔍 So erkennst du Basalt:</h3>
-          <ul>
-            <li>✅ <strong>Sehr dunkel</strong> (fast schwarz)</li>
-            <li>✅ <strong>Feinkörnig</strong> oder glatt</li>
-            <li>✅ <strong>Manchmal mit Luftblasen</strong> (Blasen vom Gas!)</li>
-            <li>✅ <strong>Oft in Säulen</strong> (sechseckige Formen)</li>
-          </ul>
-
-          <h3>🌍 Wo du ihn findest:</h3>
-          <ul>
-            <li>🌋 <strong>Vulkangebiete</strong> (Eifel, Island)</li>
-            <li>🛣️ <strong>Straßenbau</strong> (Schotter & Pflastersteine)</li>
-            <li>🏞️ <strong>Steinbrüche</strong></li>
-          </ul>
-
-          <div class="fun-fact">
-            <strong>💡 Fun Fact:</strong> Basalt ist <strong>erkaltete Lava</strong>! 
-            Wenn ein Vulkan ausbricht und die Lava an der Luft abkühlt, wird sie zu Basalt. 
-            Deshalb ist er oft schwarz wie Kohle!
-          </div>
+        <div class="task-box">
+          <h3>📝 Deine Aufgabe:</h3>
+          <p>🔍 Suche nach dunklen, fast schwarzen Steinen</p>
+          <p>🔬 Achte auf kleine Luftblasen (Poren)</p>
+          <p>📓 Notiere: Ist er leicht oder schwer? Glatt oder rau?</p>
+          <p>
+            <strong>Wikipedia-Link:</strong> 
+            <a href="https://de.wikipedia.org/wiki/Basalt" target="_blank" rel="noopener">
+              Basalt auf Wikipedia →
+            </a>
+          </p>
         </div>
       </div>
     </section>
 
+    <!-- Mission 3: Quarz -->
     <section class="content-section" id="quarz">
-      <h2 class="section-title">3️⃣ QUARZ – Der Glänzende</h2>
+      <h2 class="section-title">💎 MISSION 3: QUARZ – Der Glänzende</h2>
       
-      <div class="stone-card">
-        <div class="stone-image">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Quartz%2C_Tibet.jpg/400px-Quartz%2C_Tibet.jpg" alt="Quarz">
+      <div class="stone-card-simple">
+        <h3>📋 Steckbrief:</h3>
+        <table class="stone-table">
+          <tr>
+            <td><strong>Typ:</strong></td>
+            <td>Mineral (kein Gestein, aber wichtig!)</td>
+          </tr>
+          <tr>
+            <td><strong>Farbe:</strong></td>
+            <td>Durchsichtig, Weiß, Rosa (Rosenquarz), Violett (Amethyst)</td>
+          </tr>
+          <tr>
+            <td><strong>Härte:</strong></td>
+            <td>⭐⭐⭐⭐⭐ (sehr hart – Härtegrad 7!)</td>
+          </tr>
+          <tr>
+            <td><strong>Besonderheit:</strong></td>
+            <td>Bildet perfekte Kristalle!</td>
+          </tr>
+        </table>
+
+        <h3>🔍 So erkennst du Quarz:</h3>
+        <ul>
+          <li>✅ <strong>Glasartig glänzend</strong></li>
+          <li>✅ <strong>Oft durchsichtig</strong> oder milchig weiß</li>
+          <li>✅ <strong>Kristalle mit spitzen Enden</strong> – 6 Seiten!</li>
+          <li>✅ <strong>Sehr hart</strong> – kratzt sogar Glas!</li>
+        </ul>
+
+        <h3>🌍 Wo du ihn findest:</h3>
+        <ul>
+          <li>🏔️ <strong>Gebirge</strong> – Alpen, Schwarzwald, Erzgebirge</li>
+          <li>🏞️ <strong>Flussbetten</strong> – als weiße oder durchsichtige Kiesel</li>
+          <li>⛏️ <strong>Kristallhöhlen</strong> – selten, aber mega cool!</li>
+          <li>🏖️ <strong>Strände</strong> – als Quarzsand</li>
+        </ul>
+
+        <div class="experiment-box">
+          <h3>🧪 Experiment: Glas-Kratz-Test</h3>
+          <p>
+            Nimm einen durchsichtigen Stein und versuch, mit ihm <strong>Glas zu kratzen</strong> 
+            (z.B. eine alte Flasche). Wenn es funktioniert, hast du wahrscheinlich <strong>Quarz</strong> gefunden! 
+            Quarz ist härter als Glas (Härtegrad 7 vs. 5,5).
+          </p>
         </div>
-        
-        <div class="stone-info">
-          <h3>📋 Steckbrief:</h3>
-          <table class="stone-table">
-            <tr>
-              <td><strong>Typ:</strong></td>
-              <td>Mineral (kein Gestein, aber wichtig!)</td>
-            </tr>
-            <tr>
-              <td><strong>Farbe:</strong></td>
-              <td>Durchsichtig, Weiß, Rosa (Rosenquarz), Violett (Amethyst)</td>
-            </tr>
-            <tr>
-              <td><strong>Härte:</strong></td>
-              <td>⭐⭐⭐⭐⭐ (sehr hart!)</td>
-            </tr>
-            <tr>
-              <td><strong>Besonderheit:</strong></td>
-              <td>Bildet Kristalle!</td>
-            </tr>
-          </table>
 
-          <h3>🔍 So erkennst du Quarz:</h3>
-          <ul>
-            <li>✅ <strong>Glasartig glänzend</strong></li>
-            <li>✅ <strong>Oft durchsichtig</strong> oder milchig weiß</li>
-            <li>✅ <strong>Kristalle</strong> mit spitzen Enden (6 Seiten)</li>
-            <li>✅ <strong>Sehr hart</strong> – kratzt Glas!</li>
-          </ul>
+        <div class="fun-fact">
+          <strong>💡 Fun Fact:</strong> Quarz ist das <strong>zweithärteste Mineral der Welt</strong>! 
+          Nur Diamanten sind härter. Deshalb wird Quarz in <strong>Uhren</strong> verwendet – 
+          Quarz-Kristalle schwingen genau 32.768 Mal pro Sekunde und machen Uhren super präzise!
+        </div>
 
-          <h3>🌍 Wo du ihn findest:</h3>
-          <ul>
-            <li>🏔️ <strong>Gebirge</strong> (Alpen, Schwarzwald)</li>
-            <li>🏞️ <strong>Flussbetten</strong> (als weiße Kiesel)</li>
-            <li>⛏️ <strong>Kristallhöhlen</strong> (selten, aber mega cool!)</li>
-          </ul>
-
-          <div class="fun-fact">
-            <strong>💡 Fun Fact:</strong> Quarz ist das <strong>zweithärteste Mineral der Welt</strong>! 
-            Nur Diamanten sind härter. Deshalb wird Quarz in Uhren verwendet – die ticken genau, 
-            weil Quarz-Kristalle schwingen!
-          </div>
+        <div class="task-box">
+          <h3>📝 Deine Aufgabe:</h3>
+          <p>🔍 Finde durchsichtige oder milchig-weiße Steine</p>
+          <p>🔬 Teste die Härte (kratzt Glas?)</p>
+          <p>📸 Fotografiere besonders schöne Kristalle</p>
+          <p>
+            <strong>Wikipedia-Link:</strong> 
+            <a href="https://de.wikipedia.org/wiki/Quarz" target="_blank" rel="noopener">
+              Quarz auf Wikipedia →
+            </a>
+          </p>
         </div>
       </div>
     </section>
 
+    <!-- Mission 4: Kalkstein -->
     <section class="content-section" id="kalkstein">
-      <h2 class="section-title">4️⃣ KALKSTEIN – Der Schäumende</h2>
+      <h2 class="section-title">🧪 MISSION 4: KALKSTEIN – Der Schäumende</h2>
       
-      <div class="stone-card">
-        <div class="stone-image">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Limestone_Sequoyah_Caverns.jpg/400px-Limestone_Sequoyah_Caverns.jpg" alt="Kalkstein">
+      <div class="stone-card-simple">
+        <h3>📋 Steckbrief:</h3>
+        <table class="stone-table">
+          <tr>
+            <td><strong>Typ:</strong></td>
+            <td>Sedimentgestein (aus Ablagerungen)</td>
+          </tr>
+          <tr>
+            <td><strong>Farbe:</strong></td>
+            <td>Hellgrau, Beige, Weiß, manchmal Gelb</td>
+          </tr>
+          <tr>
+            <td><strong>Härte:</strong></td>
+            <td>⭐⭐ (eher weich – Härtegrad 3)</td>
+          </tr>
+          <tr>
+            <td><strong>Besonderheit:</strong></td>
+            <td>Reagiert mit Säure – schäumt!</td>
+          </tr>
+        </table>
+
+        <h3>🔍 So erkennst du Kalkstein:</h3>
+        <ul>
+          <li>✅ <strong>Hell gefärbt</strong> – oft grau, beige oder weiß</li>
+          <li>✅ <strong>Weich</strong> – lässt sich mit Messer ritzen</li>
+          <li>✅ <strong>Schäumt bei Essig!</strong> – chemische Reaktion</li>
+          <li>✅ <strong>Manchmal mit Fossilien</strong> – Muscheln, Schnecken!</li>
+        </ul>
+
+        <h3>🌍 Wo du ihn findest:</h3>
+        <ul>
+          <li>🏞️ <strong>Flusstäler & Schluchten</strong></li>
+          <li>🏛️ <strong>Alte Gebäude</strong> – Kirchen, Burgen, Klöster</li>
+          <li>🕳️ <strong>Höhlen</strong> – Tropfsteinhöhlen bestehen aus Kalk!</li>
+          <li>🏖️ <strong>Kreideküsten</strong> – weiße Felsen (Rügen!)</li>
+        </ul>
+
+        <div class="experiment-box experiment-highlight">
+          <h3>🧪 MEGA-EXPERIMENT: Der Essig-Test!</h3>
+          <p><strong>Das brauchst du:</strong></p>
+          <ul>
+            <li>🪨 Einen hellen Stein</li>
+            <li>🍶 Essig oder Zitronensaft</li>
+            <li>🥄 Einen Löffel</li>
+          </ul>
+          <p><strong>So geht's:</strong></p>
+          <ol>
+            <li>Leg den Stein auf einen Teller</li>
+            <li>Tropfe etwas Essig drauf</li>
+            <li>Beobachte: <strong>Schäumt es?</strong></li>
+          </ol>
+          <p>
+            <strong>✅ Wenn es schäumt und zischt:</strong> Es ist Kalkstein! 
+            (Kalk reagiert mit Säure und bildet CO₂-Bläschen)
+          </p>
         </div>
-        
-        <div class="stone-info">
-          <h3>📋 Steckbrief:</h3>
-          <table class="stone-table">
-            <tr>
-              <td><strong>Typ:</strong></td>
-              <td>Sedimentgestein (aus Ablagerungen)</td>
-            </tr>
-            <tr>
-              <td><strong>Farbe:</strong></td>
-              <td>Hellgrau, Beige, Weiß</td>
-            </tr>
-            <tr>
-              <td><strong>Härte:</strong></td>
-              <td>⭐⭐ (eher weich)</td>
-            </tr>
-            <tr>
-              <td><strong>Besonderheit:</strong></td>
-              <td>Reagiert mit Säure!</td>
-            </tr>
-          </table>
 
-          <h3>🔍 So erkennst du Kalkstein:</h3>
-          <ul>
-            <li>✅ <strong>Hell gefärbt</strong> (oft grau oder beige)</li>
-            <li>✅ <strong>Weich</strong> – lässt sich mit Messer ritzen</li>
-            <li>✅ <strong>Schäumt bei Essig!</strong> (chemische Reaktion)</li>
-            <li>✅ <strong>Manchmal mit Fossilien</strong> (Muscheln, Schnecken)</li>
-          </ul>
+        <div class="fun-fact">
+          <strong>💡 Fun Fact:</strong> Kalkstein entsteht aus <strong>alten Meerestieren</strong>! 
+          Vor Millionen Jahren sanken tote Muscheln, Korallen und Schnecken auf den Meeresboden. 
+          Über lange Zeit wurden sie zu Stein gepresst. Deshalb findest du manchmal noch <strong>Fossilien</strong> darin!
+        </div>
 
-          <h3>🌍 Wo du ihn findest:</h3>
-          <ul>
-            <li>🏞️ <strong>Flusstäler & Schluchten</strong></li>
-            <li>🏛️ <strong>Alte Gebäude</strong> (Kirchen, Burgen)</li>
-            <li>🕳️ <strong>Höhlen</strong> (Tropfsteinhöhlen!)</li>
-          </ul>
-
-          <div class="experiment-box">
-            <h3>🧪 Experiment:</h3>
-            <p>
-              Nimm einen hellen Stein und tropfe <strong>Essig</strong> oder <strong>Zitronensaft</strong> drauf. 
-              Wenn es <strong>schäumt und zischt</strong>, ist es Kalkstein! 
-              (Kalk reagiert mit Säure und bildet CO₂-Bläschen)
-            </p>
-          </div>
-
-          <div class="fun-fact">
-            <strong>💡 Fun Fact:</strong> Kalkstein entsteht aus <strong>alten Meerestieren</strong>! 
-            Vor Millionen Jahren sanken tote Muscheln und Korallen auf den Meeresboden. 
-            Über lange Zeit wurden sie zu Stein gepresst.
-          </div>
+        <div class="task-box">
+          <h3>📝 Deine Aufgabe:</h3>
+          <p>🔍 Finde helle, weiche Steine</p>
+          <p>🧪 Führe den Essig-Test durch!</p>
+          <p>📸 Fotografiere das Schäumen</p>
+          <p>🐚 Suche nach Fossilien im Stein</p>
+          <p>
+            <strong>Wikipedia-Link:</strong> 
+            <a href="https://de.wikipedia.org/wiki/Kalkstein" target="_blank" rel="noopener">
+              Kalkstein auf Wikipedia →
+            </a>
+          </p>
         </div>
       </div>
     </section>
 
+    <!-- Mission 5: Schiefer -->
     <section class="content-section" id="schiefer">
-      <h2 class="section-title">5️⃣ SCHIEFER – Der Geschichtete</h2>
+      <h2 class="section-title">📄 MISSION 5: SCHIEFER – Der Geschichtete</h2>
       
-      <div class="stone-card">
-        <div class="stone-image">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Schist_detail.jpg/400px-Schist_detail.jpg" alt="Schiefer">
+      <div class="stone-card-simple">
+        <h3>📋 Steckbrief:</h3>
+        <table class="stone-table">
+          <tr>
+            <td><strong>Typ:</strong></td>
+            <td>Metamorphes Gestein (umgewandeltes Gestein)</td>
+          </tr>
+          <tr>
+            <td><strong>Farbe:</strong></td>
+            <td>Grau, Schwarz, manchmal Grün oder Blau</td>
+          </tr>
+          <tr>
+            <td><strong>Härte:</strong></td>
+            <td>⭐⭐⭐ (mittelhart – Härtegrad 3-4)</td>
+          </tr>
+          <tr>
+            <td><strong>Besonderheit:</strong></td>
+            <td>Spaltet sich in dünne Platten!</td>
+          </tr>
+        </table>
+
+        <h3>🔍 So erkennst du Schiefer:</h3>
+        <ul>
+          <li>✅ <strong>Blättrige Struktur</strong> – wie ein Buch aus Stein!</li>
+          <li>✅ <strong>Dunkel</strong> – meist grau oder schwarz</li>
+          <li>✅ <strong>Glänzend</strong> – durch Glimmer-Plättchen</li>
+          <li>✅ <strong>Lässt sich in Schichten spalten</strong></li>
+        </ul>
+
+        <h3>🌍 Wo du ihn findest:</h3>
+        <ul>
+          <li>🏔️ <strong>Gebirge</strong> – besonders Mittelgebirge (Harz, Thüringer Wald)</li>
+          <li>🏠 <strong>Dächer</strong> – Schieferdächer! (blaugrau)</li>
+          <li>🖼️ <strong>Schreibtafeln</strong> – früher in Schulen verwendet</li>
+        </ul>
+
+        <div class="experiment-box">
+          <h3>🧪 Experiment: Spalt-Test</h3>
+          <p>
+            Finde einen flachen, dunklen Stein und versuch, ihn <strong>entlang der Schichten</strong> 
+            mit einem Messer oder flachen Stein zu spalten. Bei echtem Schiefer kannst du 
+            <strong>dünne Platten</strong> abbrechen – wie Seiten aus einem Buch!
+          </p>
         </div>
-        
-        <div class="stone-info">
-          <h3>📋 Steckbrief:</h3>
-          <table class="stone-table">
-            <tr>
-              <td><strong>Typ:</strong></td>
-              <td>Metamorphes Gestein (umgewandeltes Gestein)</td>
-            </tr>
-            <tr>
-              <td><strong>Farbe:</strong></td>
-              <td>Grau, Schwarz, manchmal Grün</td>
-            </tr>
-            <tr>
-              <td><strong>Härte:</strong></td>
-              <td>⭐⭐⭐ (mittelhart)</td>
-            </tr>
-            <tr>
-              <td><strong>Besonderheit:</strong></td>
-              <td>Spaltet in dünne Platten!</td>
-            </tr>
-          </table>
 
-          <h3>🔍 So erkennst du Schiefer:</h3>
-          <ul>
-            <li>✅ <strong>Blättrige Struktur</strong> – wie ein Buch aus Stein!</li>
-            <li>✅ <strong>Dunkel</strong> (grau oder schwarz)</li>
-            <li>✅ <strong>Glänzend</strong> (durch Glimmer)</li>
-            <li>✅ <strong>Lässt sich in Schichten spalten</strong></li>
-          </ul>
+        <div class="fun-fact">
+          <strong>💡 Fun Fact:</strong> Schiefer war <strong>das erste Whiteboard</strong>! 
+          Vor der Erfindung von Papier schrieben Menschen mit Kreide auf Schiefertafeln. 
+          Heute werden aus Schiefer Dächer gemacht, weil er <strong>wasserdicht</strong> ist 
+          und <strong>Jahrhunderte hält</strong>!
+        </div>
 
-          <h3>🌍 Wo du ihn findest:</h3>
-          <ul>
-            <li>🏔️ <strong>Gebirge</strong> (besonders Mittelgebirge)</li>
-            <li>🏠 <strong>Dächer</strong> (Schieferdächer!)</li>
-            <li>🖼️ <strong>Schreibtafeln</strong> (früher in Schulen)</li>
-          </ul>
-
-          <div class="fun-fact">
-            <strong>💡 Fun Fact:</strong> Schiefer war <strong>das erste Whiteboard</strong>! 
-            Vor der Erfindung von Papier schrieben Menschen mit Kreide auf Schiefertafeln. 
-            Heute werden aus Schiefer Dächer gemacht, weil er wasserdicht ist!
-          </div>
+        <div class="task-box">
+          <h3>📝 Deine Aufgabe:</h3>
+          <p>🔍 Finde dunkle, flache Steine</p>
+          <p>🔨 Versuch, eine dünne Platte abzuspalten</p>
+          <p>📸 Fotografiere die Schichten</p>
+          <p>✍️ Versuch, mit Kreide drauf zu schreiben!</p>
+          <p>
+            <strong>Wikipedia-Link:</strong> 
+            <a href="https://de.wikipedia.org/wiki/Schiefer" target="_blank" rel="noopener">
+              Schiefer auf Wikipedia →
+            </a>
+          </p>
         </div>
       </div>
     </section>
 
+    <!-- Mission 6: Sandstein -->
     <section class="content-section" id="sandstein">
-      <h2 class="section-title">6️⃣ SANDSTEIN – Der Sandige</h2>
+      <h2 class="section-title">🏜️ MISSION 6: SANDSTEIN – Der Sandige</h2>
       
-      <div class="stone-card">
-        <div class="stone-image">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Sandstein_im_Elbsandsteingebirge.jpg/400px-Sandstein_im_Elbsandsteingebirge.jpg" alt="Sandstein">
+      <div class="stone-card-simple">
+        <h3>📋 Steckbrief:</h3>
+        <table class="stone-table">
+          <tr>
+            <td><strong>Typ:</strong></td>
+            <td>Sedimentgestein (aus Sand entstanden)</td>
+          </tr>
+          <tr>
+            <td><strong>Farbe:</strong></td>
+            <td>Beige, Gelb, Rot, Orange, manchmal Grau</td>
+          </tr>
+          <tr>
+            <td><strong>Härte:</strong></td>
+            <td>⭐⭐⭐ (mittelhart – Härtegrad 6-7)</td>
+          </tr>
+          <tr>
+            <td><strong>Besonderheit:</strong></td>
+            <td>Fühlt sich sandig an!</td>
+          </tr>
+        </table>
+
+        <h3>🔍 So erkennst du Sandstein:</h3>
+        <ul>
+          <li>✅ <strong>Raue Oberfläche</strong> – wie Schmirgelpapier</li>
+          <li>✅ <strong>Warm gefärbt</strong> – gelb, rot, orange, beige</li>
+          <li>✅ <strong>Einzelne Sandkörner sichtbar</strong> – mit Lupe gut erkennbar!</li>
+          <li>✅ <strong>Porös</strong> – Wasser sickert ein</li>
+        </ul>
+
+        <h3>🌍 Wo du ihn findest:</h3>
+        <ul>
+          <li>🏜️ <strong>Wüstengebiete</strong> – USA: Grand Canyon, Monument Valley</li>
+          <li>🏛️ <strong>Alte Bauwerke</strong> – Burgen, Kirchen, Schlösser</li>
+          <li>🏞️ <strong>Schluchten & Felsformationen</strong> – Elbsandsteingebirge (Sächsische Schweiz)</li>
+          <li>🏖️ <strong>Strände & Dünen</strong> – wird zu Sand verwittert</li>
+        </ul>
+
+        <div class="experiment-box">
+          <h3>🧪 Experiment: Sand-Test</h3>
+          <p>
+            Reibe mit dem Finger über die Oberfläche eines verdächtigen Steins. 
+            Fühlt es sich <strong>sandig und rau</strong> an – fast wie Sandpapier? 
+            Siehst du mit der Lupe <strong>einzelne Sandkörner</strong>? 
+            Dann ist es wahrscheinlich Sandstein!
+          </p>
         </div>
-        
-        <div class="stone-info">
-          <h3>📋 Steckbrief:</h3>
-          <table class="stone-table">
-            <tr>
-              <td><strong>Typ:</strong></td>
-              <td>Sedimentgestein (aus Sand entstanden)</td>
-            </tr>
-            <tr>
-              <td><strong>Farbe:</strong></td>
-              <td>Beige, Gelb, Rot, manchmal Grau</td>
-            </tr>
-            <tr>
-              <td><strong>Härte:</strong></td>
-              <td>⭐⭐⭐ (mittelhart)</td>
-            </tr>
-            <tr>
-              <td><strong>Besonderheit:</strong></td>
-              <td>Fühlt sich sandig an!</td>
-            </tr>
-          </table>
 
-          <h3>🔍 So erkennst du Sandstein:</h3>
-          <ul>
-            <li>✅ <strong>Raue Oberfläche</strong> – wie Schmirgelpapier</li>
-            <li>✅ <strong>Warm gefärbt</strong> (gelb, rot, orange)</li>
-            <li>✅ <strong>Einzelne Sandkörner sichtbar</strong> (mit Lupe)</li>
-            <li>✅ <strong>Porös</strong> – Wasser sickert ein</li>
-          </ul>
+        <div class="fun-fact">
+          <strong>💡 Fun Fact:</strong> Sandstein entsteht aus <strong>altem Wüstensand</strong>! 
+          Über Millionen Jahre wurde Sand zusammengepresst und mit Mineralien "verklebt". 
+          Manche Sandsteine sind über <strong>200 Millionen Jahre alt</strong>! 
+          Die rote Farbe kommt von <strong>Eisen</strong> (Rost!).
+        </div>
 
-          <h3>🌍 Wo du ihn findest:</h3>
-          <ul>
-            <li>🏜️ <strong>Wüstengebiete</strong> (USA: Grand Canyon)</li>
-            <li>🏛️ <strong>Alte Bauwerke</strong> (Burgen, Kirchen)</li>
-            <li>🏞️ <strong>Schluchten & Felsformationen</strong> (Elbsandsteingebirge)</li>
-          </ul>
-
-          <div class="fun-fact">
-            <strong>💡 Fun Fact:</strong> Sandstein entsteht aus <strong>altem Wüstensand</strong>! 
-            Über Millionen Jahre wurde Sand zusammengepresst und mit Mineralien "verklebt". 
-            Manche Sandsteine sind über 200 Millionen Jahre alt!
-          </div>
+        <div class="task-box">
+          <h3>📝 Deine Aufgabe:</h3>
+          <p>🔍 Finde warme, sandige Steine</p>
+          <p>🔬 Untersuche die Oberfläche mit der Lupe</p>
+          <p>💧 Tropfe Wasser drauf – sickert es ein?</p>
+          <p>📸 Fotografiere die Sandkörner</p>
+          <p>
+            <strong>Wikipedia-Link:</strong> 
+            <a href="https://de.wikipedia.org/wiki/Sandstein" target="_blank" rel="noopener">
+              Sandstein auf Wikipedia →
+            </a>
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Quiz Section -->
-    <section class="content-section">
-      <h2 class="section-title">🧠 Gesteins-Quiz</h2>
+    <!-- BONUS Mission 7: Marmor -->
+    <section class="content-section" id="marmor">
+      <h2 class="section-title">✨ BONUS MISSION: MARMOR – Der Edle</h2>
       
-      <p>Teste dein Wissen! Welcher Stein ist das?</p>
+      <div class="stone-card-simple stone-card-bonus">
+        <h3>📋 Steckbrief:</h3>
+        <table class="stone-table">
+          <tr>
+            <td><strong>Typ:</strong></td>
+            <td>Metamorphes Gestein (umgewandelter Kalkstein!)</td>
+          </tr>
+          <tr>
+            <td><strong>Farbe:</strong></td>
+            <td>Weiß, Grau, Rosa, manchmal mit bunten Adern</td>
+          </tr>
+          <tr>
+            <td><strong>Härte:</strong></td>
+            <td>⭐⭐⭐ (mittelhart – Härtegrad 3-4)</td>
+          </tr>
+          <tr>
+            <td><strong>Besonderheit:</strong></td>
+            <td>Edel, glänzend, wird poliert!</td>
+          </tr>
+        </table>
 
-      <div class="quiz-box">
+        <h3>🔍 So erkennst du Marmor:</h3>
+        <ul>
+          <li>✅ <strong>Glänzend & glatt</strong> – oft poliert</li>
+          <li>✅ <strong>Weiß oder hell</strong> – mit bunten Adern (grau, rosa, grün)</li>
+          <li>✅ <strong>Kristalline Struktur</strong> – glitzert leicht</li>
+          <li>✅ <strong>Schäumt bei Essig</strong> – weil er aus Kalk entstanden ist!</li>
+        </ul>
+
+        <h3>🌍 Wo du ihn findest:</h3>
+        <ul>
+          <li>🏛️ <strong>Statuen & Skulpturen</strong> – Michelangelo hat Marmor geliebt!</li>
+          <li>🏰 <strong>Paläste & Kirchen</strong> – edler Fußboden & Säulen</li>
+          <li>🪦 <strong>Grabsteine</strong> – teurer als normale Steine</li>
+          <li>🏔️ <strong>Gebirge</strong> – Carrara in Italien (berühmt!)</li>
+        </ul>
+
+        <div class="fun-fact">
+          <strong>💡 Fun Fact:</strong> Marmor ist <strong>umgewandelter Kalkstein</strong>! 
+          Wenn Kalkstein unter <strong>extremem Druck und Hitze</strong> steht (tief in der Erde), 
+          wird er zu Marmor – härter, glänzender und schöner! 
+          Der berühmte Künstler <strong>Michelangelo</strong> hat seine Statuen aus weißem Marmor gemeißelt.
+        </div>
+
+        <div class="task-box">
+          <h3>📝 Deine Bonus-Aufgabe:</h3>
+          <p>🔍 Finde polierten, glänzenden Stein (z.B. an Gebäuden)</p>
+          <p>🧪 Teste mit Essig – schäumt er?</p>
+          <p>📸 Fotografiere schöne Muster & Adern</p>
+          <p>
+            <strong>Wikipedia-Link:</strong> 
+            <a href="https://de.wikipedia.org/wiki/Marmor" target="_blank" rel="noopener">
+              Marmor auf Wikipedia →
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sammler-Guide -->
+    <section class="content-section">
+      <h2 class="section-title">📦 DEINE STEIN-SAMMLUNG STARTEN</h2>
+      
+      <div class="collector-guide">
+        <h3>🎯 So wirst du ein Profi-Sammler:</h3>
+        
+        <div class="info-box info-box-blue">
+          <h3 class="info-box-title">📋 Schritt 1: Dokumentieren</h3>
+          <p>Für <strong>jeden Stein</strong> notierst du:</p>
+          <ul>
+            <li>📍 <strong>Fundort</strong> – Wo genau? (Stadt, Berg, Fluss)</li>
+            <li>📅 <strong>Datum</strong> – Wann gefunden?</li>
+            <li>🔍 <strong>Beschreibung</strong> – Farbe, Größe, Besonderheiten</li>
+            <li>🏷️ <strong>Steinart</strong> – Granit? Basalt? Quarz?</li>
+            <li>📸 <strong>Foto</strong> – vor dem Reinigen!</li>
+          </ul>
+        </div>
+
+        <div class="info-box info-box-green">
+          <h3 class="info-box-title">🧼 Schritt 2: Reinigen</h3>
+          <ul>
+            <li>💧 <strong>Nur mit Wasser</strong> – keine Chemikalien!</li>
+            <li>🪥 <strong>Weiche Bürste</strong> – alte Zahnbürste ist perfekt</li>
+            <li>🧽 <strong>Vorsichtig schrubben</strong> – nicht zu hart!</li>
+            <li>☀️ <strong>Trocknen lassen</strong> – in der Sonne</li>
+          </ul>
+        </div>
+
+        <div class="info-box info-box-brown">
+          <h3 class="info-box-title">📦 Schritt 3: Aufbewahren</h3>
+          <ul>
+            <li>🥚 <strong>Eierkartons</strong> – perfekte Größe für kleine Steine!</li>
+            <li>📦 <strong>Schuhkartons</strong> – mit Unterteilungen</li>
+            <li>🏷️ <strong>Beschriften</strong> – kleine Zettel mit Namen & Fundort</li>
+            <li>📚 <strong>Katalog erstellen</strong> – Notizbuch oder Excel-Tabelle</li>
+            <li>🖼️ <strong>Ausstellen</strong> – in einem Regal oder Vitrine</li>
+          </ul>
+        </div>
+
+        <div class="pfadfinder-box">
+          <h3>🏕️ Pfadfinder-Projekt: Stein-Ausstellung</h3>
+          <p>
+            Erstelle eine <strong>Mini-Ausstellung</strong> für deine Sippe oder Familie:
+          </p>
+          <ul>
+            <li>📦 Nimm eine große Box oder ein Tablett</li>
+            <li>🪨 Ordne 10 Steine nach Steinart</li>
+            <li>🏷️ Beschrifte jeden Stein (Klebeband + Stift)</li>
+            <li>📋 Erstelle ein "Info-Blatt" mit Fun Facts</li>
+            <li>🎤 Halte einen Mini-Vortrag darüber!</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mohs Härte-Skala -->
+    <section class="content-section">
+      <h2 class="section-title">💪 DIE MOHS-HÄRTESKALA</h2>
+      
+      <p>
+        Die <strong>Mohs-Skala</strong> misst, wie <strong>hart</strong> Mineralien sind. 
+        Sie geht von <strong>1 (sehr weich)</strong> bis <strong>10 (extrem hart)</strong>.
+      </p>
+
+      <div class="mohs-scale">
+        <div class="mohs-item mohs-1">
+          <span class="mohs-number">1</span>
+          <span class="mohs-name">Talk</span>
+          <span class="mohs-test">Mit Fingernagel kratzbar</span>
+        </div>
+        
+        <div class="mohs-item mohs-2">
+          <span class="mohs-number">2</span>
+          <span class="mohs-name">Gips</span>
+          <span class="mohs-test">Mit Fingernagel kratzbar</span>
+        </div>
+        
+        <div class="mohs-item mohs-3">
+          <span class="mohs-number">3</span>
+          <span class="mohs-name">Calcit (Kalk)</span>
+          <span class="mohs-test">Mit Kupfermünze kratzbar</span>
+        </div>
+        
+        <div class="mohs-item mohs-4">
+          <span class="mohs-number">4</span>
+          <span class="mohs-name">Fluorit</span>
+          <span class="mohs-test">Mit Messer kratzbar</span>
+        </div>
+        
+        <div class="mohs-item mohs-5">
+          <span class="mohs-number">5</span>
+          <span class="mohs-name">Apatit</span>
+          <span class="mohs-test">Mit Messer schwer kratzbar</span>
+        </div>
+        
+        <div class="mohs-item mohs-6">
+          <span class="mohs-number">6</span>
+          <span class="mohs-name">Feldspat</span>
+          <span class="mohs-test">Kratzt Glas</span>
+        </div>
+        
+        <div class="mohs-item mohs-7">
+          <span class="mohs-number">7</span>
+          <span class="mohs-name"><strong>QUARZ</strong></span>
+          <span class="mohs-test">Kratzt problemlos Glas!</span>
+        </div>
+        
+        <div class="mohs-item mohs-8">
+          <span class="mohs-number">8</span>
+          <span class="mohs-name">Topas</span>
+          <span class="mohs-test">Kratzt Quarz</span>
+        </div>
+        
+        <div class="mohs-item mohs-9">
+          <span class="mohs-number">9</span>
+          <span class="mohs-name">Korund (Rubin/Saphir)</span>
+          <span class="mohs-test">Kratzt fast alles</span>
+        </div>
+        
+        <div class="mohs-item mohs-10">
+          <span class="mohs-number">10</span>
+          <span class="mohs-name"><strong>DIAMANT</strong></span>
+          <span class="mohs-test">Härtestes Mineral!</span>
+        </div>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <h3 class="info-box-title">⚠️ Wichtige Härte-Tests:</h3>
+        <ul>
+          <li>💅 <strong>Fingernagel</strong> = Härte 2-2,5 (kratzt Talk & Gips)</li>
+          <li>🪙 <strong>Kupfermünze</strong> = Härte 3 (kratzt Kalk)</li>
+          <li>🔪 <strong>Messer</strong> = Härte 5,5 (kratzt Kalk & Apatit)</li>
+          <li>🪟 <strong>Fensterglas</strong> = Härte 5,5 (wird von Quarz gekratzt!)</li>
+          <li>💎 <strong>Quarz</strong> = Härte 7 (kratzt Glas!)</li>
+        </ul>
+        <p>
+          <strong>TIPP:</strong> Wenn ein Stein Glas kratzt, ist er <strong>mindestens so hart wie Quarz</strong>!
+        </p>
+      </div>
+    </section>
+
+    <!-- Final Quiz -->
+    <section class="content-section">
+      <h2 class="section-title">🧠 ABSCHLUSS-QUIZ</h2>
+      
+      <p>Zeit zu testen, was du gelernt hast! 🎓</p>
+
+      <div class="quiz-container">
         <div class="quiz-question">
-          <h3>Frage 1: Welcher Stein schäumt bei Essig?</h3>
+          <h3>❓ Frage 1: Welcher Stein schäumt bei Essig?</h3>
           <div class="quiz-options">
             <button class="quiz-btn" data-answer="wrong">Granit</button>
             <button class="quiz-btn" data-answer="correct">Kalkstein</button>
@@ -461,18 +788,18 @@
         </div>
 
         <div class="quiz-question">
-          <h3>Frage 2: Welcher Stein kommt aus Vulkanen?</h3>
+          <h3>❓ Frage 2: Welcher Stein kommt aus Vulkanen?</h3>
           <div class="quiz-options">
             <button class="quiz-btn" data-answer="wrong">Sandstein</button>
             <button class="quiz-btn" data-answer="correct">Basalt</button>
             <button class="quiz-btn" data-answer="wrong">Schiefer</button>
-            <button class="quiz-btn" data-answer="wrong">Kalkstein</button>
+            <button class="quiz-btn" data-answer="wrong">Marmor</button>
           </div>
           <div class="quiz-result"></div>
         </div>
 
         <div class="quiz-question">
-          <h3>Frage 3: Welcher Stein spaltet sich in dünne Platten?</h3>
+          <h3>❓ Frage 3: Welcher Stein spaltet sich in dünne Platten?</h3>
           <div class="quiz-options">
             <button class="quiz-btn" data-answer="wrong">Quarz</button>
             <button class="quiz-btn" data-answer="wrong">Granit</button>
@@ -483,7 +810,7 @@
         </div>
 
         <div class="quiz-question">
-          <h3>Frage 4: Welcher Stein ist am härtesten?</h3>
+          <h3>❓ Frage 4: Welcher Stein kratzt Glas?</h3>
           <div class="quiz-options">
             <button class="quiz-btn" data-answer="wrong">Kalkstein</button>
             <button class="quiz-btn" data-answer="wrong">Sandstein</button>
@@ -494,61 +821,37 @@
         </div>
 
         <div class="quiz-question">
-          <h3>Frage 5: Welcher Stein fühlt sich sandig an?</h3>
+          <h3>❓ Frage 5: Welcher Stein fühlt sich sandig an?</h3>
           <div class="quiz-options">
             <button class="quiz-btn" data-answer="wrong">Basalt</button>
             <button class="quiz-btn" data-answer="wrong">Granit</button>
-            <button class="quiz-btn" data-answer="wrong">Quarz</button>
+            <button class="quiz-btn" data-answer="wrong">Marmor</button>
             <button class="quiz-btn" data-answer="correct">Sandstein</button>
+          </div>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question">
+          <h3>❓ Frage 6: Was ist Marmor ursprünglich?</h3>
+          <div class="quiz-options">
+            <button class="quiz-btn" data-answer="wrong">Sand</button>
+            <button class="quiz-btn" data-answer="correct">Kalkstein</button>
+            <button class="quiz-btn" data-answer="wrong">Lava</button>
+            <button class="quiz-btn" data-answer="wrong">Schlamm</button>
           </div>
           <div class="quiz-result"></div>
         </div>
       </div>
     </section>
 
-    <!-- Sammler-Tipps -->
-    <section class="content-section">
-      <h2 class="section-title">📦 Deine Stein-Sammlung</h2>
-      
-      <div class="info-box info-box-blue">
-        <h3 class="info-box-title">🎒 Wie du deine Steine aufbewahrst:</h3>
-        <ul>
-          <li>📦 <strong>Eierkartons</strong> – perfekt für kleine Steine!</li>
-          <li>🏷️ <strong>Beschriften</strong> – schreib Fundort & Datum drauf</li>
-          <li>📸 <strong>Fotografieren</strong> – mach Fotos vor dem Reinigen</li>
-          <li>🧼 <strong>Vorsichtig waschen</strong> – nur mit Wasser & Bürste</li>
-          <li>📚 <strong>Katalog führen</strong> – erstell eine Liste deiner Funde</li>
-        </ul>
-      </div>
-
-      <div class="info-box info-box-warning">
-        <h3 class="info-box-title">⚠️ Wichtige Regeln:</h3>
-        <ul>
-          <li>🚫 <strong>Nicht in Naturschutzgebieten</strong> sammeln</li>
-          <li>🏛️ <strong>Nichts von Denkmälern</strong> abbrechen</li>
-          <li>🏔️ <strong>Vorsicht am Berg</strong> – nicht klettern ohne Erfahrung</li>
-          <li>👨‍👩‍👦 <strong>Mit Erwachsenen</strong> auf Steinsuche gehen</li>
-        </ul>
-      </div>
-
-      <div class="pfadfinder-box">
-        <h3>🏕️ Pfadfinder-Projekt:</h3>
-        <p>
-          Erstelle eine <strong>Stein-Ausstellung</strong> für deine Sippe! 
-          Sammle 10 verschiedene Steine, reinige sie, beschrifte sie und stelle sie 
-          in einer Box aus. Erkläre deinen Freunden, was du gelernt hast!
-        </p>
-      </div>
-    </section>
-
     <!-- Final Message -->
-    <div class="final-message">
-      <h2>🎉 STEINLABOR ABGESCHLOSSEN!</h2>
-      <p>Du bist jetzt ein echter Gesteins-Experte! 🪨</p>
+    <div class="final-message final-message-steinlabor">
+      <h2>🎉 LABOR ABGESCHLOSSEN!</h2>
+      <p>Du bist jetzt ein echter <strong>Gesteins-Experte</strong>! 🪨</p>
       <p class="quote">"Jeder Stein erzählt eine Geschichte – Millionen Jahre alt!"</p>
-      <p style="margin-top: 20px;">
-        <a href="index.html" class="btn">← Zurück zur Startseite</a>
-      </p>
+      <div style="margin-top: 30px;">
+        <a href="index.html" class="btn btn-home">← Zurück zur Startseite</a>
+      </div>
     </div>
 
   </div>
@@ -571,14 +874,19 @@
         // Show result
         if (isCorrect) {
           this.style.background = '#4CAF50';
-          resultDiv.innerHTML = '<p style="color: #4CAF50;">✅ Richtig!</p>';
+          this.style.borderColor = '#4CAF50';
+          resultDiv.innerHTML = '<p style="color: #4CAF50; font-weight: bold;">✅ Richtig! Super gemacht!</p>';
         } else {
           this.style.background = '#f44336';
-          resultDiv.innerHTML = '<p style="color: #f44336;">❌ Falsch! Versuch es nochmal.</p>';
+          this.style.borderColor = '#f44336';
+          resultDiv.innerHTML = '<p style="color: #f44336; font-weight: bold;">❌ Falsch! Versuch es nochmal.</p>';
+          
+          // Re-enable after 2 seconds
           setTimeout(() => {
             allBtns.forEach(b => {
               b.disabled = false;
               b.style.background = '';
+              b.style.borderColor = '';
             });
             resultDiv.innerHTML = '';
           }, 2000);
