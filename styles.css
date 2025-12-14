@@ -1890,5 +1890,128 @@ footer {
 
 .quiz-options {
     display: grid;
-    grid-template-columns: repeat(
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.quiz-btn {
+    background: rgba(139, 115, 85, 0.2);
+    border: 2px solid #8B7355;
+    border-radius: 8px;
+    padding: 12px 20px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.quiz-btn:hover:not(:disabled) {
+    background: rgba(139, 115, 85, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+}
+
+.quiz-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.quiz-result {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-height: 30px;
+}
+
+/* Final Message - Steinlabor */
+.final-message-steinlabor {
+    background: linear-gradient(135deg, rgba(139, 115, 85, 0.2) 0%, rgba(90, 74, 58, 0.2) 100%);
+    border: 3px solid #8B7355;
+}
+
+.final-message-steinlabor h2 {
+    color: #8B7355;
+}
+
+.final-message-steinlabor .quote {
+    color: #8B7355;
+    font-style: italic;
+}
+
+/* Warning Box für Mohs */
+.info-box-warning {
+    border-left-color: #FF9800;
+    background: rgba(255, 152, 0, 0.08);
+}
+
+.info-box-warning .info-box-title {
+    color: #FF9800;
+}
+
+/* Responsive - Steinlabor */
+@media (max-width: 768px) {
+    .mohs-item {
+        grid-template-columns: 50px 120px 1fr;
+        gap: 15px;
+        padding: 12px 15px;
+    }
+    
+    .mohs-number {
+        font-size: 1.6rem;
+    }
+    
+    .mohs-name {
+        font-size: 1rem;
+    }
+    
+    .mohs-test {
+        font-size: 0.85rem;
+    }
+    
+    .quiz-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .stone-card-simple {
+        padding: 20px;
+    }
+    
+    .checkpoint-steinlabor {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mohs-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .mohs-number {
+        font-size: 1.4rem;
+    }
+    
+    .quiz-btn {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+    
+    .stone-table td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .stone-table td:first-child {
+        width: 40%;
+    }
+    
+    .experiment-box,
+    .task-box,
+    .pfadfinder-box {
+        padding: 15px;
+    }
 }
