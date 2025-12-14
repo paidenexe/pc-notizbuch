@@ -3,849 +3,717 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minecraft Java Guide | Philipp's PC-Abenteuer</title>
+  <title>⛏️ Minecraft Java Guide | Philipp's PC-Abenteuer</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    .checkpoint-container {
-      background-color: #2A2A2A;
-      padding: 25px;
-      border-radius: 10px;
-      margin: 30px auto;
-      max-width: 900px;
-      border-left: 5px solid #00AA00;
-    }
-
-    .checkpoint-title {
-      color: #00AA00;
-      font-size: 24px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .checkpoint-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .checkpoint-item {
-      background-color: #1A1A1A;
-      padding: 15px;
-      border-radius: 8px;
-      transition: all 0.3s;
-      border: 2px solid transparent;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .checkpoint-item:hover {
-      border-color: #00AA00;
-    }
-
-    .checkpoint-item.completed {
-      background-color: #1a3a1a;
-      border-color: #4CAF50;
-    }
-
-    .checkpoint-checkbox {
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      accent-color: #00AA00;
-      flex-shrink: 0;
-    }
-
-    .checkpoint-label {
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      flex: 1;
-      user-select: none;
-      transition: color 0.2s;
-    }
-
-    .checkpoint-label:hover {
-      color: #00AA00;
-    }
-
-    .guide-section {
-      background-color: #2A2A2A;
-      padding: 30px;
-      border-radius: 10px;
-      margin: 40px auto;
-      max-width: 900px;
-      scroll-margin-top: 20px;
-    }
-
-    .guide-section h3 {
-      color: #00AA00;
-      font-size: 26px;
-      margin-bottom: 15px;
-      border-bottom: 3px solid #00AA00;
-      padding-bottom: 10px;
-    }
-
-    .guide-section h4 {
-      color: #00AA00;
-      font-size: 20px;
-      margin-top: 25px;
-      margin-bottom: 10px;
-    }
-
-    .info-box {
-      background-color: #1A1A1A;
-      padding: 20px;
-      border-radius: 8px;
-      margin: 20px 0;
-      border-left: 4px solid #00AA00;
-    }
-
-    .warning-box {
-      background-color: #3a2a1a;
-      padding: 20px;
-      border-radius: 8px;
-      margin: 20px 0;
-      border-left: 4px solid #FF9800;
-    }
-
-    .controls-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .control-box {
-      background-color: #1A1A1A;
-      padding: 15px;
-      border-radius: 8px;
-      text-align: center;
-      border: 2px solid #00AA00;
-    }
-
-    .control-key {
-      font-size: 24px;
-      font-weight: bold;
-      color: #00AA00;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .video-link {
-      background-color: #1A1A1A;
-      padding: 20px;
-      border-radius: 8px;
-      margin: 20px 0;
-      text-align: center;
-    }
-
-    .video-link a {
-      color: #00AA00;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .video-link a:hover {
-      text-decoration: underline;
-    }
-  </style>
 </head>
 
 <body data-page="minecraft">
 
-  <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-
-  <!-- Header -->
-  <header class="hero" style="background: linear-gradient(135deg, #2a5a2a 0%, #1a1a1a 100%);">
-    <div class="hero-content">
-      <h1>⛏️ MINECRAFT JAVA EDITION</h1>
-      <p class="subtitle">Von der Switch zur Java Edition – Mods, Server & mehr!</p>
+  <!-- Header (wie andere Seiten) -->
+  <header class="main-header">
+    <div class="header-content">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <span class="logo-icon">🖥️</span>
+          <span class="logo-text">PC-Notizbuch</span>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">🏠 Startseite</a>
+        <a href="pctipps.html" class="nav-link">💻 PC-Tipps</a>
+        <a href="rocketleague.html" class="nav-link">🚗 Rocket League</a>
+        <a href="steinlabor.html" class="nav-link">🪨 Steinlabor</a>
+        <a href="minecraft.html" class="nav-link active">⛏️ Minecraft</a>
+        <a href="programmierlabor.html" class="nav-link">👨‍💻 Programmieren</a>
+        <a href="tagebuch.html" class="nav-link">📔 Tagebuch</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Checkpoint System -->
-  <div class="checkpoint-container">
-    <h2 class="checkpoint-title">🎯 Deine Minecraft Missionen</h2>
-    <p style="text-align: center; margin-bottom: 20px;">
-      Hake ab, was du schon kannst! 🏆
-    </p>
-
-    <div class="checkpoint-grid">
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="controls">
-        <label class="checkpoint-label" data-scroll="controls">Steuerung meistern</label>
-      </div>
-
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="server">
-        <label class="checkpoint-label" data-scroll="server">Ersten Server beitreten</label>
-      </div>
-
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="mods">
-        <label class="checkpoint-label" data-scroll="mods">Mods installieren</label>
-      </div>
-
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="resourcepack">
-        <label class="checkpoint-label" data-scroll="resourcepack">Resourcepack aktivieren</label>
-      </div>
-
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="optifine">
-        <label class="checkpoint-label" data-scroll="optifine">OptiFine nutzen</label>
-      </div>
-
-      <div class="checkpoint-item">
-        <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="community">
-        <label class="checkpoint-label" data-scroll="community">Community-Server erkunden</label>
-      </div>
-    </div>
+  <!-- Page Title Section -->
+  <div class="page-hero page-hero-minecraft">
+    <h1 class="page-title">⛏️ MINECRAFT JAVA EDITION</h1>
+    <p class="page-subtitle">Von der Switch zur Java Edition – Mods, Server & mehr!</p>
   </div>
 
-  <!-- Intro Section -->
-  <div class="guide-section">
-    <h3>🎮 Willkommen in der Java Edition!</h3>
-    
-    <p>
-      Du kennst Minecraft schon von der <strong>Nintendo Switch</strong> – aber die 
-      <strong>Java Edition</strong> auf dem PC ist das <strong>Original</strong> und bietet 
-      <strong>viel mehr Möglichkeiten:</strong>
-    </p>
+  <!-- Main Content -->
+  <div class="content-wrapper">
 
-    <div class="info-box">
-      <h4>✅ Was die Java Edition besser kann:</h4>
-      <ul>
-        <li>🎨 <strong>Mods</strong> – Tausende Erweiterungen (neue Items, Dimensionen, etc.)</li>
-        <li>🖼️ <strong>Resourcepacks & Shader</strong> – Mega coole Grafik</li>
-        <li>🌍 <strong>Größere Server-Community</strong> – Hypixel, GommeHD, etc.</li>
-        <li>⚙️ <strong>OptiFine</strong> – Bessere Performance + Zoom</li>
-        <li>🔧 <strong>Mehr Einstellungen</strong> – Alles anpassbar</li>
-        <li>🎯 <strong>Redstone funktioniert anders</strong> (besser für Mechaniken)</li>
-      </ul>
-    </div>
+    <!-- Checkpoint System -->
+    <section class="checkpoint-container checkpoint-minecraft">
+      <h2 class="checkpoint-title">🎯 Deine Minecraft Missionen</h2>
+      <p class="checkpoint-intro">Hake ab, was du schon kannst! 🏆</p>
 
-    <div class="warning-box">
-      <h4>⚠️ Wichtiger Unterschied zur Switch:</h4>
+      <div class="checkpoint-grid">
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-controls" data-checkpoint="controls">
+          <label class="checkpoint-label" for="check-controls" data-scroll="controls">Steuerung meistern</label>
+        </div>
+
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-server" data-checkpoint="server">
+          <label class="checkpoint-label" for="check-server" data-scroll="server">Ersten Server beitreten</label>
+        </div>
+
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-mods" data-checkpoint="mods">
+          <label class="checkpoint-label" for="check-mods" data-scroll="mods">Mods installieren</label>
+        </div>
+
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-resourcepack" data-checkpoint="resourcepack">
+          <label class="checkpoint-label" for="check-resourcepack" data-scroll="resourcepack">Resourcepack aktivieren</label>
+        </div>
+
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-optifine" data-checkpoint="optifine">
+          <label class="checkpoint-label" for="check-optifine" data-scroll="optifine">OptiFine nutzen</label>
+        </div>
+
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-community" data-checkpoint="community">
+          <label class="checkpoint-label" for="check-community" data-scroll="community">Community-Server erkunden</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="content-section">
+      <h2 class="section-title">🎮 Willkommen in der Java Edition!</h2>
+      
       <p>
-        <strong>Bedrock (Switch) ≠ Java (PC)</strong><br>
-        Du kannst <strong>nicht</strong> zwischen beiden Versionen zusammen spielen!
+        Du kennst Minecraft schon von der <strong>Nintendo Switch</strong> – aber die 
+        <strong>Java Edition</strong> auf dem PC ist das <strong>Original</strong> und bietet 
+        <strong>viel mehr Möglichkeiten:</strong>
       </p>
-      <ul>
-        <li>❌ Switch-Welten lassen sich nicht übertragen</li>
-        <li>❌ Kein Cross-Play zwischen Java & Bedrock</li>
-        <li>✅ Aber: Java hat die größere PC-Community!</li>
-      </ul>
+
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">✅ Was die Java Edition besser kann:</h3>
+        <ul>
+          <li>🎨 <strong>Mods</strong> – Tausende Erweiterungen (neue Items, Dimensionen, etc.)</li>
+          <li>🖼️ <strong>Resourcepacks & Shader</strong> – Mega coole Grafik</li>
+          <li>🌍 <strong>Größere Server-Community</strong> – Hypixel, GommeHD, etc.</li>
+          <li>⚙️ <strong>OptiFine</strong> – Bessere Performance + Zoom</li>
+          <li>🔧 <strong>Mehr Einstellungen</strong> – Alles anpassbar</li>
+          <li>🎯 <strong>Redstone funktioniert anders</strong> (besser für Mechaniken)</li>
+        </ul>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <h3 class="info-box-title">⚠️ Wichtiger Unterschied zur Switch:</h3>
+        <p>
+          <strong>Bedrock (Switch) ≠ Java (PC)</strong><br>
+          Du kannst <strong>nicht</strong> zwischen beiden Versionen zusammen spielen!
+        </p>
+        <ul>
+          <li>❌ Switch-Welten lassen sich nicht übertragen</li>
+          <li>❌ Kein Cross-Play zwischen Java & Bedrock</li>
+          <li>✅ Aber: Java hat die größere PC-Community!</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Mission 1: Steuerung -->
+    <section class="content-section" id="controls">
+      <h2 class="section-title">🎮 Mission 1: Steuerung meistern</h2>
+      
+      <p>
+        Auf dem PC spielst du mit <strong>Maus + Tastatur</strong> statt Controller. 
+        Das fühlt sich am Anfang anders an, ist aber <strong>viel präziser!</strong>
+      </p>
+
+      <h3>🖱️ Die wichtigsten Steuerungen:</h3>
+
+      <div class="controls-grid">
+        <div class="control-box">
+          <span class="control-key">W A S D</span>
+          <p>Laufen (Standard bei PC-Spielen)</p>
+        </div>
+
+        <div class="control-box">
+          <span class="control-key">MAUS</span>
+          <p>Umschauen / Zielen</p>
+        </div>
+
+        <div class="control-box">
+          <span class="control-key">LEERTASTE</span>
+          <p>Springen (2x = Fliegen im Kreativ)</p>
+        </div>
+
+        <div class="control-box">
+          <span class="control-key">SHIFT</span>
+          <p>Schleichen (damit fällst du nicht runter!)</p>
+        </div>
+
+        <div class="control-box">
+          <span class="control-key">E</span>
+          <p>Inventar öffnen</p>
+        </div>
+
+        <div class="control-box">
+          <span class="control-key">LINKE MAUS</span>
+          <p>Abbauen / Angreifen</p>
+        </div>
+
+        <div class="control-box">
+          <span class="control-key">RECHTE MAUS</span>
+          <p>Platzieren / Nutzen</p>
+        </div>
+
+        <div class="control-box">
+          <span class="control-key">1-9</span>
+          <p>Hotbar-Slots wechseln</p>
+        </div>
+
+        <div class="control-box">
+          <span class="control-key">F3</span>
+          <p>Debug-Screen (Koordinaten!)</p>
+        </div>
+
+        <div class="control-box">
+          <span class="control-key">F11</span>
+          <p>Vollbild an/aus</p>
+        </div>
+      </div>
+
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">💡 Profi-Tipp:</h3>
+        <p>
+          Geh in <strong>Einstellungen → Steuerung</strong> und pass die Tasten an! 
+          Viele Spieler ändern z.B.:
+        </p>
+        <ul>
+          <li><strong>Sprint:</strong> Von "Doppel-W" auf "STRG" (bequemer!)</li>
+          <li><strong>Drop Item:</strong> Von "Q" auf "G" (weniger versehentlich wegwerfen)</li>
+        </ul>
+      </div>
+
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Tutorial-Video:</h3>
+        <p>
+          <a href="https://www.youtube.com/results?search_query=minecraft+java+steuerung+deutsch" target="_blank" class="video-link">
+            🔗 YouTube: Minecraft Java Steuerung für Anfänger
+          </a>
+        </p>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <h3 class="info-box-title">🎯 Deine erste Aufgabe:</h3>
+        <p>
+          Erstelle eine <strong>neue Welt</strong> (Kreativ-Modus) und übe:
+        </p>
+        <ul>
+          <li>✅ 5 Minuten nur mit <strong>WASD + Maus</strong> bewegen</li>
+          <li>✅ Versuche <strong>NICHT runterzufallen</strong> (mit SHIFT schleichen!)</li>
+          <li>✅ Baue ein kleines Haus (Platzieren/Abbauen üben)</li>
+          <li>✅ Probiere <strong>Fliegen</strong> aus (2x Leertaste, dann Shift = runter)</li>
+        </ul>
+        <p><strong>Nach 30 Minuten fühlst du dich schon viel sicherer!</strong> 💪</p>
+      </div>
+    </section>
+
+    <!-- Mission 2: Server beitreten -->
+    <section class="content-section" id="server">
+      <h2 class="section-title">🌍 Mission 2: Ersten Server beitreten</h2>
+      
+      <p>
+        Das <strong>Coolste</strong> an der Java Edition: <strong>Riesige Multiplayer-Server</strong> 
+        mit Mini-Games, Clans und tausenden Spielern!
+      </p>
+
+      <h3>🚀 So trittst du einem Server bei:</h3>
+
+      <div class="steps-box">
+        <h3 class="steps-title">📝 Schritt-für-Schritt:</h3>
+        <ol>
+          <li>Öffne Minecraft und klicke auf <strong>"Multiplayer"</strong></li>
+          <li>Klicke auf <strong>"Server hinzufügen"</strong></li>
+          <li>Gib einen Namen ein (z.B. "GommeHD")</li>
+          <li>Gib die <strong>Server-Adresse</strong> ein (siehe unten)</li>
+          <li>Klicke auf <strong>"Fertig"</strong></li>
+          <li>Doppelklick auf den Server → Du bist drin! 🎉</li>
+        </ol>
+      </div>
+
+      <h3>🎮 Empfohlene deutsche Server für Anfänger:</h3>
+
+      <div class="server-grid">
+        <div class="server-box">
+          <h4>GommeHD</h4>
+          <p class="server-address">gommehd.net</p>
+          <p>Größter deutscher Server<br>BedWars, SkyWars, etc.</p>
+        </div>
+
+        <div class="server-box">
+          <h4>Rewinside</h4>
+          <p class="server-address">rewinside.tv</p>
+          <p>Community-Server<br>Freebuild, Jobs</p>
+        </div>
+
+        <div class="server-box">
+          <h4>Timolia</h4>
+          <p class="server-address">play.timolia.de</p>
+          <p>Mini-Games<br>Jump'n'Run, PvP</p>
+        </div>
+
+        <div class="server-box">
+          <h4>Hypixel</h4>
+          <p class="server-address">mc.hypixel.net</p>
+          <p>Weltweit größter Server<br>SkyBlock, BedWars (Englisch)</p>
+        </div>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <h3 class="info-box-title">⚠️ Wichtig für Server:</h3>
+        <ul>
+          <li>❗ Auf manchen Servern brauchst du <strong>keine Mods</strong> (die sind verboten!)</li>
+          <li>❗ Lies die <strong>/rules</strong> (Regeln) – sonst wirst du gebannt!</li>
+          <li>❗ Sei <strong>höflich im Chat</strong> – keine Beleidigungen!</li>
+          <li>✅ Fang mit <strong>Lobby-Games</strong> an (BedWars, SkyWars)</li>
+        </ul>
+      </div>
+
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">💬 Nützliche Server-Commands:</h3>
+        <ul>
+          <li><code>/help</code> – Zeigt alle Befehle</li>
+          <li><code>/spawn</code> – Zurück zum Spawn</li>
+          <li><code>/hub</code> oder <code>/lobby</code> – Zurück zur Hauptlobby</li>
+          <li><code>/stats</code> – Deine Statistiken</li>
+        </ul>
+      </div>
+
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Server-Tutorial:</h3>
+        <p>
+          <a href="https://www.youtube.com/results?search_query=minecraft+server+beitreten+java" target="_blank" class="video-link">
+            🔗 YouTube: Minecraft Server beitreten (Java Edition)
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission 3: Mods installieren -->
+    <section class="content-section" id="mods">
+      <h2 class="section-title">🔧 Mission 3: Mods installieren</h2>
+      
+      <p>
+        <strong>Mods</strong> sind Erweiterungen, die Minecraft <strong>komplett verändern</strong> können!
+        Von neuen Dimensionen über neue Mobs bis hin zu Technik-Maschinen.
+      </p>
+
+      <div class="info-box info-box-warning">
+        <h3 class="info-box-title">⚠️ WICHTIG VOR DEM START:</h3>
+        <ul>
+          <li>❗ Mods funktionieren <strong>NUR in der Java Edition</strong></li>
+          <li>❗ Du brauchst einen <strong>Mod-Loader</strong> (Fabric oder Forge)</li>
+          <li>❗ Mods funktionieren <strong>NICHT auf allen Servern</strong></li>
+          <li>✅ Für den Anfang: Fang mit <strong>Fabric</strong> an (einfacher!)</li>
+        </ul>
+      </div>
+
+      <h3>🛠️ Fabric installieren (empfohlen für Anfänger):</h3>
+
+      <div class="steps-box">
+        <h3 class="steps-title">📝 Schritt-für-Schritt:</h3>
+        <ol>
+          <li>Gehe auf: <a href="https://fabricmc.net/use/" target="_blank">https://fabricmc.net/use/</a></li>
+          <li>Lade den <strong>"Fabric Installer"</strong> herunter</li>
+          <li>Öffne die <strong>.jar-Datei</strong> (falls es nicht geht: Java installieren!)</li>
+          <li>Wähle deine <strong>Minecraft-Version</strong> (z.B. 1.20.1)</li>
+          <li>Klicke auf <strong>"Installieren"</strong></li>
+          <li>Öffne Minecraft Launcher → Wähle <strong>"fabric-loader-..."</strong> aus</li>
+          <li>Starte das Spiel → Fertig! ✅</li>
+        </ol>
+      </div>
+
+      <h3>📦 Mods herunterladen:</h3>
+
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">🔗 Sichere Download-Quellen:</h3>
+        <ul>
+          <li>🟢 <a href="https://modrinth.com" target="_blank">Modrinth.com</a> – Modern & sicher</li>
+          <li>🟢 <a href="https://www.curseforge.com/minecraft/mc-mods" target="_blank">CurseForge</a> – Größte Mod-Seite</li>
+          <li>❌ <strong>NIEMALS</strong> von anderen Seiten laden! (Viren!)</li>
+        </ul>
+      </div>
+
+      <h3>📂 Mods installieren:</h3>
+
+      <div class="steps-box">
+        <ol>
+          <li>Lade eine <strong>.jar-Datei</strong> herunter (z.B. "sodium-1.20.1.jar")</li>
+          <li>Drücke <strong>Windows + R</strong></li>
+          <li>Tippe ein: <code>%appdata%\.minecraft\mods</code> → Enter</li>
+          <li>Ziehe die <strong>.jar-Datei</strong> in den "mods"-Ordner</li>
+          <li>Starte Minecraft neu → Fertig! 🎉</li>
+        </ol>
+      </div>
+
+      <h3>🎨 Empfohlene Mods für Anfänger:</h3>
+
+      <div class="mod-grid">
+        <div class="mod-box">
+          <h4>Sodium</h4>
+          <p>Bessere Performance<br>(+50% FPS!)</p>
+        </div>
+
+        <div class="mod-box">
+          <h4>Iris Shaders</h4>
+          <p>Mega coole Grafik<br>(Schatten, Wasser, etc.)</p>
+        </div>
+
+        <div class="mod-box">
+          <h4>Litematica</h4>
+          <p>Baupläne anzeigen<br>(für große Builds)</p>
+        </div>
+
+        <div class="mod-box">
+          <h4>JourneyMap</h4>
+          <p>Minimap + Weltkarte<br>(nie wieder verlaufen!)</p>
+        </div>
+
+        <div class="mod-box">
+          <h4>AppleSkin</h4>
+          <p>Hungerbalken genauer<br>(Food-Management)</p>
+        </div>
+
+        <div class="mod-box">
+          <h4>Inventory Tweaks</h4>
+          <p>Inventar sortieren<br>(super praktisch!)</p>
+        </div>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <h3 class="info-box-title">🎯 Deine Aufgabe:</h3>
+        <ul>
+          <li>✅ Installiere <strong>Fabric</strong></li>
+          <li>✅ Lade <strong>Sodium</strong> von Modrinth herunter</li>
+          <li>✅ Installiere die Mod im "mods"-Ordner</li>
+          <li>✅ Starte das Spiel und prüfe: <strong>Mods → 1 Mod geladen</strong></li>
+        </ul>
+      </div>
+
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Mod-Installation Tutorial:</h3>
+        <p>
+          <a href="https://www.youtube.com/results?search_query=fabric+mods+installieren+deutsch" target="_blank" class="video-link">
+            🔗 YouTube: Fabric Mods installieren (2024)
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission 4: Resourcepack -->
+    <section class="content-section" id="resourcepack">
+      <h2 class="section-title">🖼️ Mission 4: Resourcepack aktivieren</h2>
+      
+      <p>
+        <strong>Resourcepacks</strong> ändern das <strong>Aussehen</strong> von Minecraft – 
+        Texturen, Sounds, Menüs, etc. Das ist wie ein neues "Design" für das Spiel!
+      </p>
+
+      <h3>📦 Resourcepack installieren:</h3>
+
+      <div class="steps-box">
+        <h3 class="steps-title">📝 Schritt-für-Schritt:</h3>
+        <ol>
+          <li>Lade ein Resourcepack herunter (als <strong>.zip-Datei</strong>)</li>
+          <li>Drücke <strong>Windows + R</strong></li>
+          <li>Tippe: <code>%appdata%\.minecraft\resourcepacks</code> → Enter</li>
+          <li>Ziehe die <strong>.zip-Datei</strong> in den Ordner (NICHT entpacken!)</li>
+          <li>Öffne Minecraft → <strong>Optionen → Resourcepacks</strong></li>
+          <li>Klicke auf das <strong>Pfeil-Symbol</strong> beim Pack (aktiviert es)</li>
+          <li>Klicke <strong>"Fertig"</strong> → Pack lädt sich! ✅</li>
+        </ol>
+      </div>
+
+      <h3>🎨 Empfohlene Resourcepacks:</h3>
+
+      <div class="mod-grid">
+        <div class="mod-box">
+          <h4>Faithful</h4>
+          <p>Vanilla in HD<br>(gleicher Style, schärfer)</p>
+        </div>
+
+        <div class="mod-box">
+          <h4>Mizuno's 16</h4>
+          <p>Modernes Design<br>(sauberer Look)</p>
+        </div>
+
+        <div class="mod-box">
+          <h4>Jerm's Better</h4>
+          <p>Leicht verbessert<br>(nicht zu krass)</p>
+        </div>
+
+        <div class="mod-box">
+          <h4>Sphax PureBDcraft</h4>
+          <p>Comic-Style<br>(lustig & bunt)</p>
+        </div>
+      </div>
+
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">🔗 Sichere Download-Quellen:</h3>
+        <ul>
+          <li>🟢 <a href="https://www.curseforge.com/minecraft/texture-packs" target="_blank">CurseForge</a></li>
+          <li>🟢 <a href="https://www.planetminecraft.com/texture-packs/" target="_blank">Planet Minecraft</a></li>
+          <li>🟢 <a href="https://resourcepack.net" target="_blank">ResourcePack.net</a></li>
+        </ul>
+      </div>
+
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">💡 Profi-Tipp:</h3>
+        <p>
+          Du kannst <strong>mehrere Packs gleichzeitig</strong> aktivieren! 
+          Minecraft lädt sie <strong>von oben nach unten</strong> – das oberste überschreibt das untere.
+        </p>
+      </div>
+
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Resourcepack-Tutorial:</h3>
+        <p>
+          <a href="https://www.youtube.com/results?search_query=minecraft+resourcepack+installieren" target="_blank" class="video-link">
+            🔗 YouTube: Resourcepack installieren (Java Edition)
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission 5: OptiFine -->
+    <section class="content-section" id="optifine">
+      <h2 class="section-title">⚙️ Mission 5: OptiFine nutzen</h2>
+      
+      <p>
+        <strong>OptiFine</strong> ist DER Klassiker für bessere Performance + coole Features!
+      </p>
+
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">✅ Was OptiFine kann:</h3>
+        <ul>
+          <li>🚀 <strong>Bessere FPS</strong> (Performance-Boost)</li>
+          <li>🔍 <strong>Zoom-Funktion</strong> (C-Taste drücken)</li>
+          <li>🎨 <strong>Shader-Support</strong> (mega coole Grafik!)</li>
+          <li>⚡ <strong>Dynamic Lights</strong> (Fackeln leuchten in der Hand)</li>
+          <li>🖼️ <strong>Connected Textures</strong> (Glas ohne Rand, etc.)</li>
+          <li>🌿 <strong>Bessere Gras/Blätter</strong></li>
+        </ul>
+      </div>
+
+      <h3>📥 OptiFine installieren:</h3>
+
+      <div class="steps-box">
+        <h3 class="steps-title">📝 Für Fabric (mit OptiFabric):</h3>
+        <ol>
+          <li>Lade <strong>OptiFine</strong> von: <a href="https://optifine.net/downloads" target="_blank">optifine.net</a></li>
+          <li>Lade <strong>OptiFabric</strong> von: <a href="https://www.curseforge.com/minecraft/mc-mods/optifabric" target="_blank">CurseForge</a></li>
+          <li>Lege <strong>beide .jar-Dateien</strong> in den "mods"-Ordner</li>
+          <li>Starte Minecraft → Fertig! ✅</li>
+        </ol>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <h3 class="info-box-title">⚠️ Alternative: Sodium statt OptiFine?</h3>
+        <p>
+          Viele nutzen heute <strong>Sodium + Iris</strong> statt OptiFine, weil es:
+        </p>
+        <ul>
+          <li>✅ <strong>Noch bessere Performance</strong> hat</li>
+          <li>✅ <strong>Open Source</strong> ist (aktiver entwickelt)</li>
+          <li>✅ Mit <strong>Iris</strong> auch Shader kann</li>
+        </ul>
+        <p>
+          <strong>Tipp:</strong> Probier beide aus und nimm, was dir besser gefällt! 
+          (Aber nicht beide gleichzeitig installieren!)
+        </p>
+      </div>
+
+      <h3>🎨 Shader installieren (mit OptiFine/Iris):</h3>
+
+      <div class="steps-box">
+        <ol>
+          <li>Lade einen Shader herunter (z.B. <strong>BSL Shaders</strong> oder <strong>Complementary</strong>)</li>
+          <li>Lege die <strong>.zip-Datei</strong> in: <code>%appdata%\.minecraft\shaderpacks</code></li>
+          <li>Im Spiel: <strong>Optionen → Videoeinstellungen → Shaders</strong></li>
+          <li>Wähle den Shader aus → <strong>Mega coole Grafik!</strong> 🤩</li>
+        </ol>
+      </div>
+
+      <h3>🎨 Empfohlene Shader:</h3>
+
+      <div class="mod-grid">
+        <div class="mod-box">
+          <h4>BSL Shaders</h4>
+          <p>Beliebtester Shader<br>Gute Performance</p>
+        </div>
+
+        <div class="mod-box">
+          <h4>Complementary</h4>
+          <p>Modern & schön<br>Viele Einstellungen</p>
+        </div>
+
+        <div class="mod-box">
+          <h4>Sildurs Vibrant</h4>
+          <p>Farbenfroh<br>Verschiedene Versionen</p>
+        </div>
+
+        <div class="mod-box">
+          <h4>Chocapic13</h4>
+          <p>Realistisch<br>Braucht starken PC!</p>
+        </div>
+      </div>
+
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Shader-Tutorial:</h3>
+        <p>
+          <a href="https://www.youtube.com/results?search_query=minecraft+shader+installieren+deutsch" target="_blank" class="video-link">
+            🔗 YouTube: Shader installieren (2024)
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission 6: Community-Server -->
+    <section class="content-section" id="community">
+      <h2 class="section-title">🌍 Mission 6: Community-Server erkunden</h2>
+      
+      <p>
+        Jetzt wo du die Grundlagen drauf hast: Zeit für <strong>richtige Multiplayer-Action!</strong> 🎉
+      </p>
+
+      <h3>🎮 Die besten Modi für den Einstieg:</h3>
+
+      <div class="gamemode-grid">
+        <div class="gamemode-box">
+          <h4>🛏️ BedWars</h4>
+          <p>Schütze dein Bett<br>Zerstöre andere Betten<br><strong>GommeHD / Hypixel</strong></p>
+        </div>
+
+        <div class="gamemode-box">
+          <h4>☁️ SkyWars</h4>
+          <p>Kämpfe auf Inseln<br>Letzter überlebt<br><strong>GommeHD / Hypixel</strong></p>
+        </div>
+
+        <div class="gamemode-box">
+          <h4>🏝️ SkyBlock</h4>
+          <p>Baue auf deiner Insel<br>Handel, Farmen, Craften<br><strong>Hypixel</strong></p>
+        </div>
+
+        <div class="gamemode-box">
+          <h4>🗡️ Survival Games</h4>
+          <p>Battle Royale<br>Sammle Items & überlebe<br><strong>Diverse Server</strong></p>
+        </div>
+
+        <div class="gamemode-box">
+          <h4>🎨 Build Battle</h4>
+          <p>Baue nach Thema<br>Andere bewerten<br><strong>GommeHD</strong></p>
+        </div>
+
+        <div class="gamemode-box">
+          <h4>⛏️ Survival</h4>
+          <p>Klassisches Minecraft<br>Aber mit anderen!<br><strong>Rewinside / Timolia</strong></p>
+        </div>
+      </div>
+
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">💬 Community-Tipps:</h3>
+        <ul>
+          <li>🎤 <strong>Discord-Server beitreten</strong> – viele Server haben eigene Communities</li>
+          <li>👥 <strong>Clans gründen</strong> – zusammen macht's mehr Spaß!</li>
+          <li>📊 <strong>Statistiken tracken</strong> – schau dir deine Fortschritte an</li>
+          <li>🏆 <strong>Challenges machen</strong> – viele Server haben tägliche Aufgaben</li>
+          <li>🎁 <strong>Votes abgeben</strong> – bekomme Belohnungen (auf Server-Webseite voten)</li>
+        </ul>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <h3 class="info-box-title">⚠️ Sicherheits-Tipps:</h3>
+        <ul>
+          <li>❗ <strong>Niemals dein Passwort</strong> im Chat eingeben!</li>
+          <li>❗ <strong>Keine Downloads</strong> von anderen Spielern annehmen!</li>
+          <li>❗ <strong>Kein Echtgeld</strong> an Spieler senden (nur offizielle Shops!)</li>
+          <li>❗ <strong>Bei Problemen:</strong> "/report" oder Admin/Moderator kontaktieren</li>
+          <li>✅ <strong>Spaß haben</strong> und fair spielen! 🎮</li>
+        </ul>
+      </div>
+
+      <div class="video-box">
+        <h3 class="video-box-title">📺 Server-Guide:</h3>
+        <p>
+          <a href="https://www.youtube.com/results?search_query=minecraft+server+guide+deutsch" target="_blank" class="video-link">
+            🔗 YouTube: Die besten Minecraft Server (Deutsch)
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Abschluss -->
+    <section class="content-section">
+      <h2 class="section-title">🎉 Glückwunsch – Du bist jetzt Java-Edition Profi!</h2>
+      
+      <p>
+        Wenn du alle <strong>6 Missionen</strong> geschafft hast, kennst du die wichtigsten Unterschiede 
+        zur Switch-Version und bist <strong>bereit für alles!</strong> 🚀
+      </p>
+
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">🔥 Was du jetzt kannst:</h3>
+        <ul>
+          <li>✅ Mit <strong>Maus + Tastatur</strong> spielen wie ein Profi</li>
+          <li>✅ Auf <strong>großen Servern</strong> mit tausenden Spielern zocken</li>
+          <li>✅ <strong>Mods installieren</strong> und das Spiel nach deinem Geschmack anpassen</li>
+          <li>✅ <strong>Shader nutzen</strong> für mega coole Grafik</li>
+          <li>✅ <strong>Resourcepacks</strong> aktivieren für neuen Look</li>
+          <li>✅ Teil der <strong>riesigen Java-Community</strong> sein!</li>
+        </ul>
+      </div>
+
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">🚀 Nächste Schritte:</h3>
+        <ul>
+          <li>🎮 Probier verschiedene <strong>Server-Modi</strong> aus (BedWars ist mega!)</li>
+          <li>🔧 Installiere mehr <strong>Mods</strong> (z.B. JourneyMap für Navigation)</li>
+          <li>🎨 Teste verschiedene <strong>Shader</strong> (BSL ist top!)</li>
+          <li>👥 Finde <strong>Freunde zum Spielen</strong> (macht viel mehr Spaß!)</li>
+          <li>📺 Schau <strong>YouTube-Tutorials</strong> für Advanced-Tricks</li>
+          <li>🏆 Probier <strong>Redstone-Tutorials</strong> aus (auf Java viel besser!)</li>
+        </ul>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <h3 class="info-box-title">💡 Letzter Profi-Tipp:</h3>
+        <p>
+          Die <strong>Java Edition</strong> wird ständig weiterentwickelt! 
+          Halte dein Spiel <strong>aktuell</strong> und schau regelmäßig nach:
+        </p>
+        <ul>
+          <li>🔄 <strong>Neuen Mods</strong> (Modrinth / CurseForge)</li>
+          <li>📰 <strong>Minecraft Updates</strong> (neue Versionen bringen neue Features!)</li>
+          <li>🎥 <strong>Content Creators</strong> (Paluten, GommeHD, etc. auf YouTube)</li>
+        </ul>
+        <p>
+          <strong>Viel Spaß in der Java Edition!</strong> 🎮⛏️
+        </p>
+      </div>
+    </section>
+
+    <!-- Final Message -->
+    <div class="final-message">
+      <h2>🎉 MISSION COMPLETE!</h2>
+      <p>Du hast alle Minecraft-Missionen gemeistert!</p>
+      <p class="quote">"Ein Block nach dem anderen – so baut man Großes!" ⛏️</p>
+      <p style="margin-top: 20px;">
+        <a href="index.html" class="btn">← Zurück zur Startseite</a>
+      </p>
     </div>
+
   </div>
 
-  <!-- Mission 1: Steuerung -->
-  <div class="guide-section" id="controls">
-    <h3>🎮 Mission 1: Steuerung meistern</h3>
-    
-    <p>
-      Auf dem PC spielst du mit <strong>Maus + Tastatur</strong> statt Controller. 
-      Das fühlt sich am Anfang anders an, ist aber <strong>viel präziser!</strong>
-    </p>
-
-    <h4>🖱️ Die wichtigsten Steuerungen:</h4>
-
-    <div class="controls-grid">
-      <div class="control-box">
-        <span class="control-key">W A S D</span>
-        <p>Laufen (Standard bei PC-Spielen)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">MAUS</span>
-        <p>Umschauen / Zielen</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">LEERTASTE</span>
-        <p>Springen (2x = Fliegen im Kreativ)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">SHIFT</span>
-        <p>Schleichen (damit fällst du nicht runter!)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">E</span>
-        <p>Inventar öffnen</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">LINKE MAUSTASTE</span>
-        <p>Abbauen / Angreifen</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">RECHTE MAUSTASTE</span>
-        <p>Platzieren / Nutzen</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">1-9</span>
-        <p>Hotbar-Slots wechseln</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">F3</span>
-        <p>Debug-Screen (Koordinaten!)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">F11</span>
-        <p>Vollbild an/aus</p>
-      </div>
-    </div>
-
-    <div class="info-box">
-      <h4>💡 Profi-Tipp:</h4>
-      <p>
-        Geh in <strong>Einstellungen → Steuerung</strong> und pass die Tasten an! 
-        Viele Spieler ändern z.B.:
-      </p>
-      <ul>
-        <li><strong>Sprint:</strong> Von "Doppel-W" auf "STRG" (bequemer!)</li>
-        <li><strong>Drop Item:</strong> Von "Q" auf "G" (weniger versehentlich wegwerfen)</li>
-      </ul>
-    </div>
-
-    <div class="video-link">
-      <h4>📺 Tutorial-Video:</h4>
-      <p>
-        <a href="https://www.youtube.com/results?search_query=minecraft+java+steuerung+deutsch" target="_blank">
-          🔗 YouTube: Minecraft Java Steuerung für Anfänger
-        </a>
-      </p>
-    </div>
-
-    <div class="warning-box">
-      <h4>🎯 Deine erste Aufgabe:</h4>
-      <p>
-        Erstelle eine <strong>neue Welt</strong> (Kreativ-Modus) und übe:
-      </p>
-      <ul>
-        <li>✅ 5 Minuten nur mit <strong>WASD + Maus</strong> bewegen</li>
-        <li>✅ Versuche <strong>NICHT runterzufallen</strong> (mit SHIFT schleichen!)</li>
-        <li>✅ Baue ein kleines Haus (Platzieren/Abbauen üben)</li>
-        <li>✅ Probiere <strong>Fliegen</strong> aus (2x Leertaste, dann Shift = runter)</li>
-      </ul>
-      <p><strong>Nach 30 Minuten fühlst du dich schon viel sicherer!</strong> 💪</p>
-    </div>
-  </div>
-
-  <!-- Mission 2: Server beitreten -->
-  <div class="guide-section" id="server">
-    <h3>🌍 Mission 2: Ersten Server beitreten</h3>
-    
-    <p>
-      Das <strong>Coolste</strong> an der Java Edition: <strong>Riesige Multiplayer-Server</strong> 
-      mit Mini-Games, Clans und tausenden Spielern!
-    </p>
-
-    <h4>🚀 So trittst du einem Server bei:</h4>
-
-    <div class="info-box">
-      <h4>📝 Schritt-für-Schritt:</h4>
-      <ol>
-        <li>Öffne Minecraft und klicke auf <strong>"Multiplayer"</strong></li>
-        <li>Klicke auf <strong>"Server hinzufügen"</strong></li>
-        <li>Gib einen Namen ein (z.B. "GommeHD")</li>
-        <li>Gib die <strong>Server-Adresse</strong> ein (siehe unten)</li>
-        <li>Klicke auf <strong>"Fertig"</strong></li>
-        <li>Doppelklick auf den Server → Du bist drin! 🎉</li>
-      </ol>
-    </div>
-
-    <h4>🎮 Empfohlene deutsche Server für Anfänger:</h4>
-
-    <div class="controls-grid">
-      <div class="control-box">
-        <span class="control-key">GommeHD</span>
-        <p><strong>gommehd.net</strong><br>Größter deutscher Server<br>BedWars, SkyWars, etc.</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Rewinside</span>
-        <p><strong>rewinside.tv</strong><br>Community-Server<br>Freebuild, Jobs</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Timolia</span>
-        <p><strong>play.timolia.de</strong><br>Mini-Games<br>Jump'n'Run, PvP</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Hypixel</span>
-        <p><strong>mc.hypixel.net</strong><br>Weltweit größter Server<br>SkyBlock, BedWars (Englisch)</p>
-      </div>
-    </div>
-
-    <div class="warning-box">
-      <h4>⚠️ Wichtig für Server:</h4>
-      <ul>
-        <li>❗ Auf manchen Servern brauchst du <strong>keine Mods</strong> (die sind verboten!)</li>
-        <li>❗ Lies die <strong>/rules</strong> (Regeln) – sonst wirst du gebannt!</li>
-        <li>❗ Sei <strong>höflich im Chat</strong> – keine Beleidigungen!</li>
-        <li>✅ Fang mit <strong>Lobby-Games</strong> an (BedWars, SkyWars)</li>
-      </ul>
-    </div>
-
-    <div class="info-box">
-      <h4>💬 Nützliche Server-Commands:</h4>
-      <ul>
-        <li><code>/help</code> – Zeigt alle Befehle</li>
-        <li><code>/spawn</code> – Zurück zum Spawn</li>
-        <li><code>/hub</code> oder <code>/lobby</code> – Zurück zur Hauptlobby</li>
-        <li><code>/stats</code> – Deine Statistiken</li>
-      </ul>
-    </div>
-
-    <div class="video-link">
-      <h4>📺 Server-Tutorial:</h4>
-      <p>
-        <a href="https://www.youtube.com/results?search_query=minecraft+server+beitreten+java" target="_blank">
-          🔗 YouTube: Minecraft Server beitreten (Java Edition)
-        </a>
-      </p>
-    </div>
-  </div>
-
-  <!-- Mission 3: Mods installieren -->
-  <div class="guide-section" id="mods">
-    <h3>🔧 Mission 3: Mods installieren</h3>
-    
-    <p>
-      <strong>Mods</strong> sind Erweiterungen, die Minecraft <strong>komplett verändern</strong> können!
-      Von neuen Dimensionen über neue Mobs bis hin zu Technik-Maschinen.
-    </p>
-
-    <div class="warning-box">
-      <h4>⚠️ WICHTIG VOR DEM START:</h4>
-      <ul>
-        <li>❗ Mods funktionieren <strong>NUR in der Java Edition</strong></li>
-        <li>❗ Du brauchst einen <strong>Mod-Loader</strong> (Fabric oder Forge)</li>
-        <li>❗ Mods funktionieren <strong>NICHT auf allen Servern</strong></li>
-        <li>✅ Für den Anfang: Fang mit <strong>Fabric</strong> an (einfacher!)</li>
-      </ul>
-    </div>
-
-    <h4>🛠️ Fabric installieren (empfohlen für Anfänger):</h4>
-
-    <div class="info-box">
-      <h4>📝 Schritt-für-Schritt:</h4>
-      <ol>
-        <li>Gehe auf: <a href="https://fabricmc.net/use/" target="_blank" style="color: #00AA00;">https://fabricmc.net/use/</a></li>
-        <li>Lade den <strong>"Fabric Installer"</strong> herunter</li>
-        <li>Öffne die <strong>.jar-Datei</strong> (falls es nicht geht: Java installieren!)</li>
-        <li>Wähle deine <strong>Minecraft-Version</strong> (z.B. 1.20.1)</li>
-        <li>Klicke auf <strong>"Installieren"</strong></li>
-        <li>Öffne Minecraft Launcher → Wähle <strong>"fabric-loader-..."</strong> aus</li>
-        <li>Starte das Spiel → Fertig! ✅</li>
-      </ol>
-    </div>
-
-    <h4>📦 Mods herunterladen:</h4>
-
-    <div class="info-box">
-      <h4>🔗 Sichere Download-Quellen:</h4>
-      <ul>
-        <li>🟢 <a href="https://modrinth.com" target="_blank" style="color: #00AA00;">Modrinth.com</a> – Modern & sicher</li>
-        <li>🟢 <a href="https://www.curseforge.com/minecraft/mc-mods" target="_blank" style="color: #00AA00;">CurseForge</a> – Größte Mod-Seite</li>
-        <li>❌ <strong>NIEMALS</strong> von anderen Seiten laden! (Viren!)</li>
-      </ul>
-    </div>
-
-    <h4>📂 Mods installieren:</h4>
-
-    <div class="info-box">
-      <ol>
-        <li>Lade eine <strong>.jar-Datei</strong> herunter (z.B. "optifabric-1.20.1.jar")</li>
-        <li>Drücke <strong>Windows + R</strong></li>
-        <li>Tippe ein: <code>%appdata%\.minecraft\mods</code> → Enter</li>
-        <li>Ziehe die <strong>.jar-Datei</strong> in den "mods"-Ordner</li>
-        <li>Starte Minecraft neu → Fertig! 🎉</li>
-      </ol>
-    </div>
-
-    <h4>🎨 Empfohlene Mods für Anfänger:</h4>
-
-    <div class="controls-grid">
-      <div class="control-box">
-        <span class="control-key">Sodium</span>
-        <p>Bessere Performance<br>(+50% FPS!)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Iris Shaders</span>
-        <p>Mega coole Grafik<br>(Schatten, Wasser, etc.)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Litematica</span>
-        <p>Baupläne anzeigen<br>(für große Builds)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">JourneyMap</span>
-        <p>Minimap + Weltkarte<br>(nie wieder verlaufen!)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">AppleSkin</span>
-        <p>Zeigt Hungerbalken genauer<br>(für Food-Management)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Inventory Tweaks</span>
-        <p>Inventar automatisch sortieren<br>(super praktisch!)</p>
-      </div>
-    </div>
-
-    <div class="warning-box">
-      <h4>🎯 Deine Aufgabe:</h4>
-      <ul>
-        <li>✅ Installiere <strong>Fabric</strong></li>
-        <li>✅ Lade <strong>Sodium</strong> von Modrinth herunter</li>
-        <li>✅ Installiere die Mod im "mods"-Ordner</li>
-        <li>✅ Starte das Spiel und prüfe: <strong>Mods → 1 Mod geladen</strong></li>
-      </ul>
-    </div>
-
-    <div class="video-link">
-      <h4>📺 Mod-Installation Tutorial:</h4>
-      <p>
-        <a href="https://www.youtube.com/results?search_query=fabric+mods+installieren+deutsch" target="_blank">
-          🔗 YouTube: Fabric Mods installieren (2024)
-        </a>
-      </p>
-    </div>
-  </div>
-
-  <!-- Mission 4: Resourcepack -->
-  <div class="guide-section" id="resourcepack">
-    <h3>🖼️ Mission 4: Resourcepack aktivieren</h3>
-    
-    <p>
-      <strong>Resourcepacks</strong> ändern das <strong>Aussehen</strong> von Minecraft – 
-      Texturen, Sounds, Menüs, etc. Das ist wie ein neues "Design" für das Spiel!
-    </p>
-
-    <h4>📦 Resourcepack installieren:</h4>
-
-    <div class="info-box">
-      <h4>📝 Schritt-für-Schritt:</h4>
-      <ol>
-        <li>Lade ein Resourcepack herunter (als <strong>.zip-Datei</strong>)</li>
-        <li>Drücke <strong>Windows + R</strong></li>
-        <li>Tippe: <code>%appdata%\.minecraft\resourcepacks</code> → Enter</li>
-        <li>Ziehe die <strong>.zip-Datei</strong> in den Ordner (NICHT entpacken!)</li>
-        <li>Öffne Minecraft → <strong>Optionen → Resourcepacks</strong></li>
-        <li>Klicke auf das <strong>Pfeil-Symbol</strong> beim Pack (aktiviert es)</li>
-        <li>Klicke <strong>"Fertig"</strong> → Pack lädt sich! ✅</li>
-      </ol>
-    </div>
-
-    <h4>🎨 Empfohlene Resourcepacks:</h4>
-
-    <div class="controls-grid">
-      <div class="control-box">
-        <span class="control-key">Faithful</span>
-        <p>Vanilla in HD<br>(gleicher Style, schärfer)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Mizuno's 16</span>
-        <p>Modernes Design<br>(sauberer Look)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Jerm's Better</span>
-        <p>Leicht verbessert<br>(nicht zu krass)</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Sphax PureBDcraft</span>
-        <p>Comic-Style<br>(lustig & bunt)</p>
-      </div>
-    </div>
-
-    <div class="info-box">
-      <h4>🔗 Sichere Download-Quellen:</h4>
-      <ul>
-        <li>🟢 <a href="https://www.curseforge.com/minecraft/texture-packs" target="_blank" style="color: #00AA00;">CurseForge</a></li>
-        <li>🟢 <a href="https://www.planetminecraft.com/texture-packs/" target="_blank" style="color: #00AA00;">Planet Minecraft</a></li>
-        <li>🟢 <a href="https://resourcepack.net" target="_blank" style="color: #00AA00;">ResourcePack.net</a></li>
-      </ul>
-    </div>
-
-    <div class="warning-box">
-      <h4>💡 Profi-Tipp:</h4>
-      <p>
-        Du kannst <strong>mehrere Packs gleichzeitig</strong> aktivieren! 
-        Minecraft lädt sie <strong>von oben nach unten</strong> – das oberste überschreibt das untere.
-      </p>
-    </div>
-
-    <div class="video-link">
-      <h4>📺 Resourcepack-Tutorial:</h4>
-      <p>
-        <a href="https://www.youtube.com/results?search_query=minecraft+resourcepack+installieren" target="_blank">
-          🔗 YouTube: Resourcepack installieren (Java Edition)
-        </a>
-      </p>
-    </div>
-  </div>
-
-  <!-- Mission 5: OptiFine -->
-  <div class="guide-section" id="optifine">
-    <h3>⚙️ Mission 5: OptiFine nutzen</h3>
-    
-    <p>
-      <strong>OptiFine</strong> ist DER Klassiker für bessere Performance + coole Features!
-    </p>
-
-    <div class="info-box">
-      <h4>✅ Was OptiFine kann:</h4>
-      <ul>
-        <li>🚀 <strong>Bessere FPS</strong> (Performance-Boost)</li>
-        <li>🔍 <strong>Zoom-Funktion</strong> (C-Taste drücken)</li>
-        <li>🎨 <strong>Shader-Support</strong> (mega coole Grafik!)</li>
-        <li>⚡ <strong>Dynamic Lights</strong> (Fackeln leuchten in der Hand)</li>
-        <li>🖼️ <strong>Connected Textures</strong> (Glas ohne Rand, etc.)</li>
-        <li>🌿 <strong>Bessere Gras/Blätter</strong></li>
-      </ul>
-    </div>
-
-    <h4>📥 OptiFine installieren:</h4>
-
-    <div class="info-box">
-      <h4>📝 Für Fabric (mit OptiFabric):</h4>
-      <ol>
-        <li>Lade <strong>OptiFine</strong> von: <a href="https://optifine.net/downloads" target="_blank" style="color: #00AA00;">optifine.net</a></li>
-        <li>Lade <strong>OptiFabric</strong> von: <a href="https://www.curseforge.com/minecraft/mc-mods/optifabric" target="_blank" style="color: #00AA00;">CurseForge</a></li>
-        <li>Lege <strong>beide .jar-Dateien</strong> in den "mods"-Ordner</li>
-        <li>Starte Minecraft → Fertig! ✅</li>
-      </ol>
-    </div>
-
-    <div class="warning-box">
-      <h4>⚠️ Alternative: Sodium statt OptiFine?</h4>
-      <p>
-        Viele nutzen heute <strong>Sodium + Iris</strong> statt OptiFine, weil es:
-      </p>
-      <ul>
-        <li>✅ <strong>Noch bessere Performance</strong> hat</li>
-        <li>✅ <strong>Open Source</strong> ist (aktiver entwickelt)</li>
-        <li>✅ Mit <strong>Iris</strong> auch Shader kann</li>
-      </ul>
-      <p>
-        <strong>Tipp:</strong> Probier beide aus und nimm, was dir besser gefällt! 
-        (Aber nicht beide gleichzeitig installieren!)
-      </p>
-    </div>
-
-    <h4>🎨 Shader installieren (mit OptiFine/Iris):</h4>
-
-    <div class="info-box">
-      <ol>
-        <li>Lade einen Shader herunter (z.B. <strong>BSL Shaders</strong> oder <strong>Complementary</strong>)</li>
-        <li>Lege die <strong>.zip-Datei</strong> in: <code>%appdata%\.minecraft\shaderpacks</code></li>
-        <li>Im Spiel: <strong>Optionen → Videoeinstellungen → Shaders</strong></li>
-        <li>Wähle den Shader aus → <strong>Mega coole Grafik!</strong> 🤩</li>
-      </ol>
-    </div>
-
-    <div class="controls-grid">
-      <div class="control-box">
-        <span class="control-key">BSL Shaders</span>
-        <p>Beliebtester Shader<br>Gute Performance</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Complementary</span>
-        <p>Modern & schön<br>Viele Einstellungen</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Sildurs Vibrant</span>
-        <p>Farbenfroh<br>Verschiedene Versionen</p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Chocapic13</span>
-        <p>Realistisch<br>Braucht starken PC!</p>
-      </div>
-    </div>
-
-    <div class="video-link">
-      <h4>📺 Shader-Tutorial:</h4>
-      <p>
-        <a href="https://www.youtube.com/results?search_query=minecraft+shader+installieren+deutsch" target="_blank">
-          🔗 YouTube: Shader installieren (2024)
-        </a>
-      </p>
-    </div>
-  </div>
-
-  <!-- Mission 6: Community-Server -->
-  <div class="guide-section" id="community">
-    <h3>🌍 Mission 6: Community-Server erkunden</h3>
-    
-    <p>
-      Jetzt wo du die Grundlagen drauf hast: Zeit für <strong>richtige Multiplayer-Action!</strong> 🎉
-    </p>
-
-    <h4>🎮 Die besten Modi für den Einstieg:</h4>
-
-    <div class="controls-grid">
-      <div class="control-box">
-        <span class="control-key">BedWars</span>
-        <p>🛏️ Schütze dein Bett<br>Zerstöre andere Betten<br><strong>GommeHD / Hypixel</strong></p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">SkyWars</span>
-        <p>☁️ Kämpfe auf Inseln<br>Letzter überlebt<br><strong>GommeHD / Hypixel</strong></p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">SkyBlock</span>
-        <p>🏝️ Baue auf deiner Insel<br>Handel, Farmen, Craften<br><strong>Hypixel</strong></p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Survival Games</span>
-        <p>🗡️ Battle Royale<br>Sammle Items & überlebe<br><strong>Diverse Server</strong></p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Build Battle</span>
-        <p>🎨 Baue nach Thema<br>Andere bewerten<br><strong>GommeHD</strong></p>
-      </div>
-
-      <div class="control-box">
-        <span class="control-key">Survival</span>
-        <p>⛏️ Klassisches Minecraft<br>Aber mit anderen!<br><strong>Rewinside / Timolia</strong></p>
-      </div>
-    </div>
-
-    <div class="info-box">
-      <h4>💬 Community-Tipps:</h4>
-      <ul>
-        <li>🎤 <strong>Discord-Server beitreten</strong> – viele Server haben eigene Communities</li>
-        <li>👥 <strong>Clans gründen</strong> – zusammen macht's mehr Spaß!</li>
-        <li>📊 <strong>Statistiken tracken</strong> – schau dir deine Fortschritte an</li>
-        <li>🏆 <strong>Challenges machen</strong> – viele Server haben tägliche Aufgaben</li>
-        <li>🎁 <strong>Votes abgeben</strong> – bekomme Belohnungen (auf Server-Webseite voten)</li>
-      </ul>
-    </div>
-
-    <div class="warning-box">
-      <h4>⚠️ Sicherheits-Tipps:</h4>
-      <ul>
-        <li>❗ <strong>Niemals dein Passwort</strong> im Chat eingeben!</li>
-        <li>❗ <strong>Keine Downloads</strong> von anderen Spielern annehmen!</li>
-        <li>❗ <strong>Kein Echtgeld</strong> an Spieler senden (nur offizielle Shops!)</li>
-        <li>❗ <strong>Bei Problemen:</strong> "/report" oder Admin/Moderator kontaktieren</li>
-        <li>✅ <strong>Spaß haben</strong> und fair spielen! 🎮</li>
-      </ul>
-    </div>
-
-    <div class="video-link">
-      <h4>📺 Server-Guide:</h4>
-      <p>
-        <a href="https://www.youtube.com/results?search_query=minecraft+server+guide+deutsch" target="_blank">
-          🔗 YouTube: Die besten Minecraft Server (Deutsch)
-        </a>
-      </p>
-    </div>
-  </div>
-
-  <!-- Abschluss -->
-  <div class="guide-section">
-    <h3>🎉 Glückwunsch – Du bist jetzt Java-Edition Profi!</h3>
-    
-    <p>
-      Wenn du alle <strong>6 Missionen</strong> geschafft hast, kennst du die wichtigsten Unterschiede 
-      zur Switch-Version und bist <strong>bereit für alles!</strong> 🚀
-    </p>
-
-    <div class="info-box">
-      <h4>🔥 Was du jetzt kannst:</h4>
-      <ul>
-        <li>✅ Mit <strong>Maus + Tastatur</strong> spielen wie ein Profi</li>
-        <li>✅ Auf <strong>großen Servern</strong> mit tausenden Spielern zocken</li>
-        <li>✅ <strong>Mods installieren</strong> und das Spiel nach deinem Geschmack anpassen</li>
-        <li>✅ <strong>Shader nutzen</strong> für mega coole Grafik</li>
-        <li>✅ <strong>Resourcepacks</strong> aktivieren für neuen Look</li>
-        <li>✅ Teil der <strong>riesigen Java-Community</strong> sein!</li>
-      </ul>
-    </div>
-
-    <div class="info-box">
-      <h4>🚀 Nächste Schritte:</h4>
-      <ul>
-        <li>🎮 Probier verschiedene <strong>Server-Modi</strong> aus (BedWars ist mega!)</li>
-        <li>🔧 Installiere mehr <strong>Mods</strong> (z.B. JourneyMap für Navigation)</li>
-        <li>🎨 Teste verschiedene <strong>Shader</strong> (BSL ist top!)</li>
-        <li>👥 Finde <strong>Freunde zum Spielen</strong> (macht viel mehr Spaß!)</li>
-        <li>📺 Schau <strong>YouTube-Tutorials</strong> für Advanced-Tricks</li>
-        <li>🏆 Probier <strong>Redstone-Tutorials</strong> aus (auf Java viel besser!)</li>
-      </ul>
-    </div>
-
-    <div class="warning-box">
-      <h4>💡 Letzter Profi-Tipp:</h4>
-      <p>
-        Die <strong>Java Edition</strong> wird ständig weiterentwickelt! 
-        Halte dein Spiel <strong>aktuell</strong> und schau regelmäßig nach:
-      </p>
-      <ul>
-        <li>🔄 <strong>Neuen Mods</strong> (Modrinth / CurseForge)</li>
-        <li>📰 <strong>Minecraft Updates</strong> (neue Versionen bringen neue Features!)</li>
-        <li>🎥 <strong>Content Creators</strong> (Paluten, GommeHD, etc. auf YouTube)</li>
-      </ul>
-      <p>
-        <strong>Viel Spaß in der Java Edition!</strong> 🎮⛏️
-      </p>
-    </div>
-  </div>
-
-    <!-- Footer -->
-  <footer style="
-    background-color: #3c3c3c;
-    border-top: 4px solid #5a5a5a;
-    border-bottom: 4px solid #2a2a2a;
-    padding: 28px 20px;
-    box-shadow: 0 -4px 0 rgba(0, 0, 0, 0.3);
-    text-align: center;
-    margin-top: 60px;
-    font-family: 'Press Start 2P', cursive;
-  ">
-    <p style="
-      color: #ffff55;
-      font-size: 11px;
-      text-shadow: 3px 3px 0 #3f3f00;
-      line-height: 2;
-      margin: 0 0 8px 0;
-    ">🎮 LEVEL UP! Happy Birthday Philipp! 🎮</p>
-    <p style="
-      color: #55ff55;
-      font-size: 8px;
-      line-height: 1.5;
-      margin: 0;
-      text-shadow: 2px 2px 0 #003f00;
-    ">Achievement Unlocked: Erster eigener PC • @Mosch • 2025</p>
+  <!-- Footer -->
+  <footer class="minecraft-footer">
+    <p class="footer-birthday">🎮 LEVEL UP! Happy Birthday Philipp! 🎮</p>
+    <p class="footer-credit">Achievement Unlocked: Erster eigener PC • @Mosch • 2025</p>
   </footer>
 
   <!-- Scripts -->
