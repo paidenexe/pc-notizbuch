@@ -2123,7 +2123,22 @@ footer {
 
 /* Page Hero - Tagebuch */
 .page-hero-tagebuch {
-    background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
+    background: transparent;
+    border-bottom: 2px solid rgba(255, 140, 0, 0.3);
+    padding: 40px 20px;
+}
+
+.page-hero-tagebuch .page-title {
+    color: #ff8c00;
+    margin: 0 0 10px 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.page-hero-tagebuch .page-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    margin: 0;
 }
 
 /* New Entry Section */
