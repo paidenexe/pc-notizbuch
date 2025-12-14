@@ -2018,10 +2018,10 @@ footer {
 
 
 /* ========================================
-   TAGEBUCH STYLES
+   TAGEBUCH STYLES - ÜBERARBEITET
    ======================================== */
 
-/* Login Screen */
+/* Login Screen - ZENTRIERT */
 .login-screen {
     position: fixed;
     top: 0;
@@ -2033,16 +2033,17 @@ footer {
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    padding: 20px;
 }
 
 .login-box {
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 140, 0, 0.3);
     border-radius: 15px;
-    padding: 40px;
+    padding: 50px 40px;
     text-align: center;
-    max-width: 400px;
-    width: 90%;
+    max-width: 450px;
+    width: 100%;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
@@ -2066,11 +2067,12 @@ footer {
 .login-subtitle {
     color: rgba(255, 255, 255, 0.7);
     margin: 0 0 30px 0;
+    font-size: 1rem;
 }
 
 .login-input {
     width: 100%;
-    padding: 15px;
+    padding: 15px 20px;
     font-size: 1.1rem;
     border: 2px solid rgba(255, 140, 0, 0.3);
     border-radius: 8px;
@@ -2079,6 +2081,7 @@ footer {
     margin-bottom: 20px;
     font-family: 'Roboto', sans-serif;
     transition: all 0.3s;
+    box-sizing: border-box;
 }
 
 .login-input:focus {
@@ -2115,6 +2118,7 @@ footer {
     font-weight: 600;
     margin-top: 15px;
     min-height: 24px;
+    font-size: 0.95rem;
 }
 
 /* Page Hero - Tagebuch */
@@ -2148,6 +2152,7 @@ footer {
     resize: vertical;
     min-height: 150px;
     transition: all 0.3s;
+    box-sizing: border-box;
 }
 
 .entry-textarea:focus {
@@ -2166,57 +2171,29 @@ footer {
     justify-content: flex-end;
 }
 
-.btn-save {
-    padding: 12px 30px;
-    font-size: 1.05rem;
+/* Button - Eintrag speichern (CLEANER) */
+.btn-save-diary {
+    padding: 12px 25px;
+    font-size: 1rem;
     font-weight: 600;
-    background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
+    background: #ff8c00;
     border: none;
     border-radius: 8px;
     color: #fff;
     cursor: pointer;
     transition: all 0.3s;
+    font-family: 'Roboto', sans-serif;
 }
 
-.btn-save:hover {
+.btn-save-diary:hover {
+    background: #ff6b00;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
 }
 
 /* Entries Section */
 .entries-section {
-    margin-top: 40px;
-}
-
-.entries-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.entries-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-secondary {
-    padding: 10px 20px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 140, 0, 0.3);
-    border-radius: 8px;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 140, 0, 0.2);
-    border-color: #ff8c00;
+    margin: 40px 0;
 }
 
 /* Entries Container */
@@ -2241,7 +2218,7 @@ footer {
     color: rgba(255, 255, 255, 0.4);
 }
 
-/* Entry Card */
+/* Entry Card (CLEANER DESIGN) */
 .entry-card {
     background: rgba(255, 255, 255, 0.03);
     border: 2px solid rgba(255, 140, 0, 0.3);
@@ -2272,26 +2249,69 @@ footer {
     font-weight: 600;
 }
 
-.btn-delete {
-    padding: 6px 15px;
-    font-size: 0.9rem;
-    background: rgba(220, 53, 69, 0.2);
-    border: 1px solid rgba(220, 53, 69, 0.5);
+/* Delete Button - NUR ICON (CLEANER) */
+.btn-delete-entry {
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    background: transparent;
+    border: 1px solid rgba(220, 53, 69, 0.4);
     border-radius: 6px;
     color: #dc3545;
     cursor: pointer;
     transition: all 0.3s;
+    line-height: 1;
 }
 
-.btn-delete:hover {
-    background: rgba(220, 53, 69, 0.3);
+.btn-delete-entry:hover {
+    background: rgba(220, 53, 69, 0.2);
     border-color: #dc3545;
+    transform: scale(1.1);
 }
 
 .entry-content {
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.7;
     font-size: 1rem;
+}
+
+/* Backup Section (GANZ UNTEN) */
+.backup-section {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 2px solid rgba(255, 140, 0, 0.2);
+}
+
+.backup-title {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.backup-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Backup Buttons (CLEANER) */
+.btn-backup {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 140, 0, 0.3);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-backup:hover {
+    background: rgba(255, 140, 0, 0.1);
+    border-color: #ff8c00;
+    color: #ff8c00;
 }
 
 /* Delete Modal */
@@ -2302,29 +2322,26 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     justify-content: center;
     align-items: center;
     z-index: 10000;
+    padding: 20px;
 }
 
 .modal-content {
     background: #2d2d2d;
-    border: 2px solid rgba(255, 140, 0, 0.5);
+    border: 2px solid rgba(220, 53, 69, 0.5);
     border-radius: 12px;
-    padding: 30px;
+    padding: 35px 30px;
     max-width: 400px;
-    width: 90%;
+    width: 100%;
     text-align: center;
-}
-
-.modal-delete {
-    border-color: rgba(220, 53, 69, 0.5);
 }
 
 .modal-title {
     color: #dc3545;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin: 0 0 15px 0;
 }
 
@@ -2340,7 +2357,8 @@ footer {
     justify-content: center;
 }
 
-.btn-danger {
+/* Modal Buttons (CLEANER) */
+.btn-modal-danger {
     padding: 12px 25px;
     font-size: 1rem;
     font-weight: 600;
@@ -2350,47 +2368,54 @@ footer {
     color: #fff;
     cursor: pointer;
     transition: all 0.3s;
+    font-family: 'Roboto', sans-serif;
 }
 
-.btn-danger:hover {
+.btn-modal-danger:hover {
     background: #c82333;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+.btn-modal-cancel {
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-modal-cancel:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* Responsive - Tagebuch */
 @media (max-width: 768px) {
     .login-box {
-        padding: 30px 20px;
-    }
-    
-    .entries-header {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .entries-actions {
-        justify-content: stretch;
-    }
-    
-    .btn-secondary {
-        flex: 1;
+        padding: 40px 30px;
     }
     
     .entry-header {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-wrap: wrap;
         gap: 10px;
     }
     
-    .btn-delete {
-        align-self: flex-end;
+    .backup-actions {
+        flex-direction: column;
+    }
+    
+    .btn-backup {
+        width: 100%;
     }
 }
 
 @media (max-width: 480px) {
     .login-box {
-        padding: 25px 15px;
+        padding: 30px 20px;
     }
     
     .login-title {
@@ -2406,16 +2431,16 @@ footer {
     }
     
     .modal-content {
-        padding: 25px 20px;
+        padding: 30px 20px;
     }
     
     .modal-actions {
         flex-direction: column;
+        width: 100%;
     }
     
-    .btn-danger,
-    .btn-secondary {
+    .btn-modal-danger,
+    .btn-modal-cancel {
         width: 100%;
     }
 }
-
