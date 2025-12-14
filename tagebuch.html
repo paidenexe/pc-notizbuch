@@ -134,9 +134,9 @@
     const loginError = document.getElementById('login-error');
 
     // Check if already logged in (session storage)
-    if (sessionStorage.getItem('diary-unlocked') === 'true') {
-      showDiary();
-    }
+    // if (sessionStorage.getItem('diary-unlocked') === 'true') {
+    //   showDiary();
+    // }
 
     // Login Button Click
     loginBtn.addEventListener('click', checkPassword);
@@ -362,9 +362,9 @@
     });
 
     // Initial load (if already unlocked)
-    if (sessionStorage.getItem('diary-unlocked') === 'true') {
-      loadEntries();
-    }
+    // if (sessionStorage.getItem('diary-unlocked') === 'true') {
+    //  loadEntries();
+    // }
   </script>
 
 </body>
