@@ -680,3 +680,76 @@ footer {
     padding-left: 25px;
 }
 
+
+/* ========================================
+   ROCKET LEAGUE SPEZIFISCHES STYLING
+   ======================================== */
+
+/* Settings Table */
+.settings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.settings-table th {
+    background: rgba(255, 153, 0, 0.2);
+    color: var(--primary-color);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.settings-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.settings-table tr:last-child td {
+    border-bottom: none;
+}
+
+.settings-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Warning Box */
+.warning-box {
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid #ffc107;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.warning-box h4 {
+    color: #ffc107;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.warning-box ul {
+    margin: 10px 0 0 0;
+}
+
+/* Screenshot Placeholder */
+.screenshot-placeholder {
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.1), rgba(255, 153, 0, 0.05));
+    border: 2px dashed rgba(255, 153, 0, 0.3);
+    border-radius: 12px;
+    padding: 60px 20px;
+    text-align: center;
+    margin: 30px 0;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.screenshot-placeholder:hover {
+    border-color: var(--primary-color);
+    background: rgba(255, 153, 0, 0.15);
+}
