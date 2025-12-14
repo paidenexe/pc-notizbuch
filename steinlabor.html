@@ -1,993 +1,596 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🪨 Steinlabor - Werde zum Stein-Detektiv!</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        :root {
-            --stone-brown: #8b7355;
-            --stone-dark: #6b5d4f;
-            --stone-light: #d4a574;
-            --gold: #ffd700;
-            --survival-green: #76b947;
-            --survival-dark: #2d5016;
-        }
-
-        body {
-            background: #1a1a1a;
-            color: #f5f5dc;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--stone-brown);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s;
-            z-index: 1000;
-        }
-
-        .back-button:hover {
-            background: var(--stone-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-        }
-
-        .hero {
-            text-align: center;
-            padding: 60px 20px 40px;
-            background: linear-gradient(135deg, var(--stone-brown) 0%, var(--stone-dark) 100%);
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.3em;
-            opacity: 0.9;
-        }
-
-        .section {
-            background: rgba(139, 115, 85, 0.15);
-            padding: 30px;
-            border-radius: 15px;
-            margin: 30px 0;
-            border-left: 5px solid var(--stone-light);
-        }
-
-        .section h2 {
-            color: var(--gold);
-            font-size: 2em;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* CHECKPOINTS GANZ OBEN */
-        .checkpoints {
-            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
-            padding: 30px;
-            border-radius: 15px;
-            margin: 30px 0;
-            border: 3px solid var(--gold);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
-        }
-
-        .checkpoints h3 {
-            color: var(--gold);
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            text-align: center;
-        }
-
-        .checkpoints p {
-            text-align: center;
-            margin-bottom: 25px;
-            opacity: 0.9;
-        }
-
-        .checkpoint-item {
-            padding: 15px;
-            margin: 12px 0;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.3s;
-            border-left: 4px solid transparent;
-        }
-
-        .checkpoint-item:hover {
-            background: rgba(255,255,255,0.1);
-            border-left-color: var(--gold);
-        }
-
-        .checkpoint-item input[type="checkbox"] {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            accent-color: var(--gold);
-        }
-
-        .checkpoint-item label {
-            cursor: pointer;
-            font-size: 1.1em;
-            flex: 1;
-        }
-
-        .stone-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .stone-card {
-            background: linear-gradient(135deg, rgba(60,50,40,0.6) 0%, rgba(40,35,30,0.6) 100%);
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px solid var(--stone-light);
-            transition: transform 0.3s;
-        }
-
-        .stone-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
-        }
-
-        .stone-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            background: #2a2a2a;
-        }
-
-        .stone-card h3 {
-            color: var(--gold);
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-
-        .stone-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .stone-card li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .stone-card li:before {
-            content: "💎";
-            position: absolute;
-            left: 0;
-        }
-
-        .stone-card strong {
-            color: var(--stone-light);
-        }
-
-        .equipment-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: rgba(40,40,40,0.6);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .equipment-table th {
-            background: var(--stone-brown);
-            color: white;
-            padding: 15px;
-            text-align: left;
-            font-weight: bold;
-        }
-
-        .equipment-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .equipment-table tr:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        .weight-badge {
-            background: var(--survival-green);
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.9em;
-            font-weight: bold;
-            color: white;
-        }
-
-        .resources-section {
-            background: linear-gradient(135deg, var(--stone-brown) 0%, var(--stone-dark) 100%);
-            padding: 30px;
-            border-radius: 15px;
-            margin: 30px 0;
-        }
-
-        .resource-card {
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
-            margin: 15px 0;
-            border-left: 5px solid var(--stone-light);
-            border-radius: 10px;
-        }
-
-        .resource-card h4 {
-            color: var(--gold);
-            margin-bottom: 10px;
-            font-size: 1.3em;
-        }
-
-        .resource-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .resource-card li {
-            padding: 8px 0;
-            padding-left: 30px;
-            position: relative;
-        }
-
-        .resource-card li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--survival-green);
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        .survival-box {
-            background: linear-gradient(135deg, var(--survival-dark) 0%, #1a3a0f 100%);
-            padding: 25px;
-            border-radius: 15px;
-            border: 3px dashed var(--survival-green);
-            margin: 30px 0;
-        }
-
-        .survival-box h3 {
-            color: var(--survival-green);
-            margin-bottom: 15px;
-        }
-
-        .survival-box ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .survival-box li {
-            margin: 10px 0;
-            font-size: 1.1em;
-            padding-left: 30px;
-            position: relative;
-        }
-
-        .info-box {
-            background: rgba(255, 215, 0, 0.1);
-            border-left: 5px solid var(--gold);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-        }
-
-        .info-box strong {
-            color: var(--gold);
-        }
-
-        .info-box a {
-            color: var(--gold);
-            text-decoration: underline;
-        }
-
-        .craft-ideas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .craft-card {
-            background: rgba(60,50,40,0.4);
-            padding: 25px;
-            border-radius: 12px;
-            border: 2px solid var(--stone-light);
-        }
-
-        .craft-card h4 {
-            color: var(--gold);
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .craft-card ol {
-            padding-left: 20px;
-        }
-
-        .craft-card li {
-            margin: 8px 0;
-        }
-
-        .quiz-section {
-            background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
-            padding: 40px;
-            border-radius: 15px;
-            margin: 30px 0;
-            border: 2px solid var(--stone-light);
-        }
-
-        .quiz-question {
-            background: rgba(255,255,255,0.05);
-            padding: 25px;
-            margin: 20px 0;
-            border-radius: 12px;
-            border-left: 5px solid var(--gold);
-        }
-
-        .quiz-question h4 {
-            color: var(--gold);
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .quiz-option {
-            background: rgba(255,255,255,0.05);
-            padding: 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .quiz-option:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: var(--stone-light);
-        }
-
-        .quiz-option input[type="radio"] {
-            margin-right: 10px;
-            accent-color: var(--gold);
-        }
-
-        .quiz-button {
-            background: var(--gold);
-            color: black;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.2em;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s;
-        }
-
-        .quiz-button:hover {
-            background: #ffed4e;
-            transform: scale(1.05);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2em;
-            }
-            
-            .stone-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .equipment-table {
-                font-size: 0.9em;
-            }
-
-            .equipment-table th,
-            .equipment-table td {
-                padding: 10px;
-            }
-
-            .back-button {
-                top: 10px;
-                left: 10px;
-                padding: 10px 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🪨 Steinlabor | Philipp's PC-Abenteuer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body data-page="steinlabor">
 
-    <a href="index.html" class="back-button">⬅️ Zurück zur Übersicht</a>
+  <!-- Header (wie andere Seiten) -->
+  <header class="main-header">
+    <div class="header-content">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <span class="logo-icon">🖥️</span>
+          <span class="logo-text">PC-Notizbuch</span>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">🏠 Startseite</a>
+        <a href="pctipps.html" class="nav-link">💻 PC-Tipps</a>
+        <a href="rocketleague.html" class="nav-link">🚗 Rocket League</a>
+        <a href="steinlabor.html" class="nav-link active">🪨 Steinlabor</a>
+        <a href="minecraft.html" class="nav-link">⛏️ Minecraft</a>
+        <a href="programmierlabor.html" class="nav-link">👨‍💻 Programmieren</a>
+        <a href="tagebuch.html" class="nav-link">📔 Tagebuch</a>
+      </nav>
+    </div>
+  </header>
 
-    <div class="container">
-        <!-- HERO SECTION -->
-        <div class="hero">
-            <h1>🪨 STEINLABOR 🔬</h1>
-            <p>Willkommen, Stein-Detektiv! Werde zum Experten für norddeutsche Gesteine!</p>
+  <!-- Page Title Section -->
+  <div class="page-hero page-hero-steinlabor">
+    <h1 class="page-title">🪨 STEINLABOR</h1>
+    <p class="page-subtitle">Werde zum Gesteins-Experten!</p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+
+    <!-- Checkpoint System -->
+    <section class="checkpoint-container checkpoint-steinlabor">
+      <h2 class="checkpoint-title">🎯 Deine Stein-Missionen</h2>
+      <p class="checkpoint-intro">Hake ab, was du schon geschafft hast! 🏆</p>
+
+      <div class="checkpoint-grid">
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-granite" data-checkpoint="granite">
+          <label class="checkpoint-label" for="check-granite">Granit gefunden</label>
         </div>
 
-        <!-- CHECKPOINTS GANZ OBEN! -->
-        <div class="checkpoints">
-            <h3>✅ Deine Stein-Detektiv Missionen</h3>
-            <p>Hake ab, was du schon geschafft hast – jede Mission bringt dich näher zum Experten!</p>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="first-stone" id="cp-first-stone" data-scroll="steinlabor">
-                <label for="cp-first-stone">🪨 Ersten eigenen Stein gefunden</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="five-stones" id="cp-five-stones" data-scroll="steinlabor">
-                <label for="cp-five-stones">💎 5 verschiedene Steine gesammelt</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="identify-flint" id="cp-identify-flint" data-scroll="steinlabor">
-                <label for="cp-identify-flint">🔍 Einen Feuerstein identifiziert</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="equipment" id="cp-equipment" data-scroll="steinlabor">
-                <label for="cp-equipment">🎒 Forscher-Ausrüstung besorgt (mind. 3 Teile)</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="magnify" id="cp-magnify" data-scroll="steinlabor">
-                <label for="cp-magnify">🔬 Stein mit Lupe untersucht</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="clean" id="cp-clean" data-scroll="steinlabor">
-                <label for="cp-clean">🧼 Steine gereinigt & sortiert</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="label" id="cp-label" data-scroll="steinlabor">
-                <label for="cp-label">🏷️ Steine beschriftet (Fundort & Datum)</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="tower" id="cp-tower" data-scroll="steinlabor">
-                <label for="cp-tower">🏰 Stein-Turm gebaut (mind. 7 hoch!)</label>
-            </div>
-
-            <div class="checkpoint-item">
-                <input type="checkbox" class="checkpoint-checkbox" data-checkpoint="quiz" id="cp-quiz" data-scroll="steinlabor">
-                <label for="cp-quiz">🎯 Quiz bestanden (mind. 3/5 richtig)</label>
-            </div>
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-basalt" data-checkpoint="basalt">
+          <label class="checkpoint-label" for="check-basalt">Basalt entdeckt</label>
         </div>
 
-        <!-- EINFÜHRUNG -->
-        <div class="section">
-            <h2>🔍 Warum sind Steine so cool?</h2>
-            <p>Steine sind nicht nur "gratis am Wegesrand" – sie erzählen <strong>Geschichten aus Millionen Jahren!</strong></p>
-            <ul style="font-size: 1.1em; line-height: 1.8;">
-                <li>🌍 Manche Steine sind älter als die Dinosaurier!</li>
-                <li>🧊 Viele Steine in Norddeutschland kamen mit der <strong>Eiszeit</strong> aus Skandinavien</li>
-                <li>💎 Jeder Stein ist einzigartig – wie ein Fingerabdruck!</li>
-                <li>🔬 Mit Steinen kann man <strong>Feuer machen</strong>, <strong>Werkzeuge bauen</strong> oder einfach nur <strong>sammeln</strong></li>
-            </ul>
-            <div class="info-box">
-                <strong>🎯 Deine Mission:</strong> Werde zum Stein-Experten und baue deine eigene Sammlung auf!
-            </div>
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-quarz" data-checkpoint="quarz">
+          <label class="checkpoint-label" for="check-quarz">Quarz gesammelt</label>
         </div>
 
-        <!-- DIE HÄUFIGSTEN STEINE IN NORDDEUTSCHLAND -->
-        <div class="section">
-            <h2>🗺️ Die häufigsten Steine in Norddeutschland</h2>
-            <p>Diese Steine findest du garantiert in Bremen und Umgebung!</p>
-            
-            <div class="stone-grid">
-                <!-- FEUERSTEIN -->
-                <div class="stone-card">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%233a3a3a' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%238b7355'%3E🪨 Feuerstein%3C/text%3E%3C/svg%3E" alt="Feuerstein">
-                    <h3>🟤 Feuerstein (Flint)</h3>
-                    <ul>
-                        <li><strong>Farbe:</strong> Grau, schwarz, braun</li>
-                        <li><strong>Wo finden?</strong> Strände, Felder</li>
-                        <li><strong>Besonderheit:</strong> Macht Funken beim Schlagen!</li>
-                        <li><strong>Fun Fact:</strong> Steinzeitmenschen machten damit Werkzeuge</li>
-                    </ul>
-                </div>
-
-                <!-- SANDSTEIN -->
-                <div class="stone-card">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23654321' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23d4a574'%3E🏜️ Sandstein%3C/text%3E%3C/svg%3E" alt="Sandstein">
-                    <h3>🔴 Sandstein</h3>
-                    <ul>
-                        <li><strong>Farbe:</strong> Rot, gelb, braun</li>
-                        <li><strong>Wo finden?</strong> Alte Gebäude, Steinbrüche</li>
-                        <li><strong>Besonderheit:</strong> Fühlt sich rau an, aus alten Dünen!</li>
-                        <li><strong>Fun Fact:</strong> Viele Kirchen sind aus Sandstein gebaut</li>
-                    </ul>
-                </div>
-
-                <!-- GRANIT -->
-                <div class="stone-card">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23808080' width='400' height='300'/%3E%3Ccircle cx='100' cy='80' r='15' fill='%23ff69b4'/%3E%3Ccircle cx='200' cy='120' r='12' fill='%23fff'/%3E%3Ccircle cx='300' cy='180' r='18' fill='%23333'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='42' fill='%23fff'%3E✨ Granit%3C/text%3E%3C/svg%3E" alt="Granit">
-                    <h3>⚪ Granit</h3>
-                    <ul>
-                        <li><strong>Farbe:</strong> Rosa, grau, schwarz mit bunten Körnern</li>
-                        <li><strong>Wo finden?</strong> Überall! Kam mit Gletschern</li>
-                        <li><strong>Besonderheit:</strong> Sehr hart, glitzert in der Sonne</li>
-                        <li><strong>Fun Fact:</strong> Aus Skandinavien per Eiszeit-Express!</li>
-                    </ul>
-                </div>
-
-                <!-- BERNSTEIN -->
-                <div class="stone-card">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3CradialGradient id='amber'%3E%3Cstop offset='0%25' stop-color='%23ffcc00'/%3E%3Cstop offset='100%25' stop-color='%23ff8800'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect fill='url(%23amber)' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23fff'%3E🟡 Bernstein%3C/text%3E%3C/svg%3E" alt="Bernstein">
-                    <h3>🟡 Bernstein</h3>
-                    <ul>
-                        <li><strong>Farbe:</strong> Golden, orange, manchmal durchsichtig</li>
-                        <li><strong>Wo finden?</strong> Nordsee-Strände (besonders nach Sturm!)</li>
-                        <li><strong>Besonderheit:</strong> Eigentlich fossiles Baumharz!</li>
-                        <li><strong>Fun Fact:</strong> Schwimmt in Salzwasser, riecht beim Reiben!</li>
-                    </ul>
-                </div>
-
-                <!-- KIESELSTEIN (QUARZ) -->
-                <div class="stone-card">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23b0c4de' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23778899' opacity='0.7'/%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='40' fill='%23fff'%3E⚫ Quarz%3C/text%3E%3C/svg%3E" alt="Quarz">
-                    <h3>⚫ Kieselstein (Quarz)</h3>
-                    <ul>
-                        <li><strong>Farbe:</strong> Alle Farben möglich!</li>
-                        <li><strong>Wo finden?</strong> Flussufer, Strände</li>
-                        <li><strong>Besonderheit:</strong> Glatt und rund vom Wasser geschliffen</li>
-                        <li><strong>Fun Fact:</strong> Der häufigste Stein überhaupt!</li>
-                    </ul>
-                </div>
-
-                <!-- KALKSTEIN (NEU!) -->
-                <div class="stone-card">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f5f5dc' width='400' height='300'/%3E%3Cpath d='M50,100 Q150,50 250,100 T450,100' stroke='%23ddd' fill='none' stroke-width='3'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='42' fill='%23666'%3E🤍 Kalkstein%3C/text%3E%3C/svg%3E" alt="Kalkstein">
-                    <h3>🤍 Kalkstein</h3>
-                    <ul>
-                        <li><strong>Farbe:</strong> Weiß, grau, beige</li>
-                        <li><strong>Wo finden?</strong> Felder, alte Mauern</li>
-                        <li><strong>Besonderheit:</strong> Braust mit Essig! (CO₂-Test)</li>
-                        <li><strong>Fun Fact:</strong> Aus alten Meeresböden – voll mit Fossilien!</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="info-box" style="margin-top: 30px;">
-                <strong>🔬 Härte-Test: Die Mohs-Skala</strong><br><br>
-                Wissenschaftler messen, wie hart ein Stein ist, mit der <strong>Mohs-Skala</strong> (1-10):<br><br>
-                • <strong>1 = Talk</strong> (weich wie Kreide, mit Fingernagel ritzbar)<br>
-                • <strong>3 = Kalkstein</strong> (mit Münze ritzbar)<br>
-                • <strong>5 = Glas</strong> (mit Messer schwer ritzbar)<br>
-                • <strong>7 = Quarz</strong> (ritzt Glas!)<br>
-                • <strong>10 = Diamant</strong> (härter geht nicht!)<br><br>
-                💡 <strong>Test:</strong> Kann dein Stein eine Fensterscheibe ritzen? Dann ist er härter als 5!<br><br>
-                📖 <a href="https://de.wikipedia.org/wiki/Mohsh%C3%A4rte" target="_blank">→ Mehr zur Mohs-Skala auf Wikipedia</a>
-            </div>
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-kalkstein" data-checkpoint="kalkstein">
+          <label class="checkpoint-label" for="check-kalkstein">Kalkstein erkannt</label>
         </div>
 
-        <!-- WO FINDE ICH WELCHE STEINE? -->
-        <div class="section">
-            <h2>📍 Wo finde ich welche Steine?</h2>
-            <p><strong>Bremen-spezifische Fundorte:</strong></p>
-            
-            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-top: 20px;">
-                <h4 style="color: var(--gold); margin-bottom: 15px;">🏖️ Nordsee-Strände</h4>
-                <p><strong>Orte:</strong> Cuxhaven, Bremerhaven, Wilhelmshaven</p>
-                <p><strong>Findest du:</strong> Feuerstein, Bernstein (nach Stürmen!), Muscheln, Kieselsteine</p>
-                <p><strong>Tipp:</strong> Bei Ebbe suchen, wenn das Wasser weg ist!</p>
-            </div>
-
-            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-top: 20px;">
-                <h4 style="color: var(--gold); margin-bottom: 15px;">🌾 Felder nach dem Pflügen</h4>
-                <p><strong>Orte:</strong> Umland von Bremen, Niedersachsen</p>
-                <p><strong>Findest du:</strong> Feuerstein, Quarz, Feldspat, Kalkstein</p>
-                <p><strong>Wichtig:</strong> Nur auf abgeernteten Feldern suchen! Frag den Bauern!</p>
-            </div>
-
-            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-top: 20px;">
-                <h4 style="color: var(--gold); margin-bottom: 15px;">🌊 Flussufer (Weser)</h4>
-                <p><strong>Orte:</strong> Weser-Ufer, Bäche, kleine Flüsse</p>
-                <p><strong>Findest du:</strong> Kieselsteine, Quarz, bunte Steine</p>
-                <p><strong>Tipp:</strong> Nach starkem Regen sind neue Steine freigelegt!</p>
-            </div>
-
-            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-top: 20px;">
-                <h4 style="color: var(--gold); margin-bottom: 15px;">🏗️ Baustellen</h4>
-                <p><strong>Orte:</strong> Neue Straßen, Hausbau</p>
-                <p><strong>Findest du:</strong> Alles Mögliche – oft aus tiefen Schichten!</p>
-                <p><strong>WICHTIG:</strong> Nur mit Erlaubnis & nie alleine! Sehr gefährlich!</p>
-            </div>
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-schiefer" data-checkpoint="schiefer">
+          <label class="checkpoint-label" for="check-schiefer">Schiefer identifiziert</label>
         </div>
 
-        <!-- FORSCHER-AUSRÜSTUNG -->
-        <div class="section">
-            <h2>🎒 Forscher-Ausrüstung: Das Stein-Detektiv Starter-Kit</h2>
-            <p>Perfekt für Pfadfinder-Touren! Alles zusammen wiegt nur ~420g – leichter als eine Wasserflasche! 💪</p>
+        <div class="checkpoint-item">
+          <input type="checkbox" class="checkpoint-checkbox" id="check-sandstein" data-checkpoint="sandstein">
+          <label class="checkpoint-label" for="check-sandstein">Sandstein untersucht</label>
+        </div>
+      </div>
+    </section>
 
-            <h3 style="color: var(--gold); margin-top: 30px;">✅ LEICHT & PRAKTISCH</h3>
-            <table class="equipment-table">
-                <thead>
-                    <tr>
-                        <th>Ausrüstung</th>
-                        <th>Warum brauchst du das?</th>
-                        <th>Wo besorgen?</th>
-                        <th>Gewicht</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>🔍 <strong>Lupe (10x)</strong></td>
-                        <td>Kristalle & Strukturen erkennen</td>
-                        <td>Drogerie</td>
-                        <td><span class="weight-badge">50g</span></td>
-                    </tr>
-                    <tr>
-                        <td>🖌️ <strong>Weicher Pinsel</strong></td>
-                        <td>Staub vorsichtig entfernen</td>
-                        <td>Bastelgeschäft</td>
-                        <td><span class="weight-badge">10g</span></td>
-                    </tr>
-                    <tr>
-                        <td>📦 <strong>Stoffbeutel</strong></td>
-                        <td>Steine sortieren & transportieren</td>
-                        <td>Online/Nähset</td>
-                        <td><span class="weight-badge">100g</span></td>
-                    </tr>
-                    <tr>
-                        <td>📝 <strong>Wasserfester Notizblock</strong></td>
-                        <td>Fundort + Datum notieren</td>
-                        <td>Outdoor-Shop</td>
-                        <td><span class="weight-badge">80g</span></td>
-                    </tr>
-                    <tr>
-                        <td>📏 <strong>Kleines Maßband</strong></td>
-                        <td>Größe bestimmen</td>
-                        <td>1€-Shop</td>
-                        <td><span class="weight-badge">30g</span></td>
-                    </tr>
-                    <tr>
-                        <td>🧤 <strong>Dünne Handschuhe</strong></td>
-                        <td>Schutz beim Graben</td>
-                        <td>Baumarkt</td>
-                        <td><span class="weight-badge">50g</span></td>
-                    </tr>
-                    <tr>
-                        <td>💧 <strong>Mini-Sprühflasche</strong></td>
-                        <td>Steine befeuchten (Farbe besser sehen!)</td>
-                        <td>Drogerie</td>
-                        <td><span class="weight-badge">40g</span></td>
-                    </tr>
-                    <tr>
-                        <td>🔦 <strong>LED-Taschenlampe</strong></td>
-                        <td>Glanz & Struktur prüfen</td>
-                        <td>Überall</td>
-                        <td><span class="weight-badge">60g</span></td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- Intro Section -->
+    <section class="content-section">
+      <h2 class="section-title">🔬 Willkommen im Steinlabor!</h2>
+      
+      <p>
+        Steine sind überall um uns herum – aber <strong>wie gut kennst du sie wirklich?</strong> 
+        In diesem Labor lernst du die <strong>wichtigsten Gesteinsarten</strong> kennen und wie du sie 
+        in der Natur erkennst!
+      </p>
 
-            <h3 style="color: var(--gold); margin-top: 40px;">🏆 PROFI-AUSRÜSTUNG (für zuhause/später)</h3>
-            <table class="equipment-table">
-                <thead>
-                    <tr>
-                        <th>Ausrüstung</th>
-                        <th>Wozu?</th>
-                        <th>Preis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>⚒️ <strong>Geologenhammer</strong></td>
-                        <td>Steine spalten (NUR mit Erwachsenen!)</td>
-                        <td>~20€</td>
-                    </tr>
-                    <tr>
-                        <td>🧪 <strong>Härte-Test-Set</strong></td>
-                        <td>Mohs-Skala testen</td>
-                        <td>~15€</td>
-                    </tr>
-                    <tr>
-                        <td>📱 <strong>Stein-Bestimmungs-App</strong></td>
-                        <td>"Rock Identifier" / "Geologie Toolkit"</td>
-                        <td>Gratis</td>
-                    </tr>
-                    <tr>
-                        <td>🗃️ <strong>Sammelbox mit Fächern</strong></td>
-                        <td>Sammlung zuhause aufbewahren</td>
-                        <td>~10€</td>
-                    </tr>
-                    <tr>
-                        <td>🏷️ <strong>Etiketten-Set</strong></td>
-                        <td>Fundort & Name beschriften</td>
-                        <td>~5€</td>
-                    </tr>
-                </tbody>
-            </table>
+      <div class="info-box info-box-brown">
+        <h3 class="info-box-title">🎒 Was du brauchst:</h3>
+        <ul>
+          <li>👀 <strong>Gute Augen</strong> – zum Beobachten</li>
+          <li>🔍 <strong>Lupe</strong> (optional) – für Details</li>
+          <li>📓 <strong>Notizbuch</strong> – zum Dokumentieren</li>
+          <li>📱 <strong>Handy/Kamera</strong> – zum Fotografieren</li>
+          <li>🎒 <strong>Rucksack</strong> – für deine Funde</li>
+        </ul>
+      </div>
+
+      <div class="info-box info-box-green">
+        <h3 class="info-box-title">🌍 Wo du Steine findest:</h3>
+        <ul>
+          <li>🏔️ <strong>Berge & Gebirge</strong> – viele verschiedene Arten</li>
+          <li>🏞️ <strong>Flussufer</strong> – runde, glatte Steine</li>
+          <li>🏖️ <strong>Strände</strong> – von Wellen geformt</li>
+          <li>🏗️ <strong>Baustellen</strong> – oft Schotter & Geröll</li>
+          <li>🚶 <strong>Wanderwege</strong> – am Wegrand</li>
+        </ul>
+      </div>
+
+      <div class="pfadfinder-box">
+        <h3>🏕️ Pfadfinder-Regel:</h3>
+        <p>
+          <strong>"Leave No Trace"</strong> – Nimm nur mit, was nicht zur Natur gehört 
+          (z.B. kleine Kiesel am Wegrand). Beschädigte keine Felsen oder geschützte Gebiete! 
+          In Nationalparks darfst du <strong>nichts</strong> mitnehmen.
+        </p>
+      </div>
+    </section>
+
+    <!-- Die 6 Gesteinsarten -->
+    <section class="content-section" id="granite">
+      <h2 class="section-title">1️⃣ GRANIT – Der Härteste</h2>
+      
+      <div class="stone-card">
+        <div class="stone-image">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Granite_Yosemite_P1160483.jpg/400px-Granite_Yosemite_P1160483.jpg" alt="Granit">
+        </div>
+        
+        <div class="stone-info">
+          <h3>📋 Steckbrief:</h3>
+          <table class="stone-table">
+            <tr>
+              <td><strong>Typ:</strong></td>
+              <td>Magmatisches Gestein (Tiefengestein)</td>
+            </tr>
+            <tr>
+              <td><strong>Farbe:</strong></td>
+              <td>Grau, Rosa, Rot mit schwarzen Punkten</td>
+            </tr>
+            <tr>
+              <td><strong>Härte:</strong></td>
+              <td>⭐⭐⭐⭐⭐ (sehr hart!)</td>
+            </tr>
+            <tr>
+              <td><strong>Besonderheit:</strong></td>
+              <td>Glitzert durch Quarz & Glimmer</td>
+            </tr>
+          </table>
+
+          <h3>🔍 So erkennst du Granit:</h3>
+          <ul>
+            <li>✅ <strong>Körnige Oberfläche</strong> (wie grober Sand)</li>
+            <li>✅ <strong>Drei Farben gemischt:</strong> Hell (Feldspat), durchsichtig (Quarz), schwarz (Glimmer)</li>
+            <li>✅ <strong>Sehr schwer</strong> zu zerkratzen</li>
+            <li>✅ <strong>Glitzert</strong> im Sonnenlicht</li>
+          </ul>
+
+          <h3>🌍 Wo du ihn findest:</h3>
+          <ul>
+            <li>🏔️ <strong>Hochgebirge</strong> (Alpen, Schwarzwald)</li>
+            <li>🏛️ <strong>Denkmäler & Gebäude</strong> (wird oft verbaut!)</li>
+            <li>🪦 <strong>Friedhöfe</strong> (Grabsteine aus Granit)</li>
+          </ul>
+
+          <div class="fun-fact">
+            <strong>💡 Fun Fact:</strong> Granit ist so hart, dass Messer daran stumpf werden! 
+            Er entsteht tief unter der Erde aus geschmolzenem Gestein (Magma).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="basalt">
+      <h2 class="section-title">2️⃣ BASALT – Der Vulkanstein</h2>
+      
+      <div class="stone-card">
+        <div class="stone-image">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Basalt_-_Antrim.jpg/400px-Basalt_-_Antrim.jpg" alt="Basalt">
+        </div>
+        
+        <div class="stone-info">
+          <h3>📋 Steckbrief:</h3>
+          <table class="stone-table">
+            <tr>
+              <td><strong>Typ:</strong></td>
+              <td>Magmatisches Gestein (Ergussgestein)</td>
+            </tr>
+            <tr>
+              <td><strong>Farbe:</strong></td>
+              <td>Dunkelgrau bis Schwarz</td>
+            </tr>
+            <tr>
+              <td><strong>Härte:</strong></td>
+              <td>⭐⭐⭐⭐ (hart)</td>
+            </tr>
+            <tr>
+              <td><strong>Besonderheit:</strong></td>
+              <td>Kommt aus Vulkanen!</td>
+            </tr>
+          </table>
+
+          <h3>🔍 So erkennst du Basalt:</h3>
+          <ul>
+            <li>✅ <strong>Sehr dunkel</strong> (fast schwarz)</li>
+            <li>✅ <strong>Feinkörnig</strong> oder glatt</li>
+            <li>✅ <strong>Manchmal mit Luftblasen</strong> (Blasen vom Gas!)</li>
+            <li>✅ <strong>Oft in Säulen</strong> (sechseckige Formen)</li>
+          </ul>
+
+          <h3>🌍 Wo du ihn findest:</h3>
+          <ul>
+            <li>🌋 <strong>Vulkangebiete</strong> (Eifel, Island)</li>
+            <li>🛣️ <strong>Straßenbau</strong> (Schotter & Pflastersteine)</li>
+            <li>🏞️ <strong>Steinbrüche</strong></li>
+          </ul>
+
+          <div class="fun-fact">
+            <strong>💡 Fun Fact:</strong> Basalt ist <strong>erkaltete Lava</strong>! 
+            Wenn ein Vulkan ausbricht und die Lava an der Luft abkühlt, wird sie zu Basalt. 
+            Deshalb ist er oft schwarz wie Kohle!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="quarz">
+      <h2 class="section-title">3️⃣ QUARZ – Der Glänzende</h2>
+      
+      <div class="stone-card">
+        <div class="stone-image">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Quartz%2C_Tibet.jpg/400px-Quartz%2C_Tibet.jpg" alt="Quarz">
+        </div>
+        
+        <div class="stone-info">
+          <h3>📋 Steckbrief:</h3>
+          <table class="stone-table">
+            <tr>
+              <td><strong>Typ:</strong></td>
+              <td>Mineral (kein Gestein, aber wichtig!)</td>
+            </tr>
+            <tr>
+              <td><strong>Farbe:</strong></td>
+              <td>Durchsichtig, Weiß, Rosa (Rosenquarz), Violett (Amethyst)</td>
+            </tr>
+            <tr>
+              <td><strong>Härte:</strong></td>
+              <td>⭐⭐⭐⭐⭐ (sehr hart!)</td>
+            </tr>
+            <tr>
+              <td><strong>Besonderheit:</strong></td>
+              <td>Bildet Kristalle!</td>
+            </tr>
+          </table>
+
+          <h3>🔍 So erkennst du Quarz:</h3>
+          <ul>
+            <li>✅ <strong>Glasartig glänzend</strong></li>
+            <li>✅ <strong>Oft durchsichtig</strong> oder milchig weiß</li>
+            <li>✅ <strong>Kristalle</strong> mit spitzen Enden (6 Seiten)</li>
+            <li>✅ <strong>Sehr hart</strong> – kratzt Glas!</li>
+          </ul>
+
+          <h3>🌍 Wo du ihn findest:</h3>
+          <ul>
+            <li>🏔️ <strong>Gebirge</strong> (Alpen, Schwarzwald)</li>
+            <li>🏞️ <strong>Flussbetten</strong> (als weiße Kiesel)</li>
+            <li>⛏️ <strong>Kristallhöhlen</strong> (selten, aber mega cool!)</li>
+          </ul>
+
+          <div class="fun-fact">
+            <strong>💡 Fun Fact:</strong> Quarz ist das <strong>zweithärteste Mineral der Welt</strong>! 
+            Nur Diamanten sind härter. Deshalb wird Quarz in Uhren verwendet – die ticken genau, 
+            weil Quarz-Kristalle schwingen!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="kalkstein">
+      <h2 class="section-title">4️⃣ KALKSTEIN – Der Schäumende</h2>
+      
+      <div class="stone-card">
+        <div class="stone-image">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Limestone_Sequoyah_Caverns.jpg/400px-Limestone_Sequoyah_Caverns.jpg" alt="Kalkstein">
+        </div>
+        
+        <div class="stone-info">
+          <h3>📋 Steckbrief:</h3>
+          <table class="stone-table">
+            <tr>
+              <td><strong>Typ:</strong></td>
+              <td>Sedimentgestein (aus Ablagerungen)</td>
+            </tr>
+            <tr>
+              <td><strong>Farbe:</strong></td>
+              <td>Hellgrau, Beige, Weiß</td>
+            </tr>
+            <tr>
+              <td><strong>Härte:</strong></td>
+              <td>⭐⭐ (eher weich)</td>
+            </tr>
+            <tr>
+              <td><strong>Besonderheit:</strong></td>
+              <td>Reagiert mit Säure!</td>
+            </tr>
+          </table>
+
+          <h3>🔍 So erkennst du Kalkstein:</h3>
+          <ul>
+            <li>✅ <strong>Hell gefärbt</strong> (oft grau oder beige)</li>
+            <li>✅ <strong>Weich</strong> – lässt sich mit Messer ritzen</li>
+            <li>✅ <strong>Schäumt bei Essig!</strong> (chemische Reaktion)</li>
+            <li>✅ <strong>Manchmal mit Fossilien</strong> (Muscheln, Schnecken)</li>
+          </ul>
+
+          <h3>🌍 Wo du ihn findest:</h3>
+          <ul>
+            <li>🏞️ <strong>Flusstäler & Schluchten</strong></li>
+            <li>🏛️ <strong>Alte Gebäude</strong> (Kirchen, Burgen)</li>
+            <li>🕳️ <strong>Höhlen</strong> (Tropfsteinhöhlen!)</li>
+          </ul>
+
+          <div class="experiment-box">
+            <h3>🧪 Experiment:</h3>
+            <p>
+              Nimm einen hellen Stein und tropfe <strong>Essig</strong> oder <strong>Zitronensaft</strong> drauf. 
+              Wenn es <strong>schäumt und zischt</strong>, ist es Kalkstein! 
+              (Kalk reagiert mit Säure und bildet CO₂-Bläschen)
+            </p>
+          </div>
+
+          <div class="fun-fact">
+            <strong>💡 Fun Fact:</strong> Kalkstein entsteht aus <strong>alten Meerestieren</strong>! 
+            Vor Millionen Jahren sanken tote Muscheln und Korallen auf den Meeresboden. 
+            Über lange Zeit wurden sie zu Stein gepresst.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="schiefer">
+      <h2 class="section-title">5️⃣ SCHIEFER – Der Geschichtete</h2>
+      
+      <div class="stone-card">
+        <div class="stone-image">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Schist_detail.jpg/400px-Schist_detail.jpg" alt="Schiefer">
+        </div>
+        
+        <div class="stone-info">
+          <h3>📋 Steckbrief:</h3>
+          <table class="stone-table">
+            <tr>
+              <td><strong>Typ:</strong></td>
+              <td>Metamorphes Gestein (umgewandeltes Gestein)</td>
+            </tr>
+            <tr>
+              <td><strong>Farbe:</strong></td>
+              <td>Grau, Schwarz, manchmal Grün</td>
+            </tr>
+            <tr>
+              <td><strong>Härte:</strong></td>
+              <td>⭐⭐⭐ (mittelhart)</td>
+            </tr>
+            <tr>
+              <td><strong>Besonderheit:</strong></td>
+              <td>Spaltet in dünne Platten!</td>
+            </tr>
+          </table>
+
+          <h3>🔍 So erkennst du Schiefer:</h3>
+          <ul>
+            <li>✅ <strong>Blättrige Struktur</strong> – wie ein Buch aus Stein!</li>
+            <li>✅ <strong>Dunkel</strong> (grau oder schwarz)</li>
+            <li>✅ <strong>Glänzend</strong> (durch Glimmer)</li>
+            <li>✅ <strong>Lässt sich in Schichten spalten</strong></li>
+          </ul>
+
+          <h3>🌍 Wo du ihn findest:</h3>
+          <ul>
+            <li>🏔️ <strong>Gebirge</strong> (besonders Mittelgebirge)</li>
+            <li>🏠 <strong>Dächer</strong> (Schieferdächer!)</li>
+            <li>🖼️ <strong>Schreibtafeln</strong> (früher in Schulen)</li>
+          </ul>
+
+          <div class="fun-fact">
+            <strong>💡 Fun Fact:</strong> Schiefer war <strong>das erste Whiteboard</strong>! 
+            Vor der Erfindung von Papier schrieben Menschen mit Kreide auf Schiefertafeln. 
+            Heute werden aus Schiefer Dächer gemacht, weil er wasserdicht ist!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="sandstein">
+      <h2 class="section-title">6️⃣ SANDSTEIN – Der Sandige</h2>
+      
+      <div class="stone-card">
+        <div class="stone-image">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Sandstein_im_Elbsandsteingebirge.jpg/400px-Sandstein_im_Elbsandsteingebirge.jpg" alt="Sandstein">
+        </div>
+        
+        <div class="stone-info">
+          <h3>📋 Steckbrief:</h3>
+          <table class="stone-table">
+            <tr>
+              <td><strong>Typ:</strong></td>
+              <td>Sedimentgestein (aus Sand entstanden)</td>
+            </tr>
+            <tr>
+              <td><strong>Farbe:</strong></td>
+              <td>Beige, Gelb, Rot, manchmal Grau</td>
+            </tr>
+            <tr>
+              <td><strong>Härte:</strong></td>
+              <td>⭐⭐⭐ (mittelhart)</td>
+            </tr>
+            <tr>
+              <td><strong>Besonderheit:</strong></td>
+              <td>Fühlt sich sandig an!</td>
+            </tr>
+          </table>
+
+          <h3>🔍 So erkennst du Sandstein:</h3>
+          <ul>
+            <li>✅ <strong>Raue Oberfläche</strong> – wie Schmirgelpapier</li>
+            <li>✅ <strong>Warm gefärbt</strong> (gelb, rot, orange)</li>
+            <li>✅ <strong>Einzelne Sandkörner sichtbar</strong> (mit Lupe)</li>
+            <li>✅ <strong>Porös</strong> – Wasser sickert ein</li>
+          </ul>
+
+          <h3>🌍 Wo du ihn findest:</h3>
+          <ul>
+            <li>🏜️ <strong>Wüstengebiete</strong> (USA: Grand Canyon)</li>
+            <li>🏛️ <strong>Alte Bauwerke</strong> (Burgen, Kirchen)</li>
+            <li>🏞️ <strong>Schluchten & Felsformationen</strong> (Elbsandsteingebirge)</li>
+          </ul>
+
+          <div class="fun-fact">
+            <strong>💡 Fun Fact:</strong> Sandstein entsteht aus <strong>altem Wüstensand</strong>! 
+            Über Millionen Jahre wurde Sand zusammengepresst und mit Mineralien "verklebt". 
+            Manche Sandsteine sind über 200 Millionen Jahre alt!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="content-section">
+      <h2 class="section-title">🧠 Gesteins-Quiz</h2>
+      
+      <p>Teste dein Wissen! Welcher Stein ist das?</p>
+
+      <div class="quiz-box">
+        <div class="quiz-question">
+          <h3>Frage 1: Welcher Stein schäumt bei Essig?</h3>
+          <div class="quiz-options">
+            <button class="quiz-btn" data-answer="wrong">Granit</button>
+            <button class="quiz-btn" data-answer="correct">Kalkstein</button>
+            <button class="quiz-btn" data-answer="wrong">Basalt</button>
+            <button class="quiz-btn" data-answer="wrong">Quarz</button>
+          </div>
+          <div class="quiz-result"></div>
         </div>
 
-        <!-- PFADFINDER-SPEZIAL -->
-        <div class="survival-box">
-            <h3>⛺ PFADFINDER-SPEZIAL: Was Steine im Gelände verraten</h3>
-            <ul>
-                <li>🔥 <strong>Feuerstein</strong> → Funken schlagen (mit Stahl!) für Lagerfeuer</li>
-                <li>💧 <strong>Glatte, runde Steine</strong> → Wasser in der Nähe (Fluss/Bach)</li>
-                <li>🧭 <strong>Magnetit</strong> → Kann Kompass beeinflussen! (Schwarzer, magnetischer Stein)</li>
-                <li>🏔️ <strong>Spitze, kantige Steine</strong> → Berge/Gebirge in der Nähe</li>
-                <li>🌊 <strong>Sehr runde Steine</strong> → Vom Wasser über Jahre geschliffen</li>
-            </ul>
-            <p style="margin-top: 20px;"><em>💡 Tipp: Nimm auf Pfadfinder-Touren immer einen Beutel mit! Du weißt nie, was du findest.</em></p>
+        <div class="quiz-question">
+          <h3>Frage 2: Welcher Stein kommt aus Vulkanen?</h3>
+          <div class="quiz-options">
+            <button class="quiz-btn" data-answer="wrong">Sandstein</button>
+            <button class="quiz-btn" data-answer="correct">Basalt</button>
+            <button class="quiz-btn" data-answer="wrong">Schiefer</button>
+            <button class="quiz-btn" data-answer="wrong">Kalkstein</button>
+          </div>
+          <div class="quiz-result"></div>
         </div>
 
-        <!-- WISSENSDATENBANKEN -->
-        <div class="resources-section">
-            <h2 style="color: white; margin-bottom: 25px;">📚 Wissensdatenbanken & Ressourcen</h2>
-
-            <div class="resource-card">
-                <h4>📱 Apps (kostenlos!)</h4>
-                <ul>
-                    <li><strong>Rock Identifier</strong> – Foto machen → Stein automatisch erkennen!</li>
-                    <li><strong>Geologie Toolkit</strong> – Härte-Tests & Mini-Lexikon mit Bildern</li>
-                    <li><strong>iNaturalist</strong> – Community für Naturfunde, tausch dich mit anderen aus!</li>
-                </ul>
-            </div>
-
-            <div class="resource-card">
-                <h4>📺 YouTube-Kanäle</h4>
-                <ul>
-                    <li><strong>"Steine und Minerale"</strong> – Kurze Erklärvideos auf Deutsch</li>
-                    <li><strong>"Terra X Lesch & Co"</strong> – Geologie kindgerecht erklärt</li>
-                    <li><strong>"Geology Hub"</strong> – Englisch, aber mit vielen Bildern</li>
-                </ul>
-            </div>
-
-            <div class="resource-card">
-                <h4>📚 Bücher (Bibliothek Bremen)</h4>
-                <ul>
-                    <li><strong>"Was ist Was: Mineralien und Gesteine"</strong> – Klassiker!</li>
-                    <li><strong>"Steine am Strand"</strong> – Speziell für Nordsee-Steine!</li>
-                    <li><strong>"Der große Kosmos Steinführer"</strong> – Nachschlagewerk mit Bildern</li>
-                </ul>
-            </div>
-
-            <div class="resource-card">
-                <h4>🏛️ Museen in der Nähe</h4>
-                <ul>
-                    <li><strong>Übersee-Museum Bremen</strong> – Mineralienkunde-Abteilung</li>
-                    <li><strong>Geologisches Museum Bremerhaven</strong> – Norddeutsche Steine</li>
-                    <li><strong>Natureum Balje</strong> – Steine der Elbregion mit Ausstellung</li>
-                </ul>
-            </div>
+        <div class="quiz-question">
+          <h3>Frage 3: Welcher Stein spaltet sich in dünne Platten?</h3>
+          <div class="quiz-options">
+            <button class="quiz-btn" data-answer="wrong">Quarz</button>
+            <button class="quiz-btn" data-answer="wrong">Granit</button>
+            <button class="quiz-btn" data-answer="correct">Schiefer</button>
+            <button class="quiz-btn" data-answer="wrong">Basalt</button>
+          </div>
+          <div class="quiz-result"></div>
         </div>
 
-        <!-- BASTEL-IDEEN -->
-        <div class="section">
-            <h2>🎨 Bastel-Ideen mit deinen Steinen</h2>
-            <p>So machst du aus deinen Funden echte Kunstwerke!</p>
-
-            <div class="craft-ideas">
-                <div class="craft-card">
-                    <h4>🪨 Stein-Turm (Assassin's Creed Style!)</h4>
-                    <ol>
-                        <li>Suche flache Steine in verschiedenen Größen</li>
-                        <li>Stapel sie aufeinander – größte unten!</li>
-                        <li>Balance ist alles! Ruhig atmen 😊</li>
-                        <li>Schaff mind. 7 Steine hoch!</li>
-                        <li>Foto machen, bevor es umfällt! 📸</li>
-                    </ol>
-                    <p style="margin-top: 10px; font-style: italic;">🎮 Genau wie in Assassin's Creed Shadows – nur in echt!</p>
-                </div>
-
-                <div class="craft-card">
-                    <h4>🎨 Glücksstein bemalen</h4>
-                    <ol>
-                        <li>Such dir einen glatten, runden Stein</li>
-                        <li>Wasch ihn gründlich & lass ihn trocknen</li>
-                        <li>Male mit Acrylstiften ein Motiv drauf (Herz, Smiley, Name...)</li>
-                        <li>Verschenke ihn an einen Freund! 🎁</li>
-                    </ol>
-                    <p style="margin-top: 10px; font-style: italic;">💡 Tipp: Mit Klarlack besprühen, dann hält's länger!</p>
-                </div>
-
-                <div class="craft-card">
-                    <h4>🔬 Forscherlabor zuhause</h4>
-                    <ol>
-                        <li>Nimm einen <strong>Eierkarton</strong> als Sammelbox</li>
-                        <li>Jeden Stein nummerieren (1, 2, 3...)</li>
-                        <li>Liste führen mit:
-                            <ul style="margin-top: 10px;">
-                                <li>• Nummer</li>
-                                <li>• Fundort</li>
-                                <li>• Datum</li>
-                                <li>• Steinart (wenn bekannt)</li>
-                            </ul>
-                        </li>
-                        <li>Wie ein echter Geologe arbeiten! 🔬</li>
-                    </ol>
-                </div>
-
-                <div class="craft-card">
-                    <h4>🗺️ Fundort-Karte</h4>
-                    <ol>
-                        <li>Stadtplan von Bremen ausdrucken</li>
-                        <li>Mit Stecknadeln Fundorte markieren</li>
-                        <li>Legende erstellen:<br>
-                            🔴 Feuerstein<br>
-                            🔵 Quarz<br>
-                            🟡 Bernstein<br>
-                            ⚪ Granit
-                        </li>
-                        <li>So siehst du, wo welche Steine liegen!</li>
-                    </ol>
-                </div>
-
-                <div class="craft-card">
-                    <h4>📸 Foto-Dokumentation</h4>
-                    <ol>
-                        <li>Stein fotografieren (mit Lineal als Maßstab!)</li>
-                        <li>Ordner "Meine Funde" auf dem PC/Tablet anlegen</li>
-                        <li>Beschreibung dazu schreiben</li>
-                        <li>Wie ein echter Wissenschaftler! 🧑‍🔬</li>
-                    </ol>
-                </div>
-            </div>
+        <div class="quiz-question">
+          <h3>Frage 4: Welcher Stein ist am härtesten?</h3>
+          <div class="quiz-options">
+            <button class="quiz-btn" data-answer="wrong">Kalkstein</button>
+            <button class="quiz-btn" data-answer="wrong">Sandstein</button>
+            <button class="quiz-btn" data-answer="correct">Quarz</button>
+            <button class="quiz-btn" data-answer="wrong">Schiefer</button>
+          </div>
+          <div class="quiz-result"></div>
         </div>
 
-        <!-- QUIZ -->
-        <div class="quiz-section">
-            <h2 style="color: var(--gold); margin-bottom: 30px;">🎯 Stein-Detektiv Quiz</h2>
-            <p style="margin-bottom: 30px;">Teste dein Wissen! Mind. 3 richtige Antworten = Bestanden! ✅</p>
-
-            <div class="quiz-question">
-                <h4>1️⃣ Welcher Stein macht Funken, wenn man ihn mit Stahl schlägt?</h4>
-                <div class="quiz-options">
-                    <label class="quiz-option">
-                        <input type="radio" name="q1" value="a"> a) Sandstein
-                    </label>
-                    <label class="quiz-option">
-                        <input type="radio" name="q1" value="b"> b) Feuerstein ✅
-                    </label>
-                    <label class="quiz-option">
-                        <input type="radio" name="q1" value="c"> c) Granit
-                    </label>
-                </div>
-            </div>
-
-            <div class="quiz-question">
-                <h4>2️⃣ Wie nennt man die Skala, die misst, wie hart ein Stein ist?</h4>
-                <div class="quiz-options">
-                    <label class="quiz-option">
-                        <input type="radio" name="q2" value="a"> a) Richter-Skala
-                    </label>
-                    <label class="quiz-option">
-                        <input type="radio" name="q2" value="b"> b) Mohs-Skala ✅
-                    </label>
-                    <label class="quiz-option">
-                        <input type="radio" name="q2" value="c"> c) pH-Skala
-                    </label>
-                </div>
-            </div>
-
-            <div class="quiz-question">
-                <h4>3️⃣ Was ist Bernstein eigentlich?</h4>
-                <div class="quiz-options">
-                    <label class="quiz-option">
-                        <input type="radio" name="q3" value="a"> a) Ein Edelstein
-                    </label>
-                    <label class="quiz-option">
-                        <input type="radio" name="q3" value="b"> b) Fossiles Baumharz ✅
-                    </label>
-                    <label class="quiz-option">
-                        <input type="radio" name="q3" value="c"> c) Buntes Glas
-                    </label>
-                </div>
-            </div>
-
-            <div class="quiz-question">
-                <h4>4️⃣ Wo findest du in Norddeutschland am ehesten Steine?</h4>
-                <div class="quiz-options">
-                    <label class="quiz-option">
-                        <input type="radio" name="q4" value="a"> a) Im Wald unter Bäumen
-                    </label>
-                    <label class="quiz-option">
-                        <input type="radio" name="q4" value="b"> b) An Stränden und Flussufern ✅
-                    </label>
-                    <label class="quiz-option">
-                        <input type="radio" name="q4" value="c"> c) In Höhlen
-                    </label>
-                </div>
-            </div>
-
-            <div class="quiz-question">
-                <h4>5️⃣ Wie kamen viele Steine nach Norddeutschland?</h4>
-                <div class="quiz-options">
-                    <label class="quiz-option">
-                        <input type="radio" name="q5" value="a"> a) Mit Vulkanausbrüchen
-                    </label>
-                    <label class="quiz-option">
-                        <input type="radio" name="q5" value="b"> b) Mit der Eiszeit aus Skandinavien ✅
-                    </label>
-                    <label class="quiz-option">
-                        <input type="radio" name="q5" value="c"> c) Vom Meer angespült
-                    </label>
-                </div>
-            </div>
-
-            <button class="quiz-button" onclick="checkQuiz()">🎯 Quiz auswerten</button>
-            <div id="quiz-result" style="margin-top: 20px; font-size: 1.2em; font-weight: bold; text-align: center;"></div>
+        <div class="quiz-question">
+          <h3>Frage 5: Welcher Stein fühlt sich sandig an?</h3>
+          <div class="quiz-options">
+            <button class="quiz-btn" data-answer="wrong">Basalt</button>
+            <button class="quiz-btn" data-answer="wrong">Granit</button>
+            <button class="quiz-btn" data-answer="wrong">Quarz</button>
+            <button class="quiz-btn" data-answer="correct">Sandstein</button>
+          </div>
+          <div class="quiz-result"></div>
         </div>
+      </div>
+    </section>
 
+    <!-- Sammler-Tipps -->
+    <section class="content-section">
+      <h2 class="section-title">📦 Deine Stein-Sammlung</h2>
+      
+      <div class="info-box info-box-blue">
+        <h3 class="info-box-title">🎒 Wie du deine Steine aufbewahrst:</h3>
+        <ul>
+          <li>📦 <strong>Eierkartons</strong> – perfekt für kleine Steine!</li>
+          <li>🏷️ <strong>Beschriften</strong> – schreib Fundort & Datum drauf</li>
+          <li>📸 <strong>Fotografieren</strong> – mach Fotos vor dem Reinigen</li>
+          <li>🧼 <strong>Vorsichtig waschen</strong> – nur mit Wasser & Bürste</li>
+          <li>📚 <strong>Katalog führen</strong> – erstell eine Liste deiner Funde</li>
+        </ul>
+      </div>
+
+      <div class="info-box info-box-warning">
+        <h3 class="info-box-title">⚠️ Wichtige Regeln:</h3>
+        <ul>
+          <li>🚫 <strong>Nicht in Naturschutzgebieten</strong> sammeln</li>
+          <li>🏛️ <strong>Nichts von Denkmälern</strong> abbrechen</li>
+          <li>🏔️ <strong>Vorsicht am Berg</strong> – nicht klettern ohne Erfahrung</li>
+          <li>👨‍👩‍👦 <strong>Mit Erwachsenen</strong> auf Steinsuche gehen</li>
+        </ul>
+      </div>
+
+      <div class="pfadfinder-box">
+        <h3>🏕️ Pfadfinder-Projekt:</h3>
+        <p>
+          Erstelle eine <strong>Stein-Ausstellung</strong> für deine Sippe! 
+          Sammle 10 verschiedene Steine, reinige sie, beschrifte sie und stelle sie 
+          in einer Box aus. Erkläre deinen Freunden, was du gelernt hast!
+        </p>
+      </div>
+    </section>
+
+    <!-- Final Message -->
+    <div class="final-message">
+      <h2>🎉 STEINLABOR ABGESCHLOSSEN!</h2>
+      <p>Du bist jetzt ein echter Gesteins-Experte! 🪨</p>
+      <p class="quote">"Jeder Stein erzählt eine Geschichte – Millionen Jahre alt!"</p>
+      <p style="margin-top: 20px;">
+        <a href="index.html" class="btn">← Zurück zur Startseite</a>
+      </p>
     </div>
 
-    <script>
-        // Quiz-Funktion
-        function checkQuiz() {
-            const answers = {
-                q1: 'b',
-                q2: 'b',
-                q3: 'b',
-                q4: 'b',
-                q5: 'b'
-            };
+  </div>
 
-            let score = 0;
-            for (let i = 1; i <= 5; i++) {
-                const selected = document.querySelector(`input[name="q${i}"]:checked`);
-                if (selected && selected.value === answers[`q${i}`]) {
-                    score++;
-                }
-            }
-
-            const resultDiv = document.getElementById('quiz-result');
-            if (score >= 3) {
-                resultDiv.innerHTML = `🎉 BESTANDEN! ${score}/5 richtig! Du bist ein echter Stein-Experte! 💎`;
-                resultDiv.style.color = 'var(--survival-green)';
-                document.getElementById('cp-quiz').checked = true;
-                // Trigger speichern
-                const event = new Event('change');
-                document.getElementById('cp-quiz').dispatchEvent(event);
-            } else {
-                resultDiv.innerHTML = `😅 ${score}/5 richtig. Lies nochmal die Infos oben und versuch's nochmal!`;
-                resultDiv.style.color = '#ff6b6b';
-            }
+  <!-- Scripts -->
+  <script src="global-progress.js"></script>
+  <script src="page-tracker.js"></script>
+  
+  <script>
+    // Quiz Funktionalität
+    document.querySelectorAll('.quiz-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const isCorrect = this.dataset.answer === 'correct';
+        const resultDiv = this.closest('.quiz-question').querySelector('.quiz-result');
+        const allBtns = this.closest('.quiz-options').querySelectorAll('.quiz-btn');
+        
+        // Disable all buttons
+        allBtns.forEach(b => b.disabled = true);
+        
+        // Show result
+        if (isCorrect) {
+          this.style.background = '#4CAF50';
+          resultDiv.innerHTML = '<p style="color: #4CAF50;">✅ Richtig!</p>';
+        } else {
+          this.style.background = '#f44336';
+          resultDiv.innerHTML = '<p style="color: #f44336;">❌ Falsch! Versuch es nochmal.</p>';
+          setTimeout(() => {
+            allBtns.forEach(b => {
+              b.disabled = false;
+              b.style.background = '';
+            });
+            resultDiv.innerHTML = '';
+          }, 2000);
         }
-    </script>
-
-    <script src="global-progress.js"></script>
-    <script src="page-tracker.js"></script>
+      });
+    });
+  </script>
 </body>
 </html>
