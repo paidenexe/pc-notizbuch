@@ -9,12 +9,20 @@
     // KONFIGURATION
     // ===================================
     const PAGES = [
+        'minecraft',
+        'rocketleague', 
+        'pctipps',
+        'programmierlabor',
+        'steinlabor'
+    ];
+    
+    const CECKPOINT_COUNTS = {
         'minecraft': 6,
         'rocketleague': 6, 
         'pctipps': 6,
         'programmierlabor': 6,
-        'steinlabor': 8,
-    ];
+        'steinlabor': 8
+    };
 
     // ===================================
     // 1. GESAMTFORTSCHRITT BERECHNEN
