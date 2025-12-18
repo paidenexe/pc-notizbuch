@@ -75,67 +75,55 @@
     </section>
 
     <!-- Checkpoint System -->
-    <section class="mission-container">
-      <h2 class="mission-title">🎯 Deine Rocket League Missionen</h2>
-      <p class="mission-subtitle">
-        Hake die Aufgaben ab, wenn du sie geschafft hast! 🏆
-      </p>
+<section class="checkpoint-container checkpoint-rocketleague">
+  <h2 class="checkpoint-title">🎯 Deine Rocket League Missionen</h2>
+  <p class="checkpoint-intro">Hake die Aufgaben ab, wenn du sie geschafft hast! 🏆</p>
 
-<div class="mission-card">
-  <input type="checkbox" class="task-checkbox" id="check-tutorial">
-  <label for="check-tutorial">
-    <span class="mission-link" onclick="scrollToSection('tutorial')">
-      🎮 Erstes Spiel & Tutorial
-    </span>
-  </label>
-</div>
+  <div class="checkpoint-grid">
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" id="check-tutorial" data-checkpoint="tutorial">
+      <label class="checkpoint-label" for="check-tutorial">
+        <span onclick="scrollToSection('tutorial')">🎮 Erstes Spiel & Tutorial</span>
+      </label>
+    </div>
 
-<div class="mission-card">
-  <input type="checkbox" class="task-checkbox" id="check-customize">
-  <label for="check-customize">
-    <span class="mission-link" onclick="scrollToSection('customize')">
-      🎨 Auto individualisieren
-    </span>
-  </label>
-</div>
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" id="check-customize" data-checkpoint="customize">
+      <label class="checkpoint-label" for="check-customize">
+        <span onclick="scrollToSection('customize')">🎨 Auto individualisieren</span>
+      </label>
+    </div>
 
-<div class="mission-card">
-  <input type="checkbox" class="task-checkbox" id="check-firstgoal">
-  <label for="check-firstgoal">
-    <span class="mission-link" onclick="scrollToSection('firstgoal')">
-      ⚽ Erstes Tor schießen
-    </span>
-  </label>
-</div>
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" id="check-firstgoal" data-checkpoint="firstgoal">
+      <label class="checkpoint-label" for="check-firstgoal">
+        <span onclick="scrollToSection('firstgoal')">⚽ Erstes Tor schießen</span>
+      </label>
+    </div>
 
-<div class="mission-card">
-  <input type="checkbox" class="task-checkbox" id="check-aerials">
-  <label for="check-aerials">
-    <span class="mission-link" onclick="scrollToSection('aerials')">
-      🚀 10 Aerial Hits
-    </span>
-  </label>
-</div>
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" id="check-aerials" data-checkpoint="aerials">
+      <label class="checkpoint-label" for="check-aerials">
+        <span onclick="scrollToSection('aerials')">🚀 10 Aerial Hits</span>
+      </label>
+    </div>
 
-<div class="mission-card">
-  <input type="checkbox" class="task-checkbox" id="check-win">
-  <label for="check-win">
-    <span class="mission-link" onclick="scrollToSection('win')">
-      🏆 Ein Match gewinnen
-    </span>
-  </label>
-</div>
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" id="check-win" data-checkpoint="win">
+      <label class="checkpoint-label" for="check-win">
+        <span onclick="scrollToSection('win')">🏆 Ein Match gewinnen</span>
+      </label>
+    </div>
 
-<div class="mission-card">
-  <input type="checkbox" class="task-checkbox" id="check-training">
-  <label for="check-training">
-    <span class="mission-link" onclick="scrollToSection('training')">
-      🎓 Basis-Trainings abschließen
-    </span>
-  </label>
-</div>
-      </div>
-    </section>
+    <div class="checkpoint-item">
+      <input type="checkbox" class="checkpoint-checkbox" id="check-training" data-checkpoint="training">
+      <label class="checkpoint-label" for="check-training">
+        <span onclick="scrollToSection('training')">🎓 Basis-Trainings abschließen</span>
+      </label>
+    </div>
+  </div>
+</section>
+
 
     <!-- Mission 1: Tutorial -->
     <section id="tutorial" class="content-section">
