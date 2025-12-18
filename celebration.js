@@ -11,12 +11,14 @@ window.addEventListener('storage', function(e) {
     }
 });
 
-document.addEventListener('change', function(e) {
-    console.log('🔄 Change-Event auf:', e.target);
-    if (e.target.type === 'checkbox' && e.target.closest('.checkpoint-item')) {
-        console.log('✅ Checkpoint-Checkbox geklickt!');
-        setTimeout(() => checkForCompletion(), 100);
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('📄 DOMContentLoaded gefeuert');
+    
+    // Warte auf das Signal von global-progress.js
+    window.addEventListener('global-progress-ready', () => {
+        console.log('✅ Global Progress ist bereit - prüfe Completion');
+        checkForCompletion();
+    });
 });
 
 function checkForCompletion() {
