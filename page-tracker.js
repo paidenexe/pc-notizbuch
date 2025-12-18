@@ -180,6 +180,7 @@ window.loadCheckpoints = null;
 
         if (typeof checkForCompletion === 'function') {
             checkForCompletion();
+        }
 
         return { total, completed, percentage };
     }
