@@ -55,9 +55,9 @@ function checkForCompletion() {
     setTimeout(() => {
         const pages = ['minecraft', 'rocketleague', 'pctipps', 'programmierlabor', 'steinlabor'];
         const allCompleted = pages.every(page => {
-            const data = JSON.parse(localStorage.getItem(`checkpoints_${page}`) || '{"checked":[],"total":0}');
-            const checked = data.checked ? data.checked.length : 0;
-            const total = data.total || 0;
+            const data = JSON.parse(localStorage.getItem(`checkpoints_${page}`) || '[]');
+            const total = data.length;
+            const checked = data.filter(cp => cp.completed === true).length;
             
             console.log(`   ${page}: ${checked}/${total}`);
             return total > 0 && checked === total;
@@ -72,6 +72,7 @@ function checkForCompletion() {
         }
     }, 200);
 }
+
 
 
 
