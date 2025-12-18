@@ -18,8 +18,8 @@
     
         const CHECKPOINT_COUNTS = {  // ← KORRIGIERT!
         'minecraft': 6,
-        'rocketleague': 2,  // ← Du hast 2 im Log, nicht 6!
-        'pctipps': 2,        // ← Du hast 2 im Log, nicht 6!
+        'rocketleague': 6,  // ← Du hast 2 im Log, nicht 6!
+        'pctipps': 6,        // ← Du hast 2 im Log, nicht 6!
         'programmierlabor': 6,
         'steinlabor': 8
     };
