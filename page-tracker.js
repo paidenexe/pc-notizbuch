@@ -30,7 +30,7 @@ window.loadCheckpoints = null;
     // 3. CHECKPOINT-DATEN SAMMELN
     // ===================================
     function initCheckpoints() {
-        const checkboxElements = document.querySelectorAll('.task-checkbox');
+        const checkboxElements = document.querySelectorAll('input[type="checkbox"]');
      
         checkpoints = Array.from(checkboxElements).map(checkbox => {
             const id = checkbox.id;
