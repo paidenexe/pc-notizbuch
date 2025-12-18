@@ -85,7 +85,7 @@ function startCelebration() {
 function createConfetti() {
     console.log('🎊 createConfetti() aufgerufen');
     const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500'];
-    const confettiCount = 150;
+    const confettiCount = 200;
     
     for (let i = 0; i < confettiCount; i++) {
         const confetti = document.createElement('div');
@@ -98,15 +98,16 @@ function createConfetti() {
             top: -10px;
             opacity: 1;
             transform: rotate(${Math.random() * 360}deg);
-            animation: confetti-fall ${2 + Math.random() * 3}s linear forwards;
-            animation-delay: ${Math.random() * 2}s;
+            animation: confetti-fall ${4 + Math.random() * 4}s linear forwards;
+            animation-delay: ${Math.random() * 3}s;
             z-index: 9999;
             pointer-events: none;
         `;
         document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 5000);
+        setTimeout(() => confetti.remove(), 10000); // 10s statt 5s
     }
 }
+
 
 function showRewardModal() {
     console.log('🏆 showRewardModal() aufgerufen');
