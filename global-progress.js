@@ -168,53 +168,56 @@
         });
     }
 
+       // ===================================
+    // 7. INITIALISIERUNG
     // ===================================
-    // 5. INITIALISIERUNG
-    // ===================================
-    function initGlobalProgress() {
-        // Prüfe ob wir auf der index.html sind
-        const isIndexPage = document.getElementById('global-progress-bar') !== null;
-
+    
+    function init() {
+        const isIndexPage = document.getElementById('progress-fill') !== null;
+        
         if (isIndexPage) {
-            console.log('📊 Index-Seite erkannt - Lade Gesamtfortschritt...');
             updateGlobalProgress();
             updateAllPageCards();
-        } else {
-            // Auf Unterseiten: Aktualisiere nur diese Seite
-            const pageName = document.body.dataset.page;
-            if (pageName) {
-                console.log(`📄 Unterseite erkannt: ${pageName}`);
-                updatePageProgress(pageName);
-            }
+            
+            // Storage-Änderungen überwachen
+            window.addEventListener('storage', function(e) {
+                if (e.key && e.key.startsWith('checkpoints_')) {
+                    console.log('🔄 Checkpoint-Änderung erkannt');
+                    updateGlobalProgress();
+                    updateAllPageCards();
+                }
+            });
+            
+            // Polling für selben Tab (alle 2 Sekunden)
+            setInterval(function() {
+                updateGlobalProgress();
+                updateAllPageCards();
+            }, 2000);
         }
+        
+        console.log('✅ Global Progress initialisiert');
     }
-
+    
     // ===================================
-    // 6. GLOBALE FUNKTIONEN BEREITSTELLEN
+    // 8. GLOBALE VERFÜGBARKEIT
     // ===================================
+    
+    // Funktionen global verfügbar machen
     window.updateGlobalProgress = updateGlobalProgress;
-    window.updatePageProgress = updatePageProgress;
     window.updateAllPageCards = updateAllPageCards;
 
-// ===================================
-// AUTO-START
-// ===================================
+    // ===================================
+    // 9. AUTO-START
+    // ===================================
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 
-// ✅ NEU: Warte auf page-tracker.js
-function initGlobalProgress() {
-    console.log('🔄 Initialisiere globalen Fortschritt...');
-    updateGlobalProgress();
-    updatePageProgress();
-}
+})();
 
-// Warte bis DOM + alle Scripts geladen sind
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(initGlobalProgress, 100); // ✅ 100ms Verzögerung
-    });
-} else {
-    setTimeout(initGlobalProgress, 100);
-}
 
 
 // ===================================
