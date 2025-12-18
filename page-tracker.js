@@ -2,6 +2,9 @@
 // PAGE TRACKER - UNIVERSELLE VERSION
 // ============================================
 
+window.saveCheckpoints = null;
+window.loadCheckpoints = null;
+
 (function() {
     'use strict';
 
@@ -70,47 +73,51 @@
         }
     }
 
-    function loadCheckpoints() {
-        try {
-            const savedData = localStorage.getItem(STORAGE_KEY);
+    window.saveCheckpoints = saveCheckpoints;
+    
+function loadCheckpoints() {
+    try {
+        const savedData = localStorage.getItem(STORAGE_KEY);
 
-            if (!savedData) {
-                console.log(`ℹ️ Keine gespeicherten Daten für ${PAGE_NAME}`);
-                saveCheckpoints(); // Erstelle leere Datenstruktur
-                return;
-            }
-
-            const data = JSON.parse(savedData);
-
-            if (!Array.isArray(data)) {
-                console.error('❌ Geladene Daten sind kein Array!');
-                return;
-            }
-
-            // Wiederherstellen der gespeicherten Zustände
-            data.forEach(saved => {
-                const checkpoint = checkpoints.find(cp => cp.id === saved.id);
-                if (checkpoint) {
-                    checkpoint.completed = saved.completed || false;
-                    checkpoint.timestamp = saved.timestamp || null;
-                    checkpoint.element.checked = checkpoint.completed;
-
-                    // Visuelles Feedback
-                    if (checkpoint.completed && checkpoint.label) {
-                        checkpoint.label.classList.add('completed');
-                    }
-                }
-            });
-
-            const completedCount = checkpoints.filter(cp => cp.completed).length;
-            console.log(`✅ ${completedCount}/${checkpoints.length} Checkpoints geladen für ${PAGE_NAME}`);
-
-            updateProgressDisplay();
-
-        } catch (error) {
-            console.error('❌ Fehler beim Laden:', error);
+        if (!savedData) {
+            console.log(`ℹ️ Keine gespeicherten Daten für ${PAGE_NAME}`);
+            saveCheckpoints(); // Erstelle leere Datenstruktur
+            return;
         }
+
+        const data = JSON.parse(savedData);
+
+        if (!Array.isArray(data)) {
+            console.error('❌ Geladene Daten sind kein Array!');
+            return;
+        }
+
+        // Wiederherstellen der gespeicherten Zustände
+        data.forEach(saved => {
+            const checkpoint = checkpoints.find(cp => cp.id === saved.id);
+            if (checkpoint) {
+                checkpoint.completed = saved.completed || false;
+                checkpoint.timestamp = saved.timestamp || null;
+                checkpoint.element.checked = checkpoint.completed;
+
+                // Visuelles Feedback
+                if (checkpoint.completed && checkpoint.label) {
+                    checkpoint.label.classList.add('completed');
+                }
+            }
+        });
+
+        const completedCount = checkpoints.filter(cp => cp.completed).length;
+        console.log(`✅ ${completedCount}/${checkpoints.length} Checkpoints geladen für ${PAGE_NAME}`);
+
+        updateProgressDisplay();
+
+    } catch (error) {
+        console.error('❌ Fehler beim Laden:', error);
     }
+}
+
+window.loadCheckpoints = loadCheckpoints;
 
     // ===================================
     // 4. CHECKBOX-HANDLER
