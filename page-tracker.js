@@ -9,7 +9,12 @@ window.loadCheckpoints = null;
     'use strict';
 
     // ===================================
-    // 1. SEITENNAME ERMITTELN
+    // 1. GLOBALE VARIABLEN
+    // ===================================
+    let checkpoints = [];
+
+    // ===================================
+    // 2. SEITENNAME ERMITTELN
     // ===================================
     const PAGE_NAME = document.body.dataset.page;
     
@@ -22,30 +27,29 @@ window.loadCheckpoints = null;
     console.log(`📄 Seite geladen: ${PAGE_NAME}`);
 
     // ===================================
-    // 2. CHECKPOINT-DATEN SAMMELN
+    // 3. CHECKPOINT-DATEN SAMMELN
     // ===================================
-function initCheckpoints() {
-    const checkboxElements = document.querySelectorAll('.task-checkbox');
- 
-    checkpoints = Array.from(checkboxElements).map(checkbox => {  // ← HIER FIX!
-        const id = checkbox.id;
-        const label = document.querySelector(`label[for="${id}"]`);
-        
-        return {
-            id: id,
-            element: checkbox,
-            label: label,
-            completed: false,
-            timestamp: null
-        };
-    });
+    function initCheckpoints() {
+        const checkboxElements = document.querySelectorAll('.task-checkbox');
+     
+        checkpoints = Array.from(checkboxElements).map(checkbox => {
+            const id = checkbox.id;
+            const label = document.querySelector(`label[for="${id}"]`);
+            
+            return {
+                id: id,
+                element: checkbox,
+                label: label,
+                completed: false,
+                timestamp: null
+            };
+        });
 
-    console.log(`✅ ${checkpoints.length} Checkboxen gefunden für ${PAGE_NAME}`);
-}
-
+        console.log(`✅ ${checkpoints.length} Checkboxen gefunden für ${PAGE_NAME}`);
+    }
 
     // ===================================
-    // 3. SPEICHERN & LADEN
+    // 4. SPEICHERN & LADEN
     // ===================================
     
     function saveCheckpoints() {
@@ -59,7 +63,7 @@ function initCheckpoints() {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
             console.log(`💾 Gespeichert: ${STORAGE_KEY} (${data.filter(d => d.completed).length}/${data.length})`);
 
-            // ✅ NEU: Trigger Storage Event für andere Tabs/Fenster
+            // Trigger Storage Event für andere Tabs/Fenster
             localStorage.setItem('lastUpdate', Date.now().toString());
             
             // Globalen Fortschritt aktualisieren (falls Funktion verfügbar)
@@ -72,54 +76,54 @@ function initCheckpoints() {
         }
     }
 
-    window.saveCheckpoints = saveCheckpoints;
-    
-function loadCheckpoints() {
-    try {
-        const savedData = localStorage.getItem(STORAGE_KEY);
+    function loadCheckpoints() {
+        try {
+            const savedData = localStorage.getItem(STORAGE_KEY);
 
-        if (!savedData) {
-            console.log(`ℹ️ Keine gespeicherten Daten für ${PAGE_NAME}`);
-            saveCheckpoints(); // Erstelle leere Datenstruktur
-            return;
-        }
-
-        const data = JSON.parse(savedData);
-
-        if (!Array.isArray(data)) {
-            console.error('❌ Geladene Daten sind kein Array!');
-            return;
-        }
-
-        // Wiederherstellen der gespeicherten Zustände
-        data.forEach(saved => {
-            const checkpoint = checkpoints.find(cp => cp.id === saved.id);
-            if (checkpoint) {
-                checkpoint.completed = saved.completed || false;
-                checkpoint.timestamp = saved.timestamp || null;
-                checkpoint.element.checked = checkpoint.completed;
-
-                // Visuelles Feedback
-                if (checkpoint.completed && checkpoint.label) {
-                    checkpoint.label.classList.add('completed');
-                }
+            if (!savedData) {
+                console.log(`ℹ️ Keine gespeicherten Daten für ${PAGE_NAME}`);
+                saveCheckpoints(); // Erstelle leere Datenstruktur
+                return;
             }
-        });
 
-        const completedCount = checkpoints.filter(cp => cp.completed).length;
-        console.log(`✅ ${completedCount}/${checkpoints.length} Checkpoints geladen für ${PAGE_NAME}`);
+            const data = JSON.parse(savedData);
 
-        updateProgressDisplay();
+            if (!Array.isArray(data)) {
+                console.error('❌ Geladene Daten sind kein Array!');
+                return;
+            }
 
-    } catch (error) {
-        console.error('❌ Fehler beim Laden:', error);
+            // Wiederherstellen der gespeicherten Zustände
+            data.forEach(saved => {
+                const checkpoint = checkpoints.find(cp => cp.id === saved.id);
+                if (checkpoint) {
+                    checkpoint.completed = saved.completed || false;
+                    checkpoint.timestamp = saved.timestamp || null;
+                    checkpoint.element.checked = checkpoint.completed;
+
+                    // Visuelles Feedback
+                    if (checkpoint.completed && checkpoint.label) {
+                        checkpoint.label.classList.add('completed');
+                    }
+                }
+            });
+
+            const completedCount = checkpoints.filter(cp => cp.completed).length;
+            console.log(`✅ ${completedCount}/${checkpoints.length} Checkpoints geladen für ${PAGE_NAME}`);
+
+            updateProgressDisplay();
+
+        } catch (error) {
+            console.error('❌ Fehler beim Laden:', error);
+        }
     }
-}
 
-window.loadCheckpoints = loadCheckpoints;
+    // Globale Funktionen verfügbar machen
+    window.saveCheckpoints = saveCheckpoints;
+    window.loadCheckpoints = loadCheckpoints;
 
     // ===================================
-    // 4. CHECKBOX-HANDLER
+    // 5. CHECKBOX-HANDLER
     // ===================================
     
     function handleCheckboxChange(event) {
@@ -152,7 +156,7 @@ window.loadCheckpoints = loadCheckpoints;
     }
 
     // ===================================
-    // 5. FORTSCHRITTSANZEIGE AKTUALISIEREN
+    // 6. FORTSCHRITTSANZEIGE AKTUALISIEREN
     // ===================================
     
     function updateProgressDisplay() {
@@ -178,7 +182,7 @@ window.loadCheckpoints = loadCheckpoints;
     }
 
     // ===================================
-    // 6. EVENT-LISTENER REGISTRIEREN
+    // 7. EVENT-LISTENER REGISTRIEREN
     // ===================================
     
     function attachEventListeners() {
@@ -190,7 +194,7 @@ window.loadCheckpoints = loadCheckpoints;
     }
 
     // ===================================
-    // 7. INITIALISIERUNG
+    // 8. INITIALISIERUNG
     // ===================================
     
     function init() {
@@ -202,7 +206,7 @@ window.loadCheckpoints = loadCheckpoints;
     }
 
     // ===================================
-    // 8. AUTO-START
+    // 9. AUTO-START
     // ===================================
     
     if (document.readyState === 'loading') {
