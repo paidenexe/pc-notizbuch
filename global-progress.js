@@ -66,6 +66,11 @@
             }
         });
 
+        if (typeof checkForCompletion === 'function') {
+        checkForCompletion();
+        }
+    }
+
         // ===================================
         // 2. FORTSCHRITTSBALKEN AKTUALISIEREN
         // ===================================
