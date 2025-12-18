@@ -30,26 +30,27 @@ function checkForCompletion() {
         return;
     }
     
-    const stats = JSON.parse(localStorage.getItem('completion-stats') || '{}');
-    console.log('📊 Stats aus localStorage:', stats);
-    
-    const allCompleted = Object.values(stats).every(val => val === 100);
-    console.log('🎯 Alle completed?', allCompleted);
-    
-    const alreadyShown = localStorage.getItem('celebration-shown');
-    console.log('🎉 Celebration bereits gezeigt?', alreadyShown);
-    
-    if (allCompleted && !alreadyShown) {
-        console.log('🚀 STARTE CELEBRATION!');
-        localStorage.setItem('celebration-shown', 'true');
-        startCelebration();
-    }
-    
-    if (!allCompleted && alreadyShown) {
-        console.log('🔄 Reset celebration-shown');
-        localStorage.removeItem('celebration-shown');
-    }
+    // ⭐ Warte kurz, damit global-progress.js fertig ist
+    setTimeout(() => {
+        // Prüfe direkt die Checkpoints (unabhängig von completion-stats)
+        const pages = ['minecraft', 'rocketleague', 'pctipps', 'programmierlabor', 'steinlabor'];
+        const allCompleted = pages.every(page => {
+            const checkpoints = JSON.parse(localStorage.getItem(`checkpoints_${page}`) || '{}');
+            const total = Object.keys(checkpoints).length;
+            const checked = Object.values(checkpoints).filter(v => v === true).length;
+            console.log(`   ${page}: ${checked}/${total}`);
+            return total > 0 && checked === total;
+        });
+        
+        console.log('🎯 Alle completed?', allCompleted);
+        
+        if (allCompleted) {
+            console.log('🚀 STARTE CELEBRATION!');
+            startCelebration();
+        }
+    }, 200);
 }
+
 
 function startCelebration() {
     console.log('🎉 startCelebration() aufgerufen');
