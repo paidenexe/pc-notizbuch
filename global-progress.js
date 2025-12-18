@@ -9,11 +9,11 @@
     // KONFIGURATION
     // ===================================
     const PAGES = [
-        'minecraft',
-        'rocketleague', 
-        'pctipps',
-        'programmierlabor',
-        'steinlabor'
+        'minecraft': 6,
+        'rocketleague': 6, 
+        'pctipps': 6,
+        'programmierlabor': 6,
+        'steinlabor': 8
     ];
 
     // ===================================
