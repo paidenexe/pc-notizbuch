@@ -2459,3 +2459,166 @@ footer {
         width: 100%;
     }
 }
+
+/* ===================================
+   KONFETTI & BELOHNUNGS-SYSTEM
+   =================================== */
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  z-index: 9999;
+  animation: confetti-fall linear forwards;
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.reward-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.reward-modal.show {
+  opacity: 1;
+}
+
+.reward-content {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: reward-pop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes reward-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.reward-title {
+  font-size: 2.5em;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  animation: title-bounce 1s infinite;
+}
+
+@keyframes title-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.reward-text {
+  font-size: 1.3em;
+  color: white;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.reward-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 20px 0;
+  backdrop-filter: blur(10px);
+}
+
+.reward-box h3 {
+  color: #ffd700;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.seed-box {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.seed-code {
+  font-family: 'Courier New', monospace;
+  font-size: 1.8em;
+  color: #4caf50;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.copy-seed-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copy-seed-btn:hover {
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+.seed-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1em;
+  line-height: 1.8;
+  text-align: left;
+  margin-top: 15px;
+}
+
+.reward-close-btn {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  color: #333;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.reward-close-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+}
+
