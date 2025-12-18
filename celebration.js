@@ -2,6 +2,8 @@
 
 console.log('🎬 celebration.js wird geladen...');
 
+let celebrationTriggered = false; // ⭐ Flag gegen Doppel-Trigger
+
 // ⭐ NUR DIESER EINE TRIGGER
 window.addEventListener('load', () => {
     console.log('📄 Seite vollständig geladen');
@@ -21,6 +23,24 @@ window.addEventListener('storage', function(e) {
 });
 
 console.log('✅ celebration.js vollständig geladen');
+
+// Dann in checkForCompletion() ganz oben einfügen:
+function checkForCompletion() {
+    if (celebrationTriggered) {
+        console.log('⏭️ Celebration bereits ausgeführt, überspringe');
+        return;
+    }
+    
+    console.log('🔍 checkForCompletion() aufgerufen');
+    // ... rest deines Codes
+}
+
+// Und in startCelebration() nach dem Modal setzen:
+function startCelebration() {
+    celebrationTriggered = true; // ⭐ Flag setzen
+    console.log('🚀 STARTE CELEBRATION!');
+    // ... rest deines Codes
+}
 
 function checkForCompletion() {
     console.log('🔍 checkForCompletion() aufgerufen');
