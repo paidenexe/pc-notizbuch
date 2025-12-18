@@ -178,9 +178,6 @@ window.loadCheckpoints = null;
 
         console.log(`📊 ${PAGE_NAME}: ${completed}/${total} (${percentage}%)`);
 
-        if (typeof checkForCompletion === 'function') {
-            checkForCompletion();
-        }
 
         return { total, completed, percentage };
     }
