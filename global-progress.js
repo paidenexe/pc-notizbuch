@@ -62,9 +62,9 @@
             : 0;
 
         // Elemente auf der index.html
-        const progressBar = document.getElementById('global-progress-bar');
-        const progressText = document.getElementById('global-progress-text');
-        const progressCount = document.getElementById('global-progress-count');
+        const progressBar = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-percent');
+        const progressCount = document.getElementById('global-progress-count'); // Optional
 
         if (progressBar) {
             progressBar.style.width = `${percentage}%`;
