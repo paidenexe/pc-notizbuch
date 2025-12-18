@@ -1,3 +1,22 @@
+let celebrationShown = localStorage.getItem('celebration-shown') === 'true';
+
+// ⭐ NEU: Lausche auf localStorage-Änderungen
+window.addEventListener('storage', function(e) {
+    if (e.key && e.key.startsWith('checkpoints_')) {
+        console.log('🔔 Checkpoint geändert, prüfe Completion...');
+        checkForCompletion();
+    }
+});
+
+// ⭐ NEU: Lausche auf Checkbox-Klicks (falls auf derselben Seite)
+document.addEventListener('change', function(e) {
+    if (e.target.type === 'checkbox' && e.target.closest('.checkpoint-item')) {
+        console.log('✅ Checkbox geklickt, prüfe Completion...');
+        setTimeout(() => checkForCompletion(), 100); // Kurze Verzögerung
+    }
+});
+
+
 // celebration.js - Konfetti OHNE Library
 function checkForCompletion() {
     const currentPage = window.location.pathname.split('/').pop();
