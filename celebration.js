@@ -52,26 +52,27 @@ function checkForCompletion() {
         return;
     }
     
-    // ⭐ Warte kurz, damit global-progress.js fertig ist
     setTimeout(() => {
-        // Prüfe direkt die Checkpoints (unabhängig von completion-stats)
         const pages = ['minecraft', 'rocketleague', 'pctipps', 'programmierlabor', 'steinlabor'];
         const allCompleted = pages.every(page => {
-            const checkpoints = JSON.parse(localStorage.getItem(`checkpoints_${page}`) || '{}');
-            const total = Object.keys(checkpoints).length;
-            const checked = Object.values(checkpoints).filter(v => v === true).length;
+            const data = JSON.parse(localStorage.getItem(`checkpoints_${page}`) || '{"checked":[],"total":0}');
+            const checked = data.checked ? data.checked.length : 0;
+            const total = data.total || 0;
+            
             console.log(`   ${page}: ${checked}/${total}`);
             return total > 0 && checked === total;
         });
         
         console.log('🎯 Alle completed?', allCompleted);
         
-        if (allCompleted) {
+        if (allCompleted && !localStorage.getItem('celebration-shown')) {
             console.log('🚀 STARTE CELEBRATION!');
+            localStorage.setItem('celebration-shown', 'true');
             startCelebration();
         }
     }, 200);
 }
+
 
 
 function startCelebration() {
