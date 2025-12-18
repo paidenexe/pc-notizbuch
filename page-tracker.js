@@ -25,14 +25,7 @@
 
     function initCheckpoints() {
         const checkboxes = document.querySelectorAll('.checkpoint-checkbox');
-
-        console.log(`🔍 Gefundene Checkboxen:`, checkboxElements.length);
-        checkboxElements.forEach(cb => console.log(`  - ${cb.id}`));
-    
-        if (checkboxElements.length === 0) {
-        console.warn('⚠️ KEINE CHECKBOXEN GEFUNDEN! Sind sie versteckt?');
-        }
-        
+ 
         checkpoints = Array.from(checkboxes).map(checkbox => {
             const id = checkbox.id;
             const label = document.querySelector(`label[for="${id}"]`);
