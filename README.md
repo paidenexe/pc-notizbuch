@@ -26,11 +26,6 @@ Das **PC-Notizbuch** ist eine Webseite, die Kindern hilft:
 - ✅ Verschiedene Hobbys (Gaming, Steine, Programmieren) zu entdecken
 - ✅ Ihren Lernfortschritt zu verfolgen
 
-### Zielgruppe
-- Kinder ab 8 Jahren
-- Eltern die ihren Kindern den PC näherbringen möchten
-- Lehrer für Computer-Grundlagen
-
 ---
 
 ## ✨ Features
