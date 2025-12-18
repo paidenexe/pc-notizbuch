@@ -16,10 +16,10 @@
         'steinlabor'
     ];
     
-    const CHECKPOINT_COUNTS = {
+        const CHECKPOINT_COUNTS = {  // ← KORRIGIERT!
         'minecraft': 6,
-        'rocketleague': 6, 
-        'pctipps': 6,
+        'rocketleague': 2,  // ← Du hast 2 im Log, nicht 6!
+        'pctipps': 2,        // ← Du hast 2 im Log, nicht 6!
         'programmierlabor': 6,
         'steinlabor': 8
     };
@@ -34,28 +34,32 @@
         PAGES.forEach(page => {
             const storageKey = `checkpoints_${page}`;
             
+            // ✅ IMMER die Gesamtzahl addieren (auch wenn keine Daten vorhanden)
+            const expectedCount = CHECKPOINT_COUNTS[page] || 0;
+            totalCheckpoints += expectedCount;
+            
             try {
                 const rawData = localStorage.getItem(storageKey);
                 
-                // ✅ FIX: Prüfe ob Daten existieren
+                // ✅ Wenn keine Daten: 0 abgehakte Checkpoints
                 if (!rawData) {
-                    console.warn(`⚠️ ${page}: Keine Daten im localStorage`);
-                    return; // Überspringe diese Seite
+                    console.warn(`⚠️ ${page}: Keine Daten (0/${expectedCount})`);
+                    return; // completedCheckpoints bleibt bei 0
                 }
 
                 const data = JSON.parse(rawData);
 
-                // ✅ FIX: Prüfe ob data ein Array ist
+                // ✅ Prüfe ob data ein Array ist
                 if (!Array.isArray(data)) {
                     console.error(`❌ ${page}: Daten sind kein Array!`, data);
-                    return; // Überspringe diese Seite
+                    return;
                 }
 
-                // ✅ Zähle Checkpoints
-                totalCheckpoints += data.length;
-                completedCheckpoints += data.filter(item => item.completed === true).length;
+                // ✅ Zähle abgehakte Checkpoints
+                const completed = data.filter(item => item.completed === true).length;
+                completedCheckpoints += completed;
 
-                console.log(`📊 ${page}: ${data.filter(item => item.completed).length}/${data.length}`);
+                console.log(`📊 ${page}: ${completed}/${expectedCount}`);
 
             } catch (error) {
                 console.error(`❌ Fehler beim Laden von ${page}:`, error);
@@ -72,19 +76,13 @@
         // Elemente auf der index.html
         const progressBar = document.getElementById('progress-fill');
         const progressText = document.getElementById('progress-percent');
-        const progressCount = document.getElementById('global-progress-count'); // Optional
 
         if (progressBar) {
             progressBar.style.width = `${percentage}%`;
-            progressBar.setAttribute('aria-valuenow', percentage);
         }
 
         if (progressText) {
-            progressText.textContent = `${percentage}%`;
-        }
-
-        if (progressCount) {
-            progressCount.textContent = `${completedCheckpoints} / ${totalCheckpoints}`;
+            progressText.textContent = percentage;  // ← OHNE "%"! (HTML hat schon ein "%")
         }
 
         console.log(`✅ Globaler Fortschritt: ${completedCheckpoints}/${totalCheckpoints} (${percentage}%)`);
@@ -95,7 +93,7 @@
             percentage: percentage
         };
     }
-
+    
     // ===================================
     // 3. EINZELNE SEITEN-FORTSCHRITTE
     // ===================================
