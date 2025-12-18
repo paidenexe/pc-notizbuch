@@ -21,6 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Fallback falls Event verpasst wurde
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        console.log('🔄 Load-Fallback nach 1s');
+        checkForCompletion();
+    }, 1000);
+});
+
 function checkForCompletion() {
     console.log('🔍 checkForCompletion() aufgerufen');
     
