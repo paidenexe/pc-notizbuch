@@ -16,7 +16,7 @@
         'steinlabor'
     ];
     
-    const CECKPOINT_COUNTS = {
+    const CHECKPOINT_COUNTS = {
         'minecraft': 6,
         'rocketleague': 6, 
         'pctipps': 6,
