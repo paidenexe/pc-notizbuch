@@ -1,23 +1,21 @@
-let celebrationShown = localStorage.getItem('celebration-shown') === 'true';
+// celebration.js - Konfetti OHNE Library
 
-// ⭐ NEU: Lausche auf localStorage-Änderungen
+// ⭐ NEU: Event Listeners GANZ OBEN (vor allen Funktionen!)
 window.addEventListener('storage', function(e) {
     if (e.key && e.key.startsWith('checkpoints_')) {
-        console.log('🔔 Checkpoint geändert, prüfe Completion...');
+        console.log('🔔 Storage geändert, prüfe Completion...');
         checkForCompletion();
     }
 });
 
-// ⭐ NEU: Lausche auf Checkbox-Klicks (falls auf derselben Seite)
 document.addEventListener('change', function(e) {
     if (e.target.type === 'checkbox' && e.target.closest('.checkpoint-item')) {
         console.log('✅ Checkbox geklickt, prüfe Completion...');
-        setTimeout(() => checkForCompletion(), 100); // Kurze Verzögerung
+        setTimeout(() => checkForCompletion(), 100);
     }
 });
 
-
-// celebration.js - Konfetti OHNE Library
+// Ab hier kommt dein bestehender Code...
 function checkForCompletion() {
     const currentPage = window.location.pathname.split('/').pop();
     if (currentPage !== 'index.html' && currentPage !== '') return;
@@ -143,6 +141,3 @@ if (document.readyState === 'loading') {
 } else {
     checkForCompletion();
 }
-
-// ⭐ NEU: Check auch wenn localStorage sich ändert!
-window.addEventListener('storage', checkForCompletion);
