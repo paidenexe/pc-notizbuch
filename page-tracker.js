@@ -24,26 +24,25 @@ window.loadCheckpoints = null;
     // ===================================
     // 2. CHECKPOINT-DATEN SAMMELN
     // ===================================
-    let checkpoints = [];
-
-    function initCheckpoints() {
-        const checkboxElements = document.querySelectorAll('.task-checkbox');
+function initCheckpoints() {
+    const checkboxElements = document.querySelectorAll('.task-checkbox');
  
-        checkpoints = Array.from(checkboxes).map(checkbox => {
-            const id = checkbox.id;
-            const label = document.querySelector(`label[for="${id}"]`);
-            
-            return {
-                id: id,
-                element: checkbox,
-                label: label,
-                completed: false,
-                timestamp: null
-            };
-        });
+    checkpoints = Array.from(checkboxElements).map(checkbox => {  // ← HIER FIX!
+        const id = checkbox.id;
+        const label = document.querySelector(`label[for="${id}"]`);
+        
+        return {
+            id: id,
+            element: checkbox,
+            label: label,
+            completed: false,
+            timestamp: null
+        };
+    });
 
-        console.log(`✅ ${checkpoints.length} Checkboxen gefunden für ${PAGE_NAME}`);
-    }
+    console.log(`✅ ${checkpoints.length} Checkboxen gefunden für ${PAGE_NAME}`);
+}
+
 
     // ===================================
     // 3. SPEICHERN & LADEN
