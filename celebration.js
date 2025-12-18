@@ -1,48 +1,64 @@
-// celebration.js - Konfetti OHNE Library
+// celebration.js - MIT UMFANGREICHEM DEBUG
 
-// ⭐ NEU: Event Listeners GANZ OBEN (vor allen Funktionen!)
+console.log('🎬 celebration.js wird geladen...');
+
+// Event Listeners
 window.addEventListener('storage', function(e) {
+    console.log('🔔 Storage-Event:', e.key);
     if (e.key && e.key.startsWith('checkpoints_')) {
-        console.log('🔔 Storage geändert, prüfe Completion...');
+        console.log('✅ Checkpoints geändert, prüfe Completion...');
         checkForCompletion();
     }
 });
 
 document.addEventListener('change', function(e) {
+    console.log('🔄 Change-Event auf:', e.target);
     if (e.target.type === 'checkbox' && e.target.closest('.checkpoint-item')) {
-        console.log('✅ Checkbox geklickt, prüfe Completion...');
+        console.log('✅ Checkpoint-Checkbox geklickt!');
         setTimeout(() => checkForCompletion(), 100);
     }
 });
 
-// Ab hier kommt dein bestehender Code...
 function checkForCompletion() {
+    console.log('🔍 checkForCompletion() aufgerufen');
+    
     const currentPage = window.location.pathname.split('/').pop();
-    if (currentPage !== 'index.html' && currentPage !== '') return;
+    console.log('📄 Aktuelle Seite:', currentPage);
+    
+    if (currentPage !== 'index.html' && currentPage !== '') {
+        console.log('❌ Nicht auf index.html - abgebrochen');
+        return;
+    }
     
     const stats = JSON.parse(localStorage.getItem('completion-stats') || '{}');
+    console.log('📊 Stats aus localStorage:', stats);
+    
     const allCompleted = Object.values(stats).every(val => val === 100);
+    console.log('🎯 Alle completed?', allCompleted);
     
-    console.log('🔍 Check:', { allCompleted, stats }); // Debug
+    const alreadyShown = localStorage.getItem('celebration-shown');
+    console.log('🎉 Celebration bereits gezeigt?', alreadyShown);
     
-    if (allCompleted && !localStorage.getItem('celebration-shown')) {
+    if (allCompleted && !alreadyShown) {
+        console.log('🚀 STARTE CELEBRATION!');
         localStorage.setItem('celebration-shown', 'true');
         startCelebration();
     }
     
-    // Reset wenn wieder unter 100%
-    if (!allCompleted && localStorage.getItem('celebration-shown')) {
+    if (!allCompleted && alreadyShown) {
+        console.log('🔄 Reset celebration-shown');
         localStorage.removeItem('celebration-shown');
     }
 }
 
 function startCelebration() {
-    console.log('🎉 Celebration started!');
+    console.log('🎉 startCelebration() aufgerufen');
     createConfetti();
     setTimeout(() => showRewardModal(), 2000);
 }
 
 function createConfetti() {
+    console.log('🎊 createConfetti() aufgerufen');
     const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500'];
     const confettiCount = 150;
     
@@ -68,6 +84,7 @@ function createConfetti() {
 }
 
 function showRewardModal() {
+    console.log('🏆 showRewardModal() aufgerufen');
     const modal = document.createElement('div');
     modal.id = 'reward-modal';
     modal.style.cssText = `
@@ -136,8 +153,15 @@ function closeRewardModal() {
 }
 
 // Auto-Check beim Laden
+console.log('🚀 Registriere DOMContentLoaded...');
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', checkForCompletion);
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('📄 DOMContentLoaded gefeuert');
+        checkForCompletion();
+    });
 } else {
+    console.log('📄 DOM bereits geladen');
     checkForCompletion();
 }
+
+console.log('✅ celebration.js vollständig geladen');
