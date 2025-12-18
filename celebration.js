@@ -11,15 +11,27 @@ window.addEventListener('storage', function(e) {
     }
 });
 
+// ⭐ Warte 3 Sekunden bevor geprüft wird
 document.addEventListener('DOMContentLoaded', () => {
     console.log('📄 DOMContentLoaded gefeuert');
     
-    // Warte auf das Signal von global-progress.js
-    window.addEventListener('global-progress-ready', () => {
-        console.log('✅ Global Progress ist bereit - prüfe Completion');
+    setTimeout(() => {
+        console.log('⏰ 3 Sekunden vorbei - prüfe jetzt Completion');
         checkForCompletion();
-    });
+    }, 3000);
 });
+
+// Storage-Event bleibt gleich
+window.addEventListener('storage', function(e) {
+    console.log('🔔 Storage-Event:', e.key);
+    if (e.key && e.key.startsWith('checkpoints_')) {
+        console.log('✅ Checkpoints geändert, prüfe Completion...');
+        setTimeout(() => checkForCompletion(), 500);
+    }
+});
+
+console.log('✅ celebration.js vollständig geladen');
+
 
 // Fallback falls Event verpasst wurde
 window.addEventListener('load', () => {
