@@ -1,27 +1,17 @@
-// celebration.js - MIT UMFANGREICHEM DEBUG
+// celebration.js - Konfetti Animation
 
 console.log('🎬 celebration.js wird geladen...');
 
-// Event Listeners
-window.addEventListener('storage', function(e) {
-    console.log('🔔 Storage-Event:', e.key);
-    if (e.key && e.key.startsWith('checkpoints_')) {
-        console.log('✅ Checkpoints geändert, prüfe Completion...');
-        checkForCompletion();
-    }
-});
-
-// ⭐ Warte 3 Sekunden bevor geprüft wird
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('📄 DOMContentLoaded gefeuert');
-    
+// ⭐ NUR DIESER EINE TRIGGER
+window.addEventListener('load', () => {
+    console.log('📄 Seite vollständig geladen');
     setTimeout(() => {
         console.log('⏰ 3 Sekunden vorbei - prüfe jetzt Completion');
         checkForCompletion();
     }, 3000);
 });
 
-// Storage-Event bleibt gleich
+// Storage-Event für Live-Updates (wenn auf anderer Seite completed wird)
 window.addEventListener('storage', function(e) {
     console.log('🔔 Storage-Event:', e.key);
     if (e.key && e.key.startsWith('checkpoints_')) {
@@ -31,15 +21,6 @@ window.addEventListener('storage', function(e) {
 });
 
 console.log('✅ celebration.js vollständig geladen');
-
-
-// Fallback falls Event verpasst wurde
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        console.log('🔄 Load-Fallback nach 1s');
-        checkForCompletion();
-    }, 1000);
-});
 
 function checkForCompletion() {
     console.log('🔍 checkForCompletion() aufgerufen');
