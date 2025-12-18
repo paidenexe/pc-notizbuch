@@ -27,7 +27,7 @@
     // ===================================
     // 1. GESAMTFORTSCHRITT BERECHNEN
     // ===================================
-    function updateGlobalProgress() {
+ function updateGlobalProgress() {
         let totalCheckpoints = 0;
         let completedCheckpoints = 0;
 
@@ -65,7 +65,6 @@
                 console.error(`❌ Fehler beim Laden von ${page}:`, error);
             }
         });
-    }
 
         // ===================================
         // 2. FORTSCHRITTSBALKEN AKTUALISIEREN
