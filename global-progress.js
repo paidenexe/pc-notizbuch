@@ -65,10 +65,6 @@
                 console.error(`❌ Fehler beim Laden von ${page}:`, error);
             }
         });
-
-        if (typeof checkForCompletion === 'function') {
-        checkForCompletion();
-        }
     }
 
         // ===================================
