@@ -196,15 +196,22 @@
     window.updatePageProgress = updatePageProgress;
     window.updateAllPageCards = updateAllPageCards;
 
-    // ===================================
-    // 7. AUTO-START
-    // ===================================
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initGlobalProgress);
-    } else {
-        initGlobalProgress();
-    }
+// ===================================
+// AUTO-START
+// ===================================
 
-    console.log('✅ global-progress.js geladen');
+// ✅ NEU: Warte auf page-tracker.js
+function initGlobalProgress() {
+    console.log('🔄 Initialisiere globalen Fortschritt...');
+    updateGlobalProgress();
+    updatePageProgress();
+}
 
-})();
+// Warte bis DOM + alle Scripts geladen sind
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initGlobalProgress, 100); // ✅ 100ms Verzögerung
+    });
+} else {
+    setTimeout(initGlobalProgress, 100);
+}
