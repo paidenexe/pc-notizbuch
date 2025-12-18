@@ -6,9 +6,16 @@ function checkForCompletion() {
     const stats = JSON.parse(localStorage.getItem('completion-stats') || '{}');
     const allCompleted = Object.values(stats).every(val => val === 100);
     
+    console.log('🔍 Check:', { allCompleted, stats }); // Debug
+    
     if (allCompleted && !localStorage.getItem('celebration-shown')) {
         localStorage.setItem('celebration-shown', 'true');
         startCelebration();
+    }
+    
+    // Reset wenn wieder unter 100%
+    if (!allCompleted && localStorage.getItem('celebration-shown')) {
+        localStorage.removeItem('celebration-shown');
     }
 }
 
@@ -52,29 +59,32 @@ function showRewardModal() {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.85);
+        background: rgba(0,0,0,0.9);
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         z-index: 10000;
+        animation: fadeIn 0.3s;
     `;
     
     modal.innerHTML = `
-        <div class="reward-content" style="background:#1a1a2e;padding:40px;border-radius:15px;max-width:600px;box-shadow:0 0 50px rgba(0,255,255,0.3);text-align:center;">
-            <h2 class="reward-title" style="color:#0ff;font-size:42px;margin:0 0 20px 0;">🏆 UNGLAUBLICH! 🏆</h2>
-            <p class="reward-text" style="color:#fff;font-size:18px;line-height:1.6;">
-                Du hast <strong>ALLE Aufgaben</strong> gemeistert!<br>
-                Das ist eine <strong>brillante Leistung</strong>! 🌟
+        <div class="reward-content" style="background:#1a1a2e;padding:40px;border-radius:20px;max-width:600px;text-align:center;box-shadow:0 0 50px rgba(255,0,128,0.5);animation:slideIn 0.5s;">
+            <h2 style="color:#ff0080;font-size:48px;margin:0 0 20px 0;text-shadow:0 0 20px #ff0080;">🏆 UNGLAUBLICH! 🏆</h2>
+            <p style="color:#fff;font-size:20px;line-height:1.6;margin-bottom:30px;">
+                Du hast <strong style="color:#0ff;">ALLE Aufgaben</strong> gemeistert!<br>
+                Das ist eine <strong style="color:#0ff;">brillante Leistung</strong>! 🌟
             </p>
             
-            <div class="reward-box" style="background:#0a0a15;padding:25px;border-radius:10px;margin:25px 0;">
+            <div style="background:#0f0f1e;padding:30px;border-radius:15px;border:2px solid #ff0080;">
                 <h3 style="color:#0ff;margin:0 0 15px 0;">🎁 Deine Belohnung:</h3>
-                <p style="color:#fff;margin:10px 0;"><strong>Ein legendärer Minecraft-Seed!</strong></p>
-                <div class="seed-box" style="background:#000;padding:15px;border-radius:8px;margin:15px 0;">
-                    <code class="seed-code" style="color:#0ff;font-size:24px;font-weight:bold;">-1232260339</code>
-                    <button class="copy-seed-btn" onclick="copySeed('-1232260339')" style="display:block;margin:10px auto 0;padding:10px 20px;background:#0ff;border:none;border-radius:5px;cursor:pointer;font-weight:bold;">📋 Kopieren</button>
+                <p style="color:#fff;font-size:18px;margin-bottom:15px;"><strong>Ein legendärer Minecraft-Seed!</strong></p>
+                <div style="background:#1a1a2e;padding:20px;border-radius:10px;margin:20px 0;">
+                    <code style="color:#0ff;font-size:32px;font-weight:bold;letter-spacing:2px;">-1232260339</code>
+                    <button onclick="copySeed('-1232260339')" style="display:block;margin:15px auto 0;padding:12px 30px;background:#0ff;border:none;border-radius:8px;color:#000;font-size:16px;cursor:pointer;font-weight:bold;">
+                        📋 Kopieren
+                    </button>
                 </div>
-                <p class="seed-description" style="color:#aaa;font-size:14px;line-height:1.8;text-align:left;margin-top:15px;">
+                <p style="color:#aaa;font-size:14px;line-height:1.8;text-align:left;margin-top:15px;">
                     🏔️ <strong>Spawn:</strong> Gigantisches Dorf mit Schmiede<br>
                     💎 <strong>Diamanten</strong> direkt unter dem Spawn (Y: -54)<br>
                     🏰 <strong>Tempel</strong> & <strong>Festung</strong> in der Nähe<br>
@@ -82,7 +92,7 @@ function showRewardModal() {
                 </p>
             </div>
             
-            <button class="reward-close-btn" onclick="closeRewardModal()" style="padding:15px 40px;background:#ff0080;border:none;border-radius:8px;color:#fff;font-size:16px;cursor:pointer;font-weight:bold;">
+            <button onclick="closeRewardModal()" style="margin-top:30px;padding:15px 40px;background:#ff0080;border:none;border-radius:8px;color:#fff;font-size:16px;cursor:pointer;font-weight:bold;">
                 ✨ Danke! Ich probiere es aus! ✨
             </button>
         </div>
@@ -114,3 +124,6 @@ if (document.readyState === 'loading') {
 } else {
     checkForCompletion();
 }
+
+// ⭐ NEU: Check auch wenn localStorage sich ändert!
+window.addEventListener('storage', checkForCompletion);
