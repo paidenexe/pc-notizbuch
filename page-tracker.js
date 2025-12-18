@@ -57,6 +57,9 @@
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
             console.log(`💾 Gespeichert: ${STORAGE_KEY} (${data.filter(d => d.completed).length}/${data.length})`);
 
+            // ✅ NEU: Trigger Storage Event für andere Tabs/Fenster
+            localStorage.setItem('lastUpdate', Date.now().toString());
+            
             // Globalen Fortschritt aktualisieren (falls Funktion verfügbar)
             if (typeof window.updateGlobalProgress === 'function') {
                 window.updateGlobalProgress();
