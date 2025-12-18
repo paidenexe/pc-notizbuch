@@ -1,63 +1,51 @@
-// celebration.js - Konfetti & Belohnung bei 100%
-
+// celebration.js - Konfetti OHNE Library
 function checkForCompletion() {
-  const progress = JSON.parse(localStorage.getItem('pageProgress') || '{}');
-  
-  // Berechne Gesamtfortschritt
-  let totalTasks = 0;
-  let completedTasks = 0;
-  
-  for (let page in progress) {
-    totalTasks += progress[page].total;
-    completedTasks += progress[page].completed;
-  }
-  
-  const percentage = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
-  
-  // Wenn 100% erreicht und noch nicht gefeiert
-  if (percentage === 100 && !localStorage.getItem('celebration-shown')) {
-    triggerCelebration();
-    localStorage.setItem('celebration-shown', 'true');
-  }
-  
-  // Reset wenn wieder unter 100%
-  if (percentage < 100 && localStorage.getItem('celebration-shown')) {
-    localStorage.removeItem('celebration-shown');
-  }
+    const currentPage = window.location.pathname.split('/').pop();
+    if (currentPage !== 'index.html' && currentPage !== '') return;
+    
+    const stats = JSON.parse(localStorage.getItem('completion-stats') || '{}');
+    const allCompleted = Object.values(stats).every(val => val === 100);
+    
+    if (allCompleted && !localStorage.getItem('celebration-shown')) {
+        localStorage.setItem('celebration-shown', 'true');
+        startCelebration();
+    }
 }
 
-function triggerCelebration() {
-  // Konfetti-Animation
-  createConfetti();
-  
-  // Belohnungs-Modal nach 1 Sekunde
-  setTimeout(() => {
-    showRewardModal();
-  }, 1000);
+function startCelebration() {
+    console.log('🎉 Celebration started!');
+    createConfetti();
+    setTimeout(() => showRewardModal(), 2000);
 }
 
 function createConfetti() {
-  const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500'];
-  const confettiCount = 150;
-  
-  for (let i = 0; i < confettiCount; i++) {
-    const confetti = document.createElement('div');
-    confetti.className = 'confetti';
-    confetti.style.left = Math.random() * 100 + '%';
-    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    confetti.style.animationDelay = Math.random() * 3 + 's';
-    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-    document.body.appendChild(confetti);
+    const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500'];
+    const confettiCount = 150;
     
-    // Entferne Konfetti nach Animation
-    setTimeout(() => confetti.remove(), 5000);
-  }
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.cssText = `
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            left: ${Math.random() * 100}%;
+            top: -10px;
+            opacity: 1;
+            transform: rotate(${Math.random() * 360}deg);
+            animation: confetti-fall ${2 + Math.random() * 3}s linear forwards;
+            animation-delay: ${Math.random() * 2}s;
+            z-index: 9999;
+            pointer-events: none;
+        `;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+    }
 }
 
 function showRewardModal() {
-  const modal = document.createElement('div');
-  modal.className = 'reward-modal';
-  modal.innerHTML = `
+    const modal = document.createElement('div');
+    modal.innerHTML = `
     <div class="reward-content">
       <h2 class="reward-title">🏆 UNGLAUBLICH! 🏆</h2>
       <p class="reward-text">
@@ -86,29 +74,12 @@ function showRewardModal() {
     </div>
   `;
   
-  document.body.appendChild(modal);
-  
-  // Animation starten
-  setTimeout(() => modal.classList.add('show'), 10);
+ document.body.appendChild(modal);
 }
 
-function copySeed(seed) {
-  navigator.clipboard.writeText(seed).then(() => {
-    const btn = document.querySelector('.copy-seed-btn');
-    btn.textContent = '✅ Kopiert!';
-    btn.style.background = '#4caf50';
-    setTimeout(() => {
-      btn.textContent = '📋 Kopieren';
-      btn.style.background = '';
-    }, 2000);
-  });
+// Auto-Check beim Laden
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkForCompletion);
+} else {
+    checkForCompletion();
 }
-
-function closeRewardModal() {
-  const modal = document.querySelector('.reward-modal');
-  modal.classList.remove('show');
-  setTimeout(() => modal.remove(), 300);
-}
-
-// Prüfe bei jedem Laden der Seite
-document.addEventListener('DOMContentLoaded', checkForCompletion);
