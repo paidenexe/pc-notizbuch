@@ -215,3 +215,23 @@ if (document.readyState === 'loading') {
 } else {
     setTimeout(initGlobalProgress, 100);
 }
+
+
+// ===================================
+// 7. STORAGE-ÄNDERUNGEN ÜBERWACHEN
+// ===================================
+window.addEventListener('storage', function(e) {
+    if (e.key === 'lastUpdate') {
+        console.log('🔄 Änderung erkannt - Update Fortschritt');
+        updateGlobalProgress();
+        updateAllPageCards();
+    }
+});
+
+// Für selben Tab (storage event feuert nur bei anderen Tabs)
+setInterval(function() {
+    const isIndexPage = document.getElementById('progress-fill') !== null;
+    if (isIndexPage) {
+        updateGlobalProgress();
+    }
+}, 2000); // Alle 2 Sekunden prüfen
