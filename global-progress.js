@@ -13,7 +13,7 @@
         'rocketleague': 6, 
         'pctipps': 6,
         'programmierlabor': 6,
-        'steinlabor': 8
+        'steinlabor': 8,
     ];
 
     // ===================================
