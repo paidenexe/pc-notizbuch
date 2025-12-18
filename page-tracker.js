@@ -24,7 +24,7 @@
     let checkpoints = [];
 
     function initCheckpoints() {
-        const checkboxElements = document.querySelectorAll('.task-checkbox, .checkpoint-checkbox');
+        const checkboxElements = document.querySelectorAll('.task-checkbox');
  
         checkpoints = Array.from(checkboxes).map(checkbox => {
             const id = checkbox.id;
