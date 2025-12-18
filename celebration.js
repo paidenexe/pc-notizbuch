@@ -65,13 +65,13 @@ function checkForCompletion() {
         
         console.log('🎯 Alle completed?', allCompleted);
         
-        if (allCompleted && !localStorage.getItem('celebration-shown')) {
+        if (allCompleted) {
             console.log('🚀 STARTE CELEBRATION!');
-            localStorage.setItem('celebration-shown', 'true');
             startCelebration();
         }
     }, 200);
 }
+
 
 
 
