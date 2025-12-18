@@ -238,3 +238,36 @@ setInterval(function() {
         updateGlobalProgress();
     }
 }, 2000); // Alle 2 Sekunden prüfen
+
+
+function updateGlobalProgress() {
+    const progress = JSON.parse(localStorage.getItem('pageProgress') || '{}');
+    
+    let totalTasks = 0;
+    let completedTasks = 0;
+    
+    for (let page in progress) {
+        totalTasks += progress[page].total;
+        completedTasks += progress[page].completed;
+    }
+    
+    const percentage = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+    
+    const progressBar = document.getElementById('global-progress-bar');
+    const progressText = document.getElementById('global-progress-text');
+    
+    if (progressBar) {
+        progressBar.style.width = percentage + '%';
+    }
+    
+    if (progressText) {
+        progressText.textContent = `${percentage}%`;
+    }
+    
+    // NEU: Celebration checken! 🎉
+    if (typeof checkForCompletion === 'function') {
+        checkForCompletion();
+    }
+    
+    console.log(`📊 Globaler Fortschritt: ${completedTasks}/${totalTasks} (${percentage}%)`);
+}
